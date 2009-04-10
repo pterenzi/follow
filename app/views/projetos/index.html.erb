@@ -1,0 +1,23 @@
+<% content_for :main do %>
+
+<p>
+  <%= link_to 'Cadastrar Novo Projeto', new_projeto_path %>
+</p>
+<%  @export = false  %>
+<table class="tableNegocios">
+  <tfoot>
+    <tr>
+      <th scope="row" colspan="8"><%=  link_to 'Exportar para Excel',  show_export_projetos_url  %></th>
+    </tr>
+  </tfoot>
+  </tbody>
+  <%=  render(:partial => "header_list")  %>
+  <%=  render(:partial => "projeto", :collection => @projetos, :object => @export)  %>
+  </tbody>
+</table>
+
+<br />
+
+<% end %>
+
+

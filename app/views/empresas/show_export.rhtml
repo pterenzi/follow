@@ -1,0 +1,6 @@
+<%  @export = true  %>
+<table><tbody>
+    <%=  render(:partial => "header_list", :object => @export)  %>
+    <%=  render(:partial => "empresa", :collection => @alunos, :object => @export)  %>
+  </tbody>
+</table>

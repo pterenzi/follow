@@ -1,0 +1,336 @@
+<h2>Table CSS Styles</h2>
+<div style="clear:both;border:1px solid #666;padding:5px;height:80px;font-size:11pt;">
+  <div style="float:left;">
+    <% form_tag(:action => 'index') do %>
+    <b>To find your favorite table style:</b><br/>
+    Option 1. Click on <b>Style Name</b> in the following table <br/>
+    Option 2. Choose from the list: <%= select_tag 't', table_style_options_for_select(params[:t]) %> <%= submit_tag %>
+    <% end %>
+  </div>
+  <div style="float:right;">
+    Plugin name: table_styles<br/>
+    These CSS styles are selected from <a href="http://icant.co.uk/csstablegallery/index.php">CSS Table Gallery</a>, Thanks!<br/>
+    Plugin is created by xiaobozz (Blog: <a href="http://xiaoboonrails.blogger.com">Xiaobo On Rails</a>)<br/>
+    Project code base: <a href="http://code.google.com/p/rails-plugin-table-styles/">http://code.google.com/p/rails-plugin-table-styles/</a>
+  </div>
+</div>
+<div style="clear:both;margin-top:20px;"> 
+  <table summary="Submitted table designs">
+			<caption>Table Styles</caption>
+			<thead>
+				<tr>
+					<th scope="col">Style Name</th>
+					<th scope="col">Author</th>
+					<th scope="col">Country</th>
+					<th scope="col">Comment</th>
+					<th scope="col">Download</th>
+				</tr>
+			</thead>	
+			<tfoot>
+				<tr>
+					<th scope="row">Total</th>
+					<td colspan="4">42 designs</td>
+				</tr>
+			</tfoot>
+			<tbody>
+								<tr >
+					<th scope="row" id="r97"><a href="/table_styles_demo?t=tagbox#r97">tagbox</a></th>
+					<td><a href="http://www.tagbox.de">TagBox</a></td>
+					<td>Deutschland</td>
+					<td>Table design based on the fresh TagBox style.</td>
+					<td><a href="http://www.tagbox.de/style/tagbox.css" title="Download the TagBox CSS file">Download</a></td>
+				</tr>
+								<tr class="odd">
+					<th scope="row" id="r94"><a href="/table_styles_demo?t=aqua#r94">aqua</a></th>
+					<td><a href="http://www.webdesign-up2date.de">Matthias Richter</a></td>
+					<td>Germany</td>
+					<td>Have fun!</td>
+					<td><a href="http://www.webdesign-up2date.de/css-table/css-up2date.css" title="Download the Aqua CSS file">Download</a></td>
+				</tr>
+								<tr >
+					<th scope="row" id="r93"><a href="/table_styles_demo?t=smooth_taste#r93">smooth_taste</a></th>
+					<td><a href="http://www.yaway.de">Thomas Opp</a></td>
+					<td>Germany</td>
+					<td>Smooth style with my favourite colours. Enjoy!</td>
+					<td><a href="http://www.templatestyler.de/styles/css/smoothtaste.css" title="Download the Smooth Taste CSS file">Download</a></td>
+				</tr>
+								<tr class="odd">
+					<th scope="row" id="r92"><a href="/table_styles_demo?t=stainless_steel#r92">stainless_steel</a></th>
+					<td><a href="http://www.stenli.net">Stenli</a></td>
+					<td>Bulagaria</td>
+					<td>Use cellspacing="1" for better feel.</td>
+					<td><a href="http://www.stenli.net/csstablegallery/StenliStyle.css" title="Download the Stainless Steel CSS file">Download</a></td>
+				</tr>
+								<tr >
+					<th scope="row" id="r90"><a href="/table_styles_demo?t=foggy_country#r90">foggy_country</a></th>
+					<td><a href="http://www.straussennest.net">Straussennest</a></td>
+					<td>South Africa</td>
+					<td>Foggy Country - Green Trees planted on brown sugared ground.</td>
+					<td><a href="http://www.straussennest.net/foggycountry.css" title="Download the Foggy Country CSS file">Download</a></td>
+				</tr>
+								<tr class="odd" >
+					<th scope="row" id="r87"><a href="/table_styles_demo?t=orange_and_grey#r87">orange_and_grey</a></th>
+					<td><a href="http://www.visual4.de">Christoph Plessner</a></td>
+					<td>Germany</td>
+					<td></td>
+					<td><a href="http://www.ad-plus.de/table/visual4tab.css" title="Download the orange and grey CSS file">Download</a></td>
+				</tr>
+								<tr >
+					<th scope="row" id="r85"><a href="/table_styles_demo?t=red_and_black#r85">red_and_black</a></th>
+					<td><a href="http://www.consulting1x1.com">Martin Paffenholz</a></td>
+					<td>Germany</td>
+					<td>Style like our website. Best viewed in Mozilla Firefox.</td>
+					<td><a href="http://www.consulting1x1.com/csstg/redandblack.css" title="Download the REDandBLACK CSS file">Download</a></td>
+				</tr>
+								<tr class="odd">
+					<th scope="row" id="r82"><a href="/table_styles_demo?t=the_oc#r82">the_oc</a></th>
+					<td><a href="http://www.fitodotnet.com">Rodolfo Marin</a></td>
+					<td>Chile</td>
+					<td>Table based in the color table from one of my latest design, overclockers.cl</td>
+					<td><a href="http://www.fitodotnet.com/csstablegallery/tablita.css" title="Download the The OC CSS file">Download</a></td>
+				</tr>
+								<tr >
+					<th scope="row" id="r80"><a href="/table_styles_demo?t=dark_night#r80">dark_night</a></th>
+					<td><a href="http://www.slifer.de/">Michael Schmieding</a></td>
+					<td>germany</td>
+					<td>That's my design with my favorite colors. I hope you like it.</td>
+					<td><a href="http://www.slifer.de/dark-night.css" title="Download the Dark Night CSS file">Download</a></td>
+				</tr>
+								<tr class="odd" >
+					<th scope="row" id="r79"><a href="/table_styles_demo?t=media_groove#r79">media_groove</a></th>
+					<td><a href="http://mgmg.tv">mayumi takami</a></td>
+					<td>Japan</td>
+					<td>i like this type of design.</td>
+					<td><a href="http://www.nonamedesign.info/table_gallery/mediagroove.css" title="Download the mediagroove CSS file">Download</a></td>
+				</tr>
+								<tr >
+					<th scope="row" id="r78"><a href="/table_styles_demo?t=chives_tables#r78">chives_tables</a></th>
+					<td><a href="http://www.chives.de">chives</a></td>
+					<td>Germany</td>
+					<td>Clean and spicy design from chives-team</td>
+					<td><a href="http://www.chives.de/style/chives-tables.css" title="Download the chives' tables CSS file">Download</a></td>
+				</tr>
+								<tr class="odd">
+					<th scope="row" id="r76"><a href="/table_styles_demo?t=candy#r76">candy</a></th>
+					<td><a href="http://www.sbihl.de">Stefan Bihl</a></td>
+					<td>Germany</td>
+					<td>Hi, I hope this CSS File is not to pink ;-) Regards Stefan</td>
+					<td><a href="http://www.webdesign-sh.de/csstable/table.css" title="Download the Candy CSS file">Download</a></td>
+				</tr>
+								<tr >
+					<th scope="row" id="r75"><a href="/table_styles_demo?t=simple_and_clean#r75">simple_and_clean</a></th>
+					<td><a href="http://www.leandropessoa.com.br">Leandro Pessoa</a></td>
+					<td>Brazil</td>
+					<td>My model! ;)</td>
+					<td><a href="http://www.leandropessoa.com.br/table/css/table.css" title="Download the Simple and Clean CSS file">Download</a></td>
+				</tr>
+								<tr class="odd" >
+					<th scope="row" id="r73"><a href="/table_styles_demo?t=infected#r73">infected</a></th>
+					<td><a href="http://www.infectedfx.net">Infected-FX</a></td>
+					<td>Mexico</td>
+					<td>Minimal and clean design for next tutorial, mooflex inspired colors, icons by fam fam fam. ^^</td>
+					<td><a href="http://infectedfx.net/css/tables/inphecthyuz.css" title="Download the Infected CSS file">Download</a></td>
+				</tr>
+								<tr >
+					<th scope="row" id="r71"><a href="/table_styles_demo?t=casablanca#r71">casablanca</a></th>
+					<td><a href="http://www.rodcast.com.br/">Rodrigo Castilho Galvao Ferreira</a></td>
+					<td>Brazil</td>
+					<td>Inspired by Casablanca Web Standards Template existing in Template Design Competition, WESTCIV.</td>
+					<td><a href="http://www.rodcast.com.br/csstablegallery/screen.css" title="Download the Casablanca CSS file">Download</a></td>
+				</tr>
+								<tr class="odd">
+					<th scope="row" id="r70"><a href="/table_styles_demo?t=salmon#r70">salmon</a></th>
+					<td><a href="http://www.tecnostart.cl">Ricardo Aroca</a></td>
+					<td>Chile</td>
+					<td>Orange colors. Style inspired in salmon, the main product of my city, Puerto Montt. Some advanced selectors (hover, after, before) and properties (content). Best viewed in modern browsers.</td>
+					<td><a href="http://www.tecnostart.cl/publico/table-gallery.css" title="Download the Salmon CSS file">Download</a></td>
+				</tr>
+								<tr >
+					<th scope="row" id="r69"><a href="/table_styles_demo?t=clear_blue#r69">clear_blue</a></th>
+					<td><a href="http://www.suchmaschinen-optimierungen.info">Robert Hartl</a></td>
+					<td>Germany</td>
+					<td>It's a clear but individual white-blue design with subdued hover-effects for modern browsers.</td>
+					<td><a href="http://blog.suchmaschinen-optimierungen.info/codes/css-tables-gallery.css" title="Download the Clear Blue CSS file">Download</a></td>
+				</tr>
+								<tr class="odd" >
+					<th scope="row" id="r67"><a href="/table_styles_demo?t=icubed#r67">icubed</a></th>
+					<td><a href="http://www.iqcontent.com/">Lar Veale</a></td>
+					<td>Ireland</td>
+					<td>Nice clean table with small gradient images. Row hover in Firefox gives another gradient effect. </td>
+					<td><a href="http://www.iqcontent.com/icant/iqcontent.css" title="Download the iCubed CSS file">Download</a></td>
+				</tr>
+								<tr >
+					<th scope="row" id="r66"><a href="/table_styles_demo?t=jacob#r66">jacob</a></th>
+					<td>Emiliano ESB</td>
+					<td>Brasil</td>
+					<td>Web Usability
+useit.com: usable information technology</td>
+					<td><a href="http://www.portinfo.com.br/jacob.css" title="Download the Jacob CSS file">Download</a></td>
+				</tr>
+								<tr class="odd">
+					<th scope="row" id="r62"><a href="/table_styles_demo?t=like_adwords#r62">like_adwords</a></th>
+					<td><a href="http://www.cleiton.net">Cleiton Francisco</a></td>
+					<td>Brazil</td>
+					<td>A simple style like Google Adwords list.</td>
+					<td><a href="http://www.cleiton.net/csstablegalery/like-adw.css" title="Download the Like Adwords CSS file">Download</a></td>
+				</tr>
+								<tr >
+					<th scope="row" id="r61"><a href="/table_styles_demo?t=pretty_in_pink#r61">pretty_in_pink</a></th>
+					<td><a href="http://www.arcsin.se/">Viktor Persson</a></td>
+					<td>Sweden</td>
+					<td>Smooth, pretty and pink. Best viewed in Mozilla Firefox.</td>
+					<td><a href="http://www.arcsin.se/external/csstablegallery/prettyinpink.css" title="Download the Pretty In Pink CSS file">Download</a></td>
+				</tr>
+								<tr class="odd">
+					<th scope="row" id="r58"><a href="/table_styles_demo?t=bluish#r58">bluish</a></th>
+					<td><a href="http://www.neukoellnstyle.de">Stefan Herzig</a></td>
+					<td>Germany</td>
+					<td>Blue style with a hint of Amiga</td>
+					<td><a href="http://neukoellnstyle.de/tablegallery/nksTablegallery.css" title="Download the bluish CSS file">Download</a></td>
+				</tr>
+								<tr >
+					<th scope="row" id="r56"><a href="/table_styles_demo?t=blu_in_block#r56">blu_in_block</a></th>
+					<td><a href="http://enithost.com/">JuanMa</a></td>
+					<td>Argentina</td>
+					<td>It is a good blue style that contains block properties with any background images. I hope you like it :)</td>
+					<td><a href="http://test.enithost.com/table-style/argstyle.css" title="Download the BluInBlock CSS file">Download</a></td>
+				</tr>
+								<tr class="odd" >
+					<th scope="row" id="r55"><a href="/table_styles_demo?t=pop_pop_star#r55">pop_pop_star</a></th>
+					<td><a href="http://www.javajim.de/">Timo Wirth</a></td>
+					<td>Germany</td>
+					<td>Inspired by Andy Warhol, this bold and simple table emphasizes the table rows (rather than the columns).
+</td>
+					<td><a href="http://www.javajim.de/csstablegallery/poppopstar.css" title="Download the pop.pop.star CSS file">Download</a></td>
+				</tr>
+								<tr >
+					<th scope="row" id="r54"><a href="/table_styles_demo?t=tabular_tables#r54">tabular_tables</a></th>
+					<td><a href="http://www.cssplay.co.uk">Stu Nicholls</a></td>
+					<td>England</td>
+					<td>A simple table using a little border art for mouseovers.</td>
+					<td><a href="http://www.cssplay.co.uk/csstablegallery/tabular-table.css" title="Download the Tabular tables CSS file">Download</a></td>
+				</tr>
+								<tr class="odd">
+					<th scope="row" id="r52"><a href="/table_styles_demo?t=sea_glass#r52">sea_glass</a></th>
+					<td><a href="http://sillybean.net/">Stephanie Leary</a></td>
+					<td>US</td>
+					<td>Subtle and green.</td>
+					<td><a href="http://sillybean.net/css/seaglass.css" title="Download the Sea Glass CSS file">Download</a></td>
+				</tr>
+								<tr >
+					<th scope="row" id="r51"><a href="/table_styles_demo?t=orange_brownie#r51">orange_brownie</a></th>
+					<td><a href="http://www.codylindley.com">Cody Lindley</a></td>
+					<td>US</td>
+					<td>Nice idea, the site that is.</td>
+					<td><a href="http://codylindley.com/orangebrownie.css" title="Download the Orange Brownie CSS file">Download</a></td>
+				</tr>
+								<tr class="odd">
+					<th scope="row" id="r50"><a href="/table_styles_demo?t=blaugrana#r50">blaugrana</a></th>
+					<td><a href="http://dizque.lacalabaza.net/">Choan C. Glvez</a></td>
+					<td>Spain</td>
+					<td>Alternating row and link colors. Enhancements (hover, image replacement) for modern browsers.</td>
+					<td><a href="http://dizque.lacalabaza.net/ext/css-tables/css-tables.css" title="Download the Blaugrana CSS file">Download</a></td>
+				</tr>
+								<tr >
+					<th scope="row" id="r47"><a href="/table_styles_demo?t=shades_of_blue#r47">shades_of_blue</a></th>
+					<td><a href="http://www.vhg-design.com">Velizar Garvalov</a></td>
+					<td>Bulgaria</td>
+					<td>Simple blue design with some :hover effects</td>
+					<td><a href="http://www.vhg-design.com/icant/vhg.css" title="Download the Shades of Blue CSS file">Download</a></td>
+				</tr>
+								<tr class="odd" >
+					<th scope="row" id="r45"><a href="/table_styles_demo?t=shades_of_purple#r45">shades_of_purple</a></th>
+					<td><a href="http://drafdesigns.com">Demetrius Francis</a></td>
+					<td>Bahamas</td>
+					<td>Basic styles with a purple scheme.</td>
+					<td><a href="http://drafdesigns.com/shadesofpurple.css" title="Download the Shades of Purple CSS file">Download</a></td>
+				</tr>
+								<tr >
+					<th scope="row" id="r43"><a href="/table_styles_demo?t=grayed_out#r43">grayed_out</a></th>
+					<td><a href="http://www.imaputz.com/">Terence Ordona</a></td>
+					<td>US</td>
+					<td>A simple look and feel that improves with the quality of your browser's CSS support. Shows possible use of a la Excel styling.</td>
+					<td><a href="http://www.imaputz.com/cssStuff/datatable.css" title="Download the Grayed Out CSS file">Download</a></td>
+				</tr>
+								<tr class="odd">
+					<th scope="row" id="r40"><a href="/table_styles_demo?t=golden_style#r40">golden_style</a></th>
+					<td><a href="http://www.australien-panorama.de/">Michael Horn</a></td>
+					<td>Germany</td>
+					<td>Golden coloured style, with hover effects in modern browsers (Firefox, Opera).
+</td>
+					<td><a href="http://www.australien-panorama.de/several/golden.css" title="Download the Golden style CSS file">Download</a></td>
+				</tr>
+								<tr >
+					<th scope="row" id="r39"><a href="/table_styles_demo?t=oranges_in_the_sky#r39">oranges_in_the_sky</a></th>
+					<td><a href="http://www.makaveev.com/">Krasimir Makaveev</a></td>
+					<td>Bulgaria</td>
+					<td>Just a simple table design with orange and blue links!</td>
+					<td><a href="http://www.makaveev.com/lab/css_table_gallery/oranges-in-the-sky.css" title="Download the Oranges In The Sky CSS file">Download</a></td>
+				</tr>
+								<tr class="odd" >
+					<th scope="row" id="r37"><a href="/table_styles_demo?t=grey_scale#r37">grey_scale</a></th>
+					<td><a href="http://www.twoplusfour.co.uk">Two Plus Four</a></td>
+					<td>UK</td>
+					<td>Minimalist design in black, white and shades of grey. Resizeable text and CCS2 enhancements for those that know.</td>
+					<td><a href="http://concreteandclay.dreamhosters.com/csstablegallery/greyscale.css" title="Download the Greyscale CSS file">Download</a></td>
+				</tr>
+								<tr >
+					<th scope="row" id="r36"><a href="/table_styles_demo?t=coffee_with_milk#r36">coffee_with_milk</a></th>
+					<td><a href="http://www.456bereastreet.com">Roger Johansson</a></td>
+					<td>Sweden</td>
+					<td>Clean, no-nonsense design with a latte-ish colour palette. Some extra design features in modern browsers.</td>
+					<td><a href="http://www.456bereastreet.com/lab/css-table-gallery/coffee-with-milk.css" title="Download the Coffee with milk CSS file">Download</a></td>
+				</tr>
+								<tr class="odd" >
+					<th scope="row" id="r35"><a href="/table_styles_demo?t=clean_and_crisp#r35">clean_and_crisp</a></th>
+					<td><a href="http://blogs.su.se/matlin/">Mats Lindblad</a></td>
+					<td>Sweden</td>
+					<td>Clean and Crips table style, with a little MS feel to it. Although it works best in Firefox.</td>
+					<td><a href="http://blogs.su.se/~matlin/cnc.css" title="Download the Clean and crisp CSS file">Download</a></td>
+				</tr>
+								<tr >
+					<th scope="row" id="r30"><a href="/table_styles_demo?t=warm_fall#r30">warm_fall</a></th>
+					<td><a href="http://www.myaleigh.com">Mya Leigh</a></td>
+					<td>USA</td>
+					<td>Warm fall colors with easy to read text.</td>
+					<td><a href="http://files.myaleigh.com/table-designs/warmfall.css" title="Download the Warm Fall CSS file">Download</a></td>
+				</tr>
+								<tr class="odd">
+					<th scope="row" id="r28"><a href="/table_styles_demo?t=mint_green#r28">mint_green</a></th>
+					<td><a href="http://taimar.pri.ee/">Taimar Teetlok</a></td>
+					<td>Estonia</td>
+					<td>Warm and friendly mint-green presentation.</td>
+					<td><a href="http://taimar.pri.ee/examples/table-design/mintgreen.css" title="Download the MintGreen CSS file">Download</a></td>
+				</tr>
+								<tr >
+					<th scope="row" id="r22"><a href="/table_styles_demo?t=muted#r22">muted</a></th>
+					<td><a href="http://www.clacksweb.org.uk">Dan Champion</a></td>
+					<td>Scotland</td>
+					<td>Grey and beige, clean and simple. Minimal use of CSS2 fancy bits like :after and tr:hover.</td>
+					<td><a href="http://www.clacksweb.org.uk/css/cwtable.css" title="Download the Muted CSS file">Download</a></td>
+				</tr>
+								<tr class="odd" >
+					<th scope="row" id="r11"><a href="/table_styles_demo?t=10_minutes#r11">10_minutes</a></th>
+					<td><a href="http://www.dramatic.co.nz/">Richard Grevers</a></td>
+					<td>New Zealand</td>
+					<td>Minimalist, using separated borders and spacing with a four-colour pallette.</td>
+					<td><a href="http://www.dramatic.co.nz/tablegallery/dramatic.css" title="Download the 10 minutes CSS file">Download</a></td>
+				</tr>
+								<tr >
+					<th scope="row" id="r1"><a href="/table_styles_demo?t=minimalist#r1">minimalist</a></th>
+					<td><a href="http://www.wait-till-i.com">Chris Heilmann</a></td>
+					<td>UK</td>
+					<td>As minimal as you can get, only lines around the body cells</td>
+					<td><a href="http://icant.co.uk/csstablegallery/minimal.css" title="Download the Minimalist CSS file">Download</a></td>
+				</tr>
+								<tr class="odd">
+					<th scope="row" id="r0"><a href="/table_styles_demo?t=plain_old_table#r0">plain_old_table</a></th>
+					<td><a href="http://www.wait-till-i.com">Chris Heilmann</a></td>
+					<td>UK</td>
+					<td>Tried and true, boring grey table with a one pixel line</td>
+					<td><a href="http://icant.co.uk/csstablegallery/plainold.css" title="Download the Plain old table CSS file">Download</a></td>
+				</tr>
+							</tbody>		
+		</table>
+</div>
+

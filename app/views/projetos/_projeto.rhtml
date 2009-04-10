@@ -1,0 +1,9 @@
+<tr class="<%= cycle("even", "odd") -%>">
+  
+  <td><%=h projeto.nome %></td>
+  <%  unless @export  -%>
+     <td><%= link_to 'Mostrar', projeto %></td>
+     <td><%= link_to 'Alterar', edit_projeto_path(projeto) %></td>
+     <td><%= link_to 'Excluir', projeto, :confirm => 'Deseja realmente excluir o projeto ' + projeto.nome + '?', :method => :delete %></td>
+  <%  end -%>
+</tr>

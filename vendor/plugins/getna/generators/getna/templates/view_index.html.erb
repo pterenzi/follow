@@ -1,0 +1,24 @@
+<h1>Listando <%= object_name[:plural].humanize.pluralize %></h1>
+
+<table>
+  <tr>
+<% for attribute in attributes -%>
+    <th><%= attribute[:name].humanize %></th>
+<% end -%>
+  </tr>
+
+<%% for <%= object_name[:single] %> in @<%= object_name[:plural] %> %>
+  <tr>
+<% for attribute in attributes -%>
+    <td><%%=h <%= object_name[:single] %>.<%= attribute[:name] %> %></td>
+<% end -%>
+    <td><%%= link_to 'Mostrar', <%= object_name[:single] %> %></td>
+    <td><%%= link_to 'Alterar', edit_<%= object_name[:single] %>_path(<%= object_name[:single] %>) %></td>
+    <td><%%= link_to 'Excluir', <%= object_name[:single] %>, :confirm => 'Tem Certeza?', :method => :delete %></td>
+  </tr>
+<%% end %>
+</table>
+
+<br />
+
+<%%= link_to 'Cadastrar <%= object_name[:single] %>', new_<%= object_name[:single] %>_path %>

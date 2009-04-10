@@ -1,0 +1,17 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  nome: MyString
+  descricao: MyString
+  data_inicio: 
+  data_fim: 
+  prazo: MyInteger
+  ativo: MyBoolean
+
+two:
+  nome: MyString
+  descricao: MyString
+  data_inicio: 
+  data_fim: 
+  prazo: MyInteger
+  ativo: MyBoolean

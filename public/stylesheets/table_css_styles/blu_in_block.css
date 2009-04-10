@@ -1,0 +1,90 @@
+/* 
+Juan Manuel Andreani - Leones Cordoba - Argentine 
+EnitHost.Com - (  argstyle.css is for free use )
+*/
+
+table {
+border: 1px solid #6699CC;
+width: 100%;
+}
+	
+caption {
+background-image:url(images/top_texture.gif);
+font: 700 15px Tahoma, Verdana, Arial, sans-serif; color:#ffffff;
+height: 45px; text-align:left; padding: 0.5em 0  0 1.4em;
+}	
+
+thead  th{
+background-image:url(images/head_texture.gif);
+font: 700 13px Tahoma, Verdana, Arial, sans-serif; color:#112553; height: 30px;
+}
+ 
+tr { background-color:#E4E4E4;} 
+ 
+.odd { background:#D6DBE4;}
+
+th , td { 
+font: 11px normal Tahoma, Verdana, Arial, sans-serif; color:#003366; 
+padding-left: 10px; padding-right: 10px; height:60px;
+} 
+	
+a {text-align:center;}
+	
+th a:link {  
+font: 700 10px normal Tahoma, Verdana, Arial, sans-serif; color:#000066; 
+display:block;  padding: 5px 0 5px 0;  background:url(images/a_texture.gif); 
+}	
+
+th a:visited { 
+font: 700 10px normal Tahoma, Verdana, Arial, sans-serif; color:#000033; 
+display:block;  padding: 5px 0 5px 0;  background:url(images/a_texture.gif); 
+}	
+
+th a:hover {
+display:block;  padding: 5px 0 5px 0;  background:url(images/a_texture2.gif);   
+font: 700 10px normal Tahoma, Verdana, Arial, sans-serif; color:#003399;
+}	
+	
+	
+td a:link { 
+font: 10px normal Tahoma, Verdana, Arial, sans-serif; color:#000066; text-decoration:none;
+display:block; padding: 5px 0 5px 0;  background:url(images/a_texture.gif); 
+}	
+
+td a:visited { 
+font: 10px normal Tahoma, Verdana, Arial, sans-serif; color:#000033; text-decoration:none; 
+display:block; padding: 5px 0 5px 0;  background:url(images/a_texture.gif); 
+}	
+
+td a:hover { 
+display:block; padding: 5px 0 5px 0;  background:url(images/a_texture2.gif); 
+font: 10px normal Tahoma, Verdana, Arial, sans-serif; color:#003399; text-decoration:underline;
+}	
+	
+	
+tfoot { 
+background-image:url(images/top_texture.gif);
+}	
+
+tfoot>tr th { 
+
+background-image:url(images/top_texture.gif);
+}	
+tfoot>tr td { 
+
+background-image:url(images/top_texture.gif);
+}	
+
+
+tfoot tr th {
+	font: 700 15px Tahoma, Verdana, Arial, sans-serif;
+	color:#ffffff;
+}
+
+tfoot tr td {
+	font: 700 15px Tahoma, Verdana, Arial, sans-serif; 
+	color:#ffffff;
+}
+
+
+	

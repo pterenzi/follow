@@ -1,0 +1,15 @@
+<%= error_messages_for :projeto %>
+
+<% form_for(@projeto, :html => { :multipart => true }) do |f| %>
+   <div class="depot-form">
+     <fieldset>
+       <p>
+         <legend>Dados do Projeto <%=  @projeto.nome  %> </legend>
+         <label for="projeto_nome">Nome:</label>
+         <%= f.text_field :nome, :size =>  "53" , :readonly => true %>     
+       </p>
+     </fieldset>
+   </div> 
+<% end %>
+
+<%= link_to 'Voltar', projetos_path %>

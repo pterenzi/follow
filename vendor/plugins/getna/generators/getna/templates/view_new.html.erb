@@ -1,0 +1,20 @@
+<h1>Cadastro de <%= object_name[:single].humanize %></h1>
+
+<%%= error_messages_for :<%= object_name[:single] %> %>
+
+<%% form_for(@<%= object_name[:single] %>) do |f| %>
+<% for attribute in attributes -%>
+  <p>
+    <b><%= attribute[:name].humanize %></b><br />   
+    <% if(collection = attribute[:name].match(/\A(.*)_id\z/) and if_relation_object )   %>
+    <%%= f.select :<%=attribute[:name] %>,@<%= collection.captures.to_s.pluralize %>,{:prompt=>"Selecione uma Opção"} %> <% else %>   
+    <%%= f.<%= attribute[:type] %> :<%= attribute[:name]%> %><% end %>     
+  </p>
+
+<% end -%>
+  <p>
+    <%%= f.submit "Cadastrar" %>
+  </p>
+<%% end %>
+
+<%%= link_to 'Voltar', <%=object_name[:plural] %>_path %>

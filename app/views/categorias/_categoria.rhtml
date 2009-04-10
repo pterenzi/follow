@@ -1,0 +1,9 @@
+<tr class="<%= cycle("even", "odd") -%>">
+  
+  <td><%=h categoria.nome %></td>
+  <%  unless @export  -%>
+     <td><%= link_to 'Mostrar', categoria %></td>
+     <td><%= link_to 'Alterar', edit_categoria_path(categoria) %></td>
+     <td><%= link_to 'Excluir', categoria, :confirm => 'Deseja realmente excluir o categoria ' + categoria.nome + '?', :method => :delete %></td>
+  <%  end -%>
+</tr>

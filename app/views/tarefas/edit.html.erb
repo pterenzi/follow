@@ -1,0 +1,42 @@
+<h1>Alterar Tarefa</h1>
+
+<%= error_messages_for :tarefa %>
+
+<% form_for(@tarefa) do |f| %>
+  <p>
+    <b>Situacaos</b><br />   
+    
+    <%= f.select :situacaos_id,@situacaos,{:prompt=>"Selecione uma Opção"} %>      
+  </p>
+
+  <p>
+    <b>Projetos</b><br />   
+    
+    <%= f.select :projetos_id,@projetos,{:prompt=>"Selecione uma Opção"} %>      
+  </p>
+
+  <p>
+    <b>Usuarios</b><br />   
+    
+    <%= f.select :usuarios_id,@usuarios,{:prompt=>"Selecione uma Opção"} %>      
+  </p>
+
+  <p>
+    <b>Tempo est</b><br />   
+       
+    <%= f.text_field :tempo_est %>     
+  </p>
+
+  <p>
+    <b>Avaliacao</b><br />   
+       
+    <%= f.text_field :avaliacao %>     
+  </p>
+
+  <p>
+    <%= f.submit "Atualizar" %>
+  </p>
+<% end %>
+
+<%= link_to 'Mostrar', @tarefa %> |
+<%= link_to 'Voltar', tarefas_path %>

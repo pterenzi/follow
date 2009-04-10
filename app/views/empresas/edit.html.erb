@@ -1,0 +1,9 @@
+<%= error_messages_for :empresa %>
+
+<%  @submit_label = "Atualizar"  %>
+<%  @formulario_label = "Editar os dados da Empresa"  %>
+
+
+<%=  render(:partial => "new", :object => @empresa, :object => @submit_label, :object => @formulario_label)  %>
+
+<%= link_to 'Voltar', empresas_path %>

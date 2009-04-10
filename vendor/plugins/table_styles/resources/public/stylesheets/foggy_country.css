@@ -1,0 +1,75 @@
+/*
+  project: CSS - table design
+  type: stylesheet
+  description: golden style
+  edited: 14.09.2005, Michael Horn
+*/
+table  {
+  border-collapse: collapse;
+  border: 2px solid #C5BA85;
+  font: normal 10px verdana, arial, helvetica, sans-serif;
+  color: #333333;
+  background: #BFE756;
+  }
+table caption {
+  padding: 0 .4em .4em;
+  text-align: left;
+  font-size: 1em;
+  font-weight: bold;
+  text-transform: uppercase;
+  color: #333333;
+  background: transparent;
+  }
+table td, table th {
+  color: #636363;
+  border: 1px solid #cc9;
+  padding: .3em;
+  }
+table thead th, table tfoot th {
+  font: normal 11px georgia, verdana, arial, helvetica, sans-serif;
+  border: transparent;
+  text-align: left;
+  font-size: 1em;
+  font-weight: bold;
+  color: #333333;
+  background: #C5BA85;
+  }
+table tbody td a {
+  background: transparent;
+  color: #72724c;
+  text-decoration: none;
+  }
+table tbody td a:hover {
+  background: transparent;
+  color: #636363;
+  }
+table tbody th a {
+  font: normal 11px georgia, verdana, arial, helvetica, sans-serif;
+  background: transparent;
+  color: #333333;
+  text-decoration: none;
+  font-weight:normal;
+  }
+table tbody th a:hover {
+  background: transparent;
+  color: #333333;
+  }
+table tbody th, table tbody td {
+  vertical-align: top;
+  text-align: left;
+  }
+table tfoot td {
+  border: 1px solid #C5BA85;
+  background: #C5BA85;
+  }
+table .odd {
+  background: #91AB59;
+  }
+table tbody tr:hover {
+  color: #333444;
+  background: #DDCFAE;
+  }
+table tbody tr:hover th,
+table tbody tr.odd:hover th {
+  background: #C5BA85;
+  }

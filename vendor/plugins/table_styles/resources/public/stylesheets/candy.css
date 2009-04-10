@@ -1,0 +1,70 @@
+/* 
+	Candy style
+	written by Stefan Bihl
+*/
+		
+table  {
+	border-spacing: 0;
+	font: normal .9em/1.4 "Lucida Grande","Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+	margin: 1em auto;
+	text-align: left;
+}
+table  caption {
+	font: italic normal 1.4em/1 "Trebuchet MS", Arial, Helvetica, sans-serif;
+	margin: .5em 1em;
+	text-align: right;
+}
+table tbody th,
+table tbody tr th,
+table tbody tr td {
+	background: #76bdff url(bg_tr.gif) repeat-x;
+	border-bottom: 1px solid #676767;
+	color: black;
+	padding: .34em  .5em;
+}		
+table tbody tr.odd th,
+table tbody tr.odd td {
+	background: #ff71e3 url(bg_tr_odd.gif) repeat-x;
+	border-bottom: 1px solid #676767;
+	color: black;
+}		
+table tbody tr:hover td,
+table tbody tr:hover th {
+	background: #76bdff;
+	border-bottom: 1px solid #676767;
+}
+table tbody tr:hover.odd td,
+table tbody tr:hover.odd th {
+	background: #ff71e3;
+	border-bottom: 1px solid #676767;
+}
+table thead th,
+table thead td,
+table tfoot th,
+table tfoot td {
+	background: #81215e url(bg_h_f.gif) repeat-x;
+	color: white;
+	line-height: normal;
+	padding: .6em;
+}
+table table a:link {
+	background: transparent;
+	border-bottom: 1px dotted #1a1a1a;
+	color: #1a1a1a;
+	padding: 2px;
+	text-decoration: none;
+}
+table table a:visited {
+	text-decoration: line-through;
+	border: none;
+}
+table table a:hover,
+table table a:focus {
+	background: white;
+	border-bottom: 1px solid #1a1a1a;
+	padding: 2px;
+}
+table tbody th a:link,
+table tbody th a:visited {
+	font-weight:bold;
+}

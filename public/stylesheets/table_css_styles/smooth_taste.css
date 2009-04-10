@@ -1,0 +1,69 @@
+/* 
+	smooth taste table styles
+	written by Thomas Opp http://www.yaway.de
+*/
+table  {
+  border-collapse: collapse;
+  border: 1px solid #38160C;
+  font: normal 11px verdana, arial, helvetica, sans-serif;
+  color: #F6ECF0;
+  background: #641B35;
+  }
+table caption {
+  text-align: left;
+  font: normal 11px verdana, arial, helvetica, sans-serif;
+  background: transparent;
+  }
+table td, table th {
+  border: 1px dashed #B85A7C;
+  padding: .8em;
+  color: #F6ECF0;
+  }
+table thead th, table tfoot th {
+  font: bold 11px verdana, arial, helvetica, sans-serif;
+  border: 1px solid #A85070;;
+  text-align: left;
+  background: #38160C;
+  color: #F6ECF0;
+  padding-top:6px;
+  }
+table tbody td a {
+  background: transparent;
+  text-decoration: none;
+  color: #F6ECF0;
+  }
+table tbody td a:hover {
+  background: transparent;
+  color: #FFFFFF;
+  }
+table tbody th a {
+  font: normal 11px verdana, arial, helvetica, sans-serif;
+  background: transparent;
+  text-decoration: none;
+  font-weight:normal;
+  color: #F6ECF0;
+  }
+table tbody th a:hover {
+  background: transparent;
+  color: #FFFFFF;
+  }
+table tbody th, 
+table tbody td {
+  vertical-align: top;
+  text-align: left;
+  }
+table tfoot td {
+  border: 1px solid #38160C;
+  background: #38160C;
+  padding-top:6px;
+  }
+table .odd {
+  background: #7B2342;
+  }
+table tbody tr:hover {
+  background: #51152A;
+  }
+table tbody tr:hover th,
+table tbody tr.odd:hover th {
+  background: #51152A;
+  }

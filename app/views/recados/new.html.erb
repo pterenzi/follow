@@ -1,0 +1,7 @@
+<%= error_messages_for :recado %>
+
+<%  @formulario_label = "Cadastrar nova Recado"  %>
+
+<%=  render(:partial => "new", :object => @recado, :object => @submit_label, :object => @formulario_label)  %>
+
+<%= link_to 'Voltar', recados_path %>

@@ -1,0 +1,15 @@
+<%= error_messages_for :recado %>
+
+<% form_for(@recado, :html => { :multipart => true }) do |f| %>
+   <div class="depot-form">
+     <fieldset>
+       <p>
+         <legend>Dados do Recado <%=  @recado.nome  %> </legend>
+         <label for="recado_nome">Nome:</label>
+         <%= f.text_field :nome, :size =>  "53" , :readonly => true %>     
+       </p>
+     </fieldset>
+   </div> 
+<% end %>
+
+<%= link_to 'Voltar', recados_path %>

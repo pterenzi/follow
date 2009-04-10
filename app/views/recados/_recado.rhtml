@@ -1,0 +1,9 @@
+<tr class="<%= cycle("even", "odd") -%>">
+  
+  <td><%=h recado.nome %></td>
+  <%  unless @export  -%>
+     <td><%= link_to 'Mostrar', recado %></td>
+     <td><%= link_to 'Alterar', edit_recado_path(recado) %></td>
+     <td><%= link_to 'Excluir', recado, :confirm => 'Deseja realmente excluir o recado ' + recado.nome + '?', :method => :delete %></td>
+  <%  end -%>
+</tr>

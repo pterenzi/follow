@@ -1,0 +1,28 @@
+<% content_for :main do %>
+<div class="depot-form">
+  <div align="center">
+    <div  style="width: 300px; border: 2px; ">
+      <fieldset>
+        <legend>Log In</legend>
+        
+        <% form_tag do %>
+           <p>
+             <label for="name">Login:</label>
+             <%= text_field_tag :name, params[:name] %>
+           </p>
+        
+           <p>
+             <label for="password">Senha:</label>
+             <%= password_field_tag :password, params[:password] %>
+           </p>
+        
+           <p>
+             <%= submit_tag "Login" %>
+           </p>
+        <% end %>
+      </fieldset>
+    </div>
+  </div>
+</div>
+
+<% end %>

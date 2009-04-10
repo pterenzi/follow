@@ -1,0 +1,21 @@
+<h1>Detalhes Sobre Empresas has projeto</h1>
+<p>
+<p>
+  <b>Empresas:</b>
+  <%=h @empresas_has_projeto.empresas_id %>
+</p>
+
+<p>
+  <b>Projetos:</b>
+  <%=h @empresas_has_projeto.projetos_id %>
+</p>
+
+<p>
+  <b>Nome:</b>
+  <%=h @empresas_has_projeto.nome %>
+</p>
+
+
+<%= link_to 'Alterar', edit_empresas_has_projeto_path(@empresas_has_projeto) %> |
+<%= link_to 'Voltar', empresas_has_projetos_path %>
+</p>

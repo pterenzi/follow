@@ -1,0 +1,21 @@
+<%   require 'brazilian-rails'  %>
+
+<% form_for(@recado, :html => { :multipart => true }) do |f| %>
+   <div class="depot-form">
+     <fieldset>
+       <p>
+         <legend> <%=  @formulario_label  %> </legend>
+       </p>
+    
+       <p>
+         <label for="recado_nome">Nome:</label>
+         <%= f.text_field :nome, :size =>  "55" %>     
+       </p>
+
+       <p>
+         <%= f.submit  @submit_label, :class => "submit"  %>
+       </p><br/>
+    
+     </fieldset>
+   </div> 
+<% end %>

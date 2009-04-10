@@ -1,0 +1,31 @@
+<h1>Detalhes Sobre Tarefa</h1>
+<p>
+<p>
+  <b>Situacaos:</b>
+  <%=h @tarefa.situacaos_id %>
+</p>
+
+<p>
+  <b>Projetos:</b>
+  <%=h @tarefa.projetos_id %>
+</p>
+
+<p>
+  <b>Usuarios:</b>
+  <%=h @tarefa.usuarios_id %>
+</p>
+
+<p>
+  <b>Tempo est:</b>
+  <%=h @tarefa.tempo_est %>
+</p>
+
+<p>
+  <b>Avaliacao:</b>
+  <%=h @tarefa.avaliacao %>
+</p>
+
+
+<%= link_to 'Alterar', edit_tarefa_path(@tarefa) %> |
+<%= link_to 'Voltar', tarefas_path %>
+</p>

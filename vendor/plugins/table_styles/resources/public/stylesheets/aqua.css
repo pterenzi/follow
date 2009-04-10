@@ -1,0 +1,74 @@
+/*
+  project: CSS - table design
+  type: stylesheet
+  description: aqua
+  edited: 19.11.2007, Matthias Richter
+*/
+table  {
+	border-collapse: collapse;
+	border: 1px solid #a4c7db;
+	font: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 0.8em;
+	color: #fff;
+	background: #151a25;
+}
+table caption {
+	padding: 0 .4em .4em;
+	text-align: left;
+	font-size: 1em;
+	font-weight: bold;
+	text-transform: uppercase;
+	color: #fff;
+	background: transparent;
+}
+table td, table th {
+	color: #fff;
+	border: 1px solid #a4c7db;
+	padding: .3em;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+}
+table thead th, table tfoot th {
+	border: transparent;
+	text-align: left;
+	font-size: 1.0em;
+	font-weight: bold;
+	color: #fff;
+	background: #151a25;
+}
+table tbody td a {
+	background: transparent;
+	color: #fff;
+	text-decoration: none;
+}
+table tbody td a:hover {
+	background: transparent;
+	color: #fff;
+}
+table tbody th a {
+	background: transparent;
+	color: #fff;
+	text-decoration: none;
+	font-weight:normal;
+}
+table tbody th a:hover {
+	background: transparent;
+	color: #ccc;
+}
+table tbody th, table tbody td {
+	vertical-align: top;
+	text-align: left;
+}
+table tfoot td {
+	border: 1px solid #a4c7db;
+	background: #C5BA85;
+}
+table .odd {
+	background: #8093bc;
+}
+table tbody tr:hover {
+	color: #333444;
+	background: #65728d;
+}
+table tbody tr:hover th, table tbody tr.odd:hover th {
+	background: #65728d;
+}

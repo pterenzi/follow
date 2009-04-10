@@ -1,0 +1,7 @@
+<%= error_messages_for :empresa %>
+
+<%  @formulario_label = "Cadastrar nova Empresa"  %>
+
+<%=  render(:partial => "new", :object => @empresa, :object => @submit_label, :object => @formulario_label)  %>
+
+<%= link_to 'Voltar', empresas_path %>

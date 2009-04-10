@@ -1,0 +1,9 @@
+<%= error_messages_for :projeto %>
+
+<%  @submit_label = "Atualizar"  %>
+<%  @formulario_label = "Editar os dados do Projeto"  %>
+
+
+<%=  render(:partial => "new", :object => @projeto, :object => @submit_label, :object => @formulario_label)  %>
+
+<%= link_to 'Voltar', projetos_path %>

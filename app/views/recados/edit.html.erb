@@ -1,0 +1,9 @@
+<%= error_messages_for :recado %>
+
+<%  @submit_label = "Atualizar"  %>
+<%  @formulario_label = "Editar os dados da Recado"  %>
+
+
+<%=  render(:partial => "new", :object => @recado, :object => @submit_label, :object => @formulario_label)  %>
+
+<%= link_to 'Voltar', recados_path %>

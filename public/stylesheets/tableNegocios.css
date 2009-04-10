@@ -1,0 +1,81 @@
+/*
+Coffee with milk
+Table design by Roger Johansson, 456 Berea Street
+www.456bereastreet.com
+================================================*/
+
+.tableNegocios table {
+    font:normal 76%/150% "Lucida Grande", "Lucida Sans Unicode", Verdana, Arial, Helvetica, sans-serif;
+    border-collapse:separate;
+    border-spacing:0;
+    margin:0 0 1em;
+    color:#000;
+}
+.tableNegocios a {
+    color:#523A0B;
+    text-decoration:none;
+    border-bottom:1px dotted;
+}
+.tableNegocios a:visited {
+    color:#444;
+    font-weight:normal;
+}
+.tableNegocios a:visited:after {
+    content:"\00A0\221A";
+}
+.tableNegocios a:hover {
+    border-bottom-style:solid;
+}
+.tableNegocios thead th,
+.tableNegocios thead td,
+.tableNegocios tfoot th,
+.tableNegocios tfoot td {
+    border:1px solid #523A0B;
+    border-width:1px 0;
+    background:#EBE5D9;
+}
+.tableNegocios th {
+    font-weight:bold;
+    line-height:normal;
+    padding:0.25em 0.5em;
+    text-align: center;
+}
+.tableNegocios tbody th,
+.tableNegocios td {
+    padding:0.25em 0.5em;
+    text-align:left;
+    vertical-align: middle;
+}
+.tableNegocios tbody th {
+    font-weight:normal;
+    white-space:nowrap;
+}
+.tableNegocios tbody th a:link,
+.tableNegocios tbody th a:visited {
+    font-weight:bold;
+}
+.tableNegocios tbody td,
+.tableNegocios tbody th {
+    border:1px solid #fff;
+    border-width:1px 0;
+}
+.tableNegocios tbody tr.odd th,
+.tableNegocios tbody tr.odd td {
+    border-color:#EBE5D9;
+    background:#F7F4EE;
+}
+.tableNegocios tbody tr:hover td,
+.tableNegocios tbody tr:hover th {
+    background:#ffffee;
+    border-color:#523A0B;
+}
+.tableNegocios caption {
+    font-family:Georgia,Times,serif;
+    font-weight:normal;
+    font-size:1.4em;
+    text-align:left;
+    margin:0;
+    padding:0.5em 0.25em;
+}
+    
+

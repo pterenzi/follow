@@ -1,0 +1,27 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  categoria_id: MyInteger
+  nome: MyString
+  cargo: MyString
+  pass: MyString
+  endereco: MyString
+  bairro: MyString
+  municipio: MyString
+  uf: MyString
+  cpf: MyString
+  email: MyString
+  gerente: MyString
+
+two:
+  categoria_id: MyInteger
+  nome: MyString
+  cargo: MyString
+  pass: MyString
+  endereco: MyString
+  bairro: MyString
+  municipio: MyString
+  uf: MyString
+  cpf: MyString
+  email: MyString
+  gerente: MyString

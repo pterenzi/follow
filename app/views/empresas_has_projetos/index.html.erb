@@ -1,0 +1,24 @@
+<h1>Listando Empresas has projetos</h1>
+
+<table>
+  <tr>
+    <th>Empresas</th>
+    <th>Projetos</th>
+    <th>Nome</th>
+  </tr>
+
+<% for empresas_has_projeto in @empresas_has_projetos %>
+  <tr>
+    <td><%=h empresas_has_projeto.empresas_id %></td>
+    <td><%=h empresas_has_projeto.projetos_id %></td>
+    <td><%=h empresas_has_projeto.nome %></td>
+    <td><%= link_to 'Mostrar', empresas_has_projeto %></td>
+    <td><%= link_to 'Alterar', edit_empresas_has_projeto_path(empresas_has_projeto) %></td>
+    <td><%= link_to 'Excluir', empresas_has_projeto, :confirm => 'Tem Certeza?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'Cadastrar empresas_has_projeto', new_empresas_has_projeto_path %>

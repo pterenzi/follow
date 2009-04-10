@@ -1,0 +1,246 @@
+/* Global styles */
+
+/* START:notice */
+#notice {
+  border: 2px solid red;
+  padding: 1em;
+  margin-bottom: 2em;
+  background-color: #f0f0f0;
+  font: bold smaller sans-serif;
+}
+/* END:notice */
+
+
+/* Styles for main page */
+#banner {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid;
+  font: small-caps 40px/40px "Times New Roman", serif;
+  color: #000066;
+  text-align: center;
+  background-image: url(../images/header_cete.jpg);
+  background-repeat: no-repeat;
+
+  height: 80px;
+}
+
+#footer {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  border-top: 1px solid;
+  font: small-caps 40px/40px "Times New Roman", serif;
+  color: #000066;
+  text-align: center;
+  
+  background-repeat: no-repeat;
+
+  height: 40px;
+  background-image: url(../images/footer_atrios.gif);
+  background-position: center;
+  margin-top: 50px;
+}
+
+#banner img {
+  float: left;
+}
+
+
+
+#main {
+   float: rigth;  
+ padding-top: 10ex;
+  padding-left: 0em;
+  background: white;
+  margin-left: 200px;
+ 
+  width: 800px;
+}
+
+#foto {
+  float: left;
+  margin-left: 8em;
+  padding-top: 5ex;
+  padding-left: 1em;
+  background: white;
+  
+}
+ #main a:link { color: #000066; }
+#main  a:visited { color: #666; }
+#main    a:hover {
+        background-color: #000066;
+        color: white;
+         
+      }
+
+ 
+ 
+
+  
+#side {
+  float: left;
+  padding-top: 1em;
+  padding-left: 1em;
+  padding-bottom: 1em;
+  width: 1em;
+  background: #141;
+}
+
+#side a {
+  color: #000066;
+  font-size: small;
+}
+
+h1 {
+  font:  150% sans-serif;
+  color: #226;
+  border-bottom: 3px dotted #77d;
+}
+
+
+.depot-form fieldset {
+  background: #efe;
+  background-color: #dcf2fb;
+}
+
+
+
+
+
+.depot-form legend {
+  color: #ffffff;
+  background: #141;
+  font-family: sans-serif;
+  padding: 0.2em 1em;
+  background-color: #000066;
+}
+
+.depot-form label {
+  width: 10em;
+  float: left;
+  text-align: right;
+  margin-right: 0.5em;
+  display: block;
+}
+
+.depot-form .submit {
+  margin-left: 5.5em;
+}
+
+/* The error box */
+
+.fieldWithErrors {
+  padding: 2px;
+  background-color: red;
+  display: table;
+}
+
+#errorExplanation {
+  width: 400px;
+  border: 2px solid red;
+  padding: 7px;
+  padding-bottom: 12px;
+  margin-bottom: 20px;
+  background-color: #f0f0f0;
+}
+
+#errorExplanation h2 {
+  text-align: left;
+  font-weight: bold;
+  padding: 5px 5px 5px 15px;
+  font-size: 12px;
+  margin: -7px;
+  background-color: #c00;
+  color: #fff;
+}
+
+#errorExplanation p {
+  color: #333;
+  margin-bottom: 0;
+  padding: 5px;
+}
+
+#errorExplanation ul li {
+  font-size: 12px;
+  list-style: square;
+}
+
+/*
+Coffee with milk
+Table design by Roger Johansson, 456 Berea Street
+www.456bereastreet.com
+================================================*/
+
+table {
+	font:normal 76%/150% "Lucida Grande", "Lucida Sans Unicode", Verdana, Arial, Helvetica, sans-serif;
+	border-collapse:separate;
+	border-spacing:0;
+	margin:0 0 1em;
+	color:#000;
+	}
+table a {
+	color:#523A0B;
+	text-decoration:none;
+	border-bottom:1px dotted;
+	}
+table a:visited {
+	color:#444;
+	font-weight:normal;
+	}
+table a:visited:after {
+	content:"\00A0\221A";
+	}
+table a:hover {
+	border-bottom-style:solid;
+	}
+thead th,
+thead td,
+tfoot th,
+tfoot td {
+	border:1px solid #523A0B;
+	border-width:1px 0;
+	background:#EBE5D9;
+	}
+th {
+	font-weight:bold;
+	line-height:normal;
+	padding:0.25em 0.5em;
+	text-align: center;
+	}
+tbody th,
+td {
+	padding:0.25em 0.5em;
+	text-align:left;
+	vertical-align: middle;
+	}
+tbody th {
+	font-weight:normal;
+	white-space:nowrap;
+	}
+tbody th a:link,
+tbody th a:visited {
+	font-weight:bold;
+	}
+tbody td,
+tbody th {
+	border:1px solid #fff;
+	border-width:1px 0;
+	}
+tbody tr.odd th,
+tbody tr.odd td {
+	border-color:#EBE5D9;
+	background:#F7F4EE;
+	}
+tbody tr:hover td,
+tbody tr:hover th {
+	background:#ffffee;
+	border-color:#523A0B;
+	}
+caption {
+	font-family:Georgia,Times,serif;
+	font-weight:normal;
+	font-size:1.4em;
+	text-align:left;
+	margin:0;
+	padding:0.5em 0.25em;
+	}

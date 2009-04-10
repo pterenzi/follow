@@ -1,0 +1,9 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  usuarios_id: MyInteger
+  projetos_id: MyInteger
+
+two:
+  usuarios_id: MyInteger
+  projetos_id: MyInteger

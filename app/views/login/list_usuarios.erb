@@ -1,0 +1,44 @@
+<h1>Lista de  Usuários</h1>
+
+
+<% content_for :main do %>
+
+
+<table width="100%">
+  <thead>
+    <tr>
+      <th>Nome</th>
+      <th>Login</th>
+      <th>Email</th>
+      <th>Tipo</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tfoot>
+    <tr>
+      <th scope="row">Total</th>
+      <td colspan="8"><%= @usuarios.size %>  usuários</td>
+    </tr>
+  </tfoot>
+  <tbody>
+  <% for usuario in @usuarios %>
+    <tr>
+      
+      <td><%= link_to usuario.nome , url_for(:action => 'show', :id => usuario) %></td>
+      <td><%=h usuario.login %></td>
+      <td><%=h usuario.email %></td>
+      <td><%=h usuario.categoria.nome %></td>
+      <td><%= link_to 'Alterar', url_for(:action => 'edit', :id => usuario) %></td>
+      <td><%= link_to 'Excluir', url_for(:action => 'delete_usuario', :id => usuario) , :confirm => 'Tem Certeza?' %></td>
+    </tr>
+  <% end %>
+  <tbody>
+</table>
+
+<br />
+
+  <%= link_to 'Cadastrar usuario', (url_for :action => 'add_usuario') %>
+
+<% end %>

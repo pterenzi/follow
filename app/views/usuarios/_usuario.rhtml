@@ -1,0 +1,9 @@
+<tr class="<%= cycle("even", "odd") -%>">
+  
+  <td><%=h usuario.nome %></td>
+  <%  unless @export  -%>
+     <td><%= link_to 'Mostrar', usuario %></td>
+     <td><%= link_to 'Alterar', edit_usuario_path(usuario) %></td>
+     <td><%= link_to 'Excluir', usuario, :confirm => 'Deseja realmente excluir o usuario ' + usuario.nome + '?', :method => :delete %></td>
+  <%  end -%>
+</tr>

@@ -1,0 +1,96 @@
+/*
+ * CSS Table Galery 
+ * Author: Emiliano ESB
+ * E-Mail: emilianoeloi@gmail.com
+*/
+
+table {
+  width: 100%;
+  margin:0; 
+  padding:0;
+  font-family: Verdana, Arial, Helvetica, Geneva, SunSans-Regular, sans-serif; 
+}
+table, table tr, 
+table th, table td {
+border-collapse: collapse;
+}
+table caption {
+  margin:0; 
+  padding:0;
+  background: #FFFF66;
+  height: 33px;
+  line-height: 33px;
+  text-align: left;
+  border-style: none none solid none; 
+  border-width: thin;
+  padding: 2px;
+}
+
+/* HEAD */
+
+table thead {
+  background-color: #FFFFFF;
+  border: none;
+}
+table thead tr th {
+  height: 78px;
+  font-size: 15px ;
+  line-height: 78px;
+  text-align: center;
+  background-repeat: repeat-x;
+  font-family: Verdana, Arial, Helvetica, Geneva, SunSans-Regular, sans-serif ;
+  border-collapse: collapse;
+}
+
+/* BODY */
+
+table tbody tr {
+  background: #FFFFDD;
+}
+table tbody tr.odd {
+  background: #CCF6F6;
+}
+table tbody tr:hover, 
+table tbody tr.odd:hover {
+  background: #FFFF66;
+}
+table tbody tr th, 
+table tbody tr td {
+  padding: 6px;
+  border: solid 1px #000;
+}
+table tbody tr th {
+  background: #FFF;
+  padding: 6px;
+  text-align: center;
+  font-weight: bold;
+  color: #FFFFFF;
+  border-bottom: solid 1px #000;
+}
+table tbody tr th:hover {
+  background: #FFFF66;
+}
+
+/* LINKS */
+
+table table a {
+  color: blue;
+}
+table table a:visited {
+  color: purple ; 
+}
+table table a:active {
+  color: red ; 
+}
+
+/* FOOTER */
+
+table tfoot {
+  height: 24px;
+  line-height: 24px;
+  color: #000;
+  text-align: center;
+}
+table tfoot tr td {
+  color: blue;
+}

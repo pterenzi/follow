@@ -1,0 +1,30 @@
+<h1>Alterar Empresas has projeto</h1>
+
+<%= error_messages_for :empresas_has_projeto %>
+
+<% form_for(@empresas_has_projeto) do |f| %>
+  <p>
+    <b>Empresas</b><br />   
+    
+    <%= f.select :empresas_id,@empresas,{:prompt=>"Selecione uma Opção"} %>      
+  </p>
+
+  <p>
+    <b>Projetos</b><br />   
+    
+    <%= f.select :projetos_id,@projetos,{:prompt=>"Selecione uma Opção"} %>      
+  </p>
+
+  <p>
+    <b>Nome</b><br />   
+       
+    <%= f.text_field :nome %>     
+  </p>
+
+  <p>
+    <%= f.submit "Atualizar" %>
+  </p>
+<% end %>
+
+<%= link_to 'Mostrar', @empresas_has_projeto %> |
+<%= link_to 'Voltar', empresas_has_projetos_path %>

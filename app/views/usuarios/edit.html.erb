@@ -1,0 +1,9 @@
+<%= error_messages_for :usuario %>
+
+<%  @submit_label = "Atualizar"  %>
+<%  @formulario_label = "Editar os dados do Usuario"  %>
+
+
+<%=  render(:partial => "new", :object => @usuario, :object => @submit_label, :object => @formulario_label)  %>
+
+<%= link_to 'Voltar', usuarios_path %>
