@@ -16,7 +16,7 @@ class ApplicationController < ActionController::Base
    private
 
   def authorize
-    unless Usuario.find_by_login(session[:usuario_id])
+    unless Usuario.find(session[:usuario_id])
        session[:original_uri] = request.request_uri
       flash[:notice] = "Por favor autentique-se"
       redirect_to(:controller => "login", :action => "login")

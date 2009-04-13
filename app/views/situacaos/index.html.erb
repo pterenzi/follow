@@ -1,15 +1,15 @@
-<h1>Listando Situacaos</h1>
+<h1>Listando Situações</h1>
 
 <table>
   <tr>
-    <th>Descricao</th>
-    <th>Sigla</th>
+    <th width='200'>Descrição</th>
+   
   </tr>
 
 <% for situacao in @situacaos %>
   <tr>
     <td><%=h situacao.descricao %></td>
-    <td><%=h situacao.sigla %></td>
+  
     <td><%= link_to 'Mostrar', situacao %></td>
     <td><%= link_to 'Alterar', edit_situacao_path(situacao) %></td>
     <td><%= link_to 'Excluir', situacao, :confirm => 'Tem Certeza?', :method => :delete %></td>
@@ -19,4 +19,4 @@
 
 <br />
 
-<%= link_to 'Cadastrar situacao', new_situacao_path %>
+<%= link_to 'Nova situação', new_situacao_path %>

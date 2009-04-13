@@ -1,23 +1,18 @@
-<h1>Cadastro de Situacao</h1>
+<h1>Cadastro de Situação</h1>
 
 <%= error_messages_for :situacao %>
 
 <% form_for(@situacao) do |f| %>
   <p>
-    <b>Descricao</b><br />   
+    <b>Descrição</b><br />   
        
     <%= f.text_field :descricao %>     
   </p>
 
-  <p>
-    <b>Sigla</b><br />   
-       
-    <%= f.text_field :sigla %>     
-  </p>
-
+  <br/>
   <p>
     <%= f.submit "Cadastrar" %>
   </p>
 <% end %>
-
+<p/><br/>
 <%= link_to 'Voltar', situacaos_path %>

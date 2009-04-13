@@ -4,4 +4,9 @@ class SituacaoTest < ActiveSupport::TestCase
   def test_truth
     assert true
   end
+  
+  def test_should_not_save_without_descricao
+    situacao = Situacao.new
+    assert !situacao.save, "Salvou situação sem descricao."
+  end
 end

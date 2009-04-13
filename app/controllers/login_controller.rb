@@ -21,7 +21,7 @@ class LoginController < ApplicationController
     if request.post?
       usuario = Usuario.authenticate(params[:name], params[:password])
       if usuario
-        session[:usuario_id] = usuario.login
+        session[:usuario_id] = usuario.id
         session[:perfil] = usuario.categoria.nome
         redirect_to( url_for :controller => 'tarefas', :action => 'index' )
       else

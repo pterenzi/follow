@@ -418,9 +418,18 @@ main {
     background-color: #F2F2F2;
 }
 
+.user {
+    float: right;
+    width: 224px;
+    align: bottom;
+	border-top: solid #fff 1px;
+    border-bottom: solid #fff 1px;
+}
 
-
-
+.user a:hover {
+    color: #66584B;
+    text-decoration: underline;
+}
 
 .depot-form legend {
     color: #ffffff;

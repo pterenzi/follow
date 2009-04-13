@@ -1,12 +1,14 @@
 class TarefasController < ApplicationController
 
-  before_filter :authorize
+ # before_filter :authorize
 
   layout 'follow'
 
   # GET /tarefas GET /tarefas.xml
   def index
+    @usuario = Usuario.find(session[:usuario_id])
     @tarefas = Tarefa.find(:all)
+    @criadasPorMim = Tarefa.all(:conditions=>["usuario_id=?",@usuario.id])
 
     respond_to do |format|
       format.html # index.html.erb
@@ -28,10 +30,9 @@ class TarefasController < ApplicationController
   def new
     @tarefa = Tarefa.new
 
-    @projetos = Projeto.find(:all).collect{|obj| [obj.id,obj.id]}
-    @usuarios = Usuario.find(:all).collect{|obj| [obj.id,obj.id]}
-    @situacaos = Situacao.find(:all).collect{|obj| [obj.id,obj.id]}
-
+    @projetos = Projeto.all(:order=>'descricao').collect{|obj| [obj.descricao,obj.id]}
+    @usuarios = Usuario.find(:all).collect{|obj| [obj.nome,obj.id]}
+    @situacaos = Situacao.find(:all).collect{|obj| [obj.descricao,obj.id]}
 
     respond_to do |format|
       format.html # new.html.erb
@@ -43,9 +44,9 @@ class TarefasController < ApplicationController
   def edit
     @tarefa = Tarefa.find(params[:id])
 
-    @projetos = Projeto.find(:all).collect{|obj| [obj.id,obj.id]}
-    @usuarios = Usuario.find(:all).collect{|obj| [obj.id,obj.id]}
-    @situacaos = Situacao.find(:all).collect{|obj| [obj.id,obj.id]}
+    @projetos = Projeto.all(:order=>'descricao').collect{|obj| [obj.descricao,obj.id]}
+    @usuarios = Usuario.find(:all).collect{|obj| [obj.nome,obj.id]}
+    @situacaos = Situacao.find(:all).collect{|obj| [obj.descricao,obj.id]}
 
 
   end
@@ -53,7 +54,8 @@ class TarefasController < ApplicationController
   # POST /tarefas POST /tarefas.xml
   def create
     @tarefa = Tarefa.new(params[:tarefa])
-
+    @tarefa.usuario.id = session[:usuario_id]
+    
     respond_to do |format|
       if @tarefa.save
         flash[:notice] = 'Tarefa foi cadastrado com sucesso!'

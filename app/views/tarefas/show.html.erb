@@ -1,18 +1,19 @@
+<% content_for :main do%>
 <h1>Detalhes Sobre Tarefa</h1>
 <p>
 <p>
   <b>Situacaos:</b>
-  <%=h @tarefa.situacaos_id %>
+  <%=h @tarefa.situacao.descricao %>
 </p>
 
 <p>
   <b>Projetos:</b>
-  <%=h @tarefa.projetos_id %>
+  <%=h @tarefa.projeto.descricao %>
 </p>
 
 <p>
   <b>Usuarios:</b>
-  <%=h @tarefa.usuarios_id %>
+  <%=h @tarefa.usuario.nome %>
 </p>
 
 <p>
@@ -25,7 +26,13 @@
   <%=h @tarefa.avaliacao %>
 </p>
 
+<p>
+	<b>Aberto em</b>
+	<%= @tarefa.created_at %>
+</p>
+
 
 <%= link_to 'Alterar', edit_tarefa_path(@tarefa) %> |
 <%= link_to 'Voltar', tarefas_path %>
 </p>
+<% end %>

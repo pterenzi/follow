@@ -14,6 +14,8 @@ class Usuario < ActiveRecord::Base
   has_many :recados
 
   has_many :tarefas
+  
+  
 
   belongs_to :categoria
 

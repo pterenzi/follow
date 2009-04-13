@@ -1,6 +1,8 @@
 <tr class="<%= cycle("even", "odd") -%>">
   
   <td><%=h projeto.nome %></td>
+  <td><%=h projeto.descricao %></td>
+  <td><%= projeto.prazo %></td>
   <%  unless @export  -%>
      <td><%= link_to 'Mostrar', projeto %></td>
      <td><%= link_to 'Alterar', edit_projeto_path(projeto) %></td>

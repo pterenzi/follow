@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20090409224446) do
+ActiveRecord::Schema.define(:version => 20090413130720) do
 
   create_table "categorias", :force => true do |t|
     t.string "nome", :limit => 32
@@ -77,15 +77,18 @@ ActiveRecord::Schema.define(:version => 20090409224446) do
 
   create_table "situacaos", :force => true do |t|
     t.string "descricao", :limit => 32
-    t.string "sigla",     :limit => 8
   end
 
   create_table "tarefas", :force => true do |t|
-    t.integer "projeto_id"
-    t.integer "usuario_id"
-    t.integer "tempo_est",   :limit => 4, :null => false
-    t.integer "avaliacao",   :limit => 4, :null => false
-    t.integer "situacao_id"
+    t.integer  "projeto_id"
+    t.integer  "usuario_id"
+    t.integer  "tempo_est",           :limit => 4, :null => false
+    t.integer  "avaliacao",           :limit => 4
+    t.integer  "situacao_id"
+    t.string   "descricao"
+    t.integer  "usuario_executor_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "usuarios", :force => true do |t|

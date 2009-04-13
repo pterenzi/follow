@@ -17,6 +17,8 @@ belongs_to :tarefa
 
 validates_length_of  :nome, :maximum=>32, :message=>"não pode exeder os 32 caracteres!"
 
+validates_presence_of :descricao, :message=>'não pode estar em branco!'
+
 validates_length_of  :descricao, :maximum=>256, :message=>"não pode exeder os 256 caracteres!"
 
 validates_length_of  :prazo, :maximum=>4, :message=>"não pode exeder os 4 caracteres!"

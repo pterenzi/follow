@@ -1,3 +1,4 @@
+<% content_for :main do %>
 <h1>Alterar Tarefa</h1>
 
 <%= error_messages_for :tarefa %>
@@ -6,19 +7,19 @@
   <p>
     <b>Situacaos</b><br />   
     
-    <%= f.select :situacaos_id,@situacaos,{:prompt=>"Selecione uma Opção"} %>      
+    <%= f.select :situacao_id,@situacaos,{:prompt=>"Selecione uma Opção"} %>      
   </p>
 
   <p>
     <b>Projetos</b><br />   
     
-    <%= f.select :projetos_id,@projetos,{:prompt=>"Selecione uma Opção"} %>      
+    <%= f.select :projeto_id,@projetos,{:prompt=>"Selecione uma Opção"} %>      
   </p>
 
   <p>
     <b>Usuarios</b><br />   
     
-    <%= f.select :usuarios_id,@usuarios,{:prompt=>"Selecione uma Opção"} %>      
+    <%= f.select :usuario_id,@usuarios,{:prompt=>"Selecione uma Opção"} %>      
   </p>
 
   <p>
@@ -40,3 +41,4 @@
 
 <%= link_to 'Mostrar', @tarefa %> |
 <%= link_to 'Voltar', tarefas_path %>
+<% end %>

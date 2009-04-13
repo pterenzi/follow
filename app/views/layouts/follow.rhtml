@@ -22,17 +22,18 @@
   <div id="container">
 
 <div>
-  <div align="left">
+  <div class=align="left">
     <div id="banner" >
-      <%=  @page_title  %>
-    </div>
-  </div>
-     <div align="rigth">
+	 <div class="user">
         Usuário: <%= session[:usuario_id] %><br>
         Perfil: <%= session[:perfil] %>
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
       <%= link_to '(Sair)', url_for(:action => 'logout', :controller => 'login') %>
-      </div>
+     </div>
+      <%=  @page_title  %>
+
+    </div>
+  </div>
 </div>
     
        
