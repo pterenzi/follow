@@ -9,6 +9,7 @@ class TarefasController < ApplicationController
     @usuario = Usuario.find(session[:usuario_id])
     @tarefas = Tarefa.find(:all)
     @criadasPorMim = Tarefa.all(:conditions=>["usuario_id=?",@usuario.id])
+    @minhasTarefas = Tarefa.all(:conditions=>["usuario_executor_id=?",@usuario.id])
 
     respond_to do |format|
       format.html # index.html.erb
@@ -43,7 +44,7 @@ class TarefasController < ApplicationController
   # GET /tarefas/1/edit
   def edit
     @tarefa = Tarefa.find(params[:id])
-
+    @usuario = @tarefa.usuario
     @projetos = Projeto.all(:order=>'descricao').collect{|obj| [obj.descricao,obj.id]}
     @usuarios = Usuario.find(:all).collect{|obj| [obj.nome,obj.id]}
     @situacaos = Situacao.find(:all).collect{|obj| [obj.descricao,obj.id]}

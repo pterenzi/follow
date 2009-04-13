@@ -1,6 +1,11 @@
 <% content_for :main do%>
 <h1>Detalhes Sobre Tarefa</h1>
-<p>
+<br/>
+<p/>
+	<p>
+		<b>Descrição:</b>
+		<%= @tarefa.descricao %>
+	</p>
 <p>
   <b>Situacaos:</b>
   <%=h @tarefa.situacao.descricao %>
@@ -12,8 +17,8 @@
 </p>
 
 <p>
-  <b>Usuarios:</b>
-  <%=h @tarefa.usuario.nome %>
+  <b>Delegado a:</b>
+  <%=h @tarefa.usuario_executor.nome %>
 </p>
 
 <p>

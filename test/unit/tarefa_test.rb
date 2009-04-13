@@ -35,5 +35,10 @@ class TarefaTest < ActiveSupport::TestCase
     
     assert !tarefa.save,"Salvou a terafa sem situacao"
   end
+  
+  def test_executor_pode_alterar_tarefa
+    tarefa = tarefas(:one)
+    assert tarefa.usuario_que_criou(1)
+  end
    
 end

@@ -35,4 +35,10 @@ validates_numericality_of  :avaliacao, :message=>"deve ser numérico!", :allow_n
 
 validates_presence_of :situacao_id, :message=>"não pode ficar em branco!"
 
+def usuario_que_criou(usuario_id)
+  debugger
+  usuario = Usuario.find(usuario_id)
+  usuario_id == usuario.id
+end
+
 end

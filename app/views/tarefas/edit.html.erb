@@ -4,6 +4,12 @@
 <%= error_messages_for :tarefa %>
 
 <% form_for(@tarefa) do |f| %>
+
+  <p>
+	<b>Descrição</b><br/>
+	<%= f.text_area :descricao, :cols=>60, :rows=>10 , :disabled=>@tarefa.usuario_que_criou(@usuario.id) %>
+  </p>
+  
   <p>
     <b>Situacaos</b><br />   
     
@@ -17,9 +23,9 @@
   </p>
 
   <p>
-    <b>Usuarios</b><br />   
+    <b>Delegado a </b><br />   
     
-    <%= f.select :usuario_id,@usuarios,{:prompt=>"Selecione uma Opção"} %>      
+    <%= f.select :usuario_executor_id,@usuarios,{:prompt=>"Selecione uma Opção"} %>      
   </p>
 
   <p>
@@ -33,7 +39,7 @@
        
     <%= f.text_field :avaliacao %>     
   </p>
-
+  <br/>
   <p>
     <%= f.submit "Atualizar" %>
   </p>

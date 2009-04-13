@@ -1,15 +1,17 @@
 # Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
 
 one:
-  situacao_id: MyInteger
-  projeto_id: MyInteger
-  usuario_id: MyInteger
-  tempo_est: MyInteger
-  avaliacao: MyInteger
+  situacao_id: 1
+  projeto_id: 1
+  usuario_id: 1
+  usuario_executor_id: 2
+  tempo_est: 10
+  avaliacao: 1
 
 two:
-  situacao_id: MyInteger
-  projeto_id: MyInteger
-  usuario_id: MyInteger
-  tempo_est: MyInteger
-  avaliacao: MyInteger
+  situacao_id: 1
+  projeto_id: 1
+  usuario_id: 1
+  usuario_executor_id: 1
+  tempo_est: 20
+  avaliacao: 2

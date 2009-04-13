@@ -25,7 +25,7 @@
   <div class=align="left">
     <div id="banner" >
 	 <div class="user">
-        Usuário: <%= session[:usuario_id] %><br>
+        Usuário: <%= Usuario.find(session[:usuario_id]).nome unless session[:usuario_id].nil? %><br>
         Perfil: <%= session[:perfil] %>
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
       <%= link_to '(Sair)', url_for(:action => 'logout', :controller => 'login') %>

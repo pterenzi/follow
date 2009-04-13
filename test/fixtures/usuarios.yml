@@ -1,8 +1,9 @@
 # Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
 
 one:
-  categoria_id: MyInteger
-  nome: MyString
+  id: 1
+  categoria_id: 1
+  nome: Admin
   cargo: MyString
   pass: MyString
   endereco: MyString
@@ -14,7 +15,8 @@ one:
   gerente: MyString
 
 two:
-  categoria_id: MyInteger
+  id: 2
+  categoria_id: 2
   nome: MyString
   cargo: MyString
   pass: MyString
