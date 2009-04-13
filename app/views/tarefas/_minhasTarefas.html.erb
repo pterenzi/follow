@@ -1,0 +1,11 @@
+<% content_for :rightside do %>
+<% i=1 %>
+<% for tarefa in @minhasTarefas do  %>
+    <b><%= i %> )</b>
+    <%= tarefa.usuario.nome %>
+	<%= tarefa.descricao %><br/>
+    <td><%= link_to 'Alterar', edit_tarefa_path(tarefa) %></td>
+    <% i += 1%>
+<% end %>
+
+<% end %>
