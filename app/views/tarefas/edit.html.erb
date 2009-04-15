@@ -1,5 +1,5 @@
 <% content_for :leftside do %>
-   <%= render :partial=>"feitasPorMim" %>
+   <%= render :partial=>"minhasSolicitacoes" %>
 <% end %>
 <% content_for :rightside do %>
   <%= render :partial=>"minhasTarefas" %>
@@ -10,6 +10,7 @@
 <%= error_messages_for :tarefa %>
 
 <% form_for(@tarefa) do |f| %>
+USUARIO_ID<%= @tarefa.usuario_id %>
 <p>
    <b>Projetos</b><br />   
    
@@ -29,7 +30,7 @@
   <p>
     <b>Delegado a </b><br />   
     
-    <%= f.select :usuario_executor_id,@usuarios,{:prompt=>"Selecione uma Opção"} %>      
+    <%= f.select "usuario_id",@usuarios,{:prompt=>"Selecione uma Opção"} %>      | <%=  @tarefa.usuario_id %>
   </p>
 
   <p>

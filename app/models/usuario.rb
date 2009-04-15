@@ -15,37 +15,23 @@ class Usuario < ActiveRecord::Base
 
   has_many :tarefas
   
-  
-
   belongs_to :categoria
-
-
 
   # Validações
 
   humanize_attributes(:categoria_id => "Tipo do Usuário"  )
-
  
  
- validates_presence_of :categoria_id, :message=>"não pode ficar em branco!"
-
+  validates_presence_of :categoria_id, :message=>"não pode ficar em branco!"
   validates_presence_of :cpf, :message=>"não pode ficar em branco!"
   validates_presence_of :nome, :message=>"não pode ficar em branco!"
-
   validates_length_of  :nome, :maximum=>32, :message=>"não pode exeder os 32 caracteres!"
-
   validates_length_of  :cargo, :maximum=>32, :message=>"não pode exeder os 32 caracteres!"
-
   validates_length_of  :endereco, :maximum=>128, :message=>"não pode exeder os 128 caracteres!"
-
   validates_length_of  :bairro, :maximum=>32, :message=>"não pode exeder os 32 caracteres!"
-
   validates_length_of  :municipio, :maximum=>32, :message=>"não pode exeder os 32 caracteres!"
-
   validates_length_of  :uf, :maximum=>2, :message=>"não pode exeder os 2 caracteres!"
-
   validates_length_of  :email, :maximum=>128, :message=>"não pode exeder os 128 caracteres!"
-
   validates_length_of  :gerente, :maximum=>32, :message=>"não pode exeder os 32 caracteres!"
 
 

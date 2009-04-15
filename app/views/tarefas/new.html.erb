@@ -1,5 +1,5 @@
 <% content_for :leftside do %>
-   <%= render :partial=>"feitasPorMim" %>
+   <%= render :partial=>"minhasSolicitacoes" %>
 <% end %>
 <% content_for :rightside do %>
   <%= render :partial=>"minhasTarefas" %>
@@ -34,7 +34,7 @@
   <p>
     <b>Usuario</b><br />   
     
-    <%= f.select :usuario_executor_id,@usuarios,{:prompt=>"Selecione uma Opção"} %>      
+    <%= f.select :usuario_id,@usuarios,{:prompt=>"Selecione uma Opção"} %>      
   </p>
 
   <p>

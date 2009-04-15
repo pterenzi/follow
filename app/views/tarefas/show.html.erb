@@ -1,3 +1,9 @@
+<% content_for :leftside do %>
+   <%= render :partial=>"minhasSolicitacoes" %>
+<% end %>
+<% content_for :rightside do %>
+  <%= render :partial=>"minhasTarefas" %>
+<% end %>
 <% content_for :main do%>
 <h1>Detalhes Sobre Tarefa</h1>
 <br/>
@@ -18,7 +24,7 @@
 
 <p>
   <b>Delegado a:</b>
-  <%=h @tarefa.usuario_executor.nome %>
+  <%=h @tarefa.usuario.nome %>
 </p>
 
 <p>
@@ -27,7 +33,7 @@
 </p>
 
 <p>
-  <b>Avaliacao:</b>
+  <b>Avaliação:</b>
   <%=h @tarefa.avaliacao %>
 </p>
 

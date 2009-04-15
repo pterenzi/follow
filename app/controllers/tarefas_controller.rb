@@ -1,15 +1,13 @@
 class TarefasController < ApplicationController
 
   before_filter :authorize
+  before_filter :busca_usuario
+  before_filter :busca_tarefas, :only=>[:index, :show, :new, :edit]
 
   layout 'follow'
 
   # GET /tarefas GET /tarefas.xml
   def index
-    @usuario = Usuario.find(session[:usuario_id])
-    @tarefas = Tarefa.find(:all)
-    @criadasPorMim = Tarefa.all(:order=>"usuario_executor_id", :conditions=>["usuario_id=?",@usuario.id])
-    @minhasTarefas = Tarefa.all(:conditions=>["usuario_executor_id=?",@usuario.id])
 
     respond_to do |format|
       format.html # index.html.erb
@@ -30,9 +28,6 @@ class TarefasController < ApplicationController
   # GET /tarefas/new GET /tarefas/new.xml
   def new
     @tarefa = Tarefa.new
-    @usuario = Usuario.find(session[:usuario_id])
-    @criadasPorMim = Tarefa.all(:order=>"usuario_executor_id", :conditions=>["usuario_id=?",@usuario.id])
-    @minhasTarefas = Tarefa.all(:conditions=>["usuario_executor_id=?",@usuario.id])
 
     @projetos = Projeto.all(:order=>'descricao').collect{|obj| [obj.descricao,obj.id]}
     @usuarios = Usuario.find(:all).collect{|obj| [obj.nome,obj.id]}
@@ -47,11 +42,7 @@ class TarefasController < ApplicationController
   # GET /tarefas/1/edit
   def edit
     @tarefa = Tarefa.find(params[:id])
-#    @usuario = @tarefa.usuario
-    @usuario = Usuario.find(session[:usuario_id])
-    @criadasPorMim = Tarefa.all(:order=>"usuario_executor_id", :conditions=>["usuario_id=?",@usuario.id])
-    @minhasTarefas = Tarefa.all(:conditions=>["usuario_executor_id=?",@usuario.id])
-
+debugger
     @projetos = Projeto.all(:order=>'descricao').collect{|obj| [obj.descricao,obj.id]}
     @usuarios = Usuario.find(:all).collect{|obj| [obj.nome,obj.id]}
     @situacaos = Situacao.find(:all).collect{|obj| [obj.descricao,obj.id]}
@@ -62,7 +53,7 @@ class TarefasController < ApplicationController
   # POST /tarefas POST /tarefas.xml
   def create
     @tarefa = Tarefa.new(params[:tarefa])
-    @tarefa.usuario_id = session[:usuario_id]
+    @tarefa.solicitante_id = session[:usuario_id]
     
     respond_to do |format|
       if @tarefa.save
@@ -85,7 +76,7 @@ class TarefasController < ApplicationController
   # PUT /tarefas/1 PUT /tarefas/1.xml
   def update
     @tarefa = Tarefa.find(params[:id])
-
+    debugger
     respond_to do |format|
       if @tarefa.update_attributes(params[:tarefa])
         flash[:notice] = 'tarefas foi alterado com sucesso!'
@@ -115,5 +106,18 @@ class TarefasController < ApplicationController
       format.html { redirect_to(tarefas_url) }
       format.xml  { head :ok }
     end
+  end
+  
+  private
+  
+  def busca_tarefas
+    @tarefas = Tarefa.find(:all)
+    @minhasSolicitacoes = Tarefa.all(:order=>"solicitante_id", :conditions=>["solicitante_id=? and usuario_id!=solicitante_id",@usuario.id ])
+    @minhasTarefas = Tarefa.all(:conditions=>["usuario_id=?",@usuario.id])
+    
+  end
+  
+  def busca_usuario
+    @usuario = Usuario.find(session[:usuario_id])
   end
 end

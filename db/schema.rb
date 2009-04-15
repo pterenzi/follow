@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20090413130720) do
+ActiveRecord::Schema.define(:version => 20090415152021) do
 
   create_table "categorias", :force => true do |t|
     t.string "nome", :limit => 32
@@ -79,17 +79,8 @@ ActiveRecord::Schema.define(:version => 20090413130720) do
     t.string "descricao", :limit => 32
   end
 
-  create_table "tarefas", :force => true do |t|
-    t.integer  "projeto_id"
-    t.integer  "usuario_id"
-    t.integer  "tempo_est",           :limit => 4, :null => false
-    t.integer  "avaliacao",           :limit => 4
-    t.integer  "situacao_id"
-    t.string   "descricao"
-    t.integer  "usuario_executor_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
+# Could not dump table "tarefas" because of following StandardError
+#   Unknown type 'solicitante_id' for column 'usuario_id'
 
   create_table "usuarios", :force => true do |t|
     t.string  "nome",            :limit => 32
