@@ -1,0 +1,15 @@
+<% content_for :leftside do %>
+<% nome_usuario = ''''%>
+<% for tarefa in @minhasSolicitacoes do  %>
+    <% if nome_usuario!= tarefa.usuario.nome then %>
+      <div id="nomeUsuario"><%= tarefa.usuario.nome %> </div>
+      <% nome_usuario = tarefa.usuario.nome %> 
+    <% end %>
+   <div id="tarefa">
+	<%= tarefa.descricao %>&nbsp;&nbsp;
+    <%= link_to 'Alterar', edit_tarefa_path(tarefa) %>
+    </div>
+<br/>
+<% end %>
+
+<% end %>
