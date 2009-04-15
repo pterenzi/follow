@@ -16,6 +16,8 @@ class ApplicationController < ActionController::Base
    private
 
   def authorize
+#    debugger
+#    if session[:usuario_id].nil? || Usuario.find(session[:usuario_id])
     unless Usuario.find(session[:usuario_id])
        session[:original_uri] = request.request_uri
       flash[:notice] = "Por favor autentique-se"

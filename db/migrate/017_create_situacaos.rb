@@ -4,7 +4,7 @@ class CreateSituacaos < ActiveRecord::Migration
   
   t.string :descricao , :limit=>32
   
-  t.string :sigla , :limit=>8
+ # t.string :sigla , :limit=>8
   
     end
   end

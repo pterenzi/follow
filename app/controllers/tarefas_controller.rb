@@ -1,6 +1,6 @@
 class TarefasController < ApplicationController
 
- # before_filter :authorize
+  before_filter :authorize
 
   layout 'follow'
 
@@ -8,7 +8,7 @@ class TarefasController < ApplicationController
   def index
     @usuario = Usuario.find(session[:usuario_id])
     @tarefas = Tarefa.find(:all)
-    @criadasPorMim = Tarefa.all(:conditions=>["usuario_id=?",@usuario.id])
+    @criadasPorMim = Tarefa.all(:order=>"usuario_executor_id", :conditions=>["usuario_id=?",@usuario.id])
     @minhasTarefas = Tarefa.all(:conditions=>["usuario_executor_id=?",@usuario.id])
 
     respond_to do |format|
@@ -55,7 +55,7 @@ class TarefasController < ApplicationController
   # POST /tarefas POST /tarefas.xml
   def create
     @tarefa = Tarefa.new(params[:tarefa])
-    @tarefa.usuario.id = session[:usuario_id]
+    @tarefa.usuario_id = session[:usuario_id]
     
     respond_to do |format|
       if @tarefa.save
