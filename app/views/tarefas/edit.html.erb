@@ -1,25 +1,29 @@
+<% content_for :leftside do %>
+   <%= render :partial=>"feitasPorMim" %>
+<% end %>
+<% content_for :rightside do %>
+  <%= render :partial=>"minhasTarefas" %>
+<% end %>
 <% content_for :main do %>
 <h1>Alterar Tarefa</h1>
 
 <%= error_messages_for :tarefa %>
 
 <% form_for(@tarefa) do |f| %>
-
+<p>
+   <b>Projetos</b><br />   
+   
+   <%= f.select :projeto_id,@projetos,{:prompt=>"Selecione uma Opção"} %>      
+ </p>
   <p>
 	<b>Descrição</b><br/>
 	<%= f.text_area :descricao, :cols=>60, :rows=>10 , :disabled=>@tarefa.usuario_que_criou(@usuario.id) %>
   </p>
   
   <p>
-    <b>Situacaos</b><br />   
+    <b>Situação</b><br />   
     
     <%= f.select :situacao_id,@situacaos,{:prompt=>"Selecione uma Opção"} %>      
-  </p>
-
-  <p>
-    <b>Projetos</b><br />   
-    
-    <%= f.select :projeto_id,@projetos,{:prompt=>"Selecione uma Opção"} %>      
   </p>
 
   <p>

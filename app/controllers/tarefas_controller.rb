@@ -30,6 +30,9 @@ class TarefasController < ApplicationController
   # GET /tarefas/new GET /tarefas/new.xml
   def new
     @tarefa = Tarefa.new
+    @usuario = Usuario.find(session[:usuario_id])
+    @criadasPorMim = Tarefa.all(:order=>"usuario_executor_id", :conditions=>["usuario_id=?",@usuario.id])
+    @minhasTarefas = Tarefa.all(:conditions=>["usuario_executor_id=?",@usuario.id])
 
     @projetos = Projeto.all(:order=>'descricao').collect{|obj| [obj.descricao,obj.id]}
     @usuarios = Usuario.find(:all).collect{|obj| [obj.nome,obj.id]}
@@ -44,7 +47,11 @@ class TarefasController < ApplicationController
   # GET /tarefas/1/edit
   def edit
     @tarefa = Tarefa.find(params[:id])
-    @usuario = @tarefa.usuario
+#    @usuario = @tarefa.usuario
+    @usuario = Usuario.find(session[:usuario_id])
+    @criadasPorMim = Tarefa.all(:order=>"usuario_executor_id", :conditions=>["usuario_id=?",@usuario.id])
+    @minhasTarefas = Tarefa.all(:conditions=>["usuario_executor_id=?",@usuario.id])
+
     @projetos = Projeto.all(:order=>'descricao').collect{|obj| [obj.descricao,obj.id]}
     @usuarios = Usuario.find(:all).collect{|obj| [obj.nome,obj.id]}
     @situacaos = Situacao.find(:all).collect{|obj| [obj.descricao,obj.id]}
