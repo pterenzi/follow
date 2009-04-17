@@ -1,0 +1,20 @@
+<h1>Editing comentario</h1>
+
+<% form_for(@comentario) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :usuario_id %><br />
+    <%= f.select :usuario_id,@usuarios,{:prompt=>"Selecione uma Opção"} %>   
+  </p>
+  <p>
+    <%= f.label :descricao %><br />
+    <%= f.text_field :descricao %>
+  </p>
+  <p>
+    <%= f.submit "Update" %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', @comentario %> |
+<%= link_to 'Back', comentarios_path %>
