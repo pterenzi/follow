@@ -46,4 +46,12 @@
 <%= link_to 'Alterar', edit_tarefa_path(@tarefa) %> |
 <%= link_to 'Voltar', tarefas_path %>
 </p>
+<br/>
+<h1>Comentários</h1>
+<%= link_to "novo comentario" , new_tarefa_comentario_url(@tarefa) %><br/>
+<% for comentario in @comentarios  %>
+  <%= comentario.usuario.nome %>
+  <%= comentario.descricao %> | <%= link_to "alterar", edit_tarefa_comentario_url(@tarefa,comentario)%>
+  <br/>
+<% end %>
 <% end %>

@@ -1,0 +1,10 @@
+<% form_tag( :action=>:create, :controller=>'comentarios') do |f| %>
+ <%= hidden_field_tag :tarefa_id, tarefa.id %>
+  <p>
+   Comentário :<br/>
+    <%= text_field_tag 'descricao', '' ,:size=>30 %>
+  </p>
+  <p>
+    <%= submit_tag "Create" %>
+  </p>
+<% end %>

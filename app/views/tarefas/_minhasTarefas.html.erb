@@ -3,8 +3,12 @@
     <div id="nome_usuario">
     <%= tarefa.usuario.nome %></div>
 	<div id="tarefa">
+		<%= 'blink' if tarefa.alerta %>
 	<%= tarefa.descricao %>&nbsp;&nbsp;
-    <%= link_to 'Alterar', edit_tarefa_path(tarefa) %></div>
+    <%= link_to 'Alterar', edit_tarefa_path(tarefa) %><br/>
+	<%= render :partial=>'form_comentario', :locals=>{:tarefa=>tarefa} %>
+	<%= render :partial=>'comentarios_de_uma_tarefa', :locals=>{:tarefa=>tarefa} %>
+</div>
 <% end %>
 
 <% end %>

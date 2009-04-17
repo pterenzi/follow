@@ -10,7 +10,6 @@
 <%= error_messages_for :tarefa %>
 
 <% form_for(@tarefa) do |f| %>
-USUARIO_ID<%= @tarefa.usuario_id %>
 <p>
    <b>Projetos</b><br />   
    
@@ -28,9 +27,8 @@ USUARIO_ID<%= @tarefa.usuario_id %>
   </p>
 
   <p>
-    <b>Delegado a </b><br />   
-    
-    <%= f.select "usuario_id",@usuarios,{:prompt=>"Selecione uma Opção"} %>      | <%=  @tarefa.usuario_id %>
+    <b>Delegado a : </b><br />   
+    <%= f.select :usuario_id,@usuarios,{:prompt=>"Selecione uma Opção"} %>   | <%=  @tarefa.usuario.id %>
   </p>
 
   <p>

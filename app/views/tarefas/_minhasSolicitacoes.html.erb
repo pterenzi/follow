@@ -1,14 +1,18 @@
 <% content_for :leftside do %>
-<% nome_usuario = ''''%>
+<% nome_usuario = ''%>
 <% for tarefa in @minhasSolicitacoes do  %>
     <% if nome_usuario!= tarefa.usuario.nome then %>
       <div id="nomeUsuario"><%= tarefa.usuario.nome %> </div>
       <% nome_usuario = tarefa.usuario.nome %> 
     <% end %>
    <div id="tarefa">
+	<%= 'blink' if tarefa.alerta %>
 	<%= tarefa.descricao %>&nbsp;&nbsp;
     <%= link_to 'Alterar', edit_tarefa_path(tarefa) %>
-    </div>
+    
+    <%= render :partial=>'form_comentario', :locals=>{:tarefa=>tarefa} %>
+    <%= render :partial=>'comentarios_de_uma_tarefa', :locals=>{:tarefa=>tarefa} %>
+ </div>
 <br/>
 <% end %>
 

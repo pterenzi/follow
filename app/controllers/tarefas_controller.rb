@@ -8,7 +8,8 @@ class TarefasController < ApplicationController
 
   # GET /tarefas GET /tarefas.xml
   def index
-
+    @comentario = Comentario.new
+    @comentario.usuario_id = session[:usuario_id]
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @tarefas }
@@ -18,6 +19,7 @@ class TarefasController < ApplicationController
   # GET /tarefas/1 GET /tarefas/1.xml
   def show
     @tarefa = Tarefa.find(params[:id])
+    @comentarios = Comentario.all(:conditions=>["tarefa_id=?",@tarefa.id])
 
     respond_to do |format|
       format.html # show.html.erb
@@ -42,7 +44,7 @@ class TarefasController < ApplicationController
   # GET /tarefas/1/edit
   def edit
     @tarefa = Tarefa.find(params[:id])
-debugger
+#debugger
     @projetos = Projeto.all(:order=>'descricao').collect{|obj| [obj.descricao,obj.id]}
     @usuarios = Usuario.find(:all).collect{|obj| [obj.nome,obj.id]}
     @situacaos = Situacao.find(:all).collect{|obj| [obj.descricao,obj.id]}
@@ -112,7 +114,7 @@ debugger
   
   def busca_tarefas
     @tarefas = Tarefa.find(:all)
-    @minhasSolicitacoes = Tarefa.all(:order=>"solicitante_id", :conditions=>["solicitante_id=? and usuario_id!=solicitante_id",@usuario.id ])
+    @minhasSolicitacoes = Tarefa.all(:order=>"solicitante_id", :conditions=>["solicitante_id=? and usuario_id<>solicitante_id",@usuario.id ])
     @minhasTarefas = Tarefa.all(:conditions=>["usuario_id=?",@usuario.id])
     
   end

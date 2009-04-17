@@ -1,0 +1,7 @@
+<% i= 1%>
+<% for comentario in tarefa.comentarios do %>
+  <%= i %>) 
+  <%= comentario.usuario.nome %> disse :
+  <%= comentario.descricao %><br/>
+  <% i+= 1%>
+<% end %>

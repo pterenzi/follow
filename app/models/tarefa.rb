@@ -9,6 +9,8 @@ belongs_to :situacao
 
 belongs_to :solicitante, :class_name => "Usuario", :foreign_key => "solicitante_id"
 
+has_many :comentarios
+
 
 
 #Validações

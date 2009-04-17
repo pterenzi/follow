@@ -1,7 +1,14 @@
 ActionController::Routing::Routes.draw do |map|
+  map.resources :comentarios
+
   map.resources :recados, :collection => {:show_export => :get}
 
   map.resources :tarefas, :collection => {:show_export => :get}
+  
+  map.resources :tarefas do |tarefas|
+       tarefas.resources :comentarios
+    end 
+  
 
   map.resources :categorias_has_permissaos, :collection => {:show_export => :get}
 

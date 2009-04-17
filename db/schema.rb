@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20090415152021) do
+ActiveRecord::Schema.define(:version => 20090417022502) do
 
   create_table "categorias", :force => true do |t|
     t.string "nome", :limit => 32
@@ -18,6 +18,14 @@ ActiveRecord::Schema.define(:version => 20090415152021) do
   create_table "categorias_permissaos", :force => true do |t|
     t.integer "categorias_id"
     t.integer "permissaos_id"
+  end
+
+  create_table "comentarios", :force => true do |t|
+    t.integer  "usuario_id"
+    t.string   "descricao"
+    t.integer  "tarefa_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "empresas", :force => true do |t|

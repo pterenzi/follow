@@ -9,6 +9,8 @@ class Usuario < ActiveRecord::Base
 
   has_many :projetos, :through=> :projetos_usuarios
 
+  has_many :comentarios
+
   has_many :projetos_usuarios
 
   has_many :recados
