@@ -163,12 +163,12 @@ h1 {
 }
 
 #nomeUsuario {
-	font-family: "Trebuchet MS", Verdana, Times, serif;
+    font-family: "Trebuchet MS", Verdana, Times, serif;
     font-size: 8pt;
     color: #ad1c21;
     padding-top: 2px;
-	padding-left: 12px;
-	padding-bottom: 4px;
+    padding-left: 12px;
+    padding-bottom: 4px;
     line-height: 14pt;
 }
 
@@ -183,3 +183,10 @@ h1 {
     border-bottom: 1px solid #999;
 }
 
+#comentario_vermelho{
+	color: red;
+}
+
+#comentario_preto{
+	color: black;
+}

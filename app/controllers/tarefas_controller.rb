@@ -114,7 +114,8 @@ class TarefasController < ApplicationController
   
   def busca_tarefas
     @tarefas = Tarefa.find(:all)
-    @minhasSolicitacoes = Tarefa.all(:order=>"solicitante_id", :conditions=>["solicitante_id=? and usuario_id<>solicitante_id",@usuario.id ])
+    @minhasSolicitacoes = Tarefa.all(:order=>"solicitante_id", 
+         :conditions=>["solicitante_id=? and usuario_id<>solicitante_id",@usuario.id ])
     @minhasTarefas = Tarefa.all(:conditions=>["usuario_id=?",@usuario.id])
     
   end

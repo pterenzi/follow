@@ -7,11 +7,11 @@
     <% end %>
    <div id="tarefa">
 	<%= 'blink' if tarefa.alerta %>
-	<%= tarefa.descricao %>&nbsp;&nbsp;
-    <%= link_to 'Alterar', edit_tarefa_path(tarefa) %>
-    
+	<a href="#" onClick="Effect.toggle('toggle_appear_<%= tarefa.id.to_s %>' , 'blind', { duration: 1.0 }	); return false;"><%= tarefa.descricao %></a>
+    <div style="display: none;"id="toggle_appear_<%= tarefa.id.to_s %>" style="background:#F2F2F2;">
     <%= render :partial=>'form_comentario', :locals=>{:tarefa=>tarefa} %>
-    <%= render :partial=>'comentarios_de_uma_tarefa', :locals=>{:tarefa=>tarefa} %>
+    <%= render :partial=>'comentarios_de_uma_tarefa', :locals=>{:tarefa=>tarefa, :lado=>'esquerdo'} %>
+   </div>
  </div>
 <br/>
 <% end %>

@@ -1,7 +1,20 @@
 <% i= 1%>
 <% for comentario in tarefa.comentarios do %>
-  <%= i %>) 
-  <%= comentario.usuario.nome %> disse :
-  <%= comentario.descricao %><br/>
+  
+  <% if lado=='esquerdo'%>
+    <% if comentario.usuario == tarefa.solicitante %>
+       <div id='comentario_preto'>
+    <% else %>
+       <div id='comentario_vermelho'>
+	<% end %>
+  <% else %>
+  <% if comentario.usuario == tarefa.solicitante %>
+     <div id='comentario_vermelho'>
+  <% else %>
+     <div id='comentario_preto'>
+	<% end %>
+  <% end %> 
+  <%= i %>)  
+  <%= comentario.descricao %></div>
   <% i+= 1%>
 <% end %>
