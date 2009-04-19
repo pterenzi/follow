@@ -1,4 +1,3 @@
-<% i= 1%>
 <% for comentario in tarefa.comentarios do %>
   
   <% if lado=='esquerdo'%>
@@ -14,7 +13,5 @@
      <div id='comentario_preto'>
 	<% end %>
   <% end %> 
-  <%= i %>)  
-  <%= comentario.descricao %></div>
-  <% i+= 1%>
+  * <%= comentario.descricao %></div>
 <% end %>

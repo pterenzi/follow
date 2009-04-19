@@ -1,16 +1,25 @@
 <% content_for :leftside do %>
 <% nome_usuario = ''%>
-<% for tarefa in @minhasSolicitacoes do  %>
+<% if @minhas_solicitacoes.empty? %>
+   <div id="nome_usuario">
+    Não há nenhuma solicitação sua pendente no momento. 
+   </div>
+<% end %>
+<% for tarefa in @minhas_solicitacoes do  %>
     <% if nome_usuario!= tarefa.usuario.nome then %>
-      <div id="nomeUsuario"><%= tarefa.usuario.nome %> </div>
+      <div id="nome_usuario"><%= tarefa.usuario.nome %> </div>
       <% nome_usuario = tarefa.usuario.nome %> 
     <% end %>
    <div id="tarefa">
-	<%= 'blink' if tarefa.alerta %>
-	<a href="#" onClick="Effect.toggle('toggle_appear_<%= tarefa.id.to_s %>' , 'blind', { duration: 1.0 }	); return false;"><%= tarefa.descricao %></a>
+	<% form_for(tarefa, :action=>:altera_status, :controller=>'tarefas') do |f| %>
+      <%= f.select :situacao_id, @situacaos %> 
+      <%= hidden_field_tag :tarefa_id, tarefa.id %>
+    <% end %>
+    <%= 'blink' if tarefa.alerta %>
+    <a href="#" onClick="Effect.toggle('toggle_appear_<%= tarefa.id.to_s %>' , 'blind', { duration: 1.0 }	); return false;"><%= tarefa.descricao %></a>
     <div style="display: none;"id="toggle_appear_<%= tarefa.id.to_s %>" style="background:#F2F2F2;">
-    <%= render :partial=>'form_comentario', :locals=>{:tarefa=>tarefa} %>
     <%= render :partial=>'comentarios_de_uma_tarefa', :locals=>{:tarefa=>tarefa, :lado=>'esquerdo'} %>
+    <%= render :partial=>'form_comentario', :locals=>{:tarefa=>tarefa} %>
    </div>
  </div>
 <br/>

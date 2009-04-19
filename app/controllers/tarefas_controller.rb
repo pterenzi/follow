@@ -8,8 +8,9 @@ class TarefasController < ApplicationController
 
   # GET /tarefas GET /tarefas.xml
   def index
-    @comentario = Comentario.new
-    @comentario.usuario_id = session[:usuario_id]
+#    @comentario = Comentario.new
+#    @comentario.usuario_id = session[:usuario_id]
+    @situacaos = Situacao.find(:all).collect{|obj| [obj.descricao,obj.id]}
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @tarefas }
@@ -46,6 +47,7 @@ class TarefasController < ApplicationController
     @tarefa = Tarefa.find(params[:id])
 #debugger
     @projetos = Projeto.all(:order=>'descricao').collect{|obj| [obj.descricao,obj.id]}
+    #FIXME combo de usuario não está funcionando. Sempre motra o primeiro
     @usuarios = Usuario.find(:all).collect{|obj| [obj.nome,obj.id]}
     @situacaos = Situacao.find(:all).collect{|obj| [obj.descricao,obj.id]}
 
@@ -110,17 +112,22 @@ class TarefasController < ApplicationController
     end
   end
   
+  def alttera_status
+    
+  end
+  
   private
   
   def busca_tarefas
     @tarefas = Tarefa.find(:all)
-    @minhasSolicitacoes = Tarefa.all(:order=>"solicitante_id", 
-         :conditions=>["solicitante_id=? and usuario_id<>solicitante_id",@usuario.id ])
-    @minhasTarefas = Tarefa.all(:conditions=>["usuario_id=?",@usuario.id])
+    @minhas_solicitacoes = Tarefa.all(:order=>"usuario_id", 
+         :conditions=>["solicitante_id=? and usuario_id<>solicitante_id",@usuario_logado.id ])
+    @minhas_tarefas = Tarefa.all(:order=>'solicitante_id',
+         :conditions=>["usuario_id=?",@usuario_logado.id])
     
   end
   
   def busca_usuario
-    @usuario = Usuario.find(session[:usuario_id])
+    @usuario_logado = Usuario.find(session[:usuario_id])
   end
 end

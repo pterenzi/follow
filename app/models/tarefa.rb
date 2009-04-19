@@ -39,7 +39,8 @@ validates_presence_of :situacao_id, :message=>"não pode ficar em branco!"
 
 def usuario_que_criou(usuario_id)
   usuario = Usuario.find(usuario_id)
-  usuario_id == usuario.id
+  usuario_id == solicitante_id
+  #TODO test unitario para este metodo
 end
 
 end

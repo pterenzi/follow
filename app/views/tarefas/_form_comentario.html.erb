@@ -2,7 +2,7 @@
  <%= hidden_field_tag :tarefa_id, tarefa.id %>
   <p>
    Comentário :<br/>
-    <%= text_field_tag 'descricao', '' ,:size=>30 %>
+    <%= text_area_tag 'descricao', '' ,:size=>"25x3" %>
   </p>
   <p>
     <%= submit_tag "Create" %>
