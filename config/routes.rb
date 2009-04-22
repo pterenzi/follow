@@ -1,4 +1,7 @@
 ActionController::Routing::Routes.draw do |map|
+ 
+  map.resources :actions
+
   map.resources :comentarios
 
   map.resources :recados, :collection => {:show_export => :get}

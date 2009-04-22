@@ -2,14 +2,12 @@ class TarefasController < ApplicationController
 
   before_filter :authorize
   before_filter :busca_usuario
-  before_filter :busca_tarefas, :only=>[:index, :show, :new, :edit]
+  before_filter :busca_tarefas , :only=>[:index, :show, :new, :edit]
 
   layout 'follow'
 
   # GET /tarefas GET /tarefas.xml
   def index
-#    @comentario = Comentario.new
-#    @comentario.usuario_id = session[:usuario_id]
     @usuarios = Usuario.all.collect{|obj| [obj.nome,obj.id]}
     @situacaos = Situacao.find(:all).collect{|obj| [obj.descricao,obj.id]}
     respond_to do |format|
@@ -119,12 +117,23 @@ class TarefasController < ApplicationController
   end
   
   def encaminhar
-    usuario = Usuario.find(params[:usuario_id])
-    tarefa = Tarefa.find(params[:tarefa_id])
-    if tarefa.save
-      redirect_to tarefas_path
+    @tarefa = Tarefa.find(params[:tarefa_id])
+    if params[:excluir_tarefa]
+      @tarefa.destroy
+      respond_to do |format|  
+        format.html { redirect_to(tarefas_path) }
+      end
+    else
+      usuario = Usuario.find(params[:usuario_id])
+      @tarefa.usuario_id = usuario.id
+      if tarefa.save
+        redirect_to tarefas_path
+      end
     end
   end
+  
+  
+  
   
   private
   

@@ -4,16 +4,19 @@
 <% content_for :rightside do %>
   <%= render :partial=>"minhasTarefas" %>
 <% end %>
+<% content_for :lado_sem_usuario do %>
+  <%= render :partial=>"tarefas_sem_usuario"%>
+<% end %>
 <% content_for :main do%>
 <h1>Detalhes Sobre Tarefa</h1>
 <br/>
 <p/>
-	<p>
-		<b>Descrição:</b>
-		<%= @tarefa.descricao %>
-	</p>
+    <p>
+        <b>Descrição:</b>
+        <%= @tarefa.descricao %>
+    </p>
 <p>
-  <b>Situacaos:</b>
+  <b>Situação:</b>
   <%=h @tarefa.situacao.descricao %>
 </p>
 
@@ -24,11 +27,11 @@
 
 <p>
   <b>Delegado a:</b>
-  <%=h @tarefa.usuario.nome %>
+  <%=h @tarefa.usuario.nome unless @tarefa.usuario.nil? %>
 </p>
 
 <p>
-  <b>Tempo est:</b>
+  <b>Tempo estimado:</b>
   <%=h @tarefa.tempo_est %>
 </p>
 
@@ -38,8 +41,8 @@
 </p>
 
 <p>
-	<b>Aberto em</b>
-	<%= @tarefa.created_at %>
+    <b>Aberto em</b>
+    <%= @tarefa.created_at %>
 </p>
 
 
@@ -48,7 +51,7 @@
 </p>
 <br/>
 <h1>Comentários</h1>
-<%= link_to "novo comentario" , new_tarefa_comentario_url(@tarefa) %><br/>
+<%= link_to "novo comentário" , new_tarefa_comentario_url(@tarefa) %><br/>
 <% for comentario in @comentarios  %>
   <%= comentario.usuario.nome %>
   <%= comentario.descricao %> | <%= link_to "alterar", edit_tarefa_comentario_url(@tarefa,comentario)%>

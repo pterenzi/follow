@@ -43,8 +43,8 @@ def usuario_que_criou(usuario_id)
   #TODO test unitario para este metodo
 end
 
-def sem_solicitante
-  return solicitante_id.nil?
+def sem_usuario
+  return usuario_id.nil?
 end
 
 end

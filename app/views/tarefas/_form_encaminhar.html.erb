@@ -5,6 +5,6 @@
     <%= f.select :usuario_id, @usuarios %>
   </p>
   <p>
-    <%= submit_tag "Encaminhar" %> | <%= submit_tag "Excluir" %>
+    <%= submit_tag "Encaminhar" %> | <%= submit_tag "Excluir", :name=>'excluir_tarefa' %>
   </p>
 <% end %>
