@@ -18,11 +18,18 @@ border:1px solid #5a78a5;
 
 }
 input { 
-background-color: #5a78a5; 
 font: 10px "Trebuchet MS";
-color:#FFFFFF;
-border:4px solid #5a78a5;
+color:#000000;
 }
+
+.linkbotao {    font-family: verdana, arial, sans-serif; 
+   font-size: 10pt; 
+   font-weight: bold; 
+   padding: 4px; 
+   color: #666666; 
+   text-decoration: none; 
+} 
+
 body {
     background-color: #5F5F5F;
     background-image: url(../images/back.gif);
@@ -173,6 +180,7 @@ body {
     float: right;
     background-color: #EDEDED;
     width: 224px;
+	min-height: 300px;
     border-top: solid #fff 1px;
     border-bottom: solid #fff 1px;
 }
@@ -239,7 +247,7 @@ body {
 
 #rightsidebartext1 a:hover {
     color: #66584B;
-    text-decoration: underline;
+    text-decoration: none;
 }
 
 #leftpic {
@@ -256,9 +264,10 @@ body {
     float: left;
     background-color: #F2F2F2;
     width: 224px;
+	min-height: 300px;
     border-top: solid #fff 1px;
     border-bottom: solid #fff 1px;
-  position: relative;
+  	position: relative;
 }
 
 #leftsidebar h2 {
@@ -292,7 +301,7 @@ body {
 
 #leftsidebartext a:hover {
     color: #66584B;
-    text-decoration: underline;
+    text-decoration: none;
 }
 
 #leftsidebartext1 {
@@ -310,7 +319,7 @@ body {
 
 #leftsidebartext1 a:hover {
     color: #66584B;
-    text-decoration: underline;
+    text-decoration: none;
 }
 
 #middlepic {
@@ -489,5 +498,177 @@ main {
     list-style: square;
 }
 
+/* Global styles */
+
+/* START:notice */
+#notice {
+	width:450px;
+	position: relative;
+	float: left;
+    border: 2px solid red;
+    padding: 1em;
+    margin-bottom: 2em;
+    background-color: #f0f0f0;
+    font: bold smaller sans-serif;
+}
+/* END:notice */
+
+
+/* Styles for main page */
+#banner {
+    background: #000000 url("../images/logo.jpg") no-repeat left top;
+    font-family: "Trebuchet MS", "Microsoft Sans Serif", Times, serif;
+    font-size: 8pt;
+    background-color: #ffffff;
+    margin-top: 1px;
+    width:990px; 
+    height:59px;
+}
+
+#footer {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border-top: 1px solid;
+    font: small-caps 40px/40px "Times New Roman", serif;
+    color: #000066;
+    text-align: center;
+    
+    background-repeat: no-repeat;
+    
+    height: 40px;
+    background-image: url(../images/footer_atrios.gif);
+    background-position: center;
+    margin-top: 50px;
+}
+
+#banner img {
+    float: left;
+}
+
+
+
+#main {
+    float: rigth;  
+    padding-top: 10ex;
+    padding-left: 0em;
+    background: white;
+    margin-left: 200px;
+    
+    width: 800px;
+}
+
+#foto {
+    float: left;
+    margin-left: 8em;
+    padding-top: 5ex;
+    padding-left: 1em;
+    background: white;
+    
+}
+#main a:link { color: #000066; }
+#main  a:visited { color: #666; }
+#main    a:hover {
+    background-color: #000066;
+    color: white;
+    
+}
+
+
+
+
+
+#side {
+    float: left;
+    padding-top: 1em;
+    padding-left: 1em;
+    padding-bottom: 1em;
+    width: 1em;
+    background: #141;
+}
+
+#side a {
+    color: #000066;
+    font-size: small;
+}
+
+h1 {
+    font:  150% sans-serif;
+    color: #226;
+    border-bottom: 3px dotted #77d;
+}
+
+
+
+
+/* The error box */
+
+.fieldWithErrors {
+    padding: 2px;
+    background-color: red;
+    display: table;
+}
+
+#errorExplanation {
+    width: 400px;
+    border: 2px solid red;
+    padding: 7px;
+    padding-bottom: 12px;
+    margin-bottom: 20px;
+    background-color: #f0f0f0;
+}
+
+#errorExplanation h2 {
+    text-align: left;
+    font-weight: bold;
+    padding: 5px 5px 5px 15px;
+    font-size: 12px;
+    margin: -7px;
+    background-color: #c00;
+    color: #fff;
+}
+
+#errorExplanation p {
+    color: #333;
+    margin-bottom: 0;
+    padding: 5px;
+}
+
+#errorExplanation ul li {
+    font-size: 12px;
+    list-style: square;
+}
+
+#nomeUsuario {
+    font-family: "Trebuchet MS", Verdana, Times, serif;
+    font-size: 8pt;
+    color: #ad1c21;
+    padding-top: 2px;
+    padding-left: 12px;
+    padding-bottom: 4px;
+    line-height: 14pt;
+}
+
+#tarefa {
+	font-family: "Trebuchet MS", Verdana, Times, serif;
+    font-size: 8pt;
+    color: black;
+    padding-top: 2px; 
+    padding-left: 18px;
+	padding-bottom: 4px;
+    line-height: 14pt;
+    border-bottom: 1px solid #999;
+	text-decoration:none;
+}
+#tarefa a {
+    text-decoration: none;
+    color: #66584B;
+	
+#comentario_vermelho{
+	color: #455A79;
+}
+
+#comentario_preto{
+	color: black;
+}
 
 

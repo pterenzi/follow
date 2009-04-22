@@ -8,6 +8,9 @@
 <% content_for :rightside do %>
   <%= render :partial=>"minhasTarefas" %>
 <% end %>
+<% content_for :lado_sem_usuario do %>
+<%= render :partial=>"tarefas_sem_usuario"%>
+<% end %>
 
 <% content_for :recados do %>
   <tr>

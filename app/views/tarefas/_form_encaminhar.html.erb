@@ -1,0 +1,10 @@
+<% form_for(tarefa, :action=>:encaminhar, :controller=>'tarefa') do |f| %>
+ <%= hidden_field_tag :tarefa_id, tarefa.id %>
+  <p>
+   Usuário :
+    <%= f.select :usuario_id, @usuarios %>
+  </p>
+  <p>
+    <%= submit_tag "Encaminhar" %> | <%= submit_tag "Excluir" %>
+  </p>
+<% end %>

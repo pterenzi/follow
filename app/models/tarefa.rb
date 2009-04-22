@@ -17,7 +17,7 @@ has_many :comentarios
 
 validates_presence_of :projeto_id, :message=>"não pode ficar em branco!"
 
-validates_presence_of :usuario_id, :message=>"não pode ficar em branco!"
+#validates_presence_of :usuario_id, :message=>"não pode ficar em branco!"
 
 validates_presence_of :descricao, :message=>"não pode ficar em branco!"
 
@@ -41,6 +41,10 @@ def usuario_que_criou(usuario_id)
   usuario = Usuario.find(usuario_id)
   usuario_id == solicitante_id
   #TODO test unitario para este metodo
+end
+
+def sem_solicitante
+  return solicitante_id.nil?
 end
 
 end

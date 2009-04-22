@@ -1,0 +1,12 @@
+<% content_for :lado_sem_usuario do %>
+    <% nome_usuario = ''%>
+    <% for tarefa in @tarefas_sem_usuario do  %>
+      <div id="tarefa">
+        <%= 'blink' if tarefa.alerta %>
+        <a href="#" onClick="Effect.toggle('encaminhar_<%= tarefa.id.to_s %>' , 'blind', { duration: 1.0 } ); return false;"><%= tarefa.descricao %></a>
+        <div style="display: none;"id="encaminhar_<%= tarefa.id.to_s %>" style="background:#F2F2F2;">
+        <%= render :partial=>'form_encaminhar', :locals=>{:tarefa=>tarefa} %>
+        </div>
+      </div>
+    <% end %>
+<% end %>

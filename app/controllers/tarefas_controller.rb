@@ -10,6 +10,7 @@ class TarefasController < ApplicationController
   def index
 #    @comentario = Comentario.new
 #    @comentario.usuario_id = session[:usuario_id]
+    @usuarios = Usuario.all.collect{|obj| [obj.nome,obj.id]}
     @situacaos = Situacao.find(:all).collect{|obj| [obj.descricao,obj.id]}
     respond_to do |format|
       format.html # index.html.erb
@@ -21,6 +22,7 @@ class TarefasController < ApplicationController
   def show
     @tarefa = Tarefa.find(params[:id])
     @comentarios = Comentario.all(:conditions=>["tarefa_id=?",@tarefa.id])
+    @situacaos = Situacao.find(:all).collect{|obj| [obj.descricao,obj.id]}
 
     respond_to do |format|
       format.html # show.html.erb
@@ -116,15 +118,22 @@ class TarefasController < ApplicationController
     
   end
   
+  def encaminhar
+    usuario = Usuario.find(params[:usuario_id])
+    tarefa = Tarefa.find(params[:tarefa_id])
+    if tarefa.save
+      redirect_to tarefas_path
+    end
+  end
+  
   private
   
   def busca_tarefas
     @tarefas = Tarefa.find(:all)
     @minhas_solicitacoes = Tarefa.all(:order=>"usuario_id", 
-         :conditions=>["solicitante_id=? and usuario_id<>solicitante_id",@usuario_logado.id ])
-    @minhas_tarefas = Tarefa.all(:order=>'solicitante_id',
-         :conditions=>["usuario_id=?",@usuario_logado.id])
-    
+          :conditions=>["solicitante_id=? and usuario_id<>solicitante_id and usuario_id<>''",@usuario_logado.id ])
+    @minhas_tarefas = Tarefa.all(:conditions=>["usuario_id=? or usuario_id<>'' ",@usuario_logado.id])
+    @tarefas_sem_usuario = Tarefa.all(:conditions=>["solicitante_id=? and usuario_id='' ",@usuario_logado.id])
   end
   
   def busca_usuario

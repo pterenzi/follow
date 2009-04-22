@@ -2,6 +2,9 @@
 
 /* START:notice */
 #notice {
+	width:450px;
+	position: relative;
+	float: left;
     border: 2px solid red;
     padding: 1em;
     margin-bottom: 2em;
@@ -95,34 +98,7 @@ h1 {
 }
 
 
-.depot-form fieldset {
-    background: #efe;
-    background-color: #dcf2fb;
-}
 
-
-
-
-
-.depot-form legend {
-    color: #ffffff;
-    background: #141;
-    font-family: sans-serif;
-    padding: 0.2em 1em;
-    background-color: #000066;
-}
-
-.depot-form label {
-    width: 10em;
-    float: left;
-    text-align: right;
-    margin-right: 0.5em;
-    display: block;
-}
-
-.depot-form .submit {
-    margin-left: 5.5em;
-}
 
 /* The error box */
 
@@ -181,6 +157,7 @@ h1 {
 	padding-bottom: 4px;
     line-height: 14pt;
     border-bottom: 1px solid #999;
+	text-decoration:none;
 }
 
 #comentario_vermelho{

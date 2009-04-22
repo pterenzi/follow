@@ -11,10 +11,7 @@
       <% nome_usuario = tarefa.usuario.nome %> 
     <% end %>
    <div id="tarefa">
-	<% form_for(tarefa, :action=>:altera_status, :controller=>'tarefas') do |f| %>
-      <%= f.select :situacao_id, @situacaos %> 
-      <%= hidden_field_tag :tarefa_id, tarefa.id %>
-    <% end %>
+    <%= tarefa.situacao.descricao %><br/>
     <%= 'blink' if tarefa.alerta %>
     <a href="#" onClick="Effect.toggle('toggle_appear_<%= tarefa.id.to_s %>' , 'blind', { duration: 1.0 }	); return false;"><%= tarefa.descricao %></a>
     <div style="display: none;"id="toggle_appear_<%= tarefa.id.to_s %>" style="background:#F2F2F2;">

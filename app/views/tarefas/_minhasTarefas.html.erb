@@ -1,23 +1,31 @@
 <% content_for :rightside do %>
-<% nome_usuario = ''%>
-<% if @minhas_solicitacoes.empty? %>
-   <div id="nome_usuario">
-    Não há nenhuma tarefa direcionada pra você no momento. 
-   </div>
-<% end %>
-<% for tarefa in @minhas_tarefas do  %>
-  <% if nome_usuario!= tarefa.usuario.nome then %>
-     <div id="nome_usuario"><%= tarefa.usuario.nome %> </div>
-     <% nome_usuario = tarefa.usuario.nome %> 
-   <% end %>
-   <div id="tarefa">
-      <%= 'blink' if tarefa.alerta %>
-      <a href="#" onClick="Effect.toggle('toggle_appear_<%= tarefa.id.to_s %>' , 'blind', { duration: 1.0 } ); return false;"><%= tarefa.descricao %></a>
-      <div style="display: none;"id="toggle_appear_<%= tarefa.id.to_s %>" style="background:#F2F2F2;">
-      <%= render :partial=>'form_comentario', :locals=>{:tarefa=>tarefa} %>
-      <%= render :partial=>'comentarios_de_uma_tarefa', :locals=>{:tarefa=>tarefa, :lado=>'direito'} %>
-      </div>
+    <% nome_usuario = ''%>
+    <% if @minhas_solicitacoes.empty? %>
+    <div id="nome_usuario">
+        Não há nenhuma tarefa direcionada pra você no momento. 
     </div>
+    <% end %>
+    <% for tarefa in @minhas_tarefas do  %>
+      <% if nome_usuario!= tarefa.usuario.nome then %>
+        <div id="nome_usuario"><%= tarefa.usuario.nome %> </div>
+        <% nome_usuario = tarefa.usuario.nome %> 
+      <% end %>
+    <div id="tarefa">
+        <%= 'blink' if tarefa.alerta %>
+        <% if tarefa.sem_solicitante %>
+        <a href="#" onClick="Effect.toggle('encaminhar_<%= tarefa.id.to_s %>' , 'blind', { duration: 1.0 } ); return false;"><%= tarefa.descricao %></a>
+        <div style="display: none;"id="encaminhar_<%= tarefa.id.to_s %>" style="background:#F2F2F2;">
+        <%= render :partial=>'form_encaminhar', :locals=>{:tarefa=>tarefa} %>
+    </div>
+
+    <% else %>
+    <a href="#" onClick="Effect.toggle('toggle_appear_<%= tarefa.id.to_s %>' , 'blind', { duration: 1.0 } ); return false;"><%= tarefa.descricao %></a>
+    <div style="display: none;"id="toggle_appear_<%= tarefa.id.to_s %>" style="background:#F2F2F2;">
+        <%= render :partial=>'form_comentario', :locals=>{:tarefa=>tarefa} %>
+        <%= render :partial=>'comentarios_de_uma_tarefa', :locals=>{:tarefa=>tarefa, :lado=>'direito'} %>
+    </div>
+    <% end %>
+</div>
 <% end %>
 
 <% end %>
