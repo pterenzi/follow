@@ -66,10 +66,12 @@ body {
 #container {
     margin: 20px auto;
     width: 990px;
-    height: 700px;
+    min-height: 500px;
+	_height: 500px;
     padding: 10px;
     background-color: #fff;
-  position: relative;
+  	position: relative;
+	overflow: hidden;
 }
 #container_ext {
     margin: 20px auto;
@@ -427,10 +429,12 @@ main {
     background-color: #F2F2F2;
 }
 
-.user {
+#user {
     float: right;
     width: 224px;
-    align: bottom;
+	font-family: "Trebuchet MS", Verdana, Times, serif;
+    font-size: 8pt;
+    color: #ad1c21;
 	border-top: solid #fff 1px;
     border-bottom: solid #fff 1px;
 }
@@ -502,26 +506,38 @@ main {
 
 /* START:notice */
 #notice {
-	width:450px;
+	width:300px;
 	position: relative;
-	float: left;
+	float: center;
     border: 2px solid red;
     padding: 1em;
     margin-bottom: 2em;
     background-color: #f0f0f0;
-    font: bold smaller sans-serif;
+    font: bold smallest sans-serif;
 }
+
+#notice_container{
+	width:542px;
+	float:left;	
+}
+
 /* END:notice */
 
 
 /* Styles for main page */
+#header {
+	width:990;
+	float:left;
+}
 #banner {
     background: #000000 url("../images/logo.jpg") no-repeat left top;
     font-family: "Trebuchet MS", "Microsoft Sans Serif", Times, serif;
-    font-size: 8pt;
+    position: relative;
+	float: left;
+	font-size: 8pt;
     background-color: #ffffff;
     margin-top: 1px;
-    width:990px; 
+    width:224px	; 
     height:59px;
 }
 
@@ -566,15 +582,12 @@ main {
     
 }
 #main a:link { color: #000066; }
-#main  a:visited { color: #666; }
-#main    a:hover {
+#main a:visited { color: #666; }
+#main a:hover {
     background-color: #000066;
     color: white;
     
 }
-
-
-
 
 
 #side {
@@ -638,7 +651,7 @@ h1 {
     list-style: square;
 }
 
-#nomeUsuario {
+#nome_usuario {
     font-family: "Trebuchet MS", Verdana, Times, serif;
     font-size: 8pt;
     color: #ad1c21;
@@ -662,13 +675,13 @@ h1 {
 #tarefa a {
     text-decoration: none;
     color: #66584B;
-	
+}	
 #comentario_vermelho{
-	color: #455A79;
-}
+		color: #ad1c21;	}
 
 #comentario_preto{
-	color: black;
+		color: black;
 }
-
-
+#comentario_azul{
+		color: #5a78a5;
+}

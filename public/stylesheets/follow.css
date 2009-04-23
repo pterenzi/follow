@@ -2,13 +2,15 @@
 
 /* START:notice */
 #notice {
-	width:450px;
+	width:30%;
 	position: relative;
-	float: left;
+	float: center;
     border: 2px solid red;
     padding: 1em;
-    margin-bottom: 2em;
+	margin-left:35%;
+	margin-right:35%;
     background-color: #f0f0f0;
+	text-align: center;
     font: bold smaller sans-serif;
 }
 /* END:notice */
@@ -161,7 +163,7 @@ h1 {
 }
 
 #comentario_vermelho{
-	color: red;
+	color: #ad1c21;
 }
 
 #comentario_preto{

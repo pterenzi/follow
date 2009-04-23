@@ -4,14 +4,14 @@
     <% if comentario.usuario == tarefa.solicitante %>
        <div id='comentario_preto'>
     <% else %>
-       <div id='comentario_vermelho'>
+       <div id='comentario_azul'>
 	<% end %>
   <% else %>
     <% if comentario.usuario == tarefa.solicitante %>
-       <div id='comentario_preto'>
+       <div id='comentario_azul'>
     <% else %>
-      <div id='comentario_vermelho'>
+      <div id='comentario_preto'>
 	<% end %>
   <% end %> 
-  * <%= comentario.descricao %></div>
+  • <%= comentario.descricao %></div>
 <% end %>

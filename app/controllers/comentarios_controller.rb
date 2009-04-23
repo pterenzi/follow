@@ -57,7 +57,7 @@ class ComentariosController < ApplicationController
     respond_to do |format|
       Comentario.transaction do
         if @comentario.save & tarefa.save
-          flash[:notice] = 'Comentario was successfully created.'
+          flash[:notice] = 'O comentário foi incluído com sucesso.'
           format.html { redirect_to(tarefas_path) }
           format.xml  { render :xml => @comentario, :status => :created, :location => @comentario }
         else
