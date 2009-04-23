@@ -9,11 +9,15 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20090422201829) do
+ActiveRecord::Schema.define(:version => 20090423001426) do
 
+  create_table "acoes", :force => true do |t|
+    t.string  "nome",        :limit => 20
+    t.boolean "funcionando"
+  end
 
-  create_table "actions", :force => true do |t|
-    t.string   "nome",       :limit => 20
+  create_table "andamentos", :force => true do |t|
+    t.string   "nome"
     t.boolean  "ativo"
     t.datetime "created_at"
     t.datetime "updated_at"

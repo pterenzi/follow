@@ -7,10 +7,10 @@
        <div id='comentario_vermelho'>
 	<% end %>
   <% else %>
-  <% if comentario.usuario == tarefa.solicitante %>
-     <div id='comentario_vermelho'>
-  <% else %>
-     <div id='comentario_preto'>
+    <% if comentario.usuario == tarefa.solicitante %>
+       <div id='comentario_preto'>
+    <% else %>
+      <div id='comentario_vermelho'>
 	<% end %>
   <% end %> 
   * <%= comentario.descricao %></div>

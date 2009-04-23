@@ -1,0 +1,22 @@
+<h1>Listing andamentos</h1>
+
+<table>
+  <tr>
+    <th>Nome</th>
+    <th>Ativo</th>
+  </tr>
+
+<% for andamento in @andamentos %>
+  <tr>
+    <td><%=h andamento.nome %></td>
+    <td><%=h andamento.ativo %></td>
+    <td><%= link_to 'Show', andamento %></td>
+    <td><%= link_to 'Edit', edit_andamento_path(andamento) %></td>
+    <td><%= link_to 'Destroy', andamento, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New andamento', new_andamento_path %>

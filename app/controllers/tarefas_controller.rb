@@ -21,7 +21,8 @@ class TarefasController < ApplicationController
     @tarefa = Tarefa.find(params[:id])
     @comentarios = Comentario.all(:conditions=>["tarefa_id=?",@tarefa.id])
     @situacaos = Situacao.find(:all).collect{|obj| [obj.descricao,obj.id]}
-
+    @usuarios = Usuario.find(:all).collect{|obj| [obj.nome,obj.id]}
+    
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @tarefa }
@@ -112,9 +113,6 @@ class TarefasController < ApplicationController
     end
   end
   
-  def alttera_status
-    
-  end
   
   def encaminhar
     @tarefa = Tarefa.find(params[:tarefa_id])
@@ -141,8 +139,9 @@ class TarefasController < ApplicationController
     @tarefas = Tarefa.find(:all)
     @minhas_solicitacoes = Tarefa.all(:order=>"usuario_id", 
           :conditions=>["solicitante_id=? and usuario_id<>solicitante_id and usuario_id<>''",@usuario_logado.id ])
-    @minhas_tarefas = Tarefa.all(:conditions=>["usuario_id=? or usuario_id<>'' ",@usuario_logado.id])
+    @minhas_tarefas = Tarefa.all(:order=>"solicitante_id", :conditions=>["usuario_id=?  ",@usuario_logado.id])
     @tarefas_sem_usuario = Tarefa.all(:conditions=>["solicitante_id=? and usuario_id='' ",@usuario_logado.id])
+    @andamentos = Andamento.all(:conditions=> ["ativo=?",true]).collect{|obj| [obj.nome,obj.id]}
   end
   
   def busca_usuario

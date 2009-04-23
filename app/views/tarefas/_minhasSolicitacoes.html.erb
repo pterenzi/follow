@@ -11,6 +11,7 @@
       <% nome_usuario = tarefa.usuario.nome %> 
     <% end %>
    <div id="tarefa">
+
     <%= tarefa.situacao.descricao %><br/>
     <%= 'blink' if tarefa.alerta %>
     <a href="#" onClick="Effect.toggle('toggle_appear_<%= tarefa.id.to_s %>' , 'blind', { duration: 1.0 }	); return false;"><%= tarefa.descricao %></a>
