@@ -1,256 +1,69 @@
-== Welcome to Rails
-
-Rails is a web-application framework that includes everything needed to create 
-database-backed web applications according to the Model-View-Control pattern. 
-
-This pattern splits the view (also called the presentation) into "dumb" templates
-that are primarily responsible for inserting pre-built data in between HTML tags.
-The model contains the "smart" domain objects (such as Account, Product, Person,
-Post) that holds all the business logic and knows how to persist themselves to
-a database. The controller handles the incoming requests (such as Save New Account,
-Update Product, Show Post) by manipulating the model and directing data to the view.
-
-In Rails, the model is handled by what's called an object-relational mapping
-layer entitled Active Record. This layer allows you to present the data from
-database rows as objects and embellish these data objects with business logic
-methods. You can read more about Active Record in
-link:files/vendor/rails/activerecord/README.html.
-
-The controller and view are handled by the Action Pack, which handles both
-layers by its two parts: Action View and Action Controller. These two layers
-are bundled in a single package due to their heavy interdependence. This is
-unlike the relationship between the Active Record and Action Pack that is much
-more separate. Each of these packages can be used independently outside of
-Rails.  You can read more about Action Pack in
-link:files/vendor/rails/actionpack/README.html.
-
-
-== Getting Started
-
-1. At the command prompt, start a new Rails application using the <tt>rails</tt> command
-   and your application name. Ex: rails myapp
-2. Change directory into myapp and start the web server: <tt>script/server</tt> (run with --help for options)
-3. Go to http://localhost:3000/ and get "Welcome aboard: You're riding the Rails!"
-4. Follow the guidelines to start developing your application
-
-
-== Web Servers
-
-By default, Rails will try to use Mongrel and lighttpd if they are installed, otherwise
-Rails will use WEBrick, the webserver that ships with Ruby. When you run script/server,
-Rails will check if Mongrel exists, then lighttpd and finally fall back to WEBrick. This ensures
-that you can always get up and running quickly.
+Sistema de acompanhamento e avaliação de tarefas 
 
-Mongrel is a Ruby-based webserver with a C component (which requires compilation) that is
-suitable for development and deployment of Rails applications. If you have Ruby Gems installed,
-getting up and running with mongrel is as easy as: <tt>gem install mongrel</tt>.
-More info at: http://mongrel.rubyforge.org
+Processos de followup são imprescindíveis na administração de qualquer empresa. Acompanhar o andamento de qualquer solicitação não é  opcional.
 
-If Mongrel is not installed, Rails will look for lighttpd. It's considerably faster than
-Mongrel and WEBrick and also suited for production use, but requires additional
-installation and currently only works well on OS X/Unix (Windows users are encouraged
-to start with Mongrel). We recommend version 1.4.11 and higher. You can download it from
-http://www.lighttpd.net.
+Porque? 
 
-And finally, if neither Mongrel or lighttpd are installed, Rails will use the built-in Ruby
-web server, WEBrick. WEBrick is a small Ruby web server suitable for development, but not
-for production.
-
-But of course its also possible to run Rails on any platform that supports FCGI.
-Apache, LiteSpeed, IIS are just a few. For more information on FCGI,
-please visit: http://wiki.rubyonrails.com/rails/pages/FastCGI
+• Empresas precisam avaliar corretamente seus gerentes ou chefes de equipe. A eficiência da equipe subordinada ao gerente pode ser um dos critérios. 
+• Gerentes precisam conhecer, em tempo real, o status de cada solicitação que direcionou à sua equipe. Isso é extremamente importante para o planejamento dos próximos passos dos projetos ou tarefas sob sua responsabilidade. Precisam, também, avaliar corretamente o desempenho de cada funcionário."Qual funcionário merece ser promovido? A quem devo demitir?" Além disso, muitas vezes a justificativa para o fracasso de uma tarefa é: "O senhor não me pediu isso!" ou ainda "O senhor não me passou todas as informações necessárias para executá-la!" 
+• Funcionários eficientes (e com ambição) precisam dar visibilidade ao volume de trabalho executado e gostariam de ser avaliados com precisão.
 
+Para solucionar estas e muitas outras questões, nós criamos o Follow
+ 
 
-== Apache .htaccess example
+Objetivos
 
-# General Apache options
-AddHandler fastcgi-script .fcgi
-AddHandler cgi-script .cgi
-Options +FollowSymLinks +ExecCGI
+• Centralização da comunicação interna da empresa através de ferramenta que permite a inclusão e acompanhamento do andamento de solicitações entre os usuários, grupos, projetos, gerentes e administradores, além de agenda de compromissos e recados.
+• Permitir a inclusão e acompanhamento remotos do status de solicitações.
+• Otimizar o sistema de acompanhamento e cobrança de resultados das solicitações.
+• Avaliar o desempenho dos usuários a partir de critérios objetivos como: tempo de execução, eficiência e iniciativa na solução das tarefas e subjetivos como índices de satisfação.
+• Avaliar o desempenho, capacidade de comunicação e liderança de gerentes e chefes, através do resultado dos funcionários sob a sua gestão.
+ 
+Características gerais
 
-# If you don't want Rails to look in certain directories,
-# use the following rewrite rules so that Apache won't rewrite certain requests
-# 
-# Example:
-#   RewriteCond %{REQUEST_URI} ^/notrails.*
-#   RewriteRule .* - [L]
+• Desenvolvido na linguagem Ruby on Rails, com interface web, podendo ser utilizado simultaneamente em ambiente LAN (rede local) ou Intranet (acesso remoto através da internet).
+• Compatível com qualquer computador ou dispositivo que possua acesso a internet e navegador web, sejam computadores desktops, notebooks, PDAs, iPhones ou Smart Phones, independente do sistema operacional instalado.
+• Acesso seguro com senha criptografada.
+• Banco de dados MySQL.
+• Licenciamento por usuário. 
+ 
 
-# Redirect all requests not available on the filesystem to Rails
-# By default the cgi dispatcher is used which is very slow
-# 
-# For better performance replace the dispatcher with the fastcgi one
-#
-# Example:
-#   RewriteRule ^(.*)$ dispatch.fcgi [QSA,L]
-RewriteEngine On
+Características por área
 
-# If your Rails application is accessed via an Alias directive,
-# then you MUST also set the RewriteBase in this htaccess file.
-#
-# Example:
-#   Alias /myrailsapp /path/to/myrailsapp/public
-#   RewriteBase /myrailsapp
 
-RewriteRule ^$ index.html [QSA]
-RewriteRule ^([^.]+)$ $1.html [QSA]
-RewriteCond %{REQUEST_FILENAME} !-f
-RewriteRule ^(.*)$ dispatch.cgi [QSA,L]
+Unidades organizacionais:																					
 
-# In case Rails experiences terminal errors
-# Instead of displaying this message you can supply a file here which will be rendered instead
-# 
-# Example:
-#   ErrorDocument 500 /500.html
+• Área administrativa para inclusão, visualização, alteração e exclusão de unidades organizacionais ou centros de custo, tais como: empresa, projetos e grupos de trabalho.
+ 
 
-ErrorDocument 500 "<h2>Application error</h2>Rails application failed to start properly"
+Usuários:
 
+• Área para inclusão, visualização, alteração e exclusão de usuários
+ 
 
-== Debugging Rails
+Recados:
 
-Sometimes your application goes wrong.  Fortunately there are a lot of tools that
-will help you debug it and get it back on the rails.
+• Tela de inclusão de recados: Formulário para que secretárias ou atendentes incluam os recados para os usuários. Recados podem ser particulares e compartilhados com o grupo de trabalho, projeto ou empresa.
+Campo com os recados na home: Assim que o usuário se loga no sistema, os seus recados estão disponíveis na primeira página, classificados em ordem cronológica. Há um botão de ok que altera o status para ciente/retornado que faz com que aquele recado deixe de ser exibido na tela inicial do site.
+• Tela de relatório de recados: Relatório geral de todos os recados recebidos pelo usuário, com filtragem por período.
+ 
 
-First area to check is the application log files.  Have "tail -f" commands running
-on the server.log and development.log. Rails will automatically display debugging
-and runtime information to these files. Debugging info will also be shown in the
-browser on requests from 127.0.0.1.
+Agenda de compromissos:
 
-You can also log your own messages directly into the log file from your code using
-the Ruby logger class from inside your controllers. Example:
+• Tela de inclusão de compromissos: Formulário para inclusão de compromissos ou eventos com opções de visualização privada ou compartilhada com o projeto, grupo de trabalho ou empresa.
+• Agenda de compromissos na home: Ao se logar, o usuário tem acesso a um calendário com todos os eventos/compromissos inseridos por ele ou os compartilhados entre seu  grupo de trabalho, projeto ou empresa.
+ 
 
-  class WeblogController < ActionController::Base
-    def destroy
-      @weblog = Weblog.find(params[:id])
-      @weblog.destroy
-      logger.info("#{Time.now} Destroyed Weblog ID ##{@weblog.id}!")
-    end
-  end
+Tarefas:
 
-The result will be a message in your log file along the lines of:
+• Tela de inclusão de tarefas: Formulário para inclusão de solicitações com filtragem por empresa, projeto, grupo de trabalho e usuário. Ao se logar, por padrão são disponibilizados o projeto e o grupo de trabalho onde o usuário está locado. Há menus pop-up com seleção dinâmica de usuários em outros projetos e grupos de trabalho.
+Lista de tarefas: Na coluna esquerda da tela do sistema há uma lista com todas as solicitações inseridas pelo usuário para outras pessoas. Na coluna direita há todas as solicitações inseridas por outras pessoas para este usuário. Nas solicitações as quais ele deve executar, há um menu pop-up para alteração do status para do andamento e uma seta que expande um campo para que o usuário inclua comentários ou peça informações ao solicitante da tarefa. A cada alteração de status ou inclusão de comentário, surge aviso na tela do solicitante para que interaja com o comentário incluído ou autorize a alteração do status. Após a conclusão da tarefa pelo usuário, surge na tela do solicitante um formulário com botões “ruim, razoável, bom, ótimo”para classificação do desempenho do usuário na execução da tarefa, além de um campo de texto para inclusão de um comentário ou observação final sobre o índice de satisfação. 
+• Relatório de tarefas: Tela de followup para visualização detalhada das solicitações, com filtragem por projeto, grupo de trabalho, usuário e período. Inclui todas as interações entre solicitante e executante, com data/hora de inclusão, data/hora de finalização, tempo estimado de execução, tempo total de execução, quantidade de interações, pontuação da avaliação subjetiva, comentário e pontuação finais.
+ 
 
-  Mon Oct 08 14:22:29 +1000 2007 Destroyed Weblog ID #1
 
-More information on how to use the logger is at http://www.ruby-doc.org/core/
+Critérios de avaliação
 
-Also, Ruby documentation can be found at http://www.ruby-lang.org/ including:
-
-* The Learning Ruby (Pickaxe) Book: http://www.ruby-doc.org/docs/ProgrammingRuby/
-* Learn to Program: http://pine.fm/LearnToProgram/  (a beginners guide)
-
-These two online (and free) books will bring you up to speed on the Ruby language
-and also on programming in general.
-
-
-== Debugger
-
-Debugger support is available through the debugger command when you start your Mongrel or
-Webrick server with --debugger. This means that you can break out of execution at any point
-in the code, investigate and change the model, AND then resume execution! 
-You need to install ruby-debug to run the server in debugging mode. With gems, use 'gem install ruby-debug'
-Example:
-
-  class WeblogController < ActionController::Base
-    def index
-      @posts = Post.find(:all)
-      debugger
-    end
-  end
-
-So the controller will accept the action, run the first line, then present you
-with a IRB prompt in the server window. Here you can do things like:
-
-  >> @posts.inspect
-  => "[#<Post:0x14a6be8 @attributes={\"title\"=>nil, \"body\"=>nil, \"id\"=>\"1\"}>,
-       #<Post:0x14a6620 @attributes={\"title\"=>\"Rails you know!\", \"body\"=>\"Only ten..\", \"id\"=>\"2\"}>]"
-  >> @posts.first.title = "hello from a debugger"
-  => "hello from a debugger"
-
-...and even better is that you can examine how your runtime objects actually work:
-
-  >> f = @posts.first
-  => #<Post:0x13630c4 @attributes={"title"=>nil, "body"=>nil, "id"=>"1"}>
-  >> f.
-  Display all 152 possibilities? (y or n)
-
-Finally, when you're ready to resume execution, you enter "cont"
-
-
-== Console
-
-You can interact with the domain model by starting the console through <tt>script/console</tt>.
-Here you'll have all parts of the application configured, just like it is when the
-application is running. You can inspect domain models, change values, and save to the
-database. Starting the script without arguments will launch it in the development environment.
-Passing an argument will specify a different environment, like <tt>script/console production</tt>.
-
-To reload your controllers and models after launching the console run <tt>reload!</tt>
-
-== dbconsole
-
-You can go to the command line of your database directly through <tt>script/dbconsole</tt>.
-You would be connected to the database with the credentials defined in database.yml.
-Starting the script without arguments will connect you to the development database. Passing an
-argument will connect you to a different database, like <tt>script/dbconsole production</tt>.
-Currently works for mysql, postgresql and sqlite.
-
-== Description of Contents
-
-app
-  Holds all the code that's specific to this particular application.
-
-app/controllers
-  Holds controllers that should be named like weblogs_controller.rb for
-  automated URL mapping. All controllers should descend from ApplicationController
-  which itself descends from ActionController::Base.
-
-app/models
-  Holds models that should be named like post.rb.
-  Most models will descend from ActiveRecord::Base.
-
-app/views
-  Holds the template files for the view that should be named like
-  weblogs/index.html.erb for the WeblogsController#index action. All views use eRuby
-  syntax.
-
-app/views/layouts
-  Holds the template files for layouts to be used with views. This models the common
-  header/footer method of wrapping views. In your views, define a layout using the
-  <tt>layout :default</tt> and create a file named default.html.erb. Inside default.html.erb,
-  call <% yield %> to render the view using this layout.
-
-app/helpers
-  Holds view helpers that should be named like weblogs_helper.rb. These are generated
-  for you automatically when using script/generate for controllers. Helpers can be used to
-  wrap functionality for your views into methods.
-
-config
-  Configuration files for the Rails environment, the routing map, the database, and other dependencies.
-
-db
-  Contains the database schema in schema.rb.  db/migrate contains all
-  the sequence of Migrations for your schema.
-
-doc
-  This directory is where your application documentation will be stored when generated
-  using <tt>rake doc:app</tt>
-
-lib
-  Application specific libraries. Basically, any kind of custom code that doesn't
-  belong under controllers, models, or helpers. This directory is in the load path.
-
-public
-  The directory available for the web server. Contains subdirectories for images, stylesheets,
-  and javascripts. Also contains the dispatchers and the default HTML files. This should be
-  set as the DOCUMENT_ROOT of your web server.
-
-script
-  Helper scripts for automation and generation.
-
-test
-  Unit and functional tests along with fixtures. When using the script/generate scripts, template
-  test files will be generated for you and placed in this directory.
-
-vendor
-  External libraries that the application depends on. Also includes the plugins subdirectory.
-  If the app has frozen rails, those gems also go here, under vendor/rails/.
-  This directory is in the load path.
+• Tempo de execução: Ao cadastrar uma tarefa, o solicitante inclui o tempo estimado de execução. Após a conclusão da tarefa é calculada a diferença entre o tempo previsto e o tempo de execução. A diferença é convertida em percentagem do tempo estimado de execução e gera uma pontuação final para este critério.
+• Quantidade de interações: A cada interação é atribuído um ponto. Mais pontos, menor a média. A lógica: menos interações, melhor a compreensão da solicitação, menor tempo de execução.
+• Avaliação subjetiva com índice de satisfação: Cada tarefa será avaliada através de índice de satisfação, com níveis “ruim, razoável, bom, ótimo”
