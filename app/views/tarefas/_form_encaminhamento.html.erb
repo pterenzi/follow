@@ -1,0 +1,7 @@
+<% form_tag (:action=>:encaminhar, :controller=>'tarefas' ) do |f| %>
+  <div id="select">
+  <%= hidden_field_tag :tarefa_id, tarefa.id %>	
+  <%= select_tag :andamento_id, options_for_select(@andamentos), :onChange=>'javascript:alerta('+ tarefa.id.to_s  + ')' unless tarefa.pausada %>
+  <%= submit_tag "ok" %><br/>
+  </div>
+<% end %>

@@ -1,0 +1,15 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  data: 2009-04-24 16:24:19
+  tarefa: 
+  justificativa: MyString
+  aceito: false
+  comentario_solicitante: MyString
+
+two:
+  data: 2009-04-24 16:24:19
+  tarefa: 
+  justificativa: MyString
+  aceito: false
+  comentario_solicitante: MyString

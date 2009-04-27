@@ -47,4 +47,36 @@ def sem_usuario
   return usuario_id.nil?
 end
 
+def sem_pausa
+  pausa = Pausa.find(:all, :conditions=>["tarefa_id=?",id]).last
+  return (pausa.nil? or (pausa.aceito and !pausa.reinicio.nil?))
+end
+
+def pausada
+  pausa = Pausa.find(:all, :conditions=>["tarefa_id=?",id]).last
+  return pausa.aceito==true
+end
+
+def pausa_nao_aceita
+  pausa = Pausa.da_tarefa(id)
+  if pausa.nil? 
+    return false
+  else
+    if pausa.aceito.nil?
+      return false
+    else
+      return !pausa.aceito
+    end
+  end
+end
+
+def pausada_esperando_aprovacao
+  pausa = Pausa.find(:all, :conditions=>["tarefa_id=?",id]).last
+  if pausa.nil?
+    return false
+  else
+    return pausa.aceito.nil?
+  end
+end
+
 end

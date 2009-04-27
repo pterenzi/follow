@@ -1,0 +1,28 @@
+<h1>Listing pausas</h1>
+
+<table>
+  <tr>
+    <th>Data</th>
+    <th>Tarefa</th>
+    <th>Justificativa</th>
+    <th>Aceito</th>
+    <th>Comentario solicitante</th>
+  </tr>
+
+<% for pausa in @pausas %>
+  <tr>
+    <td><%=h pausa.data %></td>
+    <td><%=h pausa.tarefa %></td>
+    <td><%=h pausa.justificativa %></td>
+    <td><%=h pausa.aceito %></td>
+    <td><%=h pausa.comentario_solicitante %></td>
+    <td><%= link_to 'Show', pausa %></td>
+    <td><%= link_to 'Edit', edit_pausa_path(pausa) %></td>
+    <td><%= link_to 'Destroy', pausa, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New pausa', new_pausa_path %>

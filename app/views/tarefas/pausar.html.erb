@@ -1,0 +1,20 @@
+
+<% content_for :leftside do %>
+ 
+  <%= render :partial=>"minhasSolicitacoes" %>
+<% end %>
+<% content_for :main do %>
+  <%= render :partial=>"pausar", :locals=>{:tarefa=>@tarefa} %>
+<% end %>
+<% content_for :rightside do %>
+  <%= render :partial=>"minhasTarefas" %>
+<% end %>
+<% content_for :lado_sem_usuario do %>
+  <%= render :partial=>"tarefas_sem_usuario"%>
+<% end %>
+
+<% content_for :recados do %>
+  <tr>
+    <td>Este é um recado dinamico</td>
+  </tr>
+<% end %>

@@ -2,7 +2,7 @@ class TarefasController < ApplicationController
 
   before_filter :authorize
   before_filter :busca_usuario
-  before_filter :busca_tarefas , :only=>[:index, :show, :new, :edit]
+  before_filter :busca_tarefas , :only=>[:index, :show, :new, :edit, :pausar]
 
   layout 'follow'
 
@@ -22,6 +22,9 @@ class TarefasController < ApplicationController
     @comentarios = Comentario.all(:conditions=>["tarefa_id=?",@tarefa.id])
     @situacaos = Situacao.find(:all).collect{|obj| [obj.descricao,obj.id]}
     @usuarios = Usuario.find(:all).collect{|obj| [obj.nome,obj.id]}
+    if @tarefa.pausa_nao_aceita
+      @pausa = Pausa.da_tarefa(@tarefa.id)
+    end
     
     respond_to do |format|
       format.html # show.html.erb
@@ -59,6 +62,11 @@ class TarefasController < ApplicationController
   def create
     @tarefa = Tarefa.new(params[:tarefa])
     @tarefa.solicitante_id = session[:usuario_id]
+    if @tarefa.usuario
+      @tarefa.situacao_id = 8 # encaminhada
+    else
+      @tarefa.situacao_id = 1 # aberta
+    end
     
     respond_to do |format|
       if @tarefa.save
@@ -122,16 +130,73 @@ class TarefasController < ApplicationController
         format.html { redirect_to(tarefas_path) }
       end
     else
-      usuario = Usuario.find(params[:usuario_id])
-      @tarefa.usuario_id = usuario.id
-      if tarefa.save
-        redirect_to tarefas_path
-      end
+      if params[:andamento_id] =='Pausar'
+        redirect_to :controller=>'tarefas', :action=>'pausar', :id=>@tarefa.id
+        #redirect_to new_andamentos_path 
+        #usuario = Usuario.find(params[:usuario_id])
+        #@tarefa.usuario_id = usuario.id
+        #if tarefa.save
+        #  redirect_to tarefas_path
+        #end
+      end    
     end
   end
   
+  def pausar
+    @tarefa = Tarefa.find(params[:id])
+    @usuarios = Usuario.all.collect{|obj| [obj.nome,obj.id]}
+    @situacaos = Situacao.find(:all).collect{|obj| [obj.descricao,obj.id]}
+  end
   
+  def create_pausar
+    debugger
+    pausa = Pausa.new
+    pausa.tarefa_id = params[:tarefa_id]
+    pausa.justificativa = params[:justificativa]
+    pausa.data = Time.now
+    if pausa.save
+      redirect_to tarefas_path
+    else
+      #TODO fazer tratamento de erro
+    end
+  end
   
+  def aprovar_pausa
+    pausa = Pausa.find(:all, :conditions=>["tarefa_id=?",id]).last
+    pausa.aceito = true
+    if pausa.save
+      redirect_to tarefas_path
+    else
+      #TODO fazer targtamento de erro    
+    end
+  end
+  
+  def aprovar_ou_reprovar_pausa
+    debugger
+    #@tarefa = Tarefa.find(params[:tarefa_id])
+    @pausa = Pausa.da_tarefa(params[:tarefa_id])
+    if params[:reprovar]
+      @pausa.aceito = false
+    else
+      @pausa.aceito = true
+    end
+    @pausa.comentario_solicitante = params[:comentario]
+    if @pausa.save
+      redirect_to tarefas_path
+    else
+      #TODO tratar erro
+    end
+  end
+  
+  def reiniciar_a_tarefa
+    @pausa = Pausa.da_tarefa(params[:tarefa_id])
+    @pausa.reinicio = Time.now
+    if @pausa.save
+      redirect_to tarefas_path
+    else
+      #TODO verifica erro
+    end
+  end
   
   private
   
@@ -141,7 +206,7 @@ class TarefasController < ApplicationController
           :conditions=>["solicitante_id=? and usuario_id<>solicitante_id and usuario_id<>''",@usuario_logado.id ])
     @minhas_tarefas = Tarefa.all(:order=>"solicitante_id", :conditions=>["usuario_id=?  ",@usuario_logado.id])
     @tarefas_sem_usuario = Tarefa.all(:conditions=>["solicitante_id=? and usuario_id='' ",@usuario_logado.id])
-    @andamentos = Andamento.all(:conditions=> ["ativo=?",true]).collect{|obj| [obj.nome,obj.id]}
+    @andamentos = Andamento.all(:conditions=> ["ativo=?",true]).collect{|obj| [obj.nome,obj.nome]}
   end
   
   def busca_usuario

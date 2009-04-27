@@ -1,0 +1,31 @@
+<h1>New pausa</h1>
+
+<% form_for(@pausa) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :data %><br />
+    <%= f.datetime_select :data %>
+  </p>
+  <p>
+    <%= f.label :tarefa %><br />
+    <%= f.text_field :tarefa %>
+  </p>
+  <p>
+    <%= f.label :justificativa %><br />
+    <%= f.text_field :justificativa %>
+  </p>
+  <p>
+    <%= f.label :aceito %><br />
+    <%= f.check_box :aceito %>
+  </p>
+  <p>
+    <%= f.label :comentario_solicitante %><br />
+    <%= f.text_field :comentario_solicitante %>
+  </p>
+  <p>
+    <%= f.submit "Create" %>
+  </p>
+<% end %>
+
+<%= link_to 'Back', pausas_path %>

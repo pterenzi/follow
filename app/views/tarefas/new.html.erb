@@ -20,19 +20,12 @@
 </p>
 
   <p>
-	<b>Descrição</b><br/>
-	<%= f.text_area :descricao, :cols=>60, :rows=>10 %>
+    <b>Descrição</b><br/>
+    <%= f.text_area :descricao, :cols=>60, :rows=>10 %>
   </p>
 
   <p>
-    <b>Situação</b><br />   
-    
-    <%= f.select :situacao_id,@situacaos,{:prompt=>"Selecione uma Opção"} %>      
-  </p>
-
-
-  <p>
-    <b>Usuario</b><br />   
+    <b>Usuário</b><br />   
     
     <%= f.select :usuario_id,@usuarios,{:prompt=>"Selecione uma Opção"} %>      
   </p>

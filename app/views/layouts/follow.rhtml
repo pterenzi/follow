@@ -17,22 +17,26 @@
 
 <body>
 
-  <%= stylesheet_link_tag 'styles' , 'menu', 'tableNegocios', 'follow' %>
+  <%= stylesheet_link_tag 'styles' , 'menu', 'tableNegocios' %>
 
   <div id="container">
 
 <div>
-  <div class=align="left">
+  <div id="cabecalho">
     <div id="banner" >
-	 <div class="user">
+      <%=  @page_title  %>
+    </div>
+	<div id="notice_container">  
+	<% if flash[:notice] -%>
+      <div id="notice"><%= flash[:notice] %></div>
+    <% end -%>
+	</div>
+	<div id="user">
         Usuário: <%= Usuario.find(session[:usuario_id]).nome unless session[:usuario_id].nil? %><br>
         Perfil: <%= session[:perfil] %>
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
       <%= link_to '(Sair)', url_for(:action => 'logout', :controller => 'login') %>
      </div>
-      <%=  @page_title  %>
-
-    </div>
   </div>
 </div>
     
@@ -73,20 +77,19 @@
 
 
     <div id="rightsidebar">
-      <h2>Minhas tarefas:</h2>
-      <div id="rightsidebartext">
-        <%= yield :rightside %>
-      </div>
-      <h2>Tarefas a serem encaminhadas</h2>
+      <h2>Direcionar</h2>
       <div id="rightsidebartext">
         <%= yield :lado_sem_usuario %>
       </div>
+	  <h2>Minhas tarefas:</h2>
+      <div id="rightsidebartext">
+        <%= yield :rightside %>
+      </div>
+
     </div>
 
     <div id="main">
-      <p style="color: green"><% if flash[:notice] -%></p>
-        <div id="notice"><%= flash[:notice] %></div>
-      <% end -%>
+
       <div id="contenttxt" >
         <%= yield :main %>
       </div>

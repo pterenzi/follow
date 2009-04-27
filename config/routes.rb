@@ -1,14 +1,12 @@
 ActionController::Routing::Routes.draw do |map|
-  map.resources :andamentos
-
  
-  map.resources :actions
+  map.resources :andamentos , :collection=>{:pausar=>:get}
 
   map.resources :comentarios
 
   map.resources :recados, :collection => {:show_export => :get}
 
-  map.resources :tarefas, :collection => {:show_export => :get}
+  map.resources :tarefas, :collection => {:show_export => :get, :pausar=>:get, :reiniciar_a_tarefa=>:get}
   
   map.resources :tarefas do |tarefas|
        tarefas.resources :comentarios

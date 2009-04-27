@@ -1,0 +1,12 @@
+<h2>Aprovar / Reprovar Pausa</h2>
+<br>
+<p>Justificativa de pausa : <%= Pausa.da_tarefa(tarefa.id).justificativa %>
+	<p/><br/>
+<% form_tag( :action=>:aprovar_ou_reprovar_pausa, :controller=>'tarefas') do %>
+ <%= hidden_field_tag :tarefa_id, tarefa.id %>
+  <p>
+   Comentário: <%= text_area_tag(:comentario, '', :size=>"55x4") %>  
+<br/><br/>
+   <%= submit_tag "Aprovar pausa" %> |    <%= submit_tag "Reprovar pausa", :name=>"reprovar" %>
+  </p>
+<% end %>

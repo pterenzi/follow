@@ -1,4 +1,6 @@
 class AndamentosController < ApplicationController
+  
+  layout 'follow'
   # GET /andamentos
   # GET /andamentos.xml
   def index
@@ -82,4 +84,9 @@ class AndamentosController < ApplicationController
       format.xml  { head :ok }
     end
   end
+  
+  def pausar
+    debugger
+  end
+  
 end
