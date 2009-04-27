@@ -1,0 +1,171 @@
+/* Global styles */
+
+/* START:notice */
+#notice {
+	width:30%;
+	position: relative;
+	float: center;
+    border: 2px solid red;
+    padding: 1em;
+	margin-left:35%;
+	margin-right:35%;
+    background-color: #f0f0f0;
+	text-align: center;
+    font: bold smaller sans-serif;
+}
+/* END:notice */
+
+
+/* Styles for main page */
+#banner {
+    background: #000000 url("../images/logo.jpg") no-repeat left top;
+    font-family: "Trebuchet MS", "Microsoft Sans Serif", Times, serif;
+    font-size: 8pt;
+    background-color: #ffffff;
+    margin-top: 1px;
+    width:990px; 
+    height:59px;
+}
+
+#footer {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border-top: 1px solid;
+    font: small-caps 40px/40px "Times New Roman", serif;
+    color: #000066;
+    text-align: center;
+    
+    background-repeat: no-repeat;
+    
+    height: 40px;
+    background-image: url(../images/footer_atrios.gif);
+    background-position: center;
+    margin-top: 50px;
+}
+
+#banner img {
+    float: left;
+}
+
+
+
+#main {
+    float: rigth;  
+    padding-top: 10ex;
+    padding-left: 0em;
+    background: white;
+    margin-left: 200px;
+    
+    width: 800px;
+}
+
+#foto {
+    float: left;
+    margin-left: 8em;
+    padding-top: 5ex;
+    padding-left: 1em;
+    background: white;
+    
+}
+#main a:link { color: #000066; }
+#main  a:visited { color: #666; }
+#main    a:hover {
+    background-color: #000066;
+    color: white;
+    
+}
+
+
+
+
+
+#side {
+    float: left;
+    padding-top: 1em;
+    padding-left: 1em;
+    padding-bottom: 1em;
+    width: 1em;
+    background: #141;
+}
+
+#side a {
+    color: #000066;
+    font-size: small;
+}
+
+h1 {
+    font:  150% sans-serif;
+    color: #226;
+    border-bottom: 3px dotted #77d;
+}
+
+
+
+
+/* The error box */
+
+.fieldWithErrors {
+    padding: 2px;
+    background-color: red;
+    display: table;
+}
+
+#errorExplanation {
+    width: 400px;
+    border: 2px solid red;
+    padding: 7px;
+    padding-bottom: 12px;
+    margin-bottom: 20px;
+    background-color: #f0f0f0;
+}
+
+#errorExplanation h2 {
+    text-align: left;
+    font-weight: bold;
+    padding: 5px 5px 5px 15px;
+    font-size: 12px;
+    margin: -7px;
+    background-color: #c00;
+    color: #fff;
+}
+
+#errorExplanation p {
+    color: #333;
+    margin-bottom: 0;
+    padding: 5px;
+}
+
+#errorExplanation ul li {
+    font-size: 12px;
+    list-style: square;
+}
+
+#nome_usuario {
+    font-family: "Trebuchet MS", Verdana, Times, serif;
+    font-size: 8pt;
+    color: #ad1c21;
+    padding-top: 2px;
+    padding-left: 12px;
+    padding-bottom: 4px;
+    line-height: 14pt;
+}
+
+#tarefa {
+	font-family: "Trebuchet MS", Verdana, Times, serif;
+    font-size: 8pt;
+    color: black;
+    padding-top: 2px; 
+    padding-left: 18px;
+	padding-bottom: 4px;
+    line-height: 14pt;
+    border-bottom: 1px solid #999;
+	text-decoration:none;
+}
+
+#comentario_vermelho{
+	color: #ad1c21;
+}
+
+#comentario_preto{
+	color: black;
+}
