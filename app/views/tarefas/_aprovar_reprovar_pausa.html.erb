@@ -1,6 +1,6 @@
 <h2>Aprovar / Reprovar Pausa</h2>
 <br>
-<p>Justificativa de pausa : <%= Pausa.da_tarefa(tarefa.id).justificativa %>
+<p>Justificativa de pausa : <%= @pausa.justificativa unless @pausa.nil? %>
 	<p/><br/>
 <% form_tag( :action=>:aprovar_ou_reprovar_pausa, :controller=>'tarefas') do %>
  <%= hidden_field_tag :tarefa_id, tarefa.id %>

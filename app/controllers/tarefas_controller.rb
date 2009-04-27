@@ -22,9 +22,7 @@ class TarefasController < ApplicationController
     @comentarios = Comentario.all(:conditions=>["tarefa_id=?",@tarefa.id])
     @situacaos = Situacao.find(:all).collect{|obj| [obj.descricao,obj.id]}
     @usuarios = Usuario.find(:all).collect{|obj| [obj.nome,obj.id]}
-    if @tarefa.pausa_nao_aceita
-      @pausa = Pausa.da_tarefa(@tarefa.id)
-    end
+    @pausa = Pausa.da_tarefa(@tarefa.id)
     
     respond_to do |format|
       format.html # show.html.erb

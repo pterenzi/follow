@@ -3,16 +3,16 @@
 <% else %>
   <% if @tarefa.sem_pausa %>
     <a href="#" onClick="Effect.toggle('pausar' , 'blind', { duration: 1.0 } ); return false;">pausar</a>
-    <% else %>
-      <% if @tarefa.pausada_esperando_aprovacao %>
-        <% if @tarefa.solicitante == @usuario_logado %> 
-          <a href="#" onClick="Effect.toggle('aprovar_reprovar' , 'blind', { duration: 1.0 } ); return false;">Aprovar / Reprovar pausa</a>
-        <% else %>
-          Aguardando aprovação
-        <% end %>
+  <% else %>
+    <% if @tarefa.pausada_esperando_aprovacao %>
+      <% if @tarefa.solicitante == @usuario_logado %> 
+        <a href="#" onClick="Effect.toggle('aprovar_reprovar' , 'blind', { duration: 1.0 } ); return false;">Aprovar / Reprovar pausa</a>
       <% else %>
-        <%= Pausa.da_tarefa(@tarefa.id).comentario_solicitante %>
-        <%= link_to "Reiniciar a tarefa", :controller=>"tarefas", :action=>"reiniciar_a_tarefa" , :tarefa_id=> @tarefa.id %>          
+        Aguardando aprovação
       <% end %>
+   <% else %>
+      <%= Pausa.da_tarefa(@tarefa.id).comentario_solicitante %>
+      <%= link_to "Reiniciar a tarefa", :controller=>"tarefas", :action=>"reiniciar_a_tarefa" , :tarefa_id=> @tarefa.id %>          
     <% end %>
+  <% end %>
 <% end %>
