@@ -12,13 +12,18 @@
     <% end %>
    <div id="tarefa">
 
-    <%= tarefa.situacao.descricao %><br/>
+    <%= tarefa.situacao.descricao %> | <%= tarefa.status %><br/>
     <%= 'blink' if tarefa.alerta %>
     <a href="#" onClick="Effect.toggle('toggle_appear_<%= tarefa.id.to_s %>' , 'blind', { duration: 1.0 }	); return false;"><%= tarefa.descricao %></a>
     <div style="display: none;"id="toggle_appear_<%= tarefa.id.to_s %>" style="background:#F2F2F2;">
     <%= render :partial=>'comentarios_de_uma_tarefa', :locals=>{:tarefa=>tarefa, :lado=>'esquerdo'} %>
     <%= render :partial=>'form_comentario', :locals=>{:tarefa=>tarefa} %>
    </div>
+   <% if tarefa.pausada_esperando_aprovacao %>
+<div style="display:">
+     <%= render :partial=>'aprovar_reprovar_pausa', :locals=>{:tarefa=>tarefa}%>
+</div>
+   <% end %>
  </div>
 <br/>
 <% end %>

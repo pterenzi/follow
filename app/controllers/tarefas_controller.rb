@@ -2,7 +2,7 @@ class TarefasController < ApplicationController
 
   before_filter :authorize
   before_filter :busca_usuario
-  before_filter :busca_tarefas , :only=>[:index, :show, :new, :edit, :pausar]
+  before_filter :busca_tarefas , :only=>[:index, :show, :new, :edit]
 
   layout 'follow'
 
