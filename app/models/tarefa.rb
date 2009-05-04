@@ -52,11 +52,12 @@ def status
   return "pausada" if pausada
   return "pausa não autorizada" if pausa_nao_aceita
   return "pausada esperando aprovação" if pausada_esperando_aprovacao
+  return "em andamento"
 end
 
 def sem_pausa
   pausa = Pausa.find(:all, :conditions=>["tarefa_id=?",id]).last
-  return (pausa.nil? or (!pausa.aceito and !pausa.reinicio.nil?))
+  return (pausa.nil? || (pausa.aceito & !pausa.reinicio.nil?)) || (pausa.aceito)
 end
 
 def pausada
@@ -64,7 +65,7 @@ def pausada
   if pausa.nil?
     return false
   else
-    return pausa.aceito==true
+    return pausa.aceito==true & pausa.reinicio.nil?
   end
 end
 

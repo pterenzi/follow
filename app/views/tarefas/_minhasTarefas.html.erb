@@ -21,20 +21,22 @@
     </div>
 
     <% if tarefa.pausada_esperando_aprovacao %>
-       esperando aprovação<a href="#"><img src="/images/pause.png"/>
+       esperando aprovação<a href="#"><img src="/images/pause.png" border=0 />
     <% end %>
 
     <% if tarefa.pausada  %>
-       pausada <a href="#"><img src="/images/pause.png"/></a>
+       <% rota = "/tarefas/reiniciar_a_tarefa?tarefa_id=" + tarefa.id.to_s  %>
+       pausada <a href= <%=rota%>  > <img src="/images/pause.png" border=0/></a>
     <% end %>
     
     <% if tarefa.sem_pausa %>
       em andamanto
-    <a href="#" onClick="Effect.toggle('form_pausa_<%= tarefa.id.to_s %>' , 'blind', { duration: 1.0 } ); return false;"><img src="/images/play.png"/></a>
+    <a href="#" onClick="Effect.toggle('form_pausa_<%= tarefa.id.to_s %>' , 'blind', { duration: 1.0 } ); return false;"><img src="/images/play.png" border=0/></a>
     <div style="display: none;"id="form_pausa_<%= tarefa.id.to_s %>" style="background:#F2F2F2;">
         <%= render :partial=>'pausar', :locals=>{:tarefa=>tarefa, :lado=>'direito'} %>
     </div>
     <% end %>
+    
 </div>
 <% end %>
 
