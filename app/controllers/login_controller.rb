@@ -17,6 +17,7 @@ class LoginController < ApplicationController
   # just display the form and wait for usuario to enter a name and password
   
   def login
+    reset_session
     session[:usuario_id] = nil
     if request.post?
       usuario = Usuario.authenticate(params[:name], params[:password])

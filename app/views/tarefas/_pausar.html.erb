@@ -1,9 +1,13 @@
-Pausar
-<br/>
 <% form_tag( :action=>:create_pausar, :controller=>'tarefas') do %>
  <%= hidden_field_tag :tarefa_id, tarefa.id %>
-  <p>
-   Justificativa : <%= text_area_tag(:justificativa, '', :size=>"21x4") %>  <br/>
-   <%= submit_tag "Pausar tarefa" %>
-  </p>
+  <table>
+	<tr>
+		<td valign="top">Justificativa :&nbsp; </td>
+		<td><%= text_area_tag(:justificativa, '', :size=>"21x2") %></td>
+    </tr>
+    <tr>
+	  <td>&nbsp;</td>
+	  <td><br/><%= submit_tag "Pausar tarefa" %></td>
+    </tr>
+  </table>
 <% end %>

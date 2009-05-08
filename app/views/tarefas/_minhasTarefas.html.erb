@@ -11,33 +11,36 @@
         <% nome_usuario = tarefa.solicitante.nome %> 
       <% end %>
     <div id="tarefa">
-		<%= tarefa.id %><br/>
-	    <%= 'blink' if tarefa.alerta %>
-        <a href="#" onClick="Effect.toggle('toggle_appear_<%= tarefa.id.to_s %>' , 'blind', { duration: 1.0 } ); return false;"><%= tarefa.descricao %></a><br/>
+	  <%= 'blink' if tarefa.alerta %>
+<%	#TODO substituir o togle do csriptaculous pelo do jquery %>
+        <a href="#" onClick="$('#toggle_appear_<%= tarefa.id.to_s %>').toggle('blind', { percent: 0 },500 ); return false;"><%= tarefa.descricao %></a><br/>
     <div style="display: none;"id="toggle_appear_<%= tarefa.id.to_s %>" style="background:#F2F2F2;">
-        <%= select_tag :andamento_id, options_for_select(@andamentos) %><br/>
+       
         <%= render :partial=>'comentarios_de_uma_tarefa', :locals=>{:tarefa=>tarefa, :lado=>'direito'} %>
         <%= render :partial=>'form_comentario', :locals=>{:tarefa=>tarefa} %>    
-    </div>
+    <% #TODO Verificar se os botõe ficaram embutidos %>
 
     <% if tarefa.pausada_esperando_aprovacao %>
-       esperando aprovação<a href="#"><img src="/images/pause.png" border=0 />
+       <a href="#"><img src="/images/pause.png" border=0 />
     <% end %>
 
     <% if tarefa.pausada  %>
        <% rota = "/tarefas/reiniciar_a_tarefa?tarefa_id=" + tarefa.id.to_s  %>
-       pausada <a href= <%=rota%>  > <img src="/images/pause.png" border=0/></a>
+       <a href= <%=rota%>  > <img src="/images/pause.png" border=0/></a>
     <% end %>
     
     <% if tarefa.sem_pausa %>
-      em andamanto
-    <a href="#" onClick="Effect.toggle('form_pausa_<%= tarefa.id.to_s %>' , 'blind', { duration: 1.0 } ); return false;"><img src="/images/play.png" border=0/></a>
-    <div style="display: none;"id="form_pausa_<%= tarefa.id.to_s %>" style="background:#F2F2F2;">
-        <%= render :partial=>'pausar', :locals=>{:tarefa=>tarefa, :lado=>'direito'} %>
-    </div>
+   
+	<a href="#" onClick="abre_form_pausa(<%=tarefa.id%>);return false;"><img src="/images/play.png" border=0/></a>
+	 <div style="display:none;" id="form_pausa_<%=tarefa.id.to_s%>">
+		 <%= render :partial=>'pausar', :locals=>{:tarefa=>tarefa, :lado=>'direito'} %>
+	</div>
+    
     <% end %>
     
+    </div>
 </div>
 <% end %>
 
 <% end %>
+<% #TODO Fazer efeito Pulsate no blink %>

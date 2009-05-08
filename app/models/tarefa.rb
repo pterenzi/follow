@@ -11,6 +11,8 @@ belongs_to :solicitante, :class_name => "Usuario", :foreign_key => "solicitante_
 
 has_many :comentarios
 
+has_many :pausas
+
 
 
 #Validações
