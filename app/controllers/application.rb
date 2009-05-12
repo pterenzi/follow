@@ -13,6 +13,18 @@ class ApplicationController < ActionController::Base
   # from your application log (in this case, all fields with names like "password"). 
   # filter_parameter_logging :password
 
+
+  def busca_tarefas
+     @tarefas = Tarefa.find(:all)
+     @minhas_solicitacoes = Tarefa.all(:order=>"usuario_id", 
+           :conditions=>["solicitante_id=? and usuario_id<>solicitante_id and usuario_id<>''",@usuario_logado.id ])
+     @minhas_tarefas = Tarefa.all(:order=>"solicitante_id", :conditions=>["usuario_id=?  ",@usuario_logado.id])
+     @tarefas_sem_usuario = Tarefa.all(:conditions=>["solicitante_id=? and usuario_id='' ",@usuario_logado.id])
+     @andamentos = Andamento.all(:conditions=> ["ativo=?",true]).collect{|obj| [obj.nome,obj.nome]}
+     @pausas_padrao = PausaPadrao.all(:order=>"descricao").collect{|obj| [obj.descricao,obj.id]}
+     @tem_tarefa_com_pausa_padrao = Tarefa.tem_tarefa_com_pausa_padrao(@minhas_tarefas)
+   end
+   
    private
 
   def authorize

@@ -1,0 +1,4 @@
+<% form_tag :action=>"pausar_padrao" do %>
+  <%= select :pausa_padrao, :pausa_padrao_id, @pausas_padrao %> &nbsp;&nbsp;
+  <%= submit_tag "pausar" %>
+<% end %>

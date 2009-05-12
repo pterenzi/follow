@@ -50,20 +50,21 @@ def sem_usuario
 end
 
 def status
+  return "em pausa padrão" if pausada_padrao
   return "sem pausa" if sem_pausa
   return "pausada" if pausada
   return "pausa não autorizada" if pausa_nao_aceita
   return "pausada esperando aprovação" if pausada_esperando_aprovacao
   return "em andamento"
-end
+  end
 
 def sem_pausa
-  pausa = Pausa.find(:all, :conditions=>["tarefa_id=?",id]).last
+  pausa = Pausa.find(:all, :conditions=>["pausa_padrao_id=NULL and tarefa_id=?",id]).last
   return (pausa.nil? || (pausa.aceito & !pausa.reinicio.nil?)) || (pausa.aceito)
 end
 
 def pausada
-  pausa = Pausa.find(:all, :conditions=>["tarefa_id=?",id]).last
+  pausa = Pausa.find(:all, :conditions=>["pausa_padrao_id=NULL and tarefa_id=?",id]).last
   if pausa.nil?
     return false
   else
@@ -85,7 +86,7 @@ def pausa_nao_aceita
 end
 
 def pausada_esperando_aprovacao
-  pausa = Pausa.find(:all, :conditions=>["tarefa_id=?",id]).last
+  pausa = Pausa.find(:all, :conditions=>["pausa_padrao_id=NULL and tarefa_id=?",id]).last
   if pausa.nil?
     return false
   else
@@ -93,4 +94,17 @@ def pausada_esperando_aprovacao
   end
 end
 
+def pausada_padrao
+  #TODO refazer esta logica
+  pausa = Pausa.find(:all, :conditions=>[" tarefa_id=?",id]).last
+  return !pausa.pausa_padrao_id.nil?
+end
+
+def self.tem_tarefa_com_pausa_padrao(tarefas)
+  for tarefa in tarefas
+      return true if tarefa.pausada_padrao 
+  end
+  return false
+end
+  
 end

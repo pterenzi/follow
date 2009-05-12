@@ -2,7 +2,7 @@ class TarefasController < ApplicationController
 
   before_filter :authorize
   before_filter :busca_usuario
-  before_filter :busca_tarefas , :only=>[:index, :show, :new, :edit]
+  before_filter :busca_tarefas , :only=>[:index, :show, :new, :edit, :pausar_padrao, :reiniciar_padrao]
 
   layout 'follow'
 
@@ -147,17 +147,21 @@ class TarefasController < ApplicationController
   end
   
   def create_pausar
-    debugger
     pausa = Pausa.new
     pausa.tarefa_id = params[:tarefa_id]
     pausa.justificativa = params[:justificativa]
     pausa.data = Time.now
+    if padrao
+      pausa.pausa_padrao_id = pausa_padrao_id
+    end
+    pausa.padrao=false
     if pausa.save
       redirect_to tarefas_path
     else
       #TODO fazer tratamento de erro
     end
   end
+  
   
   def aprovar_pausa
     pausa = Pausa.find(:all, :conditions=>["tarefa_id=?",id]).last
@@ -170,8 +174,6 @@ class TarefasController < ApplicationController
   end
   
   def aprovar_ou_reprovar_pausa
-    debugger
-    #@tarefa = Tarefa.find(params[:tarefa_id])
     @pausa = Pausa.da_tarefa(params[:tarefa_id])
     if params[:reprovar]
       @pausa.aceito = false
@@ -196,18 +198,45 @@ class TarefasController < ApplicationController
     end
   end
   
+  
+  def pausar_padrao
+#    debugger
+    pausa_padrao_id = params[:pausa_padrao][:pausa_padrao_id]
+    for tarefa in @minhas_tarefas
+      create_pausa_padrao(tarefa.id,pausa_padrao_id)
+    end
+    redirect_to tarefas_path
+  end
+  
+  def reiniciar_padrao
+    for tarefa in @minhas_tarefas
+      pausa = Pausa.find(:all, :conditions=>["pausa_padrao_id not null and tarefa_id=?",tarefa.id]).last
+      debugger
+      if !pausa.nil? && (!pausa.pausa_padrao_id.nil? & pausa.reinicio.nil?)
+        pausa.reinicio = Time.now
+        pausa.save
+      end
+    end
+    redirect_to tarefas_path
+  end
+  
+  def create_pausa_padrao(tarefa_id, pausa_padrao_id)
+    debugger
+    pausa = Pausa.new
+    pausa.tarefa_id = tarefa_id
+    pausa.data = Time.now
+    pausa.pausa_padrao_id = pausa_padrao_id
+    pausa.save
+    #TODO fazer tratamento de erro
+  end
   private
   
-  def busca_tarefas
-    @tarefas = Tarefa.find(:all)
-    @minhas_solicitacoes = Tarefa.all(:order=>"usuario_id", 
-          :conditions=>["solicitante_id=? and usuario_id<>solicitante_id and usuario_id<>''",@usuario_logado.id ])
-    @minhas_tarefas = Tarefa.all(:order=>"solicitante_id", :conditions=>["usuario_id=?  ",@usuario_logado.id])
-    @tarefas_sem_usuario = Tarefa.all(:conditions=>["solicitante_id=? and usuario_id='' ",@usuario_logado.id])
-    @andamentos = Andamento.all(:conditions=> ["ativo=?",true]).collect{|obj| [obj.nome,obj.nome]}
-  end
+ 
   
   def busca_usuario
     @usuario_logado = Usuario.find(session[:usuario_id])
   end
+  
+  
+  
 end

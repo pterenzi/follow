@@ -1,15 +1,17 @@
 # Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
 
-one:
+normal:
   data: 2009-04-24 16:24:19
-  tarefa: 
-  justificativa: MyString
-  aceito: false
-  comentario_solicitante: MyString
+  tarefa: one 
+  justificativa: "Servidor parado"
+  aceito: true
+  comentario_solicitante: "Vamos esperar entao"
+  pausa_padraos: 
 
-two:
+padrao:
   data: 2009-04-24 16:24:19
-  tarefa: 
-  justificativa: MyString
+  tarefa: two
+  justificativa: 
   aceito: false
-  comentario_solicitante: MyString
+  comentario_solicitante: 
+  pausa_padraos: almoco

@@ -1,4 +1,6 @@
 ActionController::Routing::Routes.draw do |map|
+  map.resources :pausa_padraos
+
  
   map.resources :andamentos , :collection=>{:pausar=>:get}
 
@@ -6,7 +8,8 @@ ActionController::Routing::Routes.draw do |map|
 
   map.resources :recados, :collection => {:show_export => :get}
 
-  map.resources :tarefas, :collection => {:show_export => :get, :pausar=>:get, :reiniciar_a_tarefa=>:get}
+  map.resources :tarefas, :collection => {:show_export => :get, :pausar=>:get, :reiniciar_a_tarefa=>:get, 
+         :pausar_padrao=>:get, :reiniciar_padrao=>:get }
   
   map.resources :tarefas do |tarefas|
        tarefas.resources :comentarios

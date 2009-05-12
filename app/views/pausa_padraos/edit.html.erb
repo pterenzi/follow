@@ -1,0 +1,16 @@
+<h1>Editing pausa_padrao</h1>
+
+<% form_for(@pausa_padrao) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :descricao %><br />
+    <%= f.text_field :descricao %>
+  </p>
+  <p>
+    <%= f.submit "Update" %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', @pausa_padrao %> |
+<%= link_to 'Back', pausa_padraos_path %>

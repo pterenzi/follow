@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20090427172521) do
+ActiveRecord::Schema.define(:version => 20090511151921) do
 
   create_table "acoes", :force => true do |t|
     t.string  "nome",        :limit => 20
@@ -73,6 +73,12 @@ ActiveRecord::Schema.define(:version => 20090427172521) do
     t.string "estado", :limit => 64
   end
 
+  create_table "pausa_padraos", :force => true do |t|
+    t.string   "descricao"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "pausas", :force => true do |t|
     t.datetime "data"
     t.integer  "tarefa_id"
@@ -82,6 +88,8 @@ ActiveRecord::Schema.define(:version => 20090427172521) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.datetime "reinicio"
+    t.boolean  "padrao"
+    t.integer  "pausa_padrao_id"
   end
 
   create_table "permissaos", :force => true do |t|

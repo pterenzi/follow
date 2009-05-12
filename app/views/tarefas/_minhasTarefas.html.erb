@@ -4,6 +4,12 @@
     <div id="nome_usuario">
         Não há nenhuma tarefa direcionada pra você no momento. 
     </div>
+    <% else %>
+      <% if @tem_tarefa_com_pausa_padrao %>
+        <%= render :partial=>"reinicio_padrao" %>
+      <% else %>
+        <%= render :partial=>"pausa_padrao" %>
+      <% end %>
     <% end %>
     <% for tarefa in @minhas_tarefas do  %>
       <% if nome_usuario!= tarefa.solicitante.nome then %>
@@ -12,6 +18,7 @@
       <% end %>
     <div id="tarefa">
 	  <%= 'blink' if tarefa.alerta %>
+	<%= tarefa.status %> | <%= tarefa.id %></br>
 <%	#TODO substituir o togle do csriptaculous pelo do jquery %>
         <a href="#" onClick="$('#toggle_appear_<%= tarefa.id.to_s %>').toggle('blind', { percent: 0 },500 ); return false;"><%= tarefa.descricao %></a><br/>
     <div style="display: none;"id="toggle_appear_<%= tarefa.id.to_s %>" style="background:#F2F2F2;">

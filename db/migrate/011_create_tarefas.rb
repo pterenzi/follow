@@ -5,6 +5,7 @@ class CreateTarefas < ActiveRecord::Migration
       t.references :projeto 
 
       t.references :usuario 
+      t.references :solicitante
 
       t.integer :tempo_est , :limit=>4, :null=>false
 

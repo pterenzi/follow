@@ -13,7 +13,7 @@ class Pausa < ActiveRecord::Base
       horas = minutos / 60
     end
     if horas.nil?
-       return minutos " min."
+       return minutos + " min."
     else
       return horas.to_s + "h e " + (minutos % 60).to_s + " min."
     end
