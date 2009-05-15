@@ -2,7 +2,4 @@
 log/*.log
 tmp/**/*
 config/database.yml
-db/*.sqlite3
 nbproject/*
-db/follow_development
-db/follow_test

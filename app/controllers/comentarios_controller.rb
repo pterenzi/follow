@@ -49,7 +49,7 @@ class ComentariosController < ApplicationController
   # POST /comentarios.xml
   def create
     @comentario = Comentario.new
-    @comentario.usuario_id = session[:usuario_id]
+    @comentario.user_id = current_user.id
     tarefa = Tarefa.find(params[:tarefa_id])
     tarefa.alerta = !tarefa.alerta
     @comentario.tarefa_id = params[:tarefa_id]
@@ -57,7 +57,7 @@ class ComentariosController < ApplicationController
     respond_to do |format|
       Comentario.transaction do
         if @comentario.save & tarefa.save
-          flash[:notice] = 'Comentario was successfully created.'
+          flash[:notice] = 'Comentario criado.'
           format.html { redirect_to(tarefas_path) }
           format.xml  { render :xml => @comentario, :status => :created, :location => @comentario }
         else

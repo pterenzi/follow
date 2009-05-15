@@ -6,9 +6,9 @@
    </div>
 <% end %>
 <% for tarefa in @minhas_solicitacoes do  %>
-    <% if nome_usuario!= tarefa.usuario.nome then %>
-      <div id="nome_usuario"><%= tarefa.usuario.nome %> </div>
-      <% nome_usuario = tarefa.usuario.nome %> 
+    <% if nome_usuario!= tarefa.user.login then %>
+      <div id="nome_usuario"><%= tarefa.user.login %> </div>
+      <% nome_usuario = tarefa.user.login %> 
     <% end %>
    <div id="tarefa">
 <% #TODO apenas piscar as tarefas com solicitação de pausa %>
@@ -19,7 +19,7 @@
     <% end %>
    <br/>
     <%= 'blink' if tarefa.alerta %>
-    <a href="#" onClick="Effect.toggle('toggle_appear_<%= tarefa.id.to_s %>' , 'blind', { duration: 1.0 }	); return false;"><%= tarefa.descricao %></a>
+    <a href="#" onClick="$('#toggle_appear_<%= tarefa.id.to_s %>').toggle('blind', { percent: 0 },500 ); return false;"><%= tarefa.descricao %></a>
     <div style="display: none;"id="toggle_appear_<%= tarefa.id.to_s %>" style="background:#F2F2F2;">
     <%= render :partial=>'comentarios_de_uma_tarefa', :locals=>{:tarefa=>tarefa, :lado=>'esquerdo'} %>
     <%= render :partial=>'form_comentario', :locals=>{:tarefa=>tarefa} %>

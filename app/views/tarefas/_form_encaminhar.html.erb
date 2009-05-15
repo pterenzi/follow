@@ -1,10 +1,13 @@
-<% form_for(tarefa, :action=>:encaminhar, :controller=>'tarefa') do |f| %>
+<% for u in @usuarios do%>
+<%= u %></br>
+<% end%>
+<% form_tag (:action=>"encaminhar", :controller=>"tarefas")  do |f| %>
  <%= hidden_field_tag :tarefa_id, tarefa.id %>
   <p>
    Usuário :
-    <%= f.select :usuario_id, @usuarios %>
+    <%= select :tarefa, :user_id, @usuarios %>
   </p>
   <p>
-    <%= submit_tag "Encaminhar" %> | <%= submit_tag "Excluir", :name=>'excluir_tarefa' %>
+    <%= submit_tag "Encaminhar" %> 
   </p>
 <% end %>

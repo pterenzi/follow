@@ -5,7 +5,9 @@ has_many :permissaos, :through=> :categorias_permissaos
 
 has_many :categorias_permissaos 
 
-has_many :usuarios
+#has_many :usuarios
+
+has_many :users
 
 
 

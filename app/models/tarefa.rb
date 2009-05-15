@@ -3,11 +3,13 @@ class Tarefa < ActiveRecord::Base
 
 belongs_to :projeto
 
-belongs_to :usuario
+#belongs_to :usuario
+belongs_to :user
 
 belongs_to :situacao
 
-belongs_to :solicitante, :class_name => "Usuario", :foreign_key => "solicitante_id"
+#belongs_to :solicitante, :class_name => "Usuario", :foreign_key => "solicitante_id"
+belongs_to :solicitante, :class_name => "User", :foreign_key => "solicitante_id"
 
 has_many :comentarios
 
@@ -97,6 +99,9 @@ end
 def pausada_padrao
   #TODO refazer esta logica
   pausa = Pausa.find(:all, :conditions=>[" tarefa_id=?",id]).last
+  if pausa.nil?
+    return false
+  end
   return !pausa.pausa_padrao_id.nil?
 end
 

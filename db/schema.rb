@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20090511151921) do
+ActiveRecord::Schema.define(:version => 20090515025621) do
 
   create_table "acoes", :force => true do |t|
     t.string  "nome",        :limit => 20
@@ -38,6 +38,7 @@ ActiveRecord::Schema.define(:version => 20090511151921) do
     t.integer  "tarefa_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "user_id"
   end
 
   create_table "empresas", :force => true do |t|
@@ -120,6 +121,26 @@ ActiveRecord::Schema.define(:version => 20090511151921) do
 
 # Could not dump table "tarefas" because of following StandardError
 #   Unknown type 'solicitante_id' for column 'usuario_id'
+
+  create_table "users", :force => true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "login",                            :null => false
+    t.string   "crypted_password",                 :null => false
+    t.string   "password_salt",                    :null => false
+    t.string   "persistence_token",                :null => false
+    t.integer  "login_count",       :default => 0, :null => false
+    t.datetime "last_request_at"
+    t.datetime "last_login_at"
+    t.datetime "current_login_at"
+    t.string   "last_login_ip"
+    t.string   "current_login_ip"
+    t.integer  "categoria_id"
+  end
+
+  add_index "users", ["last_request_at"], :name => "index_users_on_last_request_at"
+  add_index "users", ["login"], :name => "index_users_on_login"
+  add_index "users", ["persistence_token"], :name => "index_users_on_persistence_token"
 
   create_table "usuarios", :force => true do |t|
     t.string  "nome",            :limit => 32

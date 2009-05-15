@@ -27,11 +27,11 @@
 
 <p>
     <b>Solicitante :</b>
-    <%=h @tarefa.solicitante.nome %>
+    <%=h @tarefa.solicitante.login %>
 </p>
 <p>
   <b>Delegado a:</b>
-  <%=h @tarefa.usuario.nome unless @tarefa.usuario.nil? %>
+  <%=h @tarefa.user.nome unless @tarefa.user.nil? %>
 </p>
 
 <p>

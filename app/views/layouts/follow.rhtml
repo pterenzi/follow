@@ -30,10 +30,10 @@
     <% end -%>
 	</div>
 	<div id="user">
-        Usuário: <%= Usuario.find(session[:usuario_id]).nome unless session[:usuario_id].nil? %><br>
-        Perfil: <%= session[:perfil] %>
+        Usuário: <%= current_user.login unless current_user.nil?%><br>
+        Perfil: <%= current_user.categoria.nome unless current_user.nil? %>
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-      <%= link_to '(Sair)', url_for(:action => 'logout', :controller => 'login') %>
+      <%= link_to '(Sair)', logout_path %>
      </div>
   </div>
 </div>
@@ -46,7 +46,7 @@
           <ul>
             <li><a href="/projetos"  >Projetos</a></li>
             <li><a href="/empresas"  >Empresas</a></li>
-            <li><a href= <%=  url_for(:controller => 'login', :action => 'list_usuarios')  %>  >Usuários</a></li>
+            <li><%= link_to "Usuários", new_user_path %></li>
             <li><a href="/categorias"  >Grupo de Usuários</a></li>
           </ul>
       </li></ul>
@@ -75,10 +75,12 @@
 
 
     <div id="rightsidebar">
-      <h2>Direcionar</h2>
-      <div id="rightsidebartext">
-        <%= yield :lado_sem_usuario %>
-      </div>
+	<% if !@tarefas_sem_usuario.blank? %>
+     <h2>Direcionar</h2>
+     <div id="rightsidebartext">
+       <%= yield :lado_sem_usuario %>
+     </div>
+    <% end %>
 	  <h2>Minhas tarefas:</h2>
       <div id="rightsidebartext">
         <%= yield :rightside %>

@@ -1,14 +1,14 @@
 class TarefasController < ApplicationController
 
-  before_filter :authorize
-  before_filter :busca_usuario
+ # before_filter :authorize
+  before_filter :require_user
   before_filter :busca_tarefas , :only=>[:index, :show, :new, :edit, :pausar_padrao, :reiniciar_padrao]
 
   layout 'follow'
 
   # GET /tarefas GET /tarefas.xml
   def index
-    @usuarios = Usuario.all.collect{|obj| [obj.nome,obj.id]}
+    @usuarios = User.all.collect{|obj| [obj.login,obj.id]}
     @situacaos = Situacao.find(:all).collect{|obj| [obj.descricao,obj.id]}
     respond_to do |format|
       format.html # index.html.erb
@@ -21,7 +21,7 @@ class TarefasController < ApplicationController
     @tarefa = Tarefa.find(params[:id])
     @comentarios = Comentario.all(:conditions=>["tarefa_id=?",@tarefa.id])
     @situacaos = Situacao.find(:all).collect{|obj| [obj.descricao,obj.id]}
-    @usuarios = Usuario.find(:all).collect{|obj| [obj.nome,obj.id]}
+    @usuarios = User.find(:all).collect{|obj| [obj.login,obj.id]}
     @pausa = Pausa.da_tarefa(@tarefa.id)
     
     respond_to do |format|
@@ -35,7 +35,7 @@ class TarefasController < ApplicationController
     @tarefa = Tarefa.new
 
     @projetos = Projeto.all(:order=>'descricao').collect{|obj| [obj.descricao,obj.id]}
-    @usuarios = Usuario.find(:all).collect{|obj| [obj.nome,obj.id]}
+    @usuarios = User.find(:all).collect{|obj| [obj.login,obj.id]}
     @situacaos = Situacao.find(:all).collect{|obj| [obj.descricao,obj.id]}
 
     respond_to do |format|
@@ -50,7 +50,7 @@ class TarefasController < ApplicationController
 #debugger
     @projetos = Projeto.all(:order=>'descricao').collect{|obj| [obj.descricao,obj.id]}
     #FIXME combo de usuario não está funcionando. Sempre motra o primeiro
-    @usuarios = Usuario.find(:all).collect{|obj| [obj.nome,obj.id]}
+    @usuarios = User.find(:all).collect{|obj| [obj.login,obj.id]}
     @situacaos = Situacao.find(:all).collect{|obj| [obj.descricao,obj.id]}
 
 
@@ -59,8 +59,8 @@ class TarefasController < ApplicationController
   # POST /tarefas POST /tarefas.xml
   def create
     @tarefa = Tarefa.new(params[:tarefa])
-    @tarefa.solicitante_id = session[:usuario_id]
-    if @tarefa.usuario
+    @tarefa.solicitante_id = current_user.id
+    if @tarefa.user
       @tarefa.situacao_id = 8 # encaminhada
     else
       @tarefa.situacao_id = 1 # aberta
@@ -69,13 +69,13 @@ class TarefasController < ApplicationController
     respond_to do |format|
       if @tarefa.save
         flash[:notice] = 'Tarefa foi cadastrado com sucesso!'
-        format.html { redirect_to(@tarefa) }
+        format.html { redirect_to(tarefas_path) }
         format.xml  { render :xml => @tarefa, :status => :created, :location => @tarefa }
       else
 
-        @projetos = Projeto.find(:all).collect{|obj| [obj.id,obj.id]}
-        @usuarios = Usuario.find(:all).collect{|obj| [obj.id,obj.id]}
-        @situacaos = Situacao.find(:all).collect{|obj| [obj.id,obj.id]}
+#        @projetos = Projeto.find(:all).collect{|obj| [obj.id,obj.id]}
+#        @usuarios = Usuario.find(:all).collect{|obj| [obj.id,obj.id]}
+#        @situacaos = Situacao.find(:all).collect{|obj| [obj.id,obj.id]}
 
 
         format.html { render :action => "new" }
@@ -97,7 +97,7 @@ class TarefasController < ApplicationController
       else
 
         @projetos = Projeto.find(:all).collect{|obj| [obj.id,obj.id]}
-        @usuarios = Usuario.find(:all).collect{|obj| [obj.id,obj.id]}
+        @usuarios = User.find(:all).collect{|obj| [obj.id,obj.id]}
         @situacaos = Situacao.find(:all).collect{|obj| [obj.id,obj.id]}
 
 
@@ -121,28 +121,20 @@ class TarefasController < ApplicationController
   
   
   def encaminhar
+    debugger
     @tarefa = Tarefa.find(params[:tarefa_id])
-    if params[:excluir_tarefa]
-      @tarefa.destroy
-      respond_to do |format|  
-        format.html { redirect_to(tarefas_path) }
-      end
-    else
-      if params[:andamento_id] =='Pausar'
-        redirect_to :controller=>'tarefas', :action=>'pausar', :id=>@tarefa.id
-        #redirect_to new_andamentos_path 
-        #usuario = Usuario.find(params[:usuario_id])
-        #@tarefa.usuario_id = usuario.id
-        #if tarefa.save
-        #  redirect_to tarefas_path
-        #end
-      end    
-    end
+    @tarefa.user_id = params[:tarefa][:user_id]
+   if @tarefa.save
+     redirect_to tarefas_path
+   else
+    #TODO tratar excessão
+   end 
+     
   end
   
   def pausar
     @tarefa = Tarefa.find(params[:id])
-    @usuarios = Usuario.all.collect{|obj| [obj.nome,obj.id]}
+    @usuarios = User.all.collect{|obj| [obj.login,obj.id]}
     @situacaos = Situacao.find(:all).collect{|obj| [obj.descricao,obj.id]}
   end
   
@@ -230,13 +222,5 @@ class TarefasController < ApplicationController
     #TODO fazer tratamento de erro
   end
   private
-  
  
-  
-  def busca_usuario
-    @usuario_logado = Usuario.find(session[:usuario_id])
-  end
-  
-  
-  
 end

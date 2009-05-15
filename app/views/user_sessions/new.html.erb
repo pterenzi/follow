@@ -1,0 +1,25 @@
+
+
+<% content_for :main do %>
+<div class="depot-form">
+  <div align="center">
+    <div  style="width: 300px; border: 2px; ">
+      <fieldset>
+        <legend>Log In</legend>
+        
+        <% form_for @user_session, :url => user_sessions_path  do |f|%>
+ <%= f.error_messages %>
+           <%= f.label :login %><br />
+		  <%= f.text_field :login %><br />
+		  <br />
+		  <%= f.label :password %><br />
+		  <%= f.password_field :password %><br />
+          <br/>
+          <%= f.submit "Login" %>
+        <% end %>
+      </fieldset>
+    </div>
+  </div>
+</div>
+
+<% end %>
