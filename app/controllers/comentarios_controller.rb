@@ -51,7 +51,10 @@ class ComentariosController < ApplicationController
     @comentario = Comentario.new
     @comentario.user_id = current_user.id
     tarefa = Tarefa.find(params[:tarefa_id])
-    tarefa.alerta = !tarefa.alerta
+
+    tarefa.alerta_usuario = (tarefa.solicitante== current_user)
+    tarefa.alerta_solicitante = (tarefa.solicitante!= current_user)
+
     @comentario.tarefa_id = params[:tarefa_id]
     @comentario.descricao = params[:descricao]
     respond_to do |format|

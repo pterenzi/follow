@@ -14,7 +14,7 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :recados, :collection => {:show_export => :get}
 
   map.resources :tarefas, :collection => {:show_export => :get, :pausar=>:get, :reiniciar_a_tarefa=>:get, 
-         :pausar_padrao=>:get, :reiniciar_padrao=>:get, :encaminhar=>:get }
+         :pausar_padrao=>:get, :reiniciar_padrao=>:get, :encaminhar=>:get, :mudar_alerta=>:get }
   
   map.resources :tarefas do |tarefas|
        tarefas.resources :comentarios

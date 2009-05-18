@@ -29,12 +29,14 @@
       <div id="notice"><%= flash[:notice] %></div>
     <% end -%>
 	</div>
+	<% if current_user %>
 	<div id="user">
-        Usuário: <%= current_user.login unless current_user.nil?%><br>
-        Perfil: <%= current_user.categoria.nome unless current_user.nil? %>
+        Usuário: <%= current_user.login %><br>
+        Perfil: <%= current_user.categoria.nome %>
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
       <%= link_to '(Sair)', logout_path %>
      </div>
+     <% end %>
   </div>
 </div>
     

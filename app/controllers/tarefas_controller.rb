@@ -221,6 +221,20 @@ class TarefasController < ApplicationController
     pausa.save
     #TODO fazer tratamento de erro
   end
+  
+  
+  def mudar_alerta
+    @tarefa = Tarefa.find(params[:id])
+    if params[:campo]=="solicitante"
+      @tarefa.alerta_solicitante = params[:valor]
+    else
+      @tarefa.alerta_usuario = params[:valor]
+    end
+    @tarefa.save
+    puts "Mudar alerta da tarefa : " + params[:id]
+    render :json => "true"
+  end
+  
   private
  
 end

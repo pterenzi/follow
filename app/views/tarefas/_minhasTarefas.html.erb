@@ -17,12 +17,12 @@
         <% nome_usuario = tarefa.solicitante.login %> 
       <% end %>
     <div id="tarefa">
-	  <%= 'blink' if tarefa.alerta %>
-	<%= tarefa.status %> | <%= tarefa.id %></br>
-<%	#TODO substituir o togle do csriptaculous pelo do jquery %>
-        <a href="#" onClick="$('#toggle_appear_<%= tarefa.id.to_s %>').toggle('blind', { percent: 0 },500 ); return false;"><%= tarefa.descricao %></a><br/>
+      <% if tarefa.alerta_usuario %>
+        <span id="blink_<%=tarefa.id.to_s %>" ><%= image_tag("Favs-16x16.png") %></span>
+      <% end %>
+
+        <a href="#" onClick=toggle('#toggle_appear_<%= tarefa.id.to_s %>',<%= tarefa.id %>,<%= tarefa.alerta_usuario %>) ><%= tarefa.descricao %></a><br/>
     <div style="display: none;"id="toggle_appear_<%= tarefa.id.to_s %>" style="background:#F2F2F2;">
-       
         <%= render :partial=>'comentarios_de_uma_tarefa', :locals=>{:tarefa=>tarefa, :lado=>'direito'} %>
         <%= render :partial=>'form_comentario', :locals=>{:tarefa=>tarefa} %>    
     <% #TODO Verificar se os botõe ficaram embutidos %>
@@ -38,10 +38,10 @@
     
     <% if tarefa.sem_pausa %>
    
-	<a href="#" onClick="abre_form_pausa(<%=tarefa.id%>);return false;"><img src="/images/play.png" border=0/></a>
-	 <div style="display:none;" id="form_pausa_<%=tarefa.id.to_s%>">
-		 <%= render :partial=>'pausar', :locals=>{:tarefa=>tarefa, :lado=>'direito'} %>
-	</div>
+    <a href="#" onClick="abre_form_pausa(<%=tarefa.id%>);return false;"><img src="/images/play.png" border=0/></a>
+     <div style="display:none;" id="form_pausa_<%=tarefa.id.to_s%>">
+         <%= render :partial=>'pausar', :locals=>{:tarefa=>tarefa, :lado=>'direito'} %>
+    </div>
     
     <% end %>
     

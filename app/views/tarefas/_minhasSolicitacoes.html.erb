@@ -12,15 +12,18 @@
     <% end %>
    <div id="tarefa">
 <% #TODO apenas piscar as tarefas com solicitação de pausa %>
-    <%= tarefa.id %>|<%= tarefa.situacao.descricao %> |  <%= tarefa.status %>
+    
     <% if tarefa.pausada %>
       <% @pausa = Pausa.da_tarefa(tarefa.id)%>
       (<%= @pausa.tempo_de_solicitacao %>)
     <% end %>
    <br/>
-    <%= 'blink' if tarefa.alerta %>
-    <a href="#" onClick="$('#toggle_appear_<%= tarefa.id.to_s %>').toggle('blind', { percent: 0 },500 ); return false;"><%= tarefa.descricao %></a>
-    <div style="display: none;"id="toggle_appear_<%= tarefa.id.to_s %>" style="background:#F2F2F2;">
+    <% if tarefa.alerta_solicitante %>
+      <span id="blink_<%=tarefa.id.to_s %>" ><%= image_tag("Favs-16x16.png") %></span>
+	<% end %>
+    <a href="#" onClick=toggle('#toggle_appear_<%= tarefa.id.to_s %>',<%= tarefa.id %>,<%= tarefa.alerta_solicitante %>) ><%= tarefa.descricao %></a>
+   
+   <div style="display: none;"id="toggle_appear_<%= tarefa.id.to_s %>" style="background:#F2F2F2;">
     <%= render :partial=>'comentarios_de_uma_tarefa', :locals=>{:tarefa=>tarefa, :lado=>'esquerdo'} %>
     <%= render :partial=>'form_comentario', :locals=>{:tarefa=>tarefa} %>
    </div>
