@@ -8,6 +8,7 @@ class UsersController < ApplicationController
   before_filter :require_user
    
   def new
+    #TODO Tá dando erro ao criar novo usuario
     @user = User.new
     @categorias = Categoria.all(:order=>"nome").collect{|obj| [obj.nome,obj.id]}
   end
@@ -35,7 +36,7 @@ class UsersController < ApplicationController
     @user = @current_user # makes our views "cleaner" and more consistent
     if @user.update_attributes(params[:user])
       flash[:notice] = "Account updated!"
-      redirect_to account_url
+      redirect_to tarefas_path
     else
       render :action => :edit
     end

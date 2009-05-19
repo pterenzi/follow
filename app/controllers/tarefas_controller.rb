@@ -224,6 +224,7 @@ class TarefasController < ApplicationController
   
   
   def mudar_alerta
+    #TOTO tratar a identificação de qual alerta mandar alterar na rotina ajax
     @tarefa = Tarefa.find(params[:id])
     if params[:campo]=="solicitante"
       @tarefa.alerta_solicitante = params[:valor]

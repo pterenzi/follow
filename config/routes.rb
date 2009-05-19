@@ -3,7 +3,7 @@ ActionController::Routing::Routes.draw do |map|
    map.resources :pausa_padraos
    
    map.logout "logout", :controller=>"user_sessions", :action=>"destroy"
-   map.resources :account, :controller => "users"
+  # map.resources :account, :controller => "users"
    map.resources :users
    map.resources :user_sessions
  
