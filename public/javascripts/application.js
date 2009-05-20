@@ -28,3 +28,16 @@ function toggle(toggle_id,tarefa_id,muda_alerta,origem){
   return false;
 };
 
+function abre_form_termino(id){
+  	$('#abre_termino_'+id).dialog({ title: 'Término' });
+	$('#abre_termino_'+id).dialog('open');
+	$('#abre_termino_'+id).dialog();
+}
+
+function abre_form_avaliacao(id){
+  	$('#abre_avaliacao_'+id).dialog({ title: 'Avaliação' });
+	$('#abre_avaliacao_'+id).dialog('open');
+	$('#abre_avaliacao_'+id).dialog();
+	
+}
+

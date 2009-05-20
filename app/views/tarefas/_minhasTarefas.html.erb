@@ -33,6 +33,10 @@
 	    </div>
 
 	    <% end %>
+        <a href="#" onClick="abre_form_termino(<%=tarefa.id%>);return false;"><img src="/images/finished.png" border=0/></a>
+		<div style="display:none;" id="abre_termino_<%=tarefa.id.to_s%>">
+	         <%= render :partial=>'termino', :locals=>{:tarefa=>tarefa} %>
+	    </div>
         <%= render :partial=>'comentarios_de_uma_tarefa', :locals=>{:tarefa=>tarefa, :lado=>'direito'} %>
         <%= render :partial=>'form_comentario', :locals=>{:tarefa=>tarefa} %>    
     <% #TODO Verificar se os botões ficaram embutidos %>

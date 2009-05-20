@@ -97,9 +97,12 @@ def pausada_esperando_aprovacao
 end
 
 def pausada_padrao
-  #TODO testar esta logica
   pausa = Pausa.find(:all, :conditions=>[" tarefa_id=? and pausa_padrao_id not null and reinicio is null",id]).last
   return !pausa.nil?
+end
+
+def terminada_sem_comentario_do_solicitante
+  return !termino_at.nil? & comentario_termino_solicitante.nil?
 end
 
 def self.tem_tarefa_com_pausa_padrao(tarefas)
@@ -108,5 +111,5 @@ def self.tem_tarefa_com_pausa_padrao(tarefas)
   end
   return false
 end
-  
+
 end

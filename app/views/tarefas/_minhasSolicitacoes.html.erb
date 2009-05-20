@@ -11,23 +11,32 @@
       <% nome_usuario = tarefa.user.login %> 
     <% end %>
    <div id="tarefa">
-<% #TODO apenas piscar as tarefas com solicitação de pausa %>
     
     <% if tarefa.pausada %>
       <% @pausa = Pausa.da_tarefa(tarefa.id)%>
       (<%= @pausa.tempo_de_solicitacao %>)
     <% end %>
    <br/>
+<% #TODO implementar o efeito pulsate %>
     <% if tarefa.alerta_solicitante %>
-      <span id="blink_<%=tarefa.id.to_s %>" ><%= image_tag("Favs-16x16.png") %></span>
+      <% if tarefa.terminada_sem_comentario_do_solicitante %>
+        <span id="blink_<%=tarefa.id.to_s %>" ><%= image_tag("Favs-16x16.png") %></span>
+        <a href="#" onClick="abre_form_avaliacao(<%=tarefa.id%>);return false;"><%= tarefa.descricao %></a>  
+		<div style="display:none;" id="abre_avaliacao_<%=tarefa.id.to_s%>">
+	         <%= render :partial=>'avaliacao', :locals=>{:tarefa=>tarefa} %>
+	    </div>
+      <% else %>
+        <span id="blink_<%=tarefa.id.to_s %>" ><%= image_tag("Favs-16x16.png") %></span>
+    	<a href="#" 
+	        onClick=toggle('#toggle_appear_<%= tarefa.id.to_s %>',<%= tarefa.id %>,<%= tarefa.alerta_solicitante %>, 'solicitante') ><%= tarefa.descricao %></a
+	   <div style="display: none;"id="toggle_appear_<%= tarefa.id.to_s %>" style="background:#F2F2F2;">
+	     <%= render :partial=>'comentarios_de_uma_tarefa', :locals=>{:tarefa=>tarefa, :lado=>'esquerdo'} %>
+         <%= render :partial=>'form_comentario', :locals=>{:tarefa=>tarefa} %>
+	   </div>
+      <% end %>
 	<% end %>
-    <a href="#" 
-        onClick=toggle('#toggle_appear_<%= tarefa.id.to_s %>',<%= tarefa.id %>,<%= tarefa.alerta_solicitante %>, 'solicitante') ><%= tarefa.descricao %></a>
+    
    
-   <div style="display: none;"id="toggle_appear_<%= tarefa.id.to_s %>" style="background:#F2F2F2;">
-    <%= render :partial=>'comentarios_de_uma_tarefa', :locals=>{:tarefa=>tarefa, :lado=>'esquerdo'} %>
-    <%= render :partial=>'form_comentario', :locals=>{:tarefa=>tarefa} %>
-   </div>
    <% if tarefa.pausada_esperando_aprovacao %>
      <%= render :partial=>'aprovar_reprovar_pausa', :locals=>{:tarefa=>tarefa}%> 
    <% end %>

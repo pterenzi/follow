@@ -45,5 +45,14 @@ class TarefaTest < ActiveSupport::TestCase
     pausa = pausas(:padrao)
     assert !pausa.pausa_padraos.nil?
   end
+  
+  def test_usuario_que_criou
+    t = tarefas(:one)
+    assert t.usuario_que_criou(2)==true
+    assert t.usuario_que_criou(1)==false
+    t2 = tarefas(:two)
+    assert t2.usuario_que_criou(2)==false
+    assert t2.usuario_que_criou(1)==true
+  end
    
 end

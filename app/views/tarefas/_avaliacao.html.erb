@@ -1,0 +1,22 @@
+<% form_tag( :action=>:avaliar_tarefa, :controller=>'tarefas') do  %>
+ <%= hidden_field_tag :id, tarefa.id %>
+
+  <%= radio_button_tag (:avaliacao, "1") %>
+  <%= label_tag :avaliacao_pessimo, :Ruim %>
+  <%= radio_button_tag (:avaliacao, "2") %>
+  <%= label_tag :avaliacao_pessimo, :Insuficiente %>
+  <%= radio_button_tag (:avaliacao, "3") %>
+  <%= label_tag :avaliacao_pessimo, :Suficiente %><br /><br />
+  <%= radio_button_tag (:avaliacao, "4") %>
+  <%= label_tag :avaliacao_pessimo, "Bom" %>
+  <%= radio_button_tag (:avaliacao, "5") %>
+  <%= label_tag :avaliacao_pessimo, :Ótimo %><br/><br/>
+  <p>
+   Comentário :<br/>
+    <%= text_area_tag 'comentario_avaliacao', '' ,:size=>"33x3" %>
+  </p>
+  <p>
+    <br/><%= submit_tag "Avaliar tarefa" %>
+
+  </p>
+<% end %>

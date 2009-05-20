@@ -4,7 +4,7 @@ one:
   situacao_id: 1
   projeto_id: 1
   usuario_id: 1
-  usuario_executor_id: 2
+  solicitante_id: 2
   tempo_est: 10
   avaliacao: 1
 
@@ -12,6 +12,6 @@ two:
   situacao_id: 1
   projeto_id: 1
   usuario_id: 1
-  usuario_executor_id: 1
+  solicitante_id: 1
   tempo_est: 20
   avaliacao: 2

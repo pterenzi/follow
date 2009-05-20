@@ -1,4 +1,2 @@
-#TODO link para logout. Na verdade é o sair, mas precisa ser melhorado
 #TODO Permitir usuario alterar senha.ˇ
-#TODO O comentário é sempre do usuario logado, logo posso retirar o select de usuario
-#TODO colocar o comentario na barra lateral esquerda e direita
+#TODO Preparar arquivo de testes

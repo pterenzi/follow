@@ -47,9 +47,7 @@ class TarefasController < ApplicationController
   # GET /tarefas/1/edit
   def edit
     @tarefa = Tarefa.find(params[:id])
-#debugger
     @projetos = Projeto.all(:order=>'descricao').collect{|obj| [obj.descricao,obj.id]}
-    #FIXME combo de usuario não está funcionando. Sempre motra o primeiro
     @usuarios = User.find(:all).collect{|obj| [obj.login,obj.id]}
     @situacaos = Situacao.find(:all).collect{|obj| [obj.descricao,obj.id]}
 
@@ -231,6 +229,23 @@ class TarefasController < ApplicationController
     render :json => "true"
   end
   
-  private
- 
+  def encerrar_tarefa
+    @tarefa = Tarefa.find(params[:id])
+    @tarefa.termino_at = Time.now
+    @tarefa.comentario_termino = params[:comentario_termino]
+    @tarefa.alerta_solicitante = true
+    @tarefa.save
+    #TODO tratar erro
+    redirect_to :back
+  end
+  
+  def avaliar_tarefa
+    @tarefa = Tarefa.find(params[:id])
+    @tarefa.avaliacao = params[:avaliacao]
+    @tarefa.comentario_termino_solicitante = params[:comentario_avaliacao]
+    @tarefa.save  
+    #TODO tratar erro
+    redirect_to :back  
+  end
+  
 end
