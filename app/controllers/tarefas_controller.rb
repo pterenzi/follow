@@ -140,9 +140,6 @@ class TarefasController < ApplicationController
     pausa.tarefa_id = params[:tarefa_id]
     pausa.justificativa = params[:justificativa]
     pausa.data = Time.now
-    if padrao
-      pausa.pausa_padrao_id = pausa_padrao_id
-    end
     pausa.padrao=false
     if pausa.save
       redirect_to tarefas_path
