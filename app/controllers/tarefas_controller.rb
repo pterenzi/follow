@@ -72,12 +72,6 @@ class TarefasController < ApplicationController
         format.html { redirect_to(tarefas_path) }
         format.xml  { render :xml => @tarefa, :status => :created, :location => @tarefa }
       else
-
-#        @projetos = Projeto.find(:all).collect{|obj| [obj.id,obj.id]}
-#        @usuarios = Usuario.find(:all).collect{|obj| [obj.id,obj.id]}
-#        @situacaos = Situacao.find(:all).collect{|obj| [obj.id,obj.id]}
-
-
         format.html { render :action => "new" }
         format.xml  { render :xml => @tarefa.errors, :status => :unprocessable_entity }
       end

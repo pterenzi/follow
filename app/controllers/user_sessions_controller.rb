@@ -8,6 +8,7 @@ class UserSessionsController < ApplicationController
      def new
        debugger
        @user_session = UserSession.new
+       @minhas_tarefas = Hash.new
      end
 
      def create

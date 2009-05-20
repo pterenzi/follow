@@ -30,12 +30,12 @@
     <% end -%>
 	</div>
 	<% if current_user %>
-	<div id="user">
+      <div id="user">
         Usuário: <%= current_user.login %><br>
         Perfil: <%= current_user.categoria.nome %>
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-      <%= link_to '(Sair)', logout_path %>
-     </div>
+        <%= link_to '(Sair)', logout_path %>
+       </div>
      <% end %>
   </div>
 </div>
@@ -48,8 +48,9 @@
           <ul>
             <li><a href="/projetos"  >Projetos</a></li>
             <li><a href="/empresas"  >Empresas</a></li>
+			<li><a href="/categorias"  >Grupo de Usuários</a></li>
             <li><%= link_to "Usuários", new_user_path %></li>
-            <li><a href="/categorias"  >Grupo de Usuários</a></li>
+            
           </ul>
       </li></ul>
       <ul><li><a href="#">Relatorios</a>
@@ -83,7 +84,14 @@
        <%= yield :lado_sem_usuario %>
      </div>
     <% end %>
-	  <h2>Minhas tarefas:</h2>
+	  <h2>Minhas tarefas:
+		<% if @tem_tarefa_com_pausa_padrao %>
+	        <%= render :partial=>"reinicio_padrao" %>
+	      <% else %>
+	        <%= render :partial=>"pausa_padrao" unless @minhas_tarefas.empty? %>
+	      <% end %>	
+		
+		</h2>
       <div id="rightsidebartext">
         <%= yield :rightside %>
       </div>

@@ -613,7 +613,10 @@ h1 {
 h2 {
     font:  120% sans-serif;
     color: #226;
-    border-bottom: 3px dotted #77d;
+}
+h3 {
+    font:  100% "Trebuchet MS";
+    color: #a7a9ac;
 }
 
 
