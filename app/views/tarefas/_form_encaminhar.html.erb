@@ -1,6 +1,4 @@
-<% for u in @usuarios do%>
-<%= u %></br>
-<% end%>
+
 <% form_tag (:action=>"encaminhar", :controller=>"tarefas")  do |f| %>
  <%= hidden_field_tag :tarefa_id, tarefa.id %>
   <p>

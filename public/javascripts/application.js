@@ -12,7 +12,6 @@ $(document).ready(function(){
 });
 
 function abre_form_pausa(id){
-	//alert('entrou aqui');
 	$('#form_pausa_'+id).dialog({ title: 'Pausa' });
 	$('#form_pausa_'+id).dialog('open');
 	$('#form_pausa_'+id).dialog();

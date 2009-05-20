@@ -34,6 +34,7 @@ class TarefasController < ApplicationController
   def new
     @tarefa = Tarefa.new
 
+    
     @projetos = Projeto.all(:order=>'descricao').collect{|obj| [obj.descricao,obj.id]}
     @usuarios = User.find(:all).collect{|obj| [obj.login,obj.id]}
     @situacaos = Situacao.find(:all).collect{|obj| [obj.descricao,obj.id]}
@@ -50,12 +51,11 @@ class TarefasController < ApplicationController
     @projetos = Projeto.all(:order=>'descricao').collect{|obj| [obj.descricao,obj.id]}
     @usuarios = User.find(:all).collect{|obj| [obj.login,obj.id]}
     @situacaos = Situacao.find(:all).collect{|obj| [obj.descricao,obj.id]}
-
-
   end
 
   # POST /tarefas POST /tarefas.xml
   def create
+    debugger
     @tarefa = Tarefa.new(params[:tarefa])
     @tarefa.solicitante_id = current_user.id
     if @tarefa.user
@@ -70,6 +70,11 @@ class TarefasController < ApplicationController
         format.html { redirect_to(tarefas_path) }
         format.xml  { render :xml => @tarefa, :status => :created, :location => @tarefa }
       else
+        #TODO verificar se fica assim mesmo, com estes métodos aqui.
+          @projetos = Projeto.all(:order=>'descricao').collect{|obj| [obj.descricao,obj.id]}
+          @usuarios = User.find(:all).collect{|obj| [obj.login,obj.id]}
+          @situacaos = Situacao.find(:all).collect{|obj| [obj.descricao,obj.id]}
+        busca_tarefas
         format.html { render :action => "new" }
         format.xml  { render :xml => @tarefa.errors, :status => :unprocessable_entity }
       end
