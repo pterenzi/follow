@@ -14,8 +14,7 @@
       <% if tarefa.alerta_usuario %>
         <span id="blink_<%=tarefa.id.to_s %>" ><%= image_tag("Favs-16x16.png") %></span>
       <% end %>
-<% #TODO  Completar a função ajax que altera o solicitante ou o usuario , somente na primeira vez que clicar na tarefa. %>
-        <a href="#" onClick=toggle('#toggle_appear_<%= tarefa.id.to_s %>',<%= tarefa.id %>,<%= tarefa.alerta_usuario %>) ><%= tarefa.descricao %></a><br/>
+        <a href="#" onClick=toggle('#toggle_appear_<%= tarefa.id.to_s %>',<%= tarefa.id %>,<%= tarefa.alerta_usuario %>,'usuario') ><%= tarefa.descricao %></a><br/>
     <div style="display: none;"id="toggle_appear_<%= tarefa.id.to_s %>" style="background:#F2F2F2;">
 	    <% if tarefa.pausada_esperando_aprovacao %>
 	       <a href="#"><img src="/images/pause.png" border=0 />

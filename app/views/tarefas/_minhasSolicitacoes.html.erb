@@ -21,7 +21,8 @@
     <% if tarefa.alerta_solicitante %>
       <span id="blink_<%=tarefa.id.to_s %>" ><%= image_tag("Favs-16x16.png") %></span>
 	<% end %>
-    <a href="#" onClick=toggle('#toggle_appear_<%= tarefa.id.to_s %>',<%= tarefa.id %>,<%= tarefa.alerta_solicitante %>) ><%= tarefa.descricao %></a>
+    <a href="#" 
+        onClick=toggle('#toggle_appear_<%= tarefa.id.to_s %>',<%= tarefa.id %>,<%= tarefa.alerta_solicitante %>, 'solicitante') ><%= tarefa.descricao %></a>
    
    <div style="display: none;"id="toggle_appear_<%= tarefa.id.to_s %>" style="background:#F2F2F2;">
     <%= render :partial=>'comentarios_de_uma_tarefa', :locals=>{:tarefa=>tarefa, :lado=>'esquerdo'} %>

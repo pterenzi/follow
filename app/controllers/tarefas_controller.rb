@@ -186,7 +186,6 @@ class TarefasController < ApplicationController
   
   
   def pausar_padrao
-#    debugger
     pausa_padrao_id = params[:pausa_padrao][:pausa_padrao_id]
     for tarefa in @minhas_tarefas
       create_pausa_padrao(tarefa.id,pausa_padrao_id)
@@ -195,7 +194,10 @@ class TarefasController < ApplicationController
   end
   
   def reiniciar_padrao
+    
     for tarefa in @minhas_tarefas
+      debugger
+      puts "tarefa : " + tarefa.id.to_s
       pausa = Pausa.find(:all, :conditions=>["pausa_padrao_id not null and tarefa_id=?",tarefa.id]).last
       debugger
       if !pausa.nil? && (!pausa.pausa_padrao_id.nil? & pausa.reinicio.nil?)
@@ -218,7 +220,6 @@ class TarefasController < ApplicationController
   
   
   def mudar_alerta
-    #TOTO tratar a identificação de qual alerta mandar alterar na rotina ajax
     @tarefa = Tarefa.find(params[:id])
     if params[:campo]=="solicitante"
       @tarefa.alerta_solicitante = params[:valor]

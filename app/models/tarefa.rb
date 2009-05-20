@@ -98,8 +98,8 @@ end
 
 def pausada_padrao
   #TODO testar esta logica
-  pausa = Pausa.find(:all, :conditions=>[" tarefa_id=?",id]).last
-  pausa.nil? ? false :!pausa.pausa_padrao_id.nil?
+  pausa = Pausa.find(:all, :conditions=>[" tarefa_id=? and pausa_padrao_id not null and reinicio is null",id]).last
+  return !pausa.nil?
 end
 
 def self.tem_tarefa_com_pausa_padrao(tarefas)

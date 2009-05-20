@@ -19,12 +19,11 @@ function abre_form_pausa(id){
 };
 
 
-function toggle(toggle_id,tarefa_id,muda_alerta){
+function toggle(toggle_id,tarefa_id,muda_alerta,origem){
   if (muda_alerta){
-//	$.get("/tarefas/mudar_alerta",{'id': tarefa_id, 'valor': "false", 'campo': "solicitante"});
+	$.get("/tarefas/mudar_alerta",{'id': tarefa_id, 'valor': "false", 'campo': origem});
 	$("#blink_" + tarefa_id).remove();
-//	alert("mudar alerta da tarefa " + tarefa_id  );
-}
+  }
   $(toggle_id).toggle('blind', { percent: 0 },500 ); 
   return false;
 };
