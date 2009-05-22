@@ -60,7 +60,7 @@ class ComentariosController < ApplicationController
     respond_to do |format|
       Comentario.transaction do
         if @comentario.save & tarefa.save
-          flash[:notice] = 'Comentario criado.'
+       #   flash[:notice] = 'Comentario criado.'
           format.html { redirect_to(tarefas_path) }
           format.xml  { render :xml => @comentario, :status => :created, :location => @comentario }
         else

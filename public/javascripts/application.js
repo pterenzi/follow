@@ -18,12 +18,12 @@ function abre_form_pausa(id){
 };
 
 
-function toggle(toggle_id,tarefa_id,muda_alerta,origem){
+function toggle(tarefa_id,muda_alerta,origem){
   if (muda_alerta){
 	$.get("/tarefas/mudar_alerta",{'id': tarefa_id, 'valor': "false", 'campo': origem});
-	$("#blink_" + tarefa_id).remove();
+	parar_pulsar('#blink_'+tarefa_id);
   }
-  $(toggle_id).toggle('blind', { percent: 0 },500 ); 
+  $('#toggle_appear_'+ tarefa_id).toggle('blind', { percent: 0 },500 ); 
   return false;
 };
 
@@ -40,3 +40,13 @@ function abre_form_avaliacao(id){
 	
 }
 
+function pulsar(id){
+	$(id).pulse({
+	    textColor: ['black','yellow','white'],
+	    opacityRange: [0.3, 1.3]
+	});
+}
+
+function parar_pulsar(id){
+	$(id).recover();
+}
