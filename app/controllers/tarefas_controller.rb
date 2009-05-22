@@ -8,7 +8,7 @@ class TarefasController < ApplicationController
 
   # GET /tarefas GET /tarefas.xml
   def index
-    @usuarios = User.all.collect{|obj| [obj.login,obj.id]}
+    @usuarios = User.all.collect{|obj| [obj.nome,obj.id]}
     @situacaos = Situacao.find(:all).collect{|obj| [obj.descricao,obj.id]}
     respond_to do |format|
       format.html # index.html.erb
@@ -33,10 +33,8 @@ class TarefasController < ApplicationController
   # GET /tarefas/new GET /tarefas/new.xml
   def new
     @tarefa = Tarefa.new
-
-    
     @projetos = Projeto.all(:order=>'descricao').collect{|obj| [obj.descricao,obj.id]}
-    @usuarios = User.find(:all).collect{|obj| [obj.login,obj.id]}
+    @usuarios = User.find(:all).collect{|obj| [obj.nome,obj.id]}
     @situacaos = Situacao.find(:all).collect{|obj| [obj.descricao,obj.id]}
 
     respond_to do |format|
@@ -49,7 +47,7 @@ class TarefasController < ApplicationController
   def edit
     @tarefa = Tarefa.find(params[:id])
     @projetos = Projeto.all(:order=>'descricao').collect{|obj| [obj.descricao,obj.id]}
-    @usuarios = User.find(:all).collect{|obj| [obj.login,obj.id]}
+    @usuarios = User.find(:all).collect{|obj| [obj.nome,obj.id]}
     @situacaos = Situacao.find(:all).collect{|obj| [obj.descricao,obj.id]}
   end
 
@@ -72,7 +70,7 @@ class TarefasController < ApplicationController
       else
         #TODO verificar se fica assim mesmo, com estes métodos aqui.
           @projetos = Projeto.all(:order=>'descricao').collect{|obj| [obj.descricao,obj.id]}
-          @usuarios = User.find(:all).collect{|obj| [obj.login,obj.id]}
+          @usuarios = User.find(:all).collect{|obj| [obj.nome,obj.id]}
           @situacaos = Situacao.find(:all).collect{|obj| [obj.descricao,obj.id]}
         busca_tarefas
         format.html { render :action => "new" }
@@ -131,7 +129,7 @@ class TarefasController < ApplicationController
   
   def pausar
     @tarefa = Tarefa.find(params[:id])
-    @usuarios = User.all.collect{|obj| [obj.login,obj.id]}
+    @usuarios = User.all.collect{|obj| [obj.nome,obj.id]}
     @situacaos = Situacao.find(:all).collect{|obj| [obj.descricao,obj.id]}
   end
   
@@ -160,6 +158,11 @@ class TarefasController < ApplicationController
   end
   
   def aprovar_ou_reprovar_pausa
+    
+    tarefa = Tarefa.find(params[:tarefa_id])
+    tarefa.alerta_solicitante = false
+    tarefa.save
+    
     @pausa = Pausa.da_tarefa(params[:tarefa_id])
     if params[:reprovar]
       @pausa.aceito = false

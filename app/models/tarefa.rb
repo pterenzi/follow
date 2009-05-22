@@ -66,7 +66,7 @@ def sem_pausa
 end
 
 def pausada
-  pausa = Pausa.find(:all, :conditions=>["pausa_padrao_id=NULL and tarefa_id=?",id]).last
+  pausa = Pausa.find(:all, :conditions=>["pausa_padrao_id IS NULL and tarefa_id=?",id]).last
   if pausa.nil?
     return false
   else
@@ -88,7 +88,7 @@ def pausa_nao_aceita
 end
 
 def pausada_esperando_aprovacao
-  pausa = Pausa.find(:all, :conditions=>["pausa_padrao_id=NULL and tarefa_id=?",id]).last
+  pausa = Pausa.find(:all, :conditions=>["pausa_padrao_id IS NULL and tarefa_id=?",id]).last
   if pausa.nil?
     return false
   else

@@ -17,6 +17,11 @@ function abre_form_pausa(id){
 	$('#form_pausa_'+id).dialog();
 };
 
+function abre_form_aprovar_reprovar_pausa(id){
+	$('#form_aprovar_pausa_'+id).dialog({ title: 'Aprovar / Reprovar Pausa' });
+	$('#form_aprovar_pausa_'+id).dialog('open');
+	$('#form_aprovar_pausa_'+id).dialog();
+}
 
 function toggle(tarefa_id,muda_alerta,origem){
   if (muda_alerta){

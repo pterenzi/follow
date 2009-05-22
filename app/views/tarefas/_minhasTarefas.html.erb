@@ -7,9 +7,9 @@
     <% end %>
     <% for tarefa in @minhas_tarefas do  %>
 
-      <% if nome_usuario!= tarefa.solicitante.login then %>
-        <div id="nome_usuario">Solicitadas por <%= tarefa.solicitante.login %>: </div>
-        <% nome_usuario = tarefa.solicitante.login %> 
+      <% if nome_usuario!= tarefa.solicitante.nome then %>
+        <div id="nome_usuario">Solicitadas por <%= tarefa.solicitante.nome %>: </div>
+        <% nome_usuario = tarefa.solicitante.nome %> 
       <% end %>
 
     <div id="tarefa">
@@ -18,22 +18,22 @@
     </span>
     <div style="display: none;"id="toggle_appear_<%= tarefa.id.to_s %>" style="background:#F2F2F2;">
 	    <% if tarefa.pausada_esperando_aprovacao %>
-	       <a href="#"><img src="/images/pause.png" border=0 />
+	       <a href="#"><img src="/images/play.png" border=0 />
 	    <% end %>
 
 	    <% if tarefa.pausada  %>
 	       <% rota = "/tarefas/reiniciar_a_tarefa?tarefa_id=" + tarefa.id.to_s  %>
-	       <a href= <%=rota%>  > <img src="/images/pause.png" border=0/></a>
+	       <a href= <%=rota%>  > <img src="/images/play.png" border=0/></a>
 	    <% end %>
 
 	    <% if tarefa.sem_pausa %>
-          <a href="#" onClick="abre_form_pausa(<%=tarefa.id%>);return false;"><img src="/images/play.png" border=0/></a>
+          <a href="#" onClick="abre_form_pausa(<%=tarefa.id%>);return false;"><img src="/images/pause.png" border=0/></a>
 	      <div style="display:none;" id="form_pausa_<%=tarefa.id.to_s%>">
 	         <%= render :partial=>'pausar', :locals=>{:tarefa=>tarefa, :lado=>'direito'} %>
 	      </div>
 	    <% end %>
 
-        <a href="#" onClick="abre_form_termino(<%=tarefa.id%>);return false;"><img src="/images/finished.png" border=0/></a>
+        <a href="#" onClick="abre_form_termino(<%=tarefa.id%>);return false;"><img src="/images/stop.png" border=0/></a>
 		<div style="display:none;" id="abre_termino_<%=tarefa.id.to_s%>">
 	         <%= render :partial=>'termino', :locals=>{:tarefa=>tarefa} %>
 	    </div>
@@ -51,4 +51,4 @@
 <% end %>
 
 <% end %>
-<% #TODO Fazer efeito Pulsate no blink %>
+<br>

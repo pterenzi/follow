@@ -6,9 +6,9 @@
    </div>
 <% end %>
 <% for tarefa in @minhas_solicitacoes do  %>
-    <% if nome_usuario!= tarefa.user.login then %>
-      <div id="nome_usuario"><%= tarefa.user.login %> </div>
-      <% nome_usuario = tarefa.user.login %> 
+    <% if nome_usuario!= tarefa.user.nome then %>
+      <div id="nome_usuario"><%= tarefa.user.nome %> </div>
+      <% nome_usuario = tarefa.user.nome %> 
     <% end %>
   
    <div id="tarefa">
@@ -16,8 +16,15 @@
     <% if tarefa.pausada %>
       <% @pausa = Pausa.da_tarefa(tarefa.id)%>
       (<%= @pausa.tempo_de_solicitacao %>)
+   <% end %>
+   <% if tarefa.pausada_esperando_aprovacao %>
+	 <span id="blink_<%=tarefa.id.to_s %>" >
+          <a href="#" onClick="abre_form_aprovar_reprovar_pausa(<%=tarefa.id%>);return false;"><%= tarefa.descricao %></a>  
+        </span>
+        <div style="display:none;" id="form_aprovar_pausa_<%=tarefa.id.to_s%>">
+          <%= render :partial=>'aprovar_reprovar_pausa', :locals=>{:tarefa=>tarefa} %>
+        </div>
     <% end %>
-  
 
       <% if tarefa.terminada_sem_comentario_do_solicitante %>
         <span id="blink_<%=tarefa.id.to_s %>" >
@@ -47,7 +54,7 @@
    <% end %>
 
  </div>
-<br/>
+
 <% end %>
 
 <% end %>

@@ -29,7 +29,7 @@
             borderColors: [],
             opacityPulse: true,
             opacityRange: [],
-            speed: 1000,
+            speed: 400,
             duration: false,
             runLength: false
         }, o = $.extend(defaultOptions,options);
