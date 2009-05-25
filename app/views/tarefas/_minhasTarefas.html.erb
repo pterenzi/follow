@@ -18,9 +18,9 @@
         <a href="#" onClick=toggle(<%= tarefa.id %>,<%= tarefa.alerta_usuario.nil? ? false : tarefa.alerta_usuario %>,'usuario') ><%= tarefa.descricao %></a><br/>
     </span>
     <div style="display: none;"id="toggle_appear_<%= tarefa.id.to_s %>" style="background:#F2F2F2;">
-	    <a href="#" onClick="abre_form_recusa(<%=tarefa.id%>);return false;">
-	     <%= image_tag "backward.png", :border=>0 %>
-	    </a>
+	    <a href="#" onClick="abre_form_recusa(<%=tarefa.id%>);return false;" style="text-decoration:none" OnMouseOver="document.devolver.src='images/backwardh.png'" OnMouseOut="document.devolver.src='images/backward.png'">
+		<Img Src="images/backward.png" Name="devolver" Width="18" Height="10" Border=""></a>
+	     
 	    <div style="display:none;" id="form_recusa_<%=tarefa.id.to_s%>">
 	        <%= render :partial=>'recusar', :locals=>{:tarefa=>tarefa} %>
 	    </div>
@@ -35,13 +35,17 @@
 	    <% end %>
 
 	    <% if tarefa.sem_pausa %>
-          <a href="#" onClick="abre_form_pausa(<%=tarefa.id%>);return false;"><img src="/images/pause.png" border=0/></a>
+          <a href="#" onClick="abre_form_pausa(<%=tarefa.id%>);return false;"  style="text-decoration:none" OnMouseOver="document.play.src='images/pauseh.png'" OnMouseOut="document.play.src='images/play.png'"><Img Src="images/play.png" Name="play" Width="18" Height="10"Border=""></a>
 	      <div style="display:none;" id="form_pausa_<%=tarefa.id.to_s%>">
 	         <%= render :partial=>'pausar', :locals=>{:tarefa=>tarefa, :lado=>'direito'} %>
 	      </div>
 	    <% end %>
 
-        <a href="#" onClick="abre_form_termino(<%=tarefa.id%>);return false;"><img src="/images/stop.png" border=0/></a>
+        <a href="#" onClick="abre_form_termino(<%=tarefa.id%>);return false;" style="text-decoration:none" OnMouseOver="document.stop.src='images/stoph.png'" OnMouseOut="document.stop.src='images/stop.png'"><Img Src="images/stop.png" Name="stop" Width="18" Height="10"Border=""></a>
+
+<a Href="#" style="text-decoration:none" OnMouseOver="document.foward.src='images/fowardh.png'" OnMouseOut="document.foward.src='images/foward.png'"><Img Src="images/foward.png" Name="foward" Width="18" Height="10"Border=""></a>
+
+
 		<div style="display:none;" id="abre_termino_<%=tarefa.id.to_s%>">
 	         <%= render :partial=>'termino', :locals=>{:tarefa=>tarefa} %>
 	    </div>
@@ -49,6 +53,8 @@
         <%= render :partial=>'form_comentario', :locals=>{:tarefa=>tarefa} %>    
     <% #TODO Verificar se os botões ficaram embutidos %>
     
+
+
     </div>
 
 	<% if tarefa.alerta_usuario %>

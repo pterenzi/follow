@@ -12,7 +12,8 @@
     <% end %>
   
    <div id="tarefa">
-    
+
+    <% funcao = ""%>
     <% if tarefa.pausada %>
       <% @pausa = Pausa.da_tarefa(tarefa.id)%>
    <% end %>
@@ -37,19 +38,18 @@
       <%= render :partial=>'avaliacao', :locals=>{:tarefa=>tarefa} %>
     </div>
   <% end %>
+  <% if funcao.blank? %>
+    <% funcao = "toggle("+ tarefa.id.to_s + ","+ (tarefa.alerta_solicitante.nil? ? false : tarefa.alerta_solicitante).to_s + ", 'solicitante');" %>
+  <% end %>
 
-  <% if tarefa.tem_comentario %>
-    <% funcao = "toggle("+ tarefa.id.to_s + ","+ tarefa.alerta_solicitante.nil? ? false : tarefa.alerta_solicitante %> + ", 'solicitante');" %>
+	 <span id="blink_<%=tarefa.id.to_s %>" >
+       <a href="#" onClick="<%= funcao %>" ><%= tarefa.descricao %></a>  
+     </span>
+  
 	<div style="display: none;" id="toggle_appear_<%= tarefa.id.to_s %>" style="background:#F2F2F2;">
         <%= render :partial=>'comentarios_de_uma_tarefa', :locals=>{:tarefa=>tarefa, :lado=>'esquerdo'} %>
         <%= render :partial=>'form_comentario', :locals=>{:tarefa=>tarefa} %>
      </div>
-  <% end %>
-	
-	 <span id="blink_<%=tarefa.id.to_s %>" >
-       <a href="#" onClick=<%= funcao %> ><%= tarefa.descricao %></a>  
-     </span>
-  
  
    <% if tarefa.alerta_solicitante %>
      <% tag = '#blink_'+tarefa.id.to_s %>
