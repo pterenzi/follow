@@ -50,16 +50,17 @@ class ComentariosController < ApplicationController
   def create
     @comentario = Comentario.new
     @comentario.user_id = current_user.id
-    tarefa = Tarefa.find(params[:tarefa_id])
+    @tarefa = Tarefa.find(params[:tarefa_id])
 
-    tarefa.alerta_usuario = (tarefa.solicitante== current_user)
-    tarefa.alerta_solicitante = (tarefa.solicitante!= current_user)
+    @tarefa.alerta_usuario = (tarefa.solicitante== current_user)
+    @tarefa.alerta_solicitante = (tarefa.solicitante!= current_user)
+    @tarefa.tem_comentario = true
 
     @comentario.tarefa_id = params[:tarefa_id]
     @comentario.descricao = params[:descricao]
     respond_to do |format|
       Comentario.transaction do
-        if @comentario.save & tarefa.save
+        if @comentario.save & @tarefa.save
        #   flash[:notice] = 'Comentario criado.'
           format.html { redirect_to(tarefas_path) }
           format.xml  { render :xml => @comentario, :status => :created, :location => @comentario }

@@ -1,0 +1,16 @@
+Tarefa recusada por <%= tarefa.user.nome %>.<br />
+Justificativa: <%= tarefa.justificativa_recusa %>
+<br /><br/>
+<% form_tag( :action=>"reencaminhar_tarefa_recusada", :controller=>"tarefas" ) do %>
+<%= hidden_field_tag :tarefa_id, tarefa.id %>
+<table>
+	<tr>
+		<td>Encaminhar para :</td>
+	    <td><%= select :tarefa, :user_id, @usuarios %></td>
+	</tr>
+	<tr>
+		<td>&nbsp;</td>
+		<td><%= submit_tag "ok" %> | <%= submit_tag "fechar"%></td>
+	</tr>
+</table>
+<% end %>

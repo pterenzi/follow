@@ -13,10 +13,18 @@
       <% end %>
 
     <div id="tarefa">
+
     <span id="blink_<%=tarefa.id.to_s %>" >
         <a href="#" onClick=toggle(<%= tarefa.id %>,<%= tarefa.alerta_usuario.nil? ? false : tarefa.alerta_usuario %>,'usuario') ><%= tarefa.descricao %></a><br/>
     </span>
     <div style="display: none;"id="toggle_appear_<%= tarefa.id.to_s %>" style="background:#F2F2F2;">
+	    <a href="#" onClick="abre_form_recusa(<%=tarefa.id%>);return false;">
+	     <%= image_tag "backward.png", :border=>0 %>
+	    </a>
+	    <div style="display:none;" id="form_recusa_<%=tarefa.id.to_s%>">
+	        <%= render :partial=>'recusar', :locals=>{:tarefa=>tarefa} %>
+	    </div>
+	
 	    <% if tarefa.pausada_esperando_aprovacao %>
 	       <a href="#"><img src="/images/play.png" border=0 />
 	    <% end %>

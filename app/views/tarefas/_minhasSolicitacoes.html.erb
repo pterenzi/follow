@@ -15,39 +15,42 @@
     
     <% if tarefa.pausada %>
       <% @pausa = Pausa.da_tarefa(tarefa.id)%>
-      (<%= @pausa.tempo_de_solicitacao %>)
    <% end %>
-   <% if tarefa.pausada_esperando_aprovacao %>
+
+  <% if tarefa.recusado %>
+   <% funcao = "abre_alerta_recusado("+ tarefa.id.to_s + ");return false;"%>
+   <div style="display:none;" id="form_tarefa_recusada_<%=tarefa.id.to_s%>">
+     <%= render :partial=>'tarefa_recusada', :locals=>{:tarefa=>tarefa} %>
+   </div>
+  <% end %>
+
+  <%  if tarefa.pausada_esperando_aprovacao %>
+    <% funcao = "abre_form_aprovar_reprovar_pausa("+ tarefa.id.to_s + ");return false;"%>
+	<div style="display:none;" id="form_aprovar_pausa_<%=tarefa.id.to_s%>">
+      <%= render :partial=>'aprovar_reprovar_pausa', :locals=>{:tarefa=>tarefa} %>
+    </div>
+  <% end %>
+
+  <% if tarefa.terminada_sem_comentario_do_solicitante %>
+    <% funcao = "abre_form_avaliacao("+ tarefa.id.to_s + ");return false;" %>
+    <div style="display:none;" id="abre_avaliacao_<%=tarefa.id.to_s%>">
+      <%= render :partial=>'avaliacao', :locals=>{:tarefa=>tarefa} %>
+    </div>
+  <% end %>
+
+  <% if tarefa.tem_comentario %>
+    <% funcao = "toggle("+ tarefa.id.to_s + ","+ tarefa.alerta_solicitante.nil? ? false : tarefa.alerta_solicitante %> + ", 'solicitante');" %>
+	<div style="display: none;" id="toggle_appear_<%= tarefa.id.to_s %>" style="background:#F2F2F2;">
+        <%= render :partial=>'comentarios_de_uma_tarefa', :locals=>{:tarefa=>tarefa, :lado=>'esquerdo'} %>
+        <%= render :partial=>'form_comentario', :locals=>{:tarefa=>tarefa} %>
+     </div>
+  <% end %>
+	
 	 <span id="blink_<%=tarefa.id.to_s %>" >
-          <a href="#" onClick="abre_form_aprovar_reprovar_pausa(<%=tarefa.id%>);return false;"><%= tarefa.descricao %></a>  
-        </span>
-        <div style="display:none;" id="form_aprovar_pausa_<%=tarefa.id.to_s%>">
-          <%= render :partial=>'aprovar_reprovar_pausa', :locals=>{:tarefa=>tarefa} %>
-        </div>
-    <% end %>
-
-      <% if tarefa.terminada_sem_comentario_do_solicitante %>
-        <span id="blink_<%=tarefa.id.to_s %>" >
-          <a href="#" onClick="abre_form_avaliacao(<%=tarefa.id%>);return false;"><%= tarefa.descricao %></a>  
-        </span>
-        <div style="display:none;" id="abre_avaliacao_<%=tarefa.id.to_s%>">
-          <%= render :partial=>'avaliacao', :locals=>{:tarefa=>tarefa} %>
-        </div>
-      <% else %>
-        <span id="blink_<%=tarefa.id.to_s %>" > 
-          <a href="#" 
-            onClick="toggle(<%= tarefa.id %>,<%= tarefa.alerta_solicitante.nil? ? false : tarefa.alerta_solicitante %>, 'solicitante');" ><%= tarefa.descricao %></a>
-        </span>
-        <div style="display: none;" id="toggle_appear_<%= tarefa.id.to_s %>" style="background:#F2F2F2;">
-          <%= render :partial=>'comentarios_de_uma_tarefa', :locals=>{:tarefa=>tarefa, :lado=>'esquerdo'} %>
-          <%= render :partial=>'form_comentario', :locals=>{:tarefa=>tarefa} %>
-        </div>
-      <% end %>
-   
-   <% if tarefa.pausada_esperando_aprovacao %>
-     <%= render :partial=>'aprovar_reprovar_pausa', :locals=>{:tarefa=>tarefa}%> 
-   <% end %>
-
+       <a href="#" onClick=<%= funcao %> ><%= tarefa.descricao %></a>  
+     </span>
+  
+ 
    <% if tarefa.alerta_solicitante %>
      <% tag = '#blink_'+tarefa.id.to_s %>
      <%= javascript_tag "pulsar('"+tag+"')" %>

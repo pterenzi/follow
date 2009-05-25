@@ -8,7 +8,6 @@ class TarefasController < ApplicationController
 
   # GET /tarefas GET /tarefas.xml
   def index
-    @usuarios = User.all.collect{|obj| [obj.nome,obj.id]}
     @situacaos = Situacao.find(:all).collect{|obj| [obj.descricao,obj.id]}
     respond_to do |format|
       format.html # index.html.erb
@@ -21,7 +20,6 @@ class TarefasController < ApplicationController
     @tarefa = Tarefa.find(params[:id])
     @comentarios = Comentario.all(:conditions=>["tarefa_id=?",@tarefa.id])
     @situacaos = Situacao.find(:all).collect{|obj| [obj.descricao,obj.id]}
-    @usuarios = User.find(:all).collect{|obj| [obj.login,obj.id]}
     @pausa = Pausa.da_tarefa(@tarefa.id)
     
     respond_to do |format|
@@ -34,7 +32,6 @@ class TarefasController < ApplicationController
   def new
     @tarefa = Tarefa.new
     @projetos = Projeto.all(:order=>'descricao').collect{|obj| [obj.descricao,obj.id]}
-    @usuarios = User.find(:all).collect{|obj| [obj.nome,obj.id]}
     @situacaos = Situacao.find(:all).collect{|obj| [obj.descricao,obj.id]}
 
     respond_to do |format|
@@ -47,7 +44,6 @@ class TarefasController < ApplicationController
   def edit
     @tarefa = Tarefa.find(params[:id])
     @projetos = Projeto.all(:order=>'descricao').collect{|obj| [obj.descricao,obj.id]}
-    @usuarios = User.find(:all).collect{|obj| [obj.nome,obj.id]}
     @situacaos = Situacao.find(:all).collect{|obj| [obj.descricao,obj.id]}
   end
 
@@ -61,6 +57,7 @@ class TarefasController < ApplicationController
     else
       @tarefa.situacao_id = 1 # aberta
     end
+    @tarefa.recusado = false
     
     respond_to do |format|
       if @tarefa.save
@@ -70,7 +67,6 @@ class TarefasController < ApplicationController
       else
         #TODO verificar se fica assim mesmo, com estes métodos aqui.
           @projetos = Projeto.all(:order=>'descricao').collect{|obj| [obj.descricao,obj.id]}
-          @usuarios = User.find(:all).collect{|obj| [obj.nome,obj.id]}
           @situacaos = Situacao.find(:all).collect{|obj| [obj.descricao,obj.id]}
         busca_tarefas
         format.html { render :action => "new" }
@@ -92,7 +88,6 @@ class TarefasController < ApplicationController
       else
 
         @projetos = Projeto.find(:all).collect{|obj| [obj.id,obj.id]}
-        @usuarios = User.find(:all).collect{|obj| [obj.id,obj.id]}
         @situacaos = Situacao.find(:all).collect{|obj| [obj.id,obj.id]}
 
 
@@ -129,23 +124,26 @@ class TarefasController < ApplicationController
   
   def pausar
     @tarefa = Tarefa.find(params[:id])
-    @usuarios = User.all.collect{|obj| [obj.nome,obj.id]}
     @situacaos = Situacao.find(:all).collect{|obj| [obj.descricao,obj.id]}
   end
   
   def create_pausar
-    pausa = Pausa.new
-    pausa.tarefa_id = params[:tarefa_id]
-    pausa.justificativa = params[:justificativa]
-    pausa.data = Time.now
-    pausa.padrao=false
-    if pausa.save
-      redirect_to tarefas_path
-    else
-      #TODO fazer tratamento de erro
+    @pausa = Pausa.new
+    @pausa.tarefa_id = params[:tarefa_id]
+    @pausa.justificativa = params[:justificativa]
+    @pausa.data = Time.now
+    @pausa.padrao=false
+    @tarefa = @pausa.tarefa
+    @tarefa.alerta_solicitante = true
+    Tarefa.transaction do
+      if @pausa.save & @tarefa.save
+        redirect_to tarefas_path
+      else
+        #TODO fazer tratamento de erro
+      end
     end
   end
-  
+
   
   def aprovar_pausa
     pausa = Pausa.find(:all, :conditions=>["tarefa_id=?",id]).last
@@ -251,6 +249,38 @@ class TarefasController < ApplicationController
     @tarefa.save  
     #TODO tratar erro
     redirect_to :back  
+  end
+  
+  def recusar_tarefa
+    debugger
+    tarefa = Tarefa.find(params[:tarefa_id])
+    tarefa.alerta_solicitante = true  
+    tarefa.recusado = true
+    tarefa.justificativa_recusa = params[:justificativa]
+    if tarefa.save
+      redirect_to tarefas_path
+    else
+      #TODO tratar erro
+      puts "erro ao recusar tarefa"
+    end
+  end
+  
+  def reencaminhar_tarefa_recusada
+    debugger
+    @tarefa = Tarefa.find(params[:tarefa_id])
+    @tarefa.recusado = false
+    @tarefa.alerta_solicitante = false
+    @tarefa.justificativa_recusa = ""
+    if params[:commit]=="ok"
+      @tarefa.user_id = params[:tarefa][:user_id]
+    else
+      @tarefa.user_id = nil
+    end
+    if @tarefa.save
+      redirect_to tarefas_path
+    else
+      #TODO tratar excessão
+    end
   end
   
 end

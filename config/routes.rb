@@ -15,7 +15,7 @@ ActionController::Routing::Routes.draw do |map|
 
   map.resources :tarefas, :collection => {:show_export => :get, :pausar=>:get, :reiniciar_a_tarefa=>:get, 
          :pausar_padrao=>:get, :reiniciar_padrao=>:get, :encaminhar=>:get, :mudar_alerta=>:get,
-         :encerrar_tarefa=>:get, :avaliar_tarefa=>:get  }
+         :encerrar_tarefa=>:get, :avaliar_tarefa=>:get, :recusar_tarefa=>:get, :reencaminhar_tarefa_recusada=>:get  }
   
   map.resources :tarefas do |tarefas|
        tarefas.resources :comentarios
