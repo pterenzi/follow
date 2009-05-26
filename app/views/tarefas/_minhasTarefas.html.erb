@@ -24,23 +24,20 @@
 	    <td><p class="link"><a href="#" onClick="abre_form_recusa(<%=tarefa.id%>);return false;" style="text-decoration:none" OnMouseOver="document.devolver.src='images/backwardh.png'" OnMouseOut="document.devolver.src='images/backward.png'">
 		<Img Src="images/backward.png" Name="devolver" Width="18" Height="10" Border=""><span>Devolver</span></a></p></td>
 	     
-	
-	    <% if tarefa.pausada_esperando_aprovacao %>
-	       <td><a href="#"><img src="/images/play.png" border=0 /></td>
-	    <% end %>
 
 	    <% if tarefa.pausada  %>
 	       <% rota = "/tarefas/reiniciar_a_tarefa?tarefa_id=" + tarefa.id.to_s  %>
-	       <td><a href= <%=rota%>  > <img src="/images/play.png" border=0/></a></td>
-	    <% end %>
+	      
+	    <td><p class="link"> <a href="<%rota%>"   style="text-decoration:none"  OnMouseOver="document.play.src='images/playh.png'" OnMouseOut="document.play.src='images/pause.png'"><Img Src="images/pause.png" Name="play" Width="18" Height="10"Border=""><span>Reiniciar</span></a></p></td>
+	<% end %>
 
 	    <% if tarefa.sem_pausa %>
-          <td><p class="link"> <a href="#" onClick="abre_form_pausa(<%=tarefa.id%>);return false;"  style="text-decoration:none" OnMouseOver="document.play.src='images/pauseh.png'" OnMouseOut="document.play.src='images/play.png'"><Img Src="images/play.png" Name="play" Width="18" Height="10"Border=""><span>Pausar</span></a></p></td>
+          <td><p class="link"> <a href="#" onClick="abre_form_pausa(<%=tarefa.id%>);return false;"  style="text-decoration:none" OnMouseOver="document.pause.src='images/pauseh.png'" OnMouseOut="document.pause.src='images/play.png'"><Img Src="images/play.png" Name="pause" Width="18" Height="10"Border=""><span>Pausar</span></a></p></td>
 	    <% end %>
 
 <td><p class="link"><a Href="#" style="text-decoration:none" OnMouseOver="document.foward.src='images/fowardh.png'" OnMouseOut="document.foward.src='images/foward.png'"><Img Src="images/foward.png" Name="foward" Width="18" Height="10"Border=""><span>Reencaminhar</span></a></p></td>
 	
-       <td><p class="link"> <a href="#" onClick="abre_form_termino(<%=tarefa.id%>);return false;" style="text-decoration:none" OnMouseOver="document.stop.src='images/stoph.png'" OnMouseOut="document.stop.src='images/stop.png'"><Img Src="images/stop.png" Name="stop" Width="18" Height="10"Border=""><span>Finalizar</span></a></p></td>
+       <td><p class="link"> <a href="#" onClick="abre_form_termino(<%=tarefa.id%>);return false;" style="text-decoration:none" OnMouseOver="document.stop.src='images/stoph.png'" OnMouseOut="document.stop.src='images/stop.png'"><Img Src="images/stop.png" Name="stop" Width="18" Height="10"Border=""><span>Finalizar</span></a><p></td>
 
 
       

@@ -694,11 +694,15 @@ h3 {
     color: #66584B;
 }	
 #comentario_vermelho{
-		color: #ad1c21;	}
+		color: #ad1c21;
+		padding-left: 10px;
+}
 
 #comentario_preto{
 		color: black;
+		padding-left: 10px;
 }
 #comentario_azul{
 		color: #5a78a5;
+		padding-left: 10px;
 }
