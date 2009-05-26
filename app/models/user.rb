@@ -6,5 +6,5 @@ class User < ActiveRecord::Base
   has_many :comentarios
   
   belongs_to :categoria
-  
+  has_many :avaliacaos
 end

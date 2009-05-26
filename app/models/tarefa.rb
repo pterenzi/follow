@@ -15,6 +15,8 @@ has_many :comentarios
 
 has_many :pausas
 
+has_many :avaliacaos
+
 
 
 #Validações

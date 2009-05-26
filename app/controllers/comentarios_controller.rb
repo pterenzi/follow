@@ -52,8 +52,8 @@ class ComentariosController < ApplicationController
     @comentario.user_id = current_user.id
     @tarefa = Tarefa.find(params[:tarefa_id])
 
-    @tarefa.alerta_usuario = (tarefa.solicitante== current_user)
-    @tarefa.alerta_solicitante = (tarefa.solicitante!= current_user)
+    @tarefa.alerta_usuario = (@tarefa.solicitante== current_user)
+    @tarefa.alerta_solicitante = (@tarefa.solicitante!= current_user)
     @tarefa.tem_comentario = true
 
     @comentario.tarefa_id = params[:tarefa_id]
