@@ -170,3 +170,18 @@ h1 {
 	color: black;
 }
 
+p.link a:hover {color:#fff;}
+  p.link a:link span{display: none;}
+  p.link a:visited span{display: none;}
+  p.link a:hover span {
+  position: absolute;
+  margin:-30px 0px 0px -20px;
+  background-color: #feffc1;
+  max-width:100;
+  padding: 2px 10px 2px 10px;
+  border: 1px solid #C0C0C0;
+  font: normal 10px/12px verdana;
+  color: #000;
+  text-align:left;
+  text-decoration:none;
+  display: block;}
