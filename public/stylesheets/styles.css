@@ -22,13 +22,22 @@ font: 10px "Trebuchet MS";
 color:#000000;
 }
 
-.linkbotao {    font-family: verdana, arial, sans-serif; 
-   font-size: 10pt; 
-   font-weight: bold; 
-   padding: 4px; 
-   color: #666666; 
-   text-decoration: none; 
-} 
+p.link a:hover {color:#fff;}
+  p.link a:link span{display: none;}
+  p.link a:visited span{display: none;}
+  p.link a:hover span {
+  position: absolute;
+  margin:-30px 0px 0px -20px;
+  background-color: #feffc1;
+  max-width:100;
+  padding: 2px 10px 2px 10px;
+  border: 1px solid #C0C0C0;
+  font: normal 10px/12px verdana;
+  color: #000;
+  text-align:left;
+  text-decoration:none;
+  display: block;}
+
 
 body {
     background-color: #5F5F5F;
