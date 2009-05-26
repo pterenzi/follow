@@ -82,7 +82,7 @@
     <div id="rightsidebar">
 	<% if !@tarefas_sem_usuario.blank? %>
      <h2>Direcionar</h2>
-     <div id="rightsidebartext">
+     <div>
        <%= yield :lado_sem_usuario %>
      </div>
     <% end %>
@@ -94,7 +94,7 @@
 	      <% end %>	
 		
 		</h2>
-      <div id="rightsidebartext">
+      <div>
         <%= yield :rightside %>
       </div>
 

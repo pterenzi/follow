@@ -15,7 +15,7 @@
     <div id="tarefa">
 
     <span id="blink_<%=tarefa.id.to_s %>" >
-        <a href="#" onClick=toggle(<%= tarefa.id %>,<%= tarefa.alerta_usuario.nil? ? false : tarefa.alerta_usuario %>,'usuario') ><%= tarefa.descricao %></a><br/>
+        <a href="#" onClick=toggle(<%= tarefa.id %>,<%= tarefa.alerta_usuario.nil? ? false : tarefa.alerta_usuario %>,'usuario') >• <%= tarefa.descricao %></a><br/>
     </span>
     <div style="display: none;"id="toggle_appear_<%= tarefa.id.to_s %>" style="background:#F2F2F2;">
 	    <a href="#" onClick="abre_form_recusa(<%=tarefa.id%>);return false;" style="text-decoration:none" OnMouseOver="document.devolver.src='images/backwardh.png'" OnMouseOut="document.devolver.src='images/backward.png'">

@@ -43,7 +43,7 @@
   <% end %>
 
 	 <span id="blink_<%=tarefa.id.to_s %>" >
-       <a href="#" onClick="<%= funcao %>" ><%= tarefa.descricao %></a>  
+       <a href="#" onClick="<%= funcao %>" >• <%= tarefa.descricao %></a>  
      </span>
   
 	<div style="display: none;" id="toggle_appear_<%= tarefa.id.to_s %>" style="background:#F2F2F2;">
