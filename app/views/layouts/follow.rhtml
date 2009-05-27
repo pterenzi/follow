@@ -77,8 +77,6 @@
       <%= yield :leftside %>
     </div>
 
-
-
     <div id="rightsidebar">
 	<% if !@tarefas_sem_usuario.blank? %>
      <h2>Direcionar</h2>
@@ -86,6 +84,12 @@
        <%= yield :lado_sem_usuario %>
      </div>
     <% end %>
+
+    <% if !@to_do_list.nil? && !@to_do_list.empty? %>
+      <h2>To Do List:</h2>
+      <%= render :partial=>"todo" , :locals=>{:to_do_list=>@to_do_list}%>
+    <% end %>
+
 	  <h2>Minhas tarefas:
 		<% if @tem_tarefa_com_pausa_padrao %>
 	        <%= render :partial=>"reinicio_padrao" %>

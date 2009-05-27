@@ -13,37 +13,44 @@
       <% end %>
 
     <div id="tarefa">
+    
     <span id="blink_<%=tarefa.id.to_s %>" >
         <a href="#" onClick=toggle(<%= tarefa.id %>,<%= tarefa.alerta_usuario.nil? ? false : tarefa.alerta_usuario %>,'usuario') >• <%= tarefa.descricao %></a><br/>
     </span>
     <div style="display: none;"id="toggle_appear_<%= tarefa.id.to_s %>" style="background:#F2F2F2;">
-	
-	
-		<table width="80" border="0" cellspacing="0" cellpadding="0">
-		                              <tr>
-	    <td><p class="link"><a href="#" onClick="abre_form_recusa(<%=tarefa.id%>);return false;" style="text-decoration:none" OnMouseOver="document.devolver.src='images/backwardh.png'" OnMouseOut="document.devolver.src='images/backward.png'">
-		<Img Src="images/backward.png" Name="devolver" Width="18" Height="10" Border=""><span>Devolver</span></a></p></td>
-	     
+    
+        <table width="80" border="0" cellspacing="0" cellpadding="0">
+                                      <tr>
+        <td><p class="link"><a href="#" onClick="abre_form_recusa(<%=tarefa.id%>);return false;" style="text-decoration:none" OnMouseOver="document.devolver.src='images/backwardh.png'" OnMouseOut="document.devolver.src='images/backward.png'">
+        <Img Src="images/backward.png" Name="devolver" Width="18" Height="10" Border=""><span>Devolver</span></a></p></td>
+         
+    
+        <% if tarefa.pausada_esperando_aprovacao %>
+<% #TODO o aue fazder se ele continua a tarefa antes de aprovar ou não a pausa ? %>
+           <td><a href="#"><img src="/images/play.png" border=0 /></td>
+        <% end %>
 
-	    <% if tarefa.pausada  %>
-	       <% rota = "/tarefas/reiniciar_a_tarefa?tarefa_id=" + tarefa.id.to_s  %>
-	      
-	    <td><p class="link"> <a href="<%rota%>"   style="text-decoration:none"  OnMouseOver="document.play.src='images/playh.png'" OnMouseOut="document.play.src='images/pause.png'"><Img Src="images/pause.png" Name="play" Width="18" Height="10"Border=""><span>Reiniciar</span></a></p></td>
-	<% end %>
+        <% if tarefa.pausada  %>
+           <% rota = "/tarefas/reiniciar_a_tarefa?tarefa_id=" + tarefa.id.to_s  %>
+    <td><p class="link"> <a href=<%=rota%> style="text-decoration:none" OnMouseOver="document.play.src='images/pauseh.png'" OnMouseOut="document.play.src='images/play.png'"><Img Src="images/play.png" Name="play" Width="18" Height="10"Border=""><span>Pausar</span></a></p></td>
+        <% end %>
 
-	    <% if tarefa.sem_pausa %>
+        <% if tarefa.sem_pausa || tarefa.pausa_nao_aceita %>
           <td><p class="link"> <a href="#" onClick="abre_form_pausa(<%=tarefa.id%>);return false;"  style="text-decoration:none" OnMouseOver="document.pause.src='images/pauseh.png'" OnMouseOut="document.pause.src='images/play.png'"><Img Src="images/play.png" Name="pause" Width="18" Height="10"Border=""><span>Pausar</span></a></p></td>
-	    <% end %>
+        <% end %>
 
 <td><p class="link"><a Href="#" style="text-decoration:none" OnMouseOver="document.foward.src='images/fowardh.png'" OnMouseOut="document.foward.src='images/foward.png'"><Img Src="images/foward.png" Name="foward" Width="18" Height="10"Border=""><span>Reencaminhar</span></a></p></td>
-	
-       <td><p class="link"> <a href="#" onClick="abre_form_termino(<%=tarefa.id%>);return false;" style="text-decoration:none" OnMouseOver="document.stop.src='images/stoph.png'" OnMouseOut="document.stop.src='images/stop.png'"><Img Src="images/stop.png" Name="stop" Width="18" Height="10"Border=""><span>Finalizar</span></a><p></td>
+    
+       <td><p class="link"> <a href="#" onClick="abre_form_termino(<%=tarefa.id%>);return false;" style="text-decoration:none" OnMouseOver="document.stop.src='images/stoph.png'" OnMouseOut="document.stop.src='images/stop.png'"><Img Src="images/stop.png" Name="stop" Width="18" Height="10"Border=""><span>Finalizar</span></a></p></td>
 
 
       
          </tr>
    </table>
 
+        <%= render :partial=>'comentarios_de_uma_tarefa', :locals=>{:tarefa=>tarefa, :lado=>'direito'} %>
+        <%= render :partial=>'form_comentario', :locals=>{:tarefa=>tarefa} %>    
+    </div>
    <div style="display:none;" id="form_recusa_<%=tarefa.id.to_s%>">
        <%= render :partial=>'recusar', :locals=>{:tarefa=>tarefa} %>
    </div>
@@ -53,21 +60,14 @@
       <%= render :partial=>'pausar', :locals=>{:tarefa=>tarefa, :lado=>'direito'} %>
    </div>
 
-		<div style="display:none;" id="abre_termino_<%=tarefa.id.to_s%>">
-	         <%= render :partial=>'termino', :locals=>{:tarefa=>tarefa} %>
-	    </div>
-        <%= render :partial=>'comentarios_de_uma_tarefa', :locals=>{:tarefa=>tarefa, :lado=>'direito'} %>
-        <%= render :partial=>'form_comentario', :locals=>{:tarefa=>tarefa} %>    
-    <% #TODO Verificar se os botões ficaram embutidos %>
-    
+        <div style="display:none;" id="abre_termino_<%=tarefa.id.to_s%>">
+             <%= render :partial=>'termino', :locals=>{:tarefa=>tarefa} %>
+        </div>
 
-
-    </div>
-
-	<% if tarefa.alerta_usuario %>
-	     <% tag = '#blink_'+tarefa.id.to_s %>
-	     <%= javascript_tag "pulsar('"+tag+"')" %>
-	   <% end %>
+    <% if tarefa.alerta_usuario %>
+         <% tag = '#blink_'+tarefa.id.to_s %>
+         <%= javascript_tag "pulsar('"+tag+"')" %>
+       <% end %>
 </div>
 <% end %>
 
