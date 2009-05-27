@@ -13,8 +13,18 @@
 select { 
 background-color: #FFFFFF;
 font:10px "Trebuchet MS";
-color:#5a78a5;
-border:1px solid #5a78a5;
+
+ul.tarefa 
+{
+list-style-position: inside;
+list-style-type: disc;
+}
+
+ul.comentario 
+{
+list-style-position: inside;
+list-style-type: circle;
+}
 
 }
 input { 
@@ -616,7 +626,6 @@ main {
 h1 {
     font:  150% sans-serif;
     color: #226;
-    border-bottom: 3px dotted #77d;
 }
 
 h2 {
@@ -682,27 +691,32 @@ h3 {
 	font-family: "Trebuchet MS", Verdana, Times, serif;
     font-size: 8pt;
     color: black;
-    padding-top: 2px; 
+    padding-top: 5px; 
     padding-left: 18px;
-	padding-bottom: 4px;
-    line-height: 14pt;
+	padding-bottom: 8px;
+    line-height: 10pt;
     border-bottom: 1px solid #999;
 	text-decoration:none;
 }
 #tarefa a {
     text-decoration: none;
-    color: #66584B;
+    color: #000;
 }	
-#comentario_pretolho{
+#comentario_vermelho{
 		color: #ad1c21;
 		padding-left: 10px;
+		font-style: italic;
 }
 
 #comentario_preto{
 		color: black;
 		padding-left: 10px;
+		padding-bottom: 5px;
+		font-style: italic;
 }
 #comentario_azul{
 		color: #5a78a5;
 		padding-left: 10px;
+		padding-bottom: 5px;
+		font-style: italic;
 }

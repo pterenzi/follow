@@ -2,11 +2,12 @@
 <div id="tarefa">
   <span id="blink_<%=tarefa.id.to_s %>" >
   
-    <a href="#" onClick="toggle(<%= tarefa.id %>, false ,'usuario')" >• <%= tarefa.descricao %></a><br/>
-  </span
+    <a href="#" onClick="toggle(<%= tarefa.id %>, false ,'usuario')" ><ul class="tarefa"> <li><%= tarefa.descricao %></li></ul></a>
+  </span>
   <div style="display: none;"id="toggle_appear_<%= tarefa.id.to_s %>" style="background:#F2F2F2;">
-   <table><tr><td>
-  <p class="link"> <a href="#" onClick="abre_form_termino(<%=tarefa.id%>);return false;" style="text-decoration:none" OnMouseOver="document.stop.src='images/stoph.png'" OnMouseOut="document.stop.src='images/stop.png'"><Img Src="images/stop.png" Name="stop" Width="18" Height="10"Border=""><span>Finalizar</span></a></p>
+   <table>
+	<tr>
+		<td><p class="link"> <a href="#" onClick="abre_form_termino(<%=tarefa.id%>);return false;" style="text-decoration:none" OnMouseOver="document.stoptodo.src='images/stoph.png'" OnMouseOut="document.stoptodo.src='images/stop.png'"><Img Src="images/stop.png" Name="stop" Width="18" Height="10"Border=""><span>Finalizar</span></a></p>
   </td></tr></table>
     <%= render :partial=>'comentarios_de_uma_tarefa', :locals=>{:tarefa=>tarefa, :lado=>'direito'} %>
     <%= render :partial=>'form_comentario', :locals=>{:tarefa=>tarefa} %>    

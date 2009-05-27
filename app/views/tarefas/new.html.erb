@@ -18,17 +18,17 @@
   
   <%= f.select  :projeto_id, @projetos,{:prompt=>"Selecione uma Opção"}  %>      
 </p>
-
+<p>
+  <b>Usuário</b><br />   
+  
+  <%= f.select :user_id,@usuarios,{:prompt=>"Selecione uma Opção"} %>      
+</p>
   <p>
     <b>Descrição</b><br/>
     <%= f.text_area :descricao, :cols=>60, :rows=>10 %>
   </p>
 
-  <p>
-    <b>Usuário</b><br />   
-    
-    <%= f.select :user_id,@usuarios,{:prompt=>"Selecione uma Opção"} %>      
-  </p>
+
 
   <p>
     <b>Tempo est</b><br />   
