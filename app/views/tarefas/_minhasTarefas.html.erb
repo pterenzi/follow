@@ -8,14 +8,14 @@
     <% for tarefa in @minhas_tarefas do  %>
 
       <% if nome_usuario!= tarefa.solicitante.nome then %>
-        <div id="nome_usuario">Solicitadas por <%= tarefa.solicitante.nome %>: </div>
+        <div id="nome_usuario"><%= tarefa.solicitante.nome %> </div>
         <% nome_usuario = tarefa.solicitante.nome %> 
       <% end %>
 
     <div id="tarefa">
     
     <span id="blink_<%=tarefa.id.to_s %>" >
-        <a href="#" onClick=toggle(<%= tarefa.id %>,<%= tarefa.alerta_usuario.nil? ? false : tarefa.alerta_usuario %>,'usuario') ><ul class="tarefa"><li><%= tarefa.descricao %></li></ul></a>
+        <a href="#" onClick=toggle(<%= tarefa.id %>,<%= tarefa.alerta_usuario.nil? ? false : tarefa.alerta_usuario %>,'usuario') ><%= tarefa.descricao %></a>
     </span>
     <div style="display: none;"id="toggle_appear_<%= tarefa.id.to_s %>" style="background:#F2F2F2;">
     

@@ -2,7 +2,7 @@
 <div id="tarefa">
   <span id="blink_<%=tarefa.id.to_s %>" >
   
-    <a href="#" onClick="toggle(<%= tarefa.id %>, false ,'usuario')" ><ul class="tarefa"> <li><%= tarefa.descricao %></li></ul></a>
+    <a href="#" onClick="toggle(<%= tarefa.id %>, false ,'usuario')" ><%= tarefa.descricao %></a>
   </span>
   <div style="display: none;"id="toggle_appear_<%= tarefa.id.to_s %>" style="background:#F2F2F2;">
    <table>

@@ -4,7 +4,7 @@
       <div id="tarefa">
         <%= 'blink' if tarefa.alerta %>
 
-        <ul class="tarefa"> <li><a href="#" onClick="$('#encaminhar_<%= tarefa.id.to_s %>').toggle('blind', { percent: 0 },500 ); return false;"><%= tarefa.descricao %></li></ul></a>
+        <a href="#" onClick="$('#encaminhar_<%= tarefa.id.to_s %>').toggle('blind', { percent: 0 },500 ); return false;"><%= tarefa.descricao %></a>
         <div style="display: none;"id="encaminhar_<%= tarefa.id.to_s %>" style="background:#F2F2F2;">
         <%= render :partial=>'form_encaminhar', :locals=>{:tarefa=>tarefa} %>
         </div>
