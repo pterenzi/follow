@@ -178,6 +178,7 @@ class TarefasController < ApplicationController
   def reiniciar_a_tarefa
     @pausa = Pausa.da_tarefa(params[:tarefa_id])
     @pausa.reinicio = Time.now
+    @pausa.aceito = true
     if @pausa.save
       redirect_to tarefas_path
     else
@@ -187,6 +188,7 @@ class TarefasController < ApplicationController
   
   
   def pausar_padrao
+    debugger
     pausa_padrao_id = params[:pausa_padrao][:pausa_padrao_id]
     for tarefa in @minhas_tarefas
       create_pausa_padrao(tarefa.id,pausa_padrao_id)
