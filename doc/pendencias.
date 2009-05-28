@@ -1,3 +1,4 @@
 #TODO Permitir usuario alterar senha.ˇ
 #TODO Preparar arquivo de testes
 #TODO Submit ia JavaScript para pausa padrão
+#TODO Associar users a projetos, de forma que quando um projeto é selecionado para a criação da tarefa, somente os users daquele projeto apareçam na lista

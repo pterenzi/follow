@@ -28,6 +28,7 @@ class ApplicationController < ActionController::Base
       end
 
       def require_no_user
+        #TODO retirar true emcima
         if current_user
           store_location
           flash[:notice] = "Por favor, autentique-se"
@@ -58,12 +59,13 @@ class ApplicationController < ActionController::Base
   def busca_tarefas
      @tarefas = Tarefa.find(:all)
      @minhas_solicitacoes = Tarefa.all(:order=>"user_id", 
-           :conditions=>["avaliacao is null and solicitante_id=? and user_id<>solicitante_id and user_id not null",current_user.id ])
-     @minhas_tarefas = Tarefa.all(:order=>"solicitante_id", :conditions=>["recusado<>'t' and termino_at is null and user_id <> solicitante_id and user_id=?  ",current_user.id])
+           :conditions=>["termino_at is not null and solicitante_id=? and user_id<>solicitante_id and user_id not null",current_user.id ])
+     @minhas_tarefas = Tarefa.all(:order=>"solicitante_id", :conditions=>["recusada<>'t' and termino_at is null and user_id <> solicitante_id and user_id=?  ",current_user.id])
      @tarefas_sem_usuario = Tarefa.all(:conditions=>["solicitante_id=? and user_id is null ",current_user.id])
-     @andamentos = Andamento.all(:conditions=> ["ativo=?",true]).collect{|obj| [obj.nome,obj.nome]}
+     #@andamentos = Andamento.all(:conditions=> ["ativo=?",true]).collect{|obj| [obj.nome,obj.nome]}
      @pausas_padrao = PausaPadrao.all(:order=>"descricao").collect{|obj| [obj.descricao,obj.id]}
      @tem_tarefa_com_pausa_padrao = Tarefa.tem_tarefa_com_pausa_padrao(@minhas_tarefas)
+#TODO trocar acomando abaixo por named scope
      @tarefas_encerradas_sem_avaliacao = Tarefa.all(:conditions=>["termino_at is null and avaliacao is null and solicitante_id=?  ",current_user.id])
      @usuarios = User.find(:all).collect{|obj| [obj.nome,obj.id]}
      @to_do_list = Tarefa.all(:order=>"id", :conditions=>["termino_at is null and user_id = solicitante_id and user_id=?  ",current_user.id])

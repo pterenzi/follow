@@ -1,9 +1,9 @@
 class CreateComentarios < ActiveRecord::Migration
   def self.up
-    create_table :comentarios do |t|
-      t.integer :usuario_id
+    create_table :comentarios, :force => true do |t|
+      t.references :user
       t.string :descricao, :size=>255
-      t.integer :tarefa_id
+      t.references :tarefa
 
       t.timestamps
     end

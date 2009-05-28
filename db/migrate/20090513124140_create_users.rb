@@ -1,6 +1,6 @@
 class CreateUsers < ActiveRecord::Migration
   def self.up
-        create_table :users do |t|
+        create_table :users, :force => true do |t|
               t.timestamps
               t.string :login, :null => false
               t.string :crypted_password, :null => false
@@ -12,6 +12,8 @@ class CreateUsers < ActiveRecord::Migration
               t.datetime :current_login_at
               t.string :last_login_ip
               t.string :current_login_ip
+              t.references :categoria
+              t.string :nome
             end
 
             add_index :users, :login
