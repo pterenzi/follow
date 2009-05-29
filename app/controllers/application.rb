@@ -65,7 +65,7 @@ class ApplicationController < ActionController::Base
      #@andamentos = Andamento.all(:conditions=> ["ativo=?",true]).collect{|obj| [obj.nome,obj.nome]}
      @pausas_padrao = PausaPadrao.all(:order=>"descricao").collect{|obj| [obj.descricao,obj.id]}
      @tem_tarefa_com_pausa_padrao = Tarefa.tem_tarefa_com_pausa_padrao(@minhas_tarefas)
-#TODO trocar acomando abaixo por named scope
+#TODO trocar o comando abaixo por named scope
      @tarefas_encerradas_sem_avaliacao = Tarefa.all(:conditions=>["termino_at is null and avaliacao is null and solicitante_id=?  ",current_user.id])
      @usuarios = User.find(:all).collect{|obj| [obj.nome,obj.id]}
      @to_do_list = Tarefa.all(:order=>"id", :conditions=>["termino_at is null and user_id = solicitante_id and user_id=?  ",current_user.id])
