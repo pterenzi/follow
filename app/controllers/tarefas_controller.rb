@@ -33,7 +33,6 @@ class TarefasController < ApplicationController
   def new
     @tarefa = Tarefa.new
     @projetos = Projeto.all(:order=>'descricao').collect{|obj| [obj.descricao,obj.id]}
-    @situacaos = Situacao.find(:all).collect{|obj| [obj.descricao,obj.id]}
 
     respond_to do |format|
       format.html # new.html.erb

@@ -5,9 +5,15 @@
         <%= 'blink' if tarefa.alerta %>
 
         <a href="#" onClick="$('#encaminhar_<%= tarefa.id.to_s %>').toggle('blind', { percent: 0 },500 ); return false;"><span class="hyphenate" lang="pt"><%= tarefa.descricao %></span></a>
+<a href="#" onClick="detalhe_tarefa(<%= tarefa.id %>);"><%= image_tag "Favs-16x16.png" %></a>
         <div style="display: none;"id="encaminhar_<%= tarefa.id.to_s %>" style="background:#F2F2F2;">
         <%= render :partial=>'form_encaminhar', :locals=>{:tarefa=>tarefa} %>
         </div>
+
+	 <div style="display:none;" id="form_detalhe_<%=tarefa.id.to_s%>">
+	       <%= render :partial=>'detalhes_da_tarefa', :locals=>{:tarefa=>tarefa} %>
+	   </div>
+
       </div>
     <% end %>
 <% end %>

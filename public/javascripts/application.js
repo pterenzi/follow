@@ -56,6 +56,12 @@ function abre_alerta_recusado(id){
     $('#form_tarefa_recusada_'+id).dialog();
 }
 
+function detalhe_tarefa(id){
+	$('#form_detalhe_'+id).dialog({ title: 'Detalhe da tarefa' });
+    $('#form_detalhe_'+id).dialog('open');
+    $('#form_detalhe_'+id).dialog();
+}
+
 function pulsar(id){
     $(id).pulse({
         textColor: ['black','yellow','white'],

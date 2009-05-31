@@ -17,18 +17,23 @@ validates_numericality_of  :tempo_est, :message=>"deve ser numérico!"
 named_scope :encerradas, :conditions=>{:termino_at => !nil}
 named_scope :solicitadas_por, lambda{ |id| {:conditions=>["solicitante_id = ?", id]} }
 named_scope :minhas, lambda{ |id| {:conditions=>["user_id = ?", id]} }
-named_scope :outra_pessoa, :conditions=>{"user_id <> solicitante_id"}
+named_scope :outra_pessoa, :conditions=>["user_id <> solicitante_id"]
 named_scope :de_mim_para_mim, lambda{ |id| {:conditions=>["user_id = solicitante_id and solicitante_id = ?", id]} }    
 named_scope :para_mim, lambda{ |id| {:conditions=>["user_id <> solicitante_id and user_id = ?", id]} }    
 named_scope :abertas, :conditions=>{:termino_at => nil}
 named_scope :sem_avaliacao, :conditions=>{}
-named_scope :sem_user, :conditions=>["user_id = '?'",nil]
+named_scope :sem_user, :conditions=>["user_id is null"]
 named_scope :com_user, :conditions=>["user_id != '?' ",nil]
+named_scope :por_solicitante, :order=>:solicitante_id
 
 def usuario_que_criou(usuario_id)
   usuario = Usuario.find(usuario_id)
   usuario_id == solicitante_id
   #TODO test unitario para este metodo
+end
+
+def ja_passou
+  return (((Time.now - created_at) / 1.hour).round).to_s + " hora(s). "
 end
 
 def sem_usuario
@@ -90,6 +95,9 @@ def terminada_sem_comentario_do_solicitante
 end
 
 def self.tem_tarefa_com_pausa_padrao(tarefas)
+  if tarefas.nil? || tarefas.empty?
+    return false
+  end
   for tarefa in tarefas
       return true if tarefa.pausada_padrao 
   end
