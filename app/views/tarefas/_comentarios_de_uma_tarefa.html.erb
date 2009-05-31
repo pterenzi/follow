@@ -1,3 +1,4 @@
+
 <% for comentario in tarefa.comentarios do %>
   
   <% if lado=='esquerdo'%>
@@ -13,5 +14,5 @@
       <div id='comentario_preto'>
 	<% end %>
   <% end %> 
-<ul class="comentario>"> <li><%= comentario.descricao %></li></ul></div>
+<ul class="comentario>"> <li><span class="hyphenate" lang="pt"><%= comentario.descricao %></span></li></ul></div>
 <% end %>

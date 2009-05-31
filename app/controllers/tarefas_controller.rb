@@ -8,7 +8,8 @@ class TarefasController < ApplicationController
 
   # GET /tarefas GET /tarefas.xml
   def index
-    @situacaos = Situacao.find(:all).collect{|obj| [obj.descricao,obj.id]}
+   #TODO tirar isto
+   # @situacaos = Situacao.find(:all).collect{|obj| [obj.descricao,obj.id]}
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @tarefas }

@@ -14,9 +14,16 @@ validates_presence_of :tempo_est, :message=>"não pode ficar em branco!"
 validates_length_of  :tempo_est, :maximum=>4, :message=>"não pode exeder os 4 caracteres!"
 validates_numericality_of  :tempo_est, :message=>"deve ser numérico!"
 
-named_scope :encerradas, :conditions=>{:termino_at => !nil?}
-named_scope :do_solicitante, lambda{ |id| {:conditions=>[":solicitante_id = ?", id]} }
+named_scope :encerradas, :conditions=>{:termino_at => !nil}
+named_scope :solicitadas_por, lambda{ |id| {:conditions=>["solicitante_id = ?", id]} }
+named_scope :minhas, lambda{ |id| {:conditions=>["user_id = ?", id]} }
+named_scope :outra_pessoa, :conditions=>{"user_id <> solicitante_id"}
+named_scope :de_mim_para_mim, lambda{ |id| {:conditions=>["user_id = solicitante_id and solicitante_id = ?", id]} }    
+named_scope :para_mim, lambda{ |id| {:conditions=>["user_id <> solicitante_id and user_id = ?", id]} }    
+named_scope :abertas, :conditions=>{:termino_at => nil}
 named_scope :sem_avaliacao, :conditions=>{}
+named_scope :sem_user, :conditions=>["user_id = '?'",nil]
+named_scope :com_user, :conditions=>["user_id != '?' ",nil]
 
 def usuario_que_criou(usuario_id)
   usuario = Usuario.find(usuario_id)
