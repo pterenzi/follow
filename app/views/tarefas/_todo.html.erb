@@ -2,8 +2,7 @@
 <div id="tarefa">
   <span id="blink_<%=tarefa.id.to_s %>" >
   
-    <a href="#" onClick="toggle(<%= tarefa.id %>, false ,'usuario')" ><span class="hyphenate" lang="pt"><%= tarefa.descricao %></span></a>
-<a href="#" onClick="detalhe_tarefa(<%= tarefa.id %>);"><%= image_tag "Favs-16x16.png" %></a>
+    <a href="#" title="Detalhes da tarefa" onClick="detalhe_tarefa(<%= tarefa.id %>);"><%= image_tag "info.png" %></a> <a href="#" onClick="toggle(<%= tarefa.id %>, false ,'usuario')" ><span class="hyphenate" lang="pt"><%= tarefa.descricao %></span></a>
  <div style="display:none;" id="form_detalhe_<%=tarefa.id.to_s%>">
        <%= render :partial=>'detalhes_da_tarefa', :locals=>{:tarefa=>tarefa} %>
    </div>

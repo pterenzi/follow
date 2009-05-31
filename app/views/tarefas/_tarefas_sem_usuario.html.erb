@@ -4,8 +4,7 @@
       <div id="tarefa">
         <%= 'blink' if tarefa.alerta %>
 
-        <a href="#" onClick="$('#encaminhar_<%= tarefa.id.to_s %>').toggle('blind', { percent: 0 },500 ); return false;"><span class="hyphenate" lang="pt"><%= tarefa.descricao %></span></a>
-<a href="#" onClick="detalhe_tarefa(<%= tarefa.id %>);"><%= image_tag "Favs-16x16.png" %></a>
+        <a href="#"  title="Detalhes da tarefa" onClick="detalhe_tarefa(<%= tarefa.id %>);"><%= image_tag "info.png" %></a> <a href="#" onClick="$('#encaminhar_<%= tarefa.id.to_s %>').toggle('blind', { percent: 0 },500 ); return false;"><span class="hyphenate" lang="pt"><%= tarefa.descricao %></span></a>
         <div style="display: none;"id="encaminhar_<%= tarefa.id.to_s %>" style="background:#F2F2F2;">
         <%= render :partial=>'form_encaminhar', :locals=>{:tarefa=>tarefa} %>
         </div>

@@ -15,9 +15,9 @@
     <div id="tarefa">
      
     <span id="blink_<%=tarefa.id.to_s %>" >
-        <a href="#" onClick=toggle(<%= tarefa.id %>,<%= tarefa.alerta_usuario.nil? ? false : tarefa.alerta_usuario %>,'usuario') ><span class"hyphanate" lang="pt"><%= tarefa.descricao %></span></a>
+          <a href="#"  title="Detalhes da tarefa" onClick="detalhe_tarefa(<%= tarefa.id %>);"><%= image_tag "info.png" %></a> <a href="#" onClick=toggle(<%= tarefa.id %>,<%= tarefa.alerta_usuario.nil? ? false : tarefa.alerta_usuario %>,'usuario') ><span class"hyphanate" lang="pt"><%= tarefa.descricao %></span></a>
     </span>
-   <a href="#" onClick="detalhe_tarefa(<%= tarefa.id %>);"><%= image_tag "Favs-16x16.png" %></a>
+
     <div style="display: none;"id="toggle_appear_<%= tarefa.id.to_s %>" style="background:#F2F2F2;">
     
         <table width="80" border="0" cellspacing="0" cellpadding="0">
