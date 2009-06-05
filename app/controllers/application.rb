@@ -68,6 +68,7 @@ class ApplicationController < ActionController::Base
     @usuarios = User.find(:all).collect{|obj| [obj.nome,obj.id]}
     
     #Com named_scope
+    @projetos = Projeto.all(:order=>'descricao').collect{|obj| [obj.descricao,obj.id]}
     @minhas_tarefas = Tarefa.para_mim(current_user.id).abertas.por_solicitante.sem_recusa
 #    @minhas_solicitacoes = Tarefa.solicitadas_por(current_user.id).sem_avaliacao.com_user.outra_pessoa
     @minhas_solicitacoes = Tarefa.busca_minhas_solicitacoes(current_user.id)

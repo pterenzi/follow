@@ -34,8 +34,10 @@ def usuario_que_criou(usuario_id)
   #TODO test unitario para este metodo
 end
 
-def ja_passou
-  return (((Time.now - created_at) / 1.hour).round).to_s + " hora(s). "
+def tempo_decorrido
+  return 1
+  avaliacao = Avaliacao.last(:conditions=>["user_id=? and tarefa_id=?", id, user_id])
+  return (((Time.now - avaliacao.created_at) / 1.hour).round).to_s + " hora(s). "
 end
 
 def sem_usuario

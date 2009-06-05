@@ -59,9 +59,6 @@ class TarefasController < ApplicationController
         format.html { redirect_to(tarefas_path) }
         format.xml  { render :xml => @tarefa, :status => :created, :location => @tarefa }
       else
-        #TODO verificar se fica assim mesmo, com estes métodos aqui.
-          @projetos = Projeto.all(:order=>'descricao').collect{|obj| [obj.descricao,obj.id]}
-          @situacaos = Situacao.find(:all).collect{|obj| [obj.descricao,obj.id]}
         busca_tarefas
         format.html { render :action => "new" }
         format.xml  { render :xml => @tarefa.errors, :status => :unprocessable_entity }
@@ -111,14 +108,14 @@ class TarefasController < ApplicationController
     @avaliacao = Avaliacao.new
     @avaliacao.tarefa_id = @tarefa.id
     @avaliacao.user_id = @tarefa.user_id
-    #TODO tratar commit rollback
-
-   if @tarefa.save & @avalicao.save
-     redirect_to tarefas_path
-   else
-    #TODO tratar excessão
-   end 
-     
+    Tarefa.transaction do
+      if @tarefa.save & @avaliacao.save
+        redirect_to tarefas_path
+      else
+        flash[:notice] = "Houve um problema no encaminhamento da tarefa. Tente novamente e, se o erro persistir, chame o suporte."
+        redirect_to tarefas_path
+      end 
+    end
   end
   
   def pausar
@@ -138,7 +135,8 @@ class TarefasController < ApplicationController
       if @pausa.save & @tarefa.save
         redirect_to tarefas_path
       else
-        #TODO fazer tratamento de erro
+        flash[:notice] = "Houve um erro ao gravar a pauasa desta tarefa. Se o erro persistir, contate o suporte."
+        redirect_to tarefas_path
       end
     end
   end
@@ -150,7 +148,8 @@ class TarefasController < ApplicationController
     if pausa.save
       redirect_to tarefas_path
     else
-      #TODO fazer targtamento de erro    
+      flash[:notice]= "Houve um erro na aprovação desta pausa."    
+      redirect_to tarefas_path
     end
   end
   
@@ -170,7 +169,8 @@ class TarefasController < ApplicationController
     if @pausa.save
       redirect_to tarefas_path
     else
-      #TODO tratar erro
+      flash[:notice] = "Houve um erro na aprovação desta pausa."
+      redirect_to tarefas_path
     end
   end
   
@@ -181,7 +181,8 @@ class TarefasController < ApplicationController
     if @pausa.save
       redirect_to tarefas_path
     else
-      #TODO verifica erro
+      flash[:notice] = "Houve um erro ao reiniciar esta tarefa"
+      redirect_to tarefas_path
     end
   end
   
@@ -238,18 +239,24 @@ class TarefasController < ApplicationController
     @tarefa.termino_at = Time.now
     @tarefa.comentario_termino_user = params[:comentario_termino]
     @tarefa.alerta_solicitante = true
-    @tarefa.save
-    #TODO tratar erro
-    redirect_to :back
+    if @tarefa.save
+      redirect_to :back
+    else
+      flash[:notice] = "Houve um erro ao encerrar esta tarefa"
+      redirect_to :back
+    end
   end
   
   def avaliar_tarefa
     @tarefa = Tarefa.find(params[:id])
     @tarefa.avaliacao = params[:avaliacao]
     @tarefa.comentario_termino_solicitante = params[:comentario_avaliacao]
-    @tarefa.save  
-    #TODO tratar erro
-    redirect_to :back  
+    if @tarefa.save  
+      redirect_to :back  
+    else
+      flash[:notice] = "Houve um erro na avaliação desta tarefa. SE o erro presistir, contate o suporte."
+      redirect_to :back
+    end
   end
   
   def recusar_tarefa
@@ -261,19 +268,17 @@ class TarefasController < ApplicationController
     avaliacao.user_id = tarefa.user_id
     avaliacao.comentario_recusa_user = params[:justificativa]
     avaliacao.recusada = true
-    #TODO colocal commit / rollback ( esqueci o nome ) 
-    if tarefa.save & avaliacao.save
-      redirect_to tarefas_path
-    else
-      #TODO tratar erro
-      puts "erro ao recusar tarefa"
+    Tarefa.transaction do
+      if tarefa.save & avaliacao.save
+        redirect_to tarefas_path
+      else
+        flash[:notice] = "Houve um erro na recusa desta tarefa."
+        redirect_to tarefas_path
+      end
     end
   end
   
   def reencaminhar_tarefa_recusada
-    #TODO  Gravar a recusa coma aavaliação aqui ou no outro controller
-    
-    debugger
     @tarefa = Tarefa.find(params[:tarefa_id])
     @tarefa.recusada = false
     @tarefa.alerta_solicitante = false
@@ -286,7 +291,8 @@ class TarefasController < ApplicationController
     if @tarefa.save
       redirect_to tarefas_path
     else
-      #TODO tratar excessão
+      flash[:notice] = "Houve um erro ao reencaminhar esta tarefa."
+      redirect_to tarefas_path
     end
   end
   

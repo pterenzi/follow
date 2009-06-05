@@ -1,17 +1,8 @@
 # Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
 
-one:
-  situacao_id: 1
-  projeto_id: 1
-  usuario_id: 1
-  solicitante_id: 2
+follow:
+  projeto: follow
+  user: marcio
+  solicitante: admin
   tempo_est: 10
-  avaliacao: 1
-
-two:
-  situacao_id: 1
-  projeto_id: 1
-  usuario_id: 1
-  solicitante_id: 1
-  tempo_est: 20
-  avaliacao: 2
+  

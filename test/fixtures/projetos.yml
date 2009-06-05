@@ -1,12 +1,12 @@
 # Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
 
-one:
-  nome: MyString
-  descricao: MyString
-  data_inicio: 
+follow:
+  nome: Follow
+  descricao: Sistema de follow-up
+  data_inicio: 2009-05-01
   data_fim: 
-  prazo: MyInteger
-  ativo: MyBoolean
+  prazo: 
+  ativo: true
 
 two:
   nome: MyString

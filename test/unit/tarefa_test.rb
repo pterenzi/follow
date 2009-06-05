@@ -1,58 +1,11 @@
-require File.dirname(__FILE__) + '/../test_helper'
+require File.expand_path(File.dirname(__FILE__) + "/../test_helper")
 class TarefaTest < ActiveSupport::TestCase
-  def test_should_not_save_without_descricao
-     tarefa = Tarefa.new
-     tarefa.usuario_id=1
-     tarefa.projeto_id=1
-     tarefa.situacao_id=1
-     assert !tarefa.save, "Salvou tarefa sem descricao."
+  
+  
+  def test_user_da_tarefa
+    tarefa = tarefas(:follow)
+    assert tarefa.user.login=="marcio"
   end
   
-  def test_should_not_save_without_projeto
-    tarefa = Tarefa.new
-    tarefa.usuario_id=1
-    tarefa.descricao='d'
-    tarefa.situacao_id=1
-    tarefa.usuario_executor_id=2
-    assert !tarefa.save,"Salvou a tarefa sem projeto"
-  end
-  
-  def test_should_not_save_without_usuario
-    tarefa = Tarefa.new
-    tarefa.descricao='d'
-    tarefa.projeto_id=1
-    tarefa.situacao_id=1
-    tarefa.usuario_executor_id=2
-    assert !tarefa.save,"Salvou a terafa sem usuario"
-  end
-
-  def test_should_not_save_without_situacao
-    tarefa = Tarefa.new
-    tarefa.usuario_id=1
-    tarefa.usuario_executor_id=2
-    tarefa.projeto_id=1
-    tarefa.descricao='d'
-    
-    assert !tarefa.save,"Salvou a terafa sem situacao"
-  end
-  
-  def test_executor_pode_alterar_tarefa
-    tarefa = tarefas(:one)
-    assert tarefa.usuario_que_criou(1)
-  end
-  
-  def test_pausa_padrao
-    pausa = pausas(:padrao)
-    assert !pausa.pausa_padraos.nil?
-  end
-  
-  def test_usuario_que_criou
-    t = tarefas(:one)
-    assert t.usuario_que_criou(2)==true
-    assert t.usuario_que_criou(1)==false
-    t2 = tarefas(:two)
-    assert t2.usuario_que_criou(2)==false
-    assert t2.usuario_que_criou(1)==true
-  end
    
 end

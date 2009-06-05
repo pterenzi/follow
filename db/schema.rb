@@ -11,7 +11,7 @@
 
 ActiveRecord::Schema.define(:version => 20090526125111) do
 
-  create_table "avaliacao", :force => true do |t|
+  create_table "avaliacaos", :force => true do |t|
     t.integer  "tarefa_id"
     t.integer  "user_id"
     t.integer  "nota"
