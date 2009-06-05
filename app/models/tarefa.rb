@@ -5,7 +5,6 @@ belongs_to :user
 belongs_to :solicitante, :class_name => "User", :foreign_key => "solicitante_id"
 has_many :comentarios
 has_many :pausas
-has_many :recusas
 has_many :avaliacaos
 
 validates_presence_of :projeto_id, :message=>"não pode ficar em branco!"
@@ -21,10 +20,13 @@ named_scope :outra_pessoa, :conditions=>["user_id <> solicitante_id"]
 named_scope :de_mim_para_mim, lambda{ |id| {:conditions=>["user_id = solicitante_id and solicitante_id = ?", id]} }    
 named_scope :para_mim, lambda{ |id| {:conditions=>["user_id <> solicitante_id and user_id = ?", id]} }    
 named_scope :abertas, :conditions=>{:termino_at => nil}
-named_scope :sem_avaliacao, :conditions=>{}
+#named_scope :sem_avaliacao,           
+#            :joins=>:avaliacaos,          
+#            lambda{ |id,user_id| {:conditions=>{"avaliacaos.tarefa_id=? and avaliacaos.user_id=?",id, user_id}} }
 named_scope :sem_user, :conditions=>["user_id is null"]
 named_scope :com_user, :conditions=>["user_id != '?' ",nil]
 named_scope :por_solicitante, :order=>:solicitante_id
+named_scope :sem_recusa, :conditions=>["recusada='f'"]
 
 def usuario_que_criou(usuario_id)
   usuario = Usuario.find(usuario_id)
@@ -102,6 +104,43 @@ def self.tem_tarefa_com_pausa_padrao(tarefas)
       return true if tarefa.pausada_padrao 
   end
   return false
+end
+
+def justificativa_recusa
+  avaliacao = Avaliacao.find(:all, :conditions=>["recusada='t' and tarefa_id=? and user_id=?", id, user_id])
+  if avaliacao.nil? 
+    return ""
+  else
+    return avaliacao[0].comentario_recusa_user
+  end
+end
+
+def self.busca_minhas_solicitacoes(solicitante_id)
+  resultado = Array.new
+  @tarefas = Tarefa.all(:conditions=>["user_id is not null and solicitante_id=?", solicitante_id])
+  for tarefa in @tarefas do
+    if tarefa.termino_at.nil?
+      resultado << tarefa
+    else
+      a = Avaliacao.last(:conditions=>["nota is null and tarefa_id=?",tarefa.id])
+      if !a.nil?
+        resultado << tarefa
+      end
+    end
+  end
+  return resultado
+end
+
+def self.encerradas_sem_avaliacao(solicitante_id)
+  resultado = Array.new
+  tarefas = Tarefa.all(:conditions=>["termino_at is not null and solicitante_id=?  ",solicitante_id])
+  for tarefa in tarefas do
+     a = Avaliacao.last(:conditions=>["nota is null and tarefa_id=?",tarefa.id])
+      if !a.nil?
+        resultado << tarefa
+      end
+  end
+  return resultado
 end
 
 end

@@ -2,7 +2,7 @@
     <% nome_usuario = ''%>
     <% for tarefa in @tarefas_sem_usuario do  %>
       <div id="tarefa">
-        <%= 'blink' if tarefa.alerta %>
+        <%= 'blink' if tarefa.alerta_solicitante %>
 
         <a href="#"  title="Detalhes da tarefa" onClick="detalhe_tarefa(<%= tarefa.id %>);"><%= image_tag "info.png" %></a> <a href="#" onClick="$('#encaminhar_<%= tarefa.id.to_s %>').toggle('blind', { percent: 0 },500 ); return false;"><span class="hyphenate" lang="pt"><%= tarefa.descricao %></span></a>
         <div style="display: none;"id="encaminhar_<%= tarefa.id.to_s %>" style="background:#F2F2F2;">

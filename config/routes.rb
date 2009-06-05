@@ -22,23 +22,11 @@ ActionController::Routing::Routes.draw do |map|
     end 
   
 
-  map.resources :categorias_has_permissaos, :collection => {:show_export => :get}
-
-  map.resources :usuarios_has_projetos, :collection => {:show_export => :get}
-
-  map.resources :empresas_has_projetos, :collection => {:show_export => :get}
-
-  map.resources :usuarios, :collection => {:show_export => :get}
-
+  map.resources :avaliacaos
+  
   map.resources :categorias, :collection => {:show_export => :get}
 
-  map.resources :empresas, :collection => {:show_export => :get}
-
-  map.resources :situacaos, :collection => {:show_export => :get}
-
   map.resources :projetos, :collection => {:show_export => :get}
-
-  map.resources :permissaos, :collection => {:show_export => :get}
 
   map.root :controller => "tarefas"
 

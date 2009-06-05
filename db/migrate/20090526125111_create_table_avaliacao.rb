@@ -4,8 +4,9 @@ class CreateTableAvaliacao < ActiveRecord::Migration
       t.references :tarefa
       t.references :user
       t.integer :nota
-      t.string :comentario
-      
+      t.string :comentario_avaliacao
+      t.string :comentario_recusa_user
+      t.boolean :recusada, :default=>false
       t.timestamps
     end
   end

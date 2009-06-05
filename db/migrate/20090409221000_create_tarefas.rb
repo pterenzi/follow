@@ -12,8 +12,7 @@ class CreateTarefas < ActiveRecord::Migration
       t.datetime :termino_at
       t.string :comentario_termino_user
       t.string :comentario_termino_solicitante
-      t.boolean :recusada
-      t.string :justificativa_recusa
+      t.boolean :recusada, :default=>false
       t.boolean :tem_comentario, :default=>false
       t.timestamps
 

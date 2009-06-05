@@ -28,7 +28,6 @@ class ApplicationController < ActionController::Base
       end
 
       def require_no_user
-        #TODO retirar true emcima
         if current_user
           store_location
           flash[:notice] = "Por favor, autentique-se"
@@ -65,13 +64,13 @@ class ApplicationController < ActionController::Base
     # @minhas_tarefas = Tarefa.all(:order=>"solicitante_id", :conditions=>[" termino_at is null and user_id <> solicitante_id and user_id=?  ",current_user.id])
     @pausas_padrao = PausaPadrao.all(:order=>"descricao").collect{|obj| [obj.descricao,obj.id]}
     @tem_tarefa_com_pausa_padrao = Tarefa.tem_tarefa_com_pausa_padrao(@minhas_tarefas)
-    #TODO refazer toda  a parte de avaliaçào , pois está agora em uma tabela separada
-    @tarefas_encerradas_sem_avaliacao = Tarefa.all(:conditions=>["termino_at is null and avaliacao is null and solicitante_id=?  ",current_user.id])
+    @tarefas_encerradas_sem_avaliacao = Tarefa.encerradas_sem_avaliacao(current_user.id) #Tarefa.all(:conditions=>["termino_at is not null and solicitante_id=?  ",current_user.id])
     @usuarios = User.find(:all).collect{|obj| [obj.nome,obj.id]}
     
     #Com named_scope
-    @minhas_tarefas = Tarefa.para_mim(current_user.id).abertas.por_solicitante
-    @minhas_solicitacoes = Tarefa.solicitadas_por(current_user.id).abertas.com_user.outra_pessoa
+    @minhas_tarefas = Tarefa.para_mim(current_user.id).abertas.por_solicitante.sem_recusa
+#    @minhas_solicitacoes = Tarefa.solicitadas_por(current_user.id).sem_avaliacao.com_user.outra_pessoa
+    @minhas_solicitacoes = Tarefa.busca_minhas_solicitacoes(current_user.id)
     @tarefas_sem_usuario = Tarefa.solicitadas_por(current_user.id).sem_user
     @to_do_list = Tarefa.abertas.de_mim_para_mim(current_user.id)    
    

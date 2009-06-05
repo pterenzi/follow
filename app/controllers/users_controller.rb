@@ -2,7 +2,7 @@ class UsersController < ApplicationController
 
 
   #layout "follow"
-  
+ #TODO retirear os comentarios abaixo 
 #  before_filter :require_no_user, :only => [:new, :create]
 #  before_filter :require_user, :only => [:show, :edit, :update]
  # before_filter :require_user

@@ -18,7 +18,7 @@
       <% @pausa = Pausa.da_tarefa(tarefa.id)%>
    <% end %>
 
-  <% if tarefa.recusado %>
+  <% if tarefa.recusada %>
    <% funcao = "abre_alerta_recusado("+ tarefa.id.to_s + ");return false;"%>
    <div style="display:none;" id="form_tarefa_recusada_<%=tarefa.id.to_s%>">
      <%= render :partial=>'tarefa_recusada', :locals=>{:tarefa=>tarefa} %>
@@ -35,7 +35,7 @@
   <% if tarefa.terminada_sem_comentario_do_solicitante %>
     <% funcao = "abre_form_avaliacao("+ tarefa.id.to_s + ");return false;" %>
     <div style="display:none;" id="abre_avaliacao_<%=tarefa.id.to_s%>">
-      <%= render :partial=>'avaliacao', :locals=>{:tarefa=>tarefa} %>
+     <%= render :partial=>'avaliacao/form_avaliacao', :locals=>{:tarefa=>tarefa, :user=>tarefa.user} %> 
     </div>
   <% end %>
   <% if funcao.blank? %>
@@ -43,6 +43,7 @@
   <% end %>
 
 	 <span id="blink_<%=tarefa.id.to_s %>" >
+	   <a href="#"  title="Detalhes da tarefa" onClick="detalhe_tarefa(<%= tarefa.id %>);"><%= image_tag "info.png" %></a>
        <a href="#" onClick="<%= funcao %>" ><span class="hyphenate" lang="pt"><%= tarefa.descricao %></span></a> <br>
      </span>
   
@@ -50,6 +51,10 @@
         <%= render :partial=>'comentarios_de_uma_tarefa', :locals=>{:tarefa=>tarefa, :lado=>'esquerdo'} %>
         <%= render :partial=>'form_comentario', :locals=>{:tarefa=>tarefa} %>
      </div>
+
+	 <div style="display:none;" id="form_detalhe_<%=tarefa.id.to_s%>">
+	       <%= render :partial=>'detalhes_da_tarefa', :locals=>{:tarefa=>tarefa} %>
+	   </div>
  
    <% if tarefa.alerta_solicitante %>
      <% tag = '#blink_'+tarefa.id.to_s %>

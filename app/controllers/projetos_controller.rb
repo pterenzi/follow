@@ -1,6 +1,7 @@
 class ProjetosController < ApplicationController
    
-  before_filter :authorize
+  before_filter :require_user
+  before_filter :busca_tarefas
    
    require 'brazilian-rails'
    

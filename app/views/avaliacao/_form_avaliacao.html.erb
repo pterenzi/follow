@@ -1,5 +1,7 @@
-<% form_tag( :action=>:avaliar_tarefa, :controller=>'tarefas') do  %>
- <%= hidden_field_tag :id, tarefa.id %>
+<% #TODO colcoar resfull aqui %>
+<% form_tag(:action=>:update, :controller=>'avaliacaos') do  %>
+ <%= hidden_field_tag :tarefa_id, tarefa.id %>
+ <%= hidden_field_tag :user_id, user.id %>
 
   <%= radio_button_tag (:avaliacao, "1") %>
   <%= label_tag :avaliacao_pessimo, :Ruim %>

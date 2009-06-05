@@ -1,12 +1,29 @@
 Tarefa recusada por <%= tarefa.user.nome %>.<br />
 Justificativa: <%= tarefa.justificativa_recusa %>
 <br /><br/>
-<% form_tag( :action=>"reencaminhar_tarefa_recusada", :controller=>"tarefas" ) do %>
+<% form_tag( :action=>"update", :controller=>"avaliacaos" ) do %>
 <%= hidden_field_tag :tarefa_id, tarefa.id %>
-<table>
+
+<%= radio_button_tag (:avaliacao, "1") %>
+  <%= label_tag :avaliacao_pessimo, :Ruim %>
+  <%= radio_button_tag (:avaliacao, "2") %>
+  <%= label_tag :avaliacao_pessimo, :Insuficiente %>
+  <%= radio_button_tag (:avaliacao, "3") %>
+  <%= label_tag :avaliacao_pessimo, :Suficiente %><br /><br />
+  <%= radio_button_tag (:avaliacao, "4") %>
+  <%= label_tag :avaliacao_pessimo, "Bom" %>
+  <%= radio_button_tag (:avaliacao, "5") %>
+  <%= label_tag :avaliacao_pessimo, :Ótimo %><br/><br/>
+
+<p>
+   Comentário :<br/>
+    <%= text_area_tag 'comentario_avaliacao', '' ,:size=>"33x3" %>
+  </p>
+
+<table cellspacing="4">
 	<tr>
 		<td>Encaminhar para :</td>
-	    <td><%= select :tarefa, :user_id, @usuarios %></td>
+	    <td><%= select :tarefa, :user_id, @usuarios, :include_blank=>true %></td>
 	</tr>
 	<tr>
 		<td>&nbsp;</td>

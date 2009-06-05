@@ -8,8 +8,6 @@ class TarefasController < ApplicationController
 
   # GET /tarefas GET /tarefas.xml
   def index
-   #TODO tirar isto
-   # @situacaos = Situacao.find(:all).collect{|obj| [obj.descricao,obj.id]}
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @tarefas }
@@ -52,13 +50,9 @@ class TarefasController < ApplicationController
     debugger
     @tarefa = Tarefa.new(params[:tarefa])
     @tarefa.solicitante_id = current_user.id
-    if @tarefa.user
-      @tarefa.situacao_id = 8 # encaminhada
-    else
-      @tarefa.situacao_id = 1 # aberta
+    if !@tarefa.user_id.nil?
+      Avaliacao.create(:tarefa_id=>@tarefa.id, :user_id=>@tarefa.user_id)
     end
-    @tarefa.recusado = false
-    
     respond_to do |format|
       if @tarefa.save
         flash[:notice] = 'Tarefa foi cadastrado com sucesso!'
@@ -114,7 +108,12 @@ class TarefasController < ApplicationController
     debugger
     @tarefa = Tarefa.find(params[:tarefa_id])
     @tarefa.user_id = params[:tarefa][:user_id]
-   if @tarefa.save
+    @avaliacao = Avaliacao.new
+    @avaliacao.tarefa_id = @tarefa.id
+    @avaliacao.user_id = @tarefa.user_id
+    #TODO tratar commit rollback
+
+   if @tarefa.save & @avalicao.save
      redirect_to tarefas_path
    else
     #TODO tratar excessão
@@ -237,7 +236,7 @@ class TarefasController < ApplicationController
   def encerrar_tarefa
     @tarefa = Tarefa.find(params[:id])
     @tarefa.termino_at = Time.now
-    @tarefa.comentario_termino = params[:comentario_termino]
+    @tarefa.comentario_termino_user = params[:comentario_termino]
     @tarefa.alerta_solicitante = true
     @tarefa.save
     #TODO tratar erro
@@ -254,12 +253,16 @@ class TarefasController < ApplicationController
   end
   
   def recusar_tarefa
-    debugger
     tarefa = Tarefa.find(params[:tarefa_id])
     tarefa.alerta_solicitante = true  
-    tarefa.recusado = true
-    tarefa.justificativa_recusa = params[:justificativa]
-    if tarefa.save
+    tarefa.recusada = true
+    avaliacao = Avaliacao.new
+    avaliacao.tarefa_id = tarefa.id
+    avaliacao.user_id = tarefa.user_id
+    avaliacao.comentario_recusa_user = params[:justificativa]
+    avaliacao.recusada = true
+    #TODO colocal commit / rollback ( esqueci o nome ) 
+    if tarefa.save & avaliacao.save
       redirect_to tarefas_path
     else
       #TODO tratar erro
@@ -268,9 +271,11 @@ class TarefasController < ApplicationController
   end
   
   def reencaminhar_tarefa_recusada
+    #TODO  Gravar a recusa coma aavaliação aqui ou no outro controller
+    
     debugger
     @tarefa = Tarefa.find(params[:tarefa_id])
-    @tarefa.recusado = false
+    @tarefa.recusada = false
     @tarefa.alerta_solicitante = false
     @tarefa.justificativa_recusa = ""
     if params[:commit]=="ok"
