@@ -3,7 +3,7 @@ class CreateComentarios < ActiveRecord::Migration
     create_table :comentarios, :force => true do |t|
       t.references :user
       t.string :descricao, :size=>255
-      t.references :tarefa
+      t.references :task
 
       t.timestamps
     end

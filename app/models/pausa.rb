@@ -1,8 +1,8 @@
 class Pausa < ActiveRecord::Base
-  belongs_to :tarefa
+  belongs_to :task
   
-  def self.da_tarefa(tarefa_id)
-    @pausa = Pausa.find(:all, :conditions=>["tarefa_id=?",tarefa_id]).last
+  def self.da_task(task_id)
+    @pausa = Pausa.find(:all, :conditions=>["task_id=?",task_id]).last
     return @pausa
   end
   

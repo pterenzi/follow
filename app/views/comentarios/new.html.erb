@@ -1,9 +1,9 @@
 <h1>New comentario</h1>
-<%= @tarefa.descricao %>
+<%= @task.descricao %>
 
 <% form_for(@comentario) do |f| %>
   <%= f.error_messages %>
- <%= f.hidden_field :tarefa_id %>
+ <%= f.hidden_field :task_id %>
   <p>
     <%= f.label :usuario_id %><br />
    <%= f.select :usuario_id,@usuarios,{:prompt=>"Selecione uma Opção"} %>     

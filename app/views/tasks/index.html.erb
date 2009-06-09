@@ -3,14 +3,14 @@
   <%= render :partial=>"minhasSolicitacoes" %>
 <% end %>
 <% content_for :main do %>
-  <%= link_to "Nova Tarefa", new_tarefa_path %>
+  <%= link_to t(:new_task), new_task_path %>
   
 <% end %>
 <% content_for :rightside do %>
-  <%= render :partial=>"minhasTarefas" %>
+  <%= render :partial=>"minhas_tasks" %>
 <% end %>
 <% content_for :lado_sem_usuario do %>
-  <%= render :partial=>"tarefas_sem_usuario"%>
+  <%= render :partial=>"tasks_sem_usuario"%>
 <% end %>
 
 <% content_for :recados do %>

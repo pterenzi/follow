@@ -6,20 +6,20 @@ class AvaliacaosController < ApplicationController
 
   def update
     debugger
-    @tarefa = Tarefa.find(params[:tarefa_id])
-    @avaliacao = Avaliacao.last(:conditions=>["tarefa_id=? and user_id=?", params[:tarefa_id],@tarefa.user_id])
-    @tarefa.recusada = false
-    if params[:tarefa][:user].blank?
-      @tarefa.user_id = nil
+    @task = Task.find(params[:task_id])
+    @avaliacao = Avaliacao.last(:conditions=>["task_id=? and user_id=?", params[:task_id],@task.user_id])
+    @task.recusada = false
+    if params[:task][:user].blank?
+      @task.user_id = nil
     else
-      @tarefa.user_id = params[:tarefa][:user]
+      @task.user_id = params[:task][:user]
     end
     @avaliacao.comentario_avaliacao = params[:comentario_avaliacao]
     @avaliacao.nota = params[:avaliacao]  
-    @tarefa.alerta_solicitante=false
-    if @avaliacao.save & @tarefa.save
+    @task.alerta_solicitante=false
+    if @avaliacao.save & @task.save
       flash[:notice] = "Avaliação gravada !"
-      redirect_to tarefas_path
+      redirect_to tasks_path
     else
 #YODO tratar excessão
     end

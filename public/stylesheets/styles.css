@@ -14,7 +14,7 @@ select {
 background-color: #FFFFFF;
 font:10px "Trebuchet MS";
 
-ul.tarefa 
+ul.task 
 {
 list-style-position: inside;
 list-style-type: disc;
@@ -687,7 +687,7 @@ h3 {
     line-height: 14pt;
 }
 
-#tarefa {
+#task {
 	font-family: "Trebuchet MS", Verdana, Times, serif;
     font-size: 8pt;
     color: black;
@@ -699,7 +699,7 @@ h3 {
     border-bottom: 1px solid #999;
 	text-decoration:none;
 }
-#tarefa a {
+#task a {
     text-decoration: none;
     color: #000;
 }	

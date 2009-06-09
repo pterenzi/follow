@@ -9,7 +9,7 @@ has_many :usuarios, :through=> :projetos_usuarios
 
 has_many :projetos_usuarios 
 
-belongs_to :tarefa
+belongs_to :task
 
 
 

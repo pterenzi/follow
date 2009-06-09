@@ -1,0 +1,12 @@
+<br/>
+<% form_tag (:action=>"encaminhar", :controller=>"tasks")  do |f| %>
+ <%= hidden_field_tag :task_id, task.id %>
+  <p>
+   Usuário :
+    <%= select :task, :user_id, @usuarios %>
+  </p>
+  <br/>
+  <p>
+    <%= submit_tag "Encaminhar" %> 
+  </p>
+<% end %>

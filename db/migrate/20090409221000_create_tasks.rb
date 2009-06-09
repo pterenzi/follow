@@ -1,6 +1,6 @@
-class CreateTarefas < ActiveRecord::Migration
+class CreateTasks < ActiveRecord::Migration
   def self.up
-    create_table :tarefas, :force => true do |t|
+    create_table :tasks, :force => true do |t|
 
       t.references :projeto 
       t.references :user
@@ -13,13 +13,13 @@ class CreateTarefas < ActiveRecord::Migration
       t.string :comentario_termino_user
       t.string :comentario_termino_solicitante
       t.boolean :recusada, :default=>false
-      t.boolean :tem_comentario, :default=>false
+     t.boolean :tem_comentario, :default=>false
       t.timestamps
 
     end
   end
 
   def self.down
-    drop_table :tarefas  
+    drop_table :tasks  
   end
 end

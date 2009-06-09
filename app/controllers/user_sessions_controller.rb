@@ -7,14 +7,14 @@ class UserSessionsController < ApplicationController
 
      def new
        @user_session = UserSession.new
-       @minhas_tarefas = Hash.new
+       @minhas_tasks = Hash.new
      end
 
      def create
        @user_session = UserSession.new(params[:user_session])
        if @user_session.save
        #  flash[:notice] = "Login successful!"
-         redirect_to tarefas_path
+         redirect_to tasks_path
        else
          render :action => :new
        end
@@ -23,6 +23,6 @@ class UserSessionsController < ApplicationController
      def destroy
        current_user_session.destroy
        #flash[:notice] = "Logout successful!"
-       redirect_to tarefas_path
+       redirect_to tasks_path
      end
 end

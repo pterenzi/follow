@@ -5,7 +5,17 @@ class ApplicationController < ActionController::Base
     helper :all # include all helpers, all the time
     helper_method :current_user_session, :current_user
     filter_parameter_logging :password, :password_confirmation
-
+    before_filter :set_locale
+    
+    def set_locale
+      I18n.locale = params[:locale]
+    end
+    
+    def default_url_options(options={})
+      logger.debug "default_url_options is passed options: #{options.inspect}\n"
+      { :locale => I18n.locale }
+    end
+    
     private
       def current_user_session
         return @current_user_session if defined?(@current_user_session)
@@ -31,7 +41,7 @@ class ApplicationController < ActionController::Base
         if current_user
           store_location
           flash[:notice] = "Por favor, autentique-se"
-          redirect_to account_url
+          redirect_to tasks_path
           return false
         end
       end
@@ -55,27 +65,29 @@ class ApplicationController < ActionController::Base
   filter_parameter_logging :password
 
 
-  def busca_tarefas
-    # @tarefas = Tarefa.find(:all)
-    # @minhas_solicitacoes = Tarefa.all(:order=>"user_id", 
+  def busca_tasks
+    # @tasks = Task.find(:all)
+    # @minhas_solicitacoes = Task.all(:order=>"user_id", 
     #    :conditions=>["termino_at is not null and solicitante_id=? and user_id<>solicitante_id and user_id not null",current_user.id ])
-    # @tarefas_sem_usuario = Tarefa.all(:conditions=>["solicitante_id=? and user_id is null ",current_user.id])
-    # @to_do_list = Tarefa.all(:order=>"id", :conditions=>["termino_at is null and user_id = solicitante_id and user_id=?  ",current_user.id])
-    # @minhas_tarefas = Tarefa.all(:order=>"solicitante_id", :conditions=>[" termino_at is null and user_id <> solicitante_id and user_id=?  ",current_user.id])
+    # @tasks_sem_usuario = Task.all(:conditions=>["solicitante_id=? and user_id is null ",current_user.id])
+    # @to_do_list = Task.all(:order=>"id", :conditions=>["termino_at is null and user_id = solicitante_id and user_id=?  ",current_user.id])
+    # @minhas_tasks = Task.all(:order=>"solicitante_id", :conditions=>[" termino_at is null and user_id <> solicitante_id and user_id=?  ",current_user.id])
     @pausas_padrao = PausaPadrao.all(:order=>"descricao").collect{|obj| [obj.descricao,obj.id]}
-    @tem_tarefa_com_pausa_padrao = Tarefa.tem_tarefa_com_pausa_padrao(@minhas_tarefas)
-    @tarefas_encerradas_sem_avaliacao = Tarefa.encerradas_sem_avaliacao(current_user.id) #Tarefa.all(:conditions=>["termino_at is not null and solicitante_id=?  ",current_user.id])
+    @tem_task_com_pausa_padrao = Task.tem_task_com_pausa_padrao(@minhas_tasks)
+    @tasks_encerradas_sem_avaliacao = Task.encerradas_sem_avaliacao(current_user.id) #Task.all(:conditions=>["termino_at is not null and solicitante_id=?  ",current_user.id])
     @usuarios = User.find(:all).collect{|obj| [obj.nome,obj.id]}
     
     #Com named_scope
     @projetos = Projeto.all(:order=>'descricao').collect{|obj| [obj.descricao,obj.id]}
-    @minhas_tarefas = Tarefa.para_mim(current_user.id).abertas.por_solicitante.sem_recusa
-#    @minhas_solicitacoes = Tarefa.solicitadas_por(current_user.id).sem_avaliacao.com_user.outra_pessoa
-    @minhas_solicitacoes = Tarefa.busca_minhas_solicitacoes(current_user.id)
-    @tarefas_sem_usuario = Tarefa.solicitadas_por(current_user.id).sem_user
-    @to_do_list = Tarefa.abertas.de_mim_para_mim(current_user.id)    
+    @minhas_tasks = Task.para_mim(current_user.id).abertas.por_solicitante.sem_recusa
+#    @minhas_solicitacoes = Task.solicitadas_por(current_user.id).sem_avaliacao.com_user.outra_pessoa
+    @minhas_solicitacoes = Task.busca_minhas_solicitacoes(current_user.id)
+    @tasks_sem_usuario = Task.solicitadas_por(current_user.id).sem_user
+    puts "$$$$$$$$$$$"
+    puts @tasks_sem_usuario
+    @to_do_list = Task.abertas.de_mim_para_mim(current_user.id)    
    
-     #TODO colocar isto em minhas tarefas   recusada<>'t' and
+     #TODO colocar isto em minhas tasks   recusada<>'t' and
      #TODO testar <> 't' em outros bancos
    end
    

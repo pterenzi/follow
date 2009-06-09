@@ -13,12 +13,12 @@ ActionController::Routing::Routes.draw do |map|
 
   map.resources :recados, :collection => {:show_export => :get}
 
-  map.resources :tarefas, :collection => {:show_export => :get, :pausar=>:get, :reiniciar_a_tarefa=>:get, 
+  map.resources :tasks, :collection => {:show_export => :get, :pausar=>:get, :reiniciar_a_task=>:get, 
          :pausar_padrao=>:get, :reiniciar_padrao=>:get, :encaminhar=>:get, :mudar_alerta=>:get,
-         :encerrar_tarefa=>:get, :avaliar_tarefa=>:get, :recusar_tarefa=>:get, :reencaminhar_tarefa_recusada=>:get  }
+         :encerrar_task=>:get, :avaliar_task=>:get, :recusar_task=>:get, :reencaminhar_task_recusada=>:get  }
   
-  map.resources :tarefas do |tarefas|
-       tarefas.resources :comentarios
+  map.resources :tasks do |tasks|
+       tasks.resources :comentarios
     end 
   
 
@@ -28,7 +28,7 @@ ActionController::Routing::Routes.draw do |map|
 
   map.resources :projetos, :collection => {:show_export => :get}
 
-  map.root :controller => "tarefas"
+  map.root :controller => "tasks"
 
   # The priority is based upon order of creation: first created -> highest priority.
 

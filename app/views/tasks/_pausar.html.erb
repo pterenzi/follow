@@ -1,5 +1,5 @@
-<% form_tag( :action=>:create_pausar, :controller=>'tarefas') do %>
- <%= hidden_field_tag :tarefa_id, tarefa.id %>
+<% form_tag( :action=>:create_pausar, :controller=>'tasks') do %>
+ <%= hidden_field_tag :task_id, task.id %>
   <table>
 	<tr>
 		<td valign="top">Justificativa :&nbsp; </td>
@@ -7,7 +7,7 @@
     </tr>
     <tr>
 	  <td>&nbsp;</td>
-	  <td><br/><%= submit_tag "Pausar tarefa" %></td>
+	  <td><br/><%= submit_tag "Pausar task" %></td>
     </tr>
   </table>
 <% end %>

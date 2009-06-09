@@ -1,6 +1,6 @@
 <% #TODO colcoar resfull aqui %>
 <% form_tag(:action=>:update, :controller=>'avaliacaos') do  %>
- <%= hidden_field_tag :tarefa_id, tarefa.id %>
+ <%= hidden_field_tag :task_id, task.id %>
  <%= hidden_field_tag :user_id, user.id %>
 
   <%= radio_button_tag (:avaliacao, "1") %>
@@ -18,7 +18,7 @@
     <%= text_area_tag 'comentario_avaliacao', '' ,:size=>"33x3" %>
   </p>
   <p>
-    <br/><%= submit_tag "Avaliar tarefa" %>
+    <br/><%= submit_tag "Avaliar task" %>
 
   </p>
 <% end %>

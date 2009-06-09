@@ -17,6 +17,7 @@
 
 
 /* Styles for main page */
+
 #banner {
     background: #000000 url("../images/logo.jpg") no-repeat left top;
     font-family: "Trebuchet MS", "Microsoft Sans Serif", Times, serif;
@@ -150,7 +151,7 @@ h1 {
     line-height: 14pt;
 }
 
-#tarefa {
+#task {
 	font-family: "Trebuchet MS", Verdana, Times, serif;
     font-size: 8pt;
     color: black;

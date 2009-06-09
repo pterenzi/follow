@@ -26,10 +26,10 @@ class ComentariosController < ApplicationController
   # GET /comentarios/new.xml
   def new
     debugger
-    @tarefa = Tarefa.find(params[:tarefa_id])
+    @task = Task.find(params[:task_id])
     
     @comentario = Comentario.new
-    @comentario.tarefa_id = @tarefa.id
+    @comentario.task_id = @task.id
     @comentario.usuario_id = session[:usuario_id]
     @usuarios = Usuario.all.collect{|obj| [obj.nome,obj.id]}
 
@@ -50,19 +50,19 @@ class ComentariosController < ApplicationController
   def create
     @comentario = Comentario.new
     @comentario.user_id = current_user.id
-    @tarefa = Tarefa.find(params[:tarefa_id])
+    @task = Task.find(params[:task_id])
 
-    @tarefa.alerta_usuario = (@tarefa.solicitante== current_user)
-    @tarefa.alerta_solicitante = (@tarefa.solicitante!= current_user)
-    @tarefa.tem_comentario = true
+    @task.alerta_usuario = (@task.solicitante== current_user)
+    @task.alerta_solicitante = (@task.solicitante!= current_user)
+    @task.tem_comentario = true
 
-    @comentario.tarefa_id = params[:tarefa_id]
+    @comentario.task_id = params[:task_id]
     @comentario.descricao = params[:descricao]
     respond_to do |format|
       Comentario.transaction do
-        if @comentario.save & @tarefa.save
+        if @comentario.save & @task.save
        #   flash[:notice] = 'Comentario criado.'
-          format.html { redirect_to(tarefas_path) }
+          format.html { redirect_to(tasks_path) }
           format.xml  { render :xml => @comentario, :status => :created, :location => @comentario }
         else
           format.html { render :action => "new" }
@@ -80,7 +80,7 @@ class ComentariosController < ApplicationController
     respond_to do |format|
       if @comentario.update_attributes(params[:comentario])
         flash[:notice] = 'Comentario was successfully updated.'
-        format.html { redirect_to(tarefa_path(@comentario.tarefa)) }
+        format.html { redirect_to(task_path(@comentario.task)) }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }

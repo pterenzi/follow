@@ -1,0 +1,18 @@
+<% content_for :lado_sem_usuario do %>
+    <% nome_usuario = ''%>
+    <% for task in @tasks_sem_usuario do  %>
+      <div id="task">
+        <%= 'blink' if task.alerta_solicitante %>
+
+        <a href="#"  title="Detalhes da task" onClick="detalhe_task(<%= task.id %>);"><%= image_tag "info.png" %></a> <a href="#" onClick="$('#encaminhar_<%= task.id.to_s %>').toggle('blind', { percent: 0 },500 ); return false;"><span class="hyphenate" lang="pt"><%= task.descricao %></span></a>
+        <div style="display: none;"id="encaminhar_<%= task.id.to_s %>" style="background:#F2F2F2;">
+        <%= render :partial=>'form_encaminhar', :locals=>{:task=>task} %>
+        </div>
+
+	 <div style="display:none;" id="form_detalhe_<%=task.id.to_s%>">
+	       <%= render :partial=>'detalhes_da_task', :locals=>{:task=>task} %>
+	   </div>
+
+      </div>
+    <% end %>
+<% end %>

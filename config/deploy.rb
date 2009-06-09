@@ -106,7 +106,7 @@ namespace :deploy do
 end
 
 [:start, :stop].each do |t|
-    desc "A tarefa #{t} nao eh necessaria num ambiente com Passenger"
+    desc "A task #{t} nao eh necessaria num ambiente com Passenger"
     task t, :roles => :app do ; end
 end
 

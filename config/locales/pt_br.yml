@@ -1,0 +1,16 @@
+  
+pt_br:
+  back: "voltar"
+  description: "Descrição"
+  estimated_time: "Tempo estimado"
+  hours: "horas"
+  logout: "(sair)"
+  my_solicitations: "Minhas solicitações para:"
+  my_tasks: "Minhas tarefas de:"
+  new_task: "Nova Tarefa"
+  no_solicitations: "Não há nenhuma solicitação sua pendente no momento."
+  no_task: "Não há nenhuma tarefa direcionada para você no momento"
+  projects: "Projetos"
+  save: "Salvar"
+  tasks: "tarefas"
+  user: "Usuário"

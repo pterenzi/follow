@@ -23,12 +23,12 @@ function abre_form_aprovar_reprovar_pausa(id){
     $('#form_aprovar_pausa_'+id).dialog();
 }
 
-function toggle(tarefa_id,muda_alerta,origem){
+function toggle(task_id,muda_alerta,origem){
   if (muda_alerta){
-    $.get("/tarefas/mudar_alerta",{'id': tarefa_id, 'valor': "false", 'campo': origem});
-    parar_pulsar('#blink_'+tarefa_id);
+    $.get("/tasks/mudar_alerta",{'id': task_id, 'valor': "false", 'campo': origem});
+    parar_pulsar('#blink_'+task_id);
   }
-  $('#toggle_appear_'+ tarefa_id).toggle('blind', { percent: 0 },500 ); 
+  $('#toggle_appear_'+ task_id).toggle('blind', { percent: 0 },500 ); 
   return false;
 };
 
@@ -51,13 +51,13 @@ function abre_form_recusa(id){
 }
 
 function abre_alerta_recusado(id){
-	$('#form_tarefa_recusada_'+id).dialog({ title: 'Tarefa recusada' });
-    $('#form_tarefa_recusada_'+id).dialog('open');
-    $('#form_tarefa_recusada_'+id).dialog();
+	$('#form_task_recusada_'+id).dialog({ title: 'Task recusada' });
+    $('#form_task_recusada_'+id).dialog('open');
+    $('#form_task_recusada_'+id).dialog();
 }
 
-function detalhe_tarefa(id){
-	$('#form_detalhe_'+id).dialog({ title: 'Detalhe da tarefa' });
+function detalhe_task(id){
+	$('#form_detalhe_'+id).dialog({ title: 'Detalhe da task' });
     $('#form_detalhe_'+id).dialog('open');
     $('#form_detalhe_'+id).dialog();
 }

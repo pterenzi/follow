@@ -302,11 +302,11 @@ CREATE TABLE `situacaos` (
 
 
 --
--- Definition of table `tarefas`
+-- Definition of table `tasks`
 --
 
-DROP TABLE IF EXISTS `tarefas`;
-CREATE TABLE `tarefas` (
+DROP TABLE IF EXISTS `tasks`;
+CREATE TABLE `tasks` (
   `id` int(10) unsigned NOT NULL auto_increment,
   `projeto_id` int(10) unsigned NOT NULL,
   `usuario_id` int(10) unsigned NOT NULL,
@@ -314,20 +314,20 @@ CREATE TABLE `tarefas` (
   `avaliacao` int(10) unsigned NOT NULL,
   `situacao_id` int(10) unsigned NOT NULL,
   PRIMARY KEY  (`id`),
-  KEY `FK_tarefas_1` (`projeto_id`),
-  KEY `FK_tarefas_2` (`usuario_id`),
-  KEY `FK_tarefas_3` (`situacao_id`),
-  CONSTRAINT `FK_tarefas_1` FOREIGN KEY (`projeto_id`) REFERENCES `projetos` (`id`),
-  CONSTRAINT `FK_tarefas_2` FOREIGN KEY (`usuario_id`) REFERENCES `usuarios` (`id`),
-  CONSTRAINT `FK_tarefas_3` FOREIGN KEY (`situacao_id`) REFERENCES `situacaos` (`id`)
+  KEY `FK_tasks_1` (`projeto_id`),
+  KEY `FK_tasks_2` (`usuario_id`),
+  KEY `FK_tasks_3` (`situacao_id`),
+  CONSTRAINT `FK_tasks_1` FOREIGN KEY (`projeto_id`) REFERENCES `projetos` (`id`),
+  CONSTRAINT `FK_tasks_2` FOREIGN KEY (`usuario_id`) REFERENCES `usuarios` (`id`),
+  CONSTRAINT `FK_tasks_3` FOREIGN KEY (`situacao_id`) REFERENCES `situacaos` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `tarefas`
+-- Dumping data for table `tasks`
 --
 
-/*!40000 ALTER TABLE `tarefas` DISABLE KEYS */;
-/*!40000 ALTER TABLE `tarefas` ENABLE KEYS */;
+/*!40000 ALTER TABLE `tasks` DISABLE KEYS */;
+/*!40000 ALTER TABLE `tasks` ENABLE KEYS */;
 
 
 --

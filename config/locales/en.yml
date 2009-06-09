@@ -2,4 +2,21 @@
 # See http://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
 
 en:
-  hello: "Hello world"
+  back: "Back"
+  description: "Description"
+  estimated_time: "Estimated time"
+  hours: "hours"
+  logout: "(log-out)"
+  my_solicitations: "My solicitations for:"
+  my_tasks: "My tasks from:"
+  new_task: "New Task"
+  no_solicitations: "There isn't any open solicitations."
+  no_task: "You don't have any pending task"
+  projects: "Projects"
+  save: "Save"
+  tasks: "tasks"
+  user: "User"
+  
+  
+  
+  

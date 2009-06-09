@@ -1,4 +1,4 @@
-<% #content_for :main do%>
+<% content_for :main do%>
 <h1>Registro de novo usuário</h1>
  
 <% form_for(@user) do |f| %>
@@ -6,4 +6,4 @@
   <%= render :partial => "form", :object => f %>
   <%= f.submit "Register" %>
 <% end %>
-<% #end %>
+<% end %>

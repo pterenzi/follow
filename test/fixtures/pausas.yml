@@ -2,7 +2,7 @@
 
 #normal:
 #  data: 2009-04-24 16:24:19
-#  tarefa: one 
+#  task: one 
 #  justificativa: "Servidor parado"
 #  aceito: true
 #  comentario_solicitante: "Vamos esperar entao"
@@ -10,7 +10,7 @@
 
 #padrao:
 #  data: 2009-04-24 16:24:19
-#  tarefa: two
+#  task: two
 #  justificativa: 
 #  aceito: false
 #  comentario_solicitante: 

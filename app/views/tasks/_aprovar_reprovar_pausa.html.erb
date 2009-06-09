@@ -1,10 +1,10 @@
-<% @pausa = Pausa.da_tarefa(tarefa.id) %>
+<% @pausa = Pausa.da_task(task.id) %>
 
 <br/> Solicitação de Pausa
 (<%= @pausa.tempo_de_solicitacao %>)<br />
 Justificativa: <%= @pausa.justificativa unless @pausa.nil? %><br/><br />
-<% form_tag( :action=>:aprovar_ou_reprovar_pausa, :controller=>'tarefas') do %>
- <%= hidden_field_tag :tarefa_id, tarefa.id %>
+<% form_tag( :action=>:aprovar_ou_reprovar_pausa, :controller=>'tasks') do %>
+ <%= hidden_field_tag :task_id, task.id %>
   <p>
    Comentário:<br/> <%= text_area_tag(:comentario, '', :size=>"21x3") %>  
 <br/><br />

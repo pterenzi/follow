@@ -11,8 +11,8 @@
 
 ActiveRecord::Schema.define(:version => 20090526125111) do
 
-  create_table "avaliacaos", :force => true do |t|
-    t.integer  "tarefa_id"
+  create_table "avaliacao", :force => true do |t|
+    t.integer  "task_id"
     t.integer  "user_id"
     t.integer  "nota"
     t.string   "comentario_avaliacao"
@@ -32,7 +32,7 @@ ActiveRecord::Schema.define(:version => 20090526125111) do
   create_table "comentarios", :force => true do |t|
     t.integer  "user_id"
     t.string   "descricao"
-    t.integer  "tarefa_id"
+    t.integer  "task_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -45,7 +45,7 @@ ActiveRecord::Schema.define(:version => 20090526125111) do
 
   create_table "pausas", :force => true do |t|
     t.datetime "data"
-    t.integer  "tarefa_id"
+    t.integer  "task_id"
     t.string   "justificativa"
     t.boolean  "aceito"
     t.string   "comentario_solicitante"
@@ -74,7 +74,7 @@ ActiveRecord::Schema.define(:version => 20090526125111) do
     t.datetime "updated_at"
   end
 
-  create_table "tarefas", :force => true do |t|
+  create_table "tasks", :force => true do |t|
     t.integer  "projeto_id"
     t.integer  "user_id"
     t.integer  "solicitante_id"
