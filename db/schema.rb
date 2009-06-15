@@ -9,9 +9,9 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20090526125111) do
+ActiveRecord::Schema.define(:version => 20090615100538) do
 
-  create_table "avaliacao", :force => true do |t|
+  create_table "avaliacaos", :force => true do |t|
     t.integer  "task_id"
     t.integer  "user_id"
     t.integer  "nota"
@@ -56,6 +56,19 @@ ActiveRecord::Schema.define(:version => 20090526125111) do
     t.datetime "updated_at"
   end
 
+  create_table "projects", :force => true do |t|
+    t.string   "name",        :limit => 32
+    t.string   "description", :limit => 256
+    t.boolean  "active"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "projects_users", :force => true do |t|
+    t.integer "project_id"
+    t.integer "user_id"
+  end
+
   create_table "projetos", :force => true do |t|
     t.string   "nome",        :limit => 32
     t.string   "descricao",   :limit => 256
@@ -89,6 +102,7 @@ ActiveRecord::Schema.define(:version => 20090526125111) do
     t.boolean  "tem_comentario",                              :default => false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "project_id"
   end
 
   create_table "users", :force => true do |t|

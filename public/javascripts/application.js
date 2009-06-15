@@ -57,7 +57,7 @@ function abre_alerta_recusado(id){
 }
 
 function detalhe_task(id){
-	$('#form_detalhe_'+id).dialog({ title: 'Detalhe da task' });
+    $('#form_detalhe_'+id).dialog({ title: 'Detalhe da task' });
     $('#form_detalhe_'+id).dialog('open');
     $('#form_detalhe_'+id).dialog();
 }
@@ -71,4 +71,23 @@ function pulsar(id){
 
 function parar_pulsar(id){
     $(id).recover();
+}
+
+function include_user(id,user_id, user_name){
+    $.get("/projects/insert_user",{'id': id, 'user_id': user_id});
+    onClick="remove_user("+ id + "," + user_id + ",'" + user_name + "')"
+    span = "<span id=\"selected_"+ user_id + "\">"
+    str = span + "<a href='#' onClick=\"" + onClick + "\">" + user_name + "</a><br/></span>";
+    $("#selected_users").after(str);
+    $("#not_selected_"+user_id).remove();
+}
+
+function remove_user(id,user_id, user_name){
+    $.get("/projects/remove_user",{'id': id, 'user_id': user_id});
+	onClick="include_user("+ id + "," + user_id + ",'" + user_name + "')"
+    span = "<span id=\"not_selected_"+ user_id + "\">"
+    str = span + "<a href='#' onClick=\"" + onClick + "\">" + user_name + "</a><br/></span>";
+    $("#not_selected_users").after(str);
+    $("#selected_"+user_id).remove();
+    
 }

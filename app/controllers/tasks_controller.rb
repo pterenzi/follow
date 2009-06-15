@@ -30,7 +30,7 @@ class TasksController < ApplicationController
   # GET /tasks/new GET /tasks/new.xml
   def new
     @task = Task.new
-    @projetos = Projeto.all(:order=>'descricao').collect{|obj| [obj.descricao,obj.id]}
+    @projetos = Project.all(:order=>'name').collect{|obj| [obj.name,obj.id]}
 
     respond_to do |format|
       format.html # new.html.erb
@@ -41,7 +41,7 @@ class TasksController < ApplicationController
   # GET /tasks/1/edit
   def edit
     @task = Task.find(params[:id])
-    @projetos = Projeto.all(:order=>'descricao').collect{|obj| [obj.descricao,obj.id]}
+    @projetos = Project.all(:order=>'name').collect{|obj| [obj.descricao,obj.id]}
     @situacaos = Situacao.find(:all).collect{|obj| [obj.descricao,obj.id]}
   end
 
@@ -78,7 +78,7 @@ class TasksController < ApplicationController
         format.xml  { head :ok }
       else
 
-        @projetos = Projeto.find(:all).collect{|obj| [obj.id,obj.id]}
+        @projetos = Project.find(:all).collect{|obj| [obj.id,obj.id]}
         @situacaos = Situacao.find(:all).collect{|obj| [obj.id,obj.id]}
 
 

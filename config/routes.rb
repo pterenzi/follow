@@ -1,5 +1,8 @@
 ActionController::Routing::Routes.draw do |map|
   
+  map.resources :projects, :collection => {:insert_user => :get, :remove_user=>:get}
+
+  
    map.resources :pausa_padraos
    
    map.logout "logout", :controller=>"user_sessions", :action=>"destroy"

@@ -54,7 +54,7 @@
       </li></ul>
       <ul><li><a href="#">Cadastros</a>
           <ul>
-            <li><a href="/projetos"  >Projetos</a></li>
+            <li><a href="/projects"  >Projetos</a></li>
             <li><a href="/empresas"  >Empresas</a></li>
 			<li><a href="/categorias"  >Grupo de Usuários</a></li>
             <li><%= link_to "Usuários", new_user_path %></li>
@@ -77,7 +77,7 @@
       <ul><li><a href="/tasks"><Tasks><%=t(:tasks)%></a>
 			<ul>
 		   	  <li>
-				<a href="tasks/new">Incluir</a>
+				<a href="/tasks/new">Incluir</a>
 	  		  </li>
 		   	  <li>
 				<a href="tasks/index">Consultar</a>
@@ -128,7 +128,7 @@
 
     <% if !@to_do_list.nil? && !@to_do_list.empty? %>
       <h2>Lembrar de:</h2>
-      <%= render :partial=>"todo" , :locals=>{:to_do_list=>@to_do_list}%>
+      <%= render :partial=>"tasks/todo" , :locals=>{:to_do_list=>@to_do_list}%>
     <% end %>
 
 	  <h2><%=t(:my_tasks) %>

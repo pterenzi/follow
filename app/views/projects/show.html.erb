@@ -1,0 +1,27 @@
+<% content_for :leftside do %>
+   <%= render :partial=>"tasks/minhasSolicitacoes" %>
+<% end %>
+<% content_for :rightside do %>
+  <%= render :partial=>"tasks/minhas_tasks" %>
+<% end %>
+<% content_for :main do %>
+<p>
+  <b>Name:</b>
+  <%=h @project.name %>
+</p>
+
+<p>
+  <b>Active:</b>
+  <%=h @project.active %>
+</p>
+<p>
+  <b>Users</b><br/>
+  <% for user in @project.users %>
+    <%= user.nome %><br/>
+  <% end %>
+</p>
+
+<%= link_to 'Manage users', :controller=>"projects", :action=>"manage_users", :id=>@project.id %> |
+<%= link_to 'Edit', edit_project_path(@project) %> |
+<%= link_to 'Back', projects_path %>
+<% end %>

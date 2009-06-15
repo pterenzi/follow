@@ -1,0 +1,28 @@
+<% content_for :leftside do %>
+   <%= render :partial=>"tasks/minhasSolicitacoes" %>
+<% end %>
+<% content_for :rightside do %>
+  <%= render :partial=>"tasks/minhas_tasks" %>
+<% end %>
+<% content_for :main do %>
+<h1>Editing project</h1>
+
+<% form_for(@project) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </p>
+  <p>
+    <%= f.label :active %><br />
+    <%= f.check_box :active %>
+  </p>
+  <p>
+    <%= f.submit "Update" %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', @project %> |
+<%= link_to 'Back', projects_path %>
+<% end %>

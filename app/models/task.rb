@@ -1,13 +1,13 @@
 class Task < ActiveRecord::Base
 
-belongs_to :projeto
+belongs_to :project
 belongs_to :user
 belongs_to :solicitante, :class_name => "User", :foreign_key => "solicitante_id"
 has_many :comentarios
 has_many :pausas
 has_many :avaliacaos
 
-validates_presence_of :projeto_id, :message=>"não pode ficar em branco!"
+validates_presence_of :project_id, :message=>"não pode ficar em branco!"
 validates_presence_of :descricao, :message=>"não pode ficar em branco!"
 validates_presence_of :tempo_est, :message=>"não pode ficar em branco!"
 validates_length_of  :tempo_est, :maximum=>4, :message=>"não pode exeder os 4 caracteres!"

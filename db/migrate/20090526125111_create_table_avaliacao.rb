@@ -1,6 +1,6 @@
 class CreateTableAvaliacao < ActiveRecord::Migration
   def self.up
-    create_table :avaliacao, :force => true do |t|
+    create_table :avaliacaos, :force => true do |t|
       t.references :task
       t.references :user
       t.integer :nota

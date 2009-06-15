@@ -66,12 +66,6 @@ class ApplicationController < ActionController::Base
 
 
   def busca_tasks
-    # @tasks = Task.find(:all)
-    # @minhas_solicitacoes = Task.all(:order=>"user_id", 
-    #    :conditions=>["termino_at is not null and solicitante_id=? and user_id<>solicitante_id and user_id not null",current_user.id ])
-    # @tasks_sem_usuario = Task.all(:conditions=>["solicitante_id=? and user_id is null ",current_user.id])
-    # @to_do_list = Task.all(:order=>"id", :conditions=>["termino_at is null and user_id = solicitante_id and user_id=?  ",current_user.id])
-    # @minhas_tasks = Task.all(:order=>"solicitante_id", :conditions=>[" termino_at is null and user_id <> solicitante_id and user_id=?  ",current_user.id])
     @pausas_padrao = PausaPadrao.all(:order=>"descricao").collect{|obj| [obj.descricao,obj.id]}
     @tem_task_com_pausa_padrao = Task.tem_task_com_pausa_padrao(@minhas_tasks)
     @tasks_encerradas_sem_avaliacao = Task.encerradas_sem_avaliacao(current_user.id) #Task.all(:conditions=>["termino_at is not null and solicitante_id=?  ",current_user.id])
@@ -80,11 +74,8 @@ class ApplicationController < ActionController::Base
     #Com named_scope
     @projetos = Projeto.all(:order=>'descricao').collect{|obj| [obj.descricao,obj.id]}
     @minhas_tasks = Task.para_mim(current_user.id).abertas.por_solicitante.sem_recusa
-#    @minhas_solicitacoes = Task.solicitadas_por(current_user.id).sem_avaliacao.com_user.outra_pessoa
     @minhas_solicitacoes = Task.busca_minhas_solicitacoes(current_user.id)
     @tasks_sem_usuario = Task.solicitadas_por(current_user.id).sem_user
-    puts "$$$$$$$$$$$"
-    puts @tasks_sem_usuario
     @to_do_list = Task.abertas.de_mim_para_mim(current_user.id)    
    
      #TODO colocar isto em minhas tasks   recusada<>'t' and
