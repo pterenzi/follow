@@ -1,0 +1,13 @@
+<% @pause = Pause.da_task(task.id) %>
+
+<br/> Solicitação de Pause
+(<%= @pause.tempo_de_solicitacao %>)<br />
+Justificativa: <%= @pause.justification unless @pause.nil? %><br/><br />
+<% form_tag( :action=>:aprovar_ou_reprovar_pause, :controller=>'tasks') do %>
+ <%= hidden_field_tag :task_id, task.id %>
+  <p>
+   Comentário:<br/> <%= text_area_tag(:comment, '', :size=>"21x3") %>  
+<br/><br />
+   <%= submit_tag "Aprovar pause" %> |    <%= submit_tag "Reprovar pause", :name=>"reprovar" %>
+  </p>
+<% end %>

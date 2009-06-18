@@ -164,7 +164,7 @@ module Paperclip
           begin
             logger.info("[paperclip] -> #{path(style)}")
             key = s3_bucket.key(path(style))
-            key.data = file
+            key.date = file
             key.put(nil, @s3_permissions)
           rescue RightAws::AwsError => e
             raise

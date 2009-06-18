@@ -1,0 +1,31 @@
+<h1>New pause</h1>
+
+<% form_for(@pause) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :data %><br />
+    <%= f.datetime_select :data %>
+  </p>
+  <p>
+    <%= f.label :task %><br />
+    <%= f.text_field :task %>
+  </p>
+  <p>
+    <%= f.label :justification %><br />
+    <%= f.text_field :justification %>
+  </p>
+  <p>
+    <%= f.label :accepted %><br />
+    <%= f.check_box :accepted %>
+  </p>
+  <p>
+    <%= f.label :comment_requestor %><br />
+    <%= f.text_field :comment_requestor %>
+  </p>
+  <p>
+    <%= f.submit "Create" %>
+  </p>
+<% end %>
+
+<%= link_to 'Back', pauses_path %>

@@ -66,19 +66,19 @@ class ApplicationController < ActionController::Base
 
 
   def busca_tasks
-    @pausas_padrao = PausaPadrao.all(:order=>"descricao").collect{|obj| [obj.descricao,obj.id]}
-    @tem_task_com_pausa_padrao = Task.tem_task_com_pausa_padrao(@minhas_tasks)
-    @tasks_encerradas_sem_avaliacao = Task.encerradas_sem_avaliacao(current_user.id) #Task.all(:conditions=>["termino_at is not null and solicitante_id=?  ",current_user.id])
-    @usuarios = User.find(:all).collect{|obj| [obj.nome,obj.id]}
+    @pauses_pattern = PausePadrao.all(:order=>"description").collect{|obj| [obj.description,obj.id]}
+    @tem_task_com_pattern_pause = Task.tem_task_com_pattern_pause(@my_taskss)
+    @tasks_encerradas_sem_evaluation = Task.encerradas_sem_evaluation(current_user.id) #Task.all(:conditions=>["end_at is not null and requestor_id=?  ",current_user.id])
+    @usuarios = User.find(:all).collect{|obj| [obj.name,obj.id]}
     
     #Com named_scope
-    @projetos = Projeto.all(:order=>'descricao').collect{|obj| [obj.descricao,obj.id]}
-    @minhas_tasks = Task.para_mim(current_user.id).abertas.por_solicitante.sem_recusa
+    @projetos = Projeto.all(:order=>'description').collect{|obj| [obj.description,obj.id]}
+    @my_taskss = Task.para_mim(current_user.id).abertas.por_requestor.sem_recusa
     @minhas_solicitacoes = Task.busca_minhas_solicitacoes(current_user.id)
     @tasks_sem_usuario = Task.solicitadas_por(current_user.id).sem_user
     @to_do_list = Task.abertas.de_mim_para_mim(current_user.id)    
    
-     #TODO colocar isto em minhas tasks   recusada<>'t' and
+     #TODO colocar isto em minhas tasks   refused<>'t' and
      #TODO testar <> 't' em outros bancos
    end
    

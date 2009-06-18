@@ -1,0 +1,33 @@
+Task refused por <%= task.user.name %>.<br />
+Justificativa: <%= task.justification_recusa %>
+<br /><br/>
+<% form_tag( :action=>"update", :controller=>"evaluations" ) do %>
+<%= hidden_field_tag :task_id, task.id %>
+
+<%= radio_button_tag (:evaluation, "1") %>
+  <%= label_tag :evaluation_pessimo, :Ruim %>
+  <%= radio_button_tag (:evaluation, "2") %>
+  <%= label_tag :evaluation_pessimo, :Insuficiente %>
+  <%= radio_button_tag (:evaluation, "3") %>
+  <%= label_tag :evaluation_pessimo, :Suficiente %><br /><br />
+  <%= radio_button_tag (:evaluation, "4") %>
+  <%= label_tag :evaluation_pessimo, "Bom" %>
+  <%= radio_button_tag (:evaluation, "5") %>
+  <%= label_tag :evaluation_pessimo, :Ótimo %><br/><br/>
+
+<p>
+   Comentário :<br/>
+    <%= text_area_tag 'evaluation_comment', '' ,:size=>"33x3" %>
+  </p>
+
+<table cellspacing="4">
+	<tr>
+		<td>Encaminhar para :</td>
+	    <td><%= select :task, :user_id, @usuarios, :include_blank=>true %></td>
+	</tr>
+	<tr>
+		<td>&nbsp;</td>
+		<td><%= submit_tag "ok" %> | <%= submit_tag "fechar"%></td>
+	</tr>
+</table>
+<% end %>

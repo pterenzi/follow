@@ -2,30 +2,30 @@
 
 follow:
   project: follow
-  descricao: programar
+  description: programar
   user: marcio
-  solicitante: admin
-  tempo_est: 10
-  termino_at: nil
+  requestor: admin
+  estimated_time: 10
+  end_at: nil
   
 encerrada:
   project: encerrada
-  descricao: "tarefa encerrada"
+  description: "tarefa encerrada"
   user: nil
-  solicitante: admin
-  tempo_est: 10
-  termino_at: 2009-05-10
+  requestor: admin
+  estimated_time: 10
+  end_at: 2009-05-10
 
 didio:
     project: didio
-    descricao: "Projeto de pizza"
+    description: "Projeto de pizza"
     user: paulo
-    solicitante: marcio
-    tempo_est: 20
+    requestor: marcio
+    estimated_time: 20
     
 loja:
     project: loja
-    descricao: "Loja da Ana"
+    description: "Loja da Ana"
     user: marcio
-    solicitante: marcio
-    tempo_est: 50
+    requestor: marcio
+    estimated_time: 50

@@ -93,7 +93,7 @@ class ProjectsController < ApplicationController
 def manage_users
   @project = Project.find(params[:id])
   @included = @project.users
-  @users = User.all(:order=>:nome)
+  @users = User.all(:order=>:name)
   @not_selected =  @users - @project.users
 end
 

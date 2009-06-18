@@ -1,0 +1,7 @@
+<%= error_messages_for :message %>
+
+<%  @formulario_label = "Cadastrar nova Message"  %>
+
+<%=  render(:partial => "new", :object => @message, :object => @submit_label, :object => @formulario_label)  %>
+
+<%= link_to 'Voltar', messages_path %>

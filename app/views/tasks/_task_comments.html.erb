@@ -1,0 +1,18 @@
+
+<% for comment in task.comments do %>
+  
+  <% if lado=='esquerdo'%>
+    <% if comment.user == task.requestor %>
+       <div id='black_comment'>
+    <% else %>
+       <div id='comment_azul'>
+	<% end %>
+  <% else %>
+    <% if comment.user == task.requestor %>
+       <div id='comment_azul'>
+    <% else %>
+      <div id='black_comment'>
+	<% end %>
+  <% end %> 
+<ul class="comment>"> <li><span class="hyphenate" lang="pt"><%= comment.description %></span></li></ul></div>
+<% end %>

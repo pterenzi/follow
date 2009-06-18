@@ -1,0 +1,15 @@
+<%= error_messages_for :categories %>
+
+<% form_for(@category, :html => { :multipart => true }) do |f| %>
+   <div class="depot-form">
+     <fieldset>
+       <p>
+         <legend>Dados do Categories <%=  @category.name  %> </legend>
+         <label for="categories_name">Nome:</label>
+         <%= f.text_field :name, :size =>  "53" , :readonly => true %>     
+       </p>
+     </fieldset>
+   </div> 
+<% end %>
+
+<%= link_to 'Voltar', categories_path %>

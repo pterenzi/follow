@@ -1,10 +1,10 @@
 require File.dirname(__FILE__) + '/../test_helper'
 
-class CategoriasControllerTest < ActionController::TestCase
+class CategoriesControllerTest < ActionController::TestCase
   def test_should_get_index
     get :index
     assert_response :success
-    assert_not_nil assigns(:categorias)
+    assert_not_nil assigns(:categories)
   end
 
   def test_should_get_new
@@ -12,34 +12,34 @@ class CategoriasControllerTest < ActionController::TestCase
     assert_response :success
   end
 
-  def test_should_create_categoria
-    assert_difference('Categoria.count') do
-      post :create, :categoria => { }
+  def test_should_create_categories
+    assert_difference('Categories.count') do
+      post :create, :categories => { }
     end
 
-    assert_redirected_to categoria_path(assigns(:categoria))
+    assert_redirected_to categories_path(assigns(:categories))
   end
 
-  def test_should_show_categoria
-    get :show, :id => categorias(:one).id
+  def test_should_show_categories
+    get :show, :id => categories(:one).id
     assert_response :success
   end
 
   def test_should_get_edit
-    get :edit, :id => categorias(:one).id
+    get :edit, :id => categories(:one).id
     assert_response :success
   end
 
-  def test_should_update_categoria
-    put :update, :id => categorias(:one).id, :categoria => { }
-    assert_redirected_to categoria_path(assigns(:categoria))
+  def test_should_update_categories
+    put :update, :id => categories(:one).id, :categories => { }
+    assert_redirected_to categories_path(assigns(:categories))
   end
 
-  def test_should_destroy_categoria
-    assert_difference('Categoria.count', -1) do
-      delete :destroy, :id => categorias(:one).id
+  def test_should_destroy_categories
+    assert_difference('Categories.count', -1) do
+      delete :destroy, :id => categories(:one).id
     end
 
-    assert_redirected_to categorias_path
+    assert_redirected_to categories_path
   end
 end

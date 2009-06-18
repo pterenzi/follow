@@ -1,8 +1,0 @@
-production:
-  adapter: mysql
-  encoding: utf8
-  database: wayoftheweb
-  username: wayoftheweb
-  password: qazxsw
-  host: mtsql01.wayoftheweb.net
-  pool: 5

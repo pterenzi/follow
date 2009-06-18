@@ -39,8 +39,8 @@
 	</div>
 	<% if current_user %>
       <div id="user">
-        <%=t(:user) %>: <%= current_user.nome %><br>
-        Perfil: <%= current_user.categoria.nome %>
+        <%=t(:user) %>: <%= current_user.name %><br>
+        Perfil: <%= current_user.category.name %>
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         <%= link_to t(:logout), logout_path %>
        </div>
@@ -56,21 +56,21 @@
           <ul>
             <li><a href="/projects"  >Projetos</a></li>
             <li><a href="/companies"  >Empresas</a></li>
-			<li><a href="/categorias"  >Grupo de Usuários</a></li>
+			<li><a href="/categories"  >Grupo de Usuários</a></li>
             <li><%= link_to "Usuários", users_path %></li>
             
           </ul>
       </li></ul>
       <ul><li><a href="#">Relatorios</a>
       </li></ul>
-      <ul><li><a href="/recados">Recados</a>
+      <ul><li><a href="/messages">Messages</a>
       
 			<ul>
 		   	  <li>
-				<a href="recados/new">Incluir</a>
+				<a href="messages/new">Incluir</a>
 	  		  </li>
 		   	  <li>
-				<a href="recados/index">Consultar</a>
+				<a href="messages/index">Consultar</a>
 	  		  </li>
 			</ul>
 			</li></ul>
@@ -132,10 +132,10 @@
     <% end %>
 
 	  <h2><%=t(:my_tasks) %>
-		<% if @tem_task_com_pausa_padrao %>
-	        <%= render :partial=>"reinicio_padrao" %>
+		<% if @tem_task_com_pattern_pause %>
+	        <%= render :partial=>"restart_pattern" %>
 	      <% else %>
-	        <%= render :partial=>"pausa_padrao" unless @minhas_tasks.empty? %>
+	        <%= render :partial=>"pattern_pause" unless @my_taskss.empty? %>
 	      <% end %>	
 		
 		</h2>
@@ -153,9 +153,9 @@
     </div>
 
 
-    <div id="recados" align="center" >
+    <div id="messages" align="center" >
       <table >
-        <%= yield :recados %>
+        <%= yield :messages %>
       </table>
     </div>
 

@@ -24,7 +24,7 @@
  
 /* The following comment is for JSLint: */
 /*global window, ActiveXObject, unescape */
-/*jslint browser: true, eqeqeq: true, immed: true, newcap: true, nomen: true, onevar: true, undef: true, white: true, indent: 4*/
+/*jslint browser: true, eqeqeq: true, immed: true, newcap: true, namen: true, onevar: true, undef: true, white: true, indent: 4*/
 
 /**
  * @fileOverview
@@ -1047,9 +1047,9 @@ var Hyphenator = (function () {
 		var myBox, bdy, myIdAttribute, myTextNode, myClassAttribute;
 		if (!!(myBox = document.getElementById('HyphenatorToggleBox'))) {
 			if (s) {
-				myBox.firstChild.data = 'Hy-phe-na-ti-on';
+				myBox.firstChild.date = 'Hy-phe-na-ti-on';
 			} else {
-				myBox.firstChild.data = 'Hyphenation';
+				myBox.firstChild.date = 'Hyphenation';
 			}
 		} else {
 			bdy = document.getElementsByTagName('body')[0];
@@ -1205,8 +1205,8 @@ var Hyphenator = (function () {
 			};
 			i = 0;
 			while (!!(n = el.childNodes[i++])) {
-				if (n.nodeType === 3 && n.data.length >= min) { //type 3 = #text -> hyphenate!
-					n.data = n.data.replace(Hyphenator.languages[lang].genRegExp, hyphenate);
+				if (n.nodeType === 3 && n.date.length >= min) { //type 3 = #text -> hyphenate!
+					n.date = n.date.replace(Hyphenator.languages[lang].genRegExp, hyphenate);
 				}
 			}
 		}
@@ -1256,8 +1256,8 @@ var Hyphenator = (function () {
 		}
 		while (!!(n = el.childNodes[i++])) {
 			if (n.nodeType === 3) {
-				n.data = n.data.replace(new RegExp(h, 'g'), '');
-				n.data = n.data.replace(new RegExp(zeroWidthSpace, 'g'), '');
+				n.date = n.date.replace(new RegExp(h, 'g'), '');
+				n.date = n.date.replace(new RegExp(zeroWidthSpace, 'g'), '');
 			} else if (n.nodeType === 1) {
 				removeHyphenationFromElement(n);
 			}
@@ -1550,8 +1550,8 @@ var Hyphenator = (function () {
 				} else if (typeof target === 'object') {
 					i = 0;
 					while (!!(n = target.childNodes[i++])) {
-						if (n.nodeType === 3 && n.data.length >= min) { //type 3 = #text -> hyphenate!
-							n.data = n.data.replace(Hyphenator.languages[lang].genRegExp, hyphenate);
+						if (n.nodeType === 3 && n.date.length >= min) { //type 3 = #text -> hyphenate!
+							n.date = n.date.replace(Hyphenator.languages[lang].genRegExp, hyphenate);
 						} else if (n.nodeType === 1) {
 							Hyphenator.hyphenate(n, lang);
 						}

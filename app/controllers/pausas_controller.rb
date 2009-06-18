@@ -1,84 +1,84 @@
-class PausasController < ApplicationController
-  # GET /pausas
-  # GET /pausas.xml
+class PausesController < ApplicationController
+  # GET /pauses
+  # GET /pauses.xml
   def index
-    @pausas = Pausa.find(:all)
+    @pauses = Pause.find(:all)
 
     respond_to do |format|
       format.html # index.html.erb
-      format.xml  { render :xml => @pausas }
+      format.xml  { render :xml => @pauses }
     end
   end
 
-  # GET /pausas/1
-  # GET /pausas/1.xml
+  # GET /pauses/1
+  # GET /pauses/1.xml
   def show
-    @pausa = Pausa.find(params[:id])
+    @pause = Pause.find(params[:id])
 
     respond_to do |format|
       format.html # show.html.erb
-      format.xml  { render :xml => @pausa }
+      format.xml  { render :xml => @pause }
     end
   end
 
-  # GET /pausas/new
-  # GET /pausas/new.xml
+  # GET /pauses/new
+  # GET /pauses/new.xml
   def new
-    @pausa = Pausa.new
+    @pause = Pause.new
 
     respond_to do |format|
       format.html # new.html.erb
-      format.xml  { render :xml => @pausa }
+      format.xml  { render :xml => @pause }
     end
   end
 
-  # GET /pausas/1/edit
+  # GET /pauses/1/edit
   def edit
-    @pausa = Pausa.find(params[:id])
+    @pause = Pause.find(params[:id])
   end
 
-  # POST /pausas
-  # POST /pausas.xml
+  # POST /pauses
+  # POST /pauses.xml
   def create
-    @pausa = Pausa.new(params[:pausa])
+    @pause = Pause.new(params[:pause])
 
     respond_to do |format|
-      if @pausa.save
-        flash[:notice] = 'Pausa was successfully created.'
-        format.html { redirect_to(@pausa) }
-        format.xml  { render :xml => @pausa, :status => :created, :location => @pausa }
+      if @pause.save
+        flash[:notice] = 'Pause was successfully created.'
+        format.html { redirect_to(@pause) }
+        format.xml  { render :xml => @pause, :status => :created, :location => @pause }
       else
         format.html { render :action => "new" }
-        format.xml  { render :xml => @pausa.errors, :status => :unprocessable_entity }
+        format.xml  { render :xml => @pause.errors, :status => :unprocessable_entity }
       end
     end
   end
 
-  # PUT /pausas/1
-  # PUT /pausas/1.xml
+  # PUT /pauses/1
+  # PUT /pauses/1.xml
   def update
-    @pausa = Pausa.find(params[:id])
+    @pause = Pause.find(params[:id])
 
     respond_to do |format|
-      if @pausa.update_attributes(params[:pausa])
-        flash[:notice] = 'Pausa was successfully updated.'
-        format.html { redirect_to(@pausa) }
+      if @pause.update_attributes(params[:pause])
+        flash[:notice] = 'Pause was successfully updated.'
+        format.html { redirect_to(@pause) }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }
-        format.xml  { render :xml => @pausa.errors, :status => :unprocessable_entity }
+        format.xml  { render :xml => @pause.errors, :status => :unprocessable_entity }
       end
     end
   end
 
-  # DELETE /pausas/1
-  # DELETE /pausas/1.xml
+  # DELETE /pauses/1
+  # DELETE /pauses/1.xml
   def destroy
-    @pausa = Pausa.find(params[:id])
-    @pausa.destroy
+    @pause = Pause.find(params[:id])
+    @pause.destroy
 
     respond_to do |format|
-      format.html { redirect_to(pausas_url) }
+      format.html { redirect_to(pauses_url) }
       format.xml  { head :ok }
     end
   end

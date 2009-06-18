@@ -1,0 +1,18 @@
+<% if @task.pause_nao_aceita %>
+  Pause não aceita : <%= @pause.comment_requestor %>
+<% else %>
+  <% if @task.sem_pause %>
+    <a href="#" onClick="Effect.toggle('pauser' , 'blind', { duration: 1.0 } ); return false;">pauser</a>
+  <% else %>
+    <% if @task.pauseda_esperando_aprovacao %>
+      <% if @task.requestor == @usuario_logado %> 
+        <a href="#" onClick="Effect.toggle('aprovar_reprovar' , 'blind', { duration: 1.0 } ); return false;">Aprovar / Reprovar pause</a>
+      <% else %>
+        Aguardando aprovação
+      <% end %>
+   <% else %>
+      <%= Pause.da_task(@task.id).comment_requestor %>
+      <%= link_to "Reiniciar a task", :controller=>"tasks", :action=>"reiniciar_a_task" , :task_id=> @task.id %>          
+    <% end %>
+  <% end %>
+<% end %>

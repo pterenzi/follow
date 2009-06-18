@@ -20,7 +20,7 @@ list-style-position: inside;
 list-style-type: disc;
 }
 
-ul.comentario 
+ul.comment 
 {
 list-style-position: inside;
 list-style-type: circle;
@@ -400,7 +400,7 @@ main {
     font-face: arial, "Trebuchet MS";
 }
 
-#recados {
+#messages {
     font-family: "Trebuchet MS", Verdana, Times, serif;
     font-size: 8pt;
     border-top: solid #fff 1px;
@@ -677,7 +677,7 @@ h3 {
     list-style: square;
 }
 
-#nome_usuario {
+#name_usuario {
     font-family: "Trebuchet MS", Verdana, Times, serif;
     font-size: 8pt;
     color: #ad1c21;
@@ -703,20 +703,20 @@ h3 {
     text-decoration: none;
     color: #000;
 }	
-#comentario_vermelho{
+#red_comment{
 		color: #ad1c21;
 		padding-left: 10px;
 		font-style: italic;
 }
 
-#comentario_preto{
+#black_comment{
 		color: black;
 		padding-left: 13px;
 		padding-right: 2px;
 		padding-top: 5px;
 		font-style: italic;
 }
-#comentario_azul{
+#comment_azul{
 		color: #5a78a5;
 		padding-left: 13px;
 		padding-top: 5px;

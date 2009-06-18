@@ -2,7 +2,7 @@ class UsersController < ApplicationController
 
 # TODO colocar layout em users
   layout "follow"
-#TODO retirar o comentario abaixo
+#TODO retirar o comment abaixo
   before_filter :require_user
   before_filter :busca_tasks
    
@@ -12,7 +12,7 @@ class UsersController < ApplicationController
   
   def new
     @user = User.new
-    @categorias = Categoria.all(:order=>"nome").collect{|obj| [obj.nome,obj.id]}
+    @categories = Categories.all(:order=>"name").collect{|obj| [obj.name,obj.id]}
     @companies = Company.all(:order=>:name).collect{|obj| [obj.name,obj.id]}
   end
   
@@ -33,7 +33,7 @@ class UsersController < ApplicationController
  
   def edit
     @user = @current_user
-    @categorias = Categoria.all(:order=>"nome").collect{|obj| [obj.nome,obj.id]}
+    @categories = Categories.all(:order=>"name").collect{|obj| [obj.name,obj.id]}
     @companies = Company.all(:order=>:name).collect{|obj| [obj.name,obj.id]}
   end
   

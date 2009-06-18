@@ -7,7 +7,7 @@ class UserSessionsController < ApplicationController
 
      def new
        @user_session = UserSession.new
-       @minhas_tasks = Hash.new
+       @my_taskss = Hash.new
      end
 
      def create

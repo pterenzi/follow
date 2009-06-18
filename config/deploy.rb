@@ -7,7 +7,7 @@
 # 
 # 2. O Locarails depende da gem Capistrano
 # 
-# 3. A estrategia de deployment padrao eh Copy, que comprime seu projeto e envia
+# 3. A estrategia de deployment pattern eh Copy, que comprime seu projeto e envia
 #    para o servidor via SCP, e la eh descomprimido. Esta opcao funciona em
 #    qualquer sistema operacional sem mais nenhuma dependencia, incluindo 
 #    Windows

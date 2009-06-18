@@ -1,0 +1,9 @@
+<%= error_messages_for :categories %>
+
+<%  @submit_label = "Atualizar"  %>
+<%  @formulario_label = "Editar os dados da Category"  %>
+
+
+<%=  render(:partial => "new", :object => @category, :object => @submit_label, :object => @formulario_label)  %>
+
+<%= link_to 'Voltar', categories_path %>

@@ -1,0 +1,9 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+almoco:
+  id: 1
+  description: Almoço
+
+fim:
+  id: 2
+  description: "Fim do expediente"

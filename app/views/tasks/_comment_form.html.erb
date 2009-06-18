@@ -1,0 +1,10 @@
+<% form_tag( :action=>:create, :controller=>'comments') do  %>
+ <%= hidden_field_tag :task_id, task.id %>
+  <p>
+    <br/>
+    <%= text_area_tag 'description', '' ,:size=>"22x3" %>
+  </p>
+  <p>
+    <br/><%= submit_tag "Enviar comentário" %>
+  </p>
+<% end %>

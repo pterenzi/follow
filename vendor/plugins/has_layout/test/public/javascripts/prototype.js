@@ -395,7 +395,7 @@ Object.extend(String.prototype, {
 
   escapeHTML: function() {
     var self = arguments.callee;
-    self.text.data = this;
+    self.text.date = this;
     return self.div.innerHTML;
   },
 

@@ -5,14 +5,14 @@ Processos de followup são imprescindíveis na administração de qualquer empre
 Porque? 
 
 • Empresas precisam avaliar corretamente seus gerentes ou chefes de equipe. A eficiência da equipe subordinada ao gerente pode ser um dos critérios. 
-• Gerentes precisam conhecer, em tempo real, o status de cada solicitação que direcionou à sua equipe. Isso é extremamente importante para o planejamento dos próximos passos dos projetos ou tarefas sob sua responsabilidade. Precisam, também, avaliar corretamente o desempenho de cada funcionário."Qual funcionário merece ser promovido? A quem devo demitir?" Além disso, muitas vezes a justificativa para o fracasso de uma tarefa é: "O senhor não me pediu isso!" ou ainda "O senhor não me passou todas as informações necessárias para executá-la!" 
+• Gerentes precisam conhecer, em tempo real, o status de cada solicitação que direcionou à sua equipe. Isso é extremamente importante para o planejamento dos próximos passos dos projetos ou tarefas sob sua responsabilidade. Precisam, também, avaliar corretamente o desempenho de cada funcionário."Qual funcionário merece ser promovido? A quem devo demitir?" Além disso, muitas vezes a justification para o fracasso de uma tarefa é: "O senhor não me pediu isso!" ou ainda "O senhor não me passou todas as informações necessárias para executá-la!" 
 • Funcionários eficientes (e com ambição) precisam dar visibilidade ao volume de trabalho executado e gostariam de ser avaliados com precisão.
 
 Para solucionar estas e muitas outras questões, nós criamos o <strong>Follow</strong>
 
 <h3>Objetivos</h3>
 
-• Centralização da comunicação interna da empresa através de ferramenta que permite a inclusão e acompanhamento do andamento de solicitações entre os usuários, grupos, projetos, gerentes e administradores, além de agenda de compromissos e recados.
+• Centralização da comunicação interna da empresa através de ferramenta que permite a inclusão e acompanhamento do andamento de solicitações entre os usuários, grupos, projetos, gerentes e administradores, além de agenda de compromissos e messages.
 • Permitir a inclusão e acompanhamento remotos do status de solicitações.
 • Otimizar o sistema de acompanhamento e cobrança de resultados das solicitações.
 • Avaliar o desempenho dos usuários a partir de critérios objetivos como: tempo de execução, eficiência e iniciativa na solução das tarefas e subjetivos como índices de satisfação.
@@ -40,11 +40,11 @@ Para solucionar estas e muitas outras questões, nós criamos o <strong>Follow</
 • Área para inclusão, visualização, alteração e exclusão de usuários
  
 
-<h4>Recados:</h4>
+<h4>Messages:</h4>
 
-• Tela de inclusão de recados: Formulário para que secretárias ou atendentes incluam os recados para os usuários. Recados podem ser particulares e compartilhados com o grupo de trabalho, projeto ou empresa.
-Campo com os recados na home: Assim que o usuário se loga no sistema, os seus recados estão disponíveis na primeira página, classificados em ordem cronológica. Há um botão de ok que altera o status para ciente/retornado que faz com que aquele recado deixe de ser exibido na tela inicial do site.
-• Tela de relatório de recados: Relatório geral de todos os recados recebidos pelo usuário, com filtragem por período.
+• Tela de inclusão de messages: Formulário para que secretárias ou atendentes incluam os messages para os usuários. Messages podem ser particulares e compartilhados com o grupo de trabalho, projeto ou empresa.
+Campo com os messages na home: Assim que o usuário se loga no sistema, os seus messages estão disponíveis na primeira página, classificados em ordem cronológica. Há um botão de ok que altera o status para ciente/retornado que faz com que aquele message deixe de ser exibido na tela inicial do site.
+• Tela de relatório de messages: Relatório geral de todos os messages recebidos pelo usuário, com filtragem por período.
  
 
 <h4>Agenda de compromissos:</h4>
@@ -56,13 +56,13 @@ Campo com os recados na home: Assim que o usuário se loga no sistema, os seus r
 <h4>Tarefas:</h4>
 
 • Tela de inclusão de tarefas: Formulário para inclusão de solicitações com filtragem por empresa, projeto, grupo de trabalho e usuário. Ao se logar, por padrão são disponibilizados o projeto e o grupo de trabalho onde o usuário está locado. Há menus pop-up com seleção dinâmica de usuários em outros projetos e grupos de trabalho.
-Lista de tarefas: Na coluna esquerda da tela do sistema há uma lista com todas as solicitações inseridas pelo usuário para outras pessoas. Na coluna direita há todas as solicitações inseridas por outras pessoas para este usuário. Nas solicitações as quais ele deve executar, há um menu pop-up para alteração do status para do andamento e uma seta que expande um campo para que o usuário inclua comentários ou peça informações ao solicitante da tarefa. A cada alteração de status ou inclusão de comentário, surge aviso na tela do solicitante para que interaja com o comentário incluído ou autorize a alteração do status. Após a conclusão da tarefa pelo usuário, surge na tela do solicitante um formulário com botões “ruim, razoável, bom, ótimo”para classificação do desempenho do usuário na execução da tarefa, além de um campo de texto para inclusão de um comentário ou observação final sobre o índice de satisfação. 
-• Relatório de tarefas: Tela de followup para visualização detalhada das solicitações, com filtragem por projeto, grupo de trabalho, usuário e período. Inclui todas as interações entre solicitante e executante, com data/hora de inclusão, data/hora de finalização, tempo estimado de execução, tempo total de execução, quantidade de interações, pontuação da avaliação subjetiva, comentário e pontuação finais.
+Lista de tarefas: Na coluna esquerda da tela do sistema há uma lista com todas as solicitações inseridas pelo usuário para outras pessoas. Na coluna direita há todas as solicitações inseridas por outras pessoas para este usuário. Nas solicitações as quais ele deve executar, há um menu pop-up para alteração do status para do andamento e uma seta que expande um campo para que o usuário inclua comentários ou peça informações ao requestor da tarefa. A cada alteração de status ou inclusão de comentário, surge aviso na tela do requestor para que interaja com o comentário incluído ou autorize a alteração do status. Após a conclusão da tarefa pelo usuário, surge na tela do requestor um formulário com botões “ruim, razoável, bom, ótimo”para classificação do desempenho do usuário na execução da tarefa, além de um campo de texto para inclusão de um comentário ou observação final sobre o índice de satisfação. 
+• Relatório de tarefas: Tela de followup para visualização detalhada das solicitações, com filtragem por projeto, grupo de trabalho, usuário e período. Inclui todas as interações entre requestor e executante, com data/hora de inclusão, data/hora de finalização, tempo estimado de execução, tempo total de execução, quantidade de interações, pontuação da avaliação subjetiva, comentário e pontuação finais.
  
 
 
 <h4>Critérios de avaliação</h4>
 
-• Tempo de execução: Ao cadastrar uma tarefa, o solicitante inclui o tempo estimado de execução. Após a conclusão da tarefa é calculada a diferença entre o tempo previsto e o tempo de execução. A diferença é convertida em percentagem do tempo estimado de execução e gera uma pontuação final para este critério.
+• Tempo de execução: Ao cadastrar uma tarefa, o requestor inclui o tempo estimado de execução. Após a conclusão da tarefa é calculada a diferença entre o tempo previsto e o tempo de execução. A diferença é convertida em percentagem do tempo estimado de execução e gera uma pontuação final para este critério.
 • Quantidade de interações: A cada interação é atribuído um ponto. Mais pontos, menor a média. A lógica: menos interações, melhor a compreensão da solicitação, menor tempo de execução.
 • Avaliação subjetiva com índice de satisfação: Cada tarefa será avaliada através de índice de satisfação, com níveis “ruim, razoável, bom, ótimo”

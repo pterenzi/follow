@@ -1,20 +1,20 @@
 <% content_for :leftside do %>
  
-  <%= render :partial=>"minhasSolicitacoes" %>
+  <%= render :partial=>"my_requests" %>
 <% end %>
 <% content_for :main do %>
   <%= link_to t(:new_task), new_task_path %>
   
 <% end %>
 <% content_for :rightside do %>
-  <%= render :partial=>"minhas_tasks" %>
+  <%= render :partial=>"my_taskss" %>
 <% end %>
 <% content_for :lado_sem_usuario do %>
   <%= render :partial=>"tasks_sem_usuario"%>
 <% end %>
 
-<% content_for :recados do %>
+<% content_for :messages do %>
   <tr>
-    <td>Este é um recado dinamico</td>
+    <td>Este é um message dinamico</td>
   </tr>
 <% end %>

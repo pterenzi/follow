@@ -1,8 +1,8 @@
 <% content_for :leftside do %>
-   <%= render :partial=>"tasks/minhasSolicitacoes" %>
+   <%= render :partial=>"tasks/my_requests" %>
 <% end %>
 <% content_for :rightside do %>
-  <%= render :partial=>"tasks/minhas_tasks" %>
+  <%= render :partial=>"tasks/my_taskss" %>
 <% end %>
 <% content_for :main do %>
 <% #TODO fazer o jquery com on opme %>
@@ -12,18 +12,18 @@
 <div id="selected_users">
 <% for u in @included do%>
   <span id="selected_<%=u.id %>">
-  <a href="#" onClick="remove_user(<%=  @project.id %>,<%= u.id %>, '<%= u.nome %>' )"><%= u.nome %></a><br/>
+  <a href="#" onClick="remove_user(<%=  @project.id %>,<%= u.id %>, '<%= u.name %>' )"><%= u.name %></a><br/>
     </span>    
 <% end %>
 </div>
 <br/>
 
  Fora do projeto <br/>
-(clique no nome do usuario para incluí-lo no projeto)<br/>
+(clique no name do usuario para incluí-lo no projeto)<br/>
 <div id="not_selected_users">
     <% for u in @not_selected do%>
       <span id="not_selected_<%= u.id %>">
-      <a href="#" onClick="include_user(<%=  @project.id %>,<%= u.id %>, '<%= u.nome %>' )"><%= u.nome %></a><br/>
+      <a href="#" onClick="include_user(<%=  @project.id %>,<%= u.id %>, '<%= u.name %>' )"><%= u.name %></a><br/>
       </span>
     <% end %>
 </div>

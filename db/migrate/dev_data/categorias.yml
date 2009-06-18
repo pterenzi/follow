@@ -1,13 +1,13 @@
 gerente:
-    nome: Gestor
+    name: Gestor
     
 
 admin:
-    nome: Administrador
+    name: Administrador
     
 
 usuario:
-    nome: Usuário
+    name: Usuário
     
 
 

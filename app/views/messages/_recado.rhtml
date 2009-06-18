@@ -1,0 +1,9 @@
+<tr class="<%= cycle("even", "odd") -%>">
+  
+  <td><%=h message.name %></td>
+  <%  unless @export  -%>
+     <td><%= link_to 'Mostrar', message %></td>
+     <td><%= link_to 'Alterar', edit_message_path(message) %></td>
+     <td><%= link_to 'Excluir', message, :confirm => 'Deseja realmente excluir o message ' + message.name + '?', :method => :delete %></td>
+  <%  end -%>
+</tr>

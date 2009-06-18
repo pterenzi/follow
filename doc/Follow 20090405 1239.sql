@@ -22,49 +22,49 @@ CREATE DATABASE IF NOT EXISTS follow;
 USE follow;
 
 --
--- Definition of table `categorias`
+-- Definition of table `categories`
 --
 
-DROP TABLE IF EXISTS `categorias`;
-CREATE TABLE `categorias` (
+DROP TABLE IF EXISTS `categories`;
+CREATE TABLE `categories` (
   `id` int(10) unsigned NOT NULL auto_increment,
-  `nome` varchar(32) default NULL,
+  `name` varchar(32) default NULL,
   PRIMARY KEY  (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `categorias`
+-- Dumping data for table `categories`
 --
 
-/*!40000 ALTER TABLE `categorias` DISABLE KEYS */;
-INSERT INTO `categorias` (`id`,`nome`) VALUES 
+/*!40000 ALTER TABLE `categories` DISABLE KEYS */;
+INSERT INTO `categories` (`id`,`name`) VALUES 
  (1,'Gestor'),
  (2,'Administrador'),
  (3,'Usuário');
-/*!40000 ALTER TABLE `categorias` ENABLE KEYS */;
+/*!40000 ALTER TABLE `categories` ENABLE KEYS */;
 
 
 --
--- Definition of table `categorias_permissaos`
+-- Definition of table `categories_permissaos`
 --
 
-DROP TABLE IF EXISTS `categorias_permissaos`;
-CREATE TABLE `categorias_permissaos` (
-  `categorias_id` int(10) unsigned NOT NULL,
+DROP TABLE IF EXISTS `categories_permissaos`;
+CREATE TABLE `categories_permissaos` (
+  `categories_id` int(10) unsigned NOT NULL,
   `permissaos_id` int(10) unsigned NOT NULL,
-  PRIMARY KEY  (`categorias_id`,`permissaos_id`),
-  KEY `categorias_has_permissaos_fkindex1` (`categorias_id`),
-  KEY `categorias_has_permissaos_fkindex2` (`permissaos_id`),
-  CONSTRAINT `categorias_permissaos_ibfk_1` FOREIGN KEY (`categorias_id`) REFERENCES `categorias` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `categorias_permissaos_ibfk_2` FOREIGN KEY (`permissaos_id`) REFERENCES `permissaos` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+  PRIMARY KEY  (`categories_id`,`permissaos_id`),
+  KEY `categories_has_permissaos_fkindex1` (`categories_id`),
+  KEY `categories_has_permissaos_fkindex2` (`permissaos_id`),
+  CONSTRAINT `categories_permissaos_ibfk_1` FOREIGN KEY (`categories_id`) REFERENCES `categories` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `categories_permissaos_ibfk_2` FOREIGN KEY (`permissaos_id`) REFERENCES `permissaos` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `categorias_permissaos`
+-- Dumping data for table `categories_permissaos`
 --
 
-/*!40000 ALTER TABLE `categorias_permissaos` DISABLE KEYS */;
-/*!40000 ALTER TABLE `categorias_permissaos` ENABLE KEYS */;
+/*!40000 ALTER TABLE `categories_permissaos` DISABLE KEYS */;
+/*!40000 ALTER TABLE `categories_permissaos` ENABLE KEYS */;
 
 
 --
@@ -74,7 +74,7 @@ CREATE TABLE `categorias_permissaos` (
 DROP TABLE IF EXISTS `empresas`;
 CREATE TABLE `empresas` (
   `id` int(10) unsigned NOT NULL auto_increment,
-  `nome` varchar(64) default NULL,
+  `name` varchar(64) default NULL,
   `razao` varchar(128) default NULL,
   `tipo` int(10) unsigned default NULL,
   `contato` varchar(64) default NULL,
@@ -112,7 +112,7 @@ DROP TABLE IF EXISTS `empresas_projetos`;
 CREATE TABLE `empresas_projetos` (
   `empresas_id` int(10) unsigned NOT NULL,
   `projetos_id` int(10) unsigned NOT NULL,
-  `nome` varchar(64) default NULL,
+  `name` varchar(64) default NULL,
   PRIMARY KEY  (`empresas_id`,`projetos_id`),
   KEY `empresas_has_projetos_fkindex1` (`empresas_id`),
   KEY `empresas_has_projetos_fkindex2` (`projetos_id`),
@@ -183,7 +183,7 @@ INSERT INTO `estados` (`id`,`sigla`,`estado`) VALUES
 DROP TABLE IF EXISTS `permissaos`;
 CREATE TABLE `permissaos` (
   `id` int(10) unsigned NOT NULL auto_increment,
-  `descricao` varchar(64) default NULL,
+  `description` varchar(64) default NULL,
   PRIMARY KEY  (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -202,8 +202,8 @@ CREATE TABLE `permissaos` (
 DROP TABLE IF EXISTS `projetos`;
 CREATE TABLE `projetos` (
   `id` int(10) unsigned NOT NULL auto_increment,
-  `nome` varchar(32) default NULL,
-  `descricao` varchar(256) default NULL,
+  `name` varchar(32) default NULL,
+  `description` varchar(256) default NULL,
   `data_inicio` date default NULL,
   `data_fim` date default NULL,
   `prazo` int(10) unsigned default NULL,
@@ -243,24 +243,24 @@ CREATE TABLE `projetos_usuarios` (
 
 
 --
--- Definition of table `recados`
+-- Definition of table `messages`
 --
 
-DROP TABLE IF EXISTS `recados`;
-CREATE TABLE `recados` (
+DROP TABLE IF EXISTS `messages`;
+CREATE TABLE `messages` (
   `id` int(10) unsigned NOT NULL auto_increment,
   `usuarios_id` int(10) unsigned NOT NULL,
   PRIMARY KEY  (`id`,`usuarios_id`),
-  KEY `recados_fkindex1` (`usuarios_id`),
-  CONSTRAINT `recados_ibfk_1` FOREIGN KEY (`usuarios_id`) REFERENCES `usuarios` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+  KEY `messages_fkindex1` (`usuarios_id`),
+  CONSTRAINT `messages_ibfk_1` FOREIGN KEY (`usuarios_id`) REFERENCES `usuarios` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `recados`
+-- Dumping data for table `messages`
 --
 
-/*!40000 ALTER TABLE `recados` DISABLE KEYS */;
-/*!40000 ALTER TABLE `recados` ENABLE KEYS */;
+/*!40000 ALTER TABLE `messages` DISABLE KEYS */;
+/*!40000 ALTER TABLE `messages` ENABLE KEYS */;
 
 
 --
@@ -288,7 +288,7 @@ CREATE TABLE `schema_migrations` (
 DROP TABLE IF EXISTS `situacaos`;
 CREATE TABLE `situacaos` (
   `id` int(10) unsigned NOT NULL auto_increment,
-  `descricao` varchar(32) default NULL,
+  `description` varchar(32) default NULL,
   `sigla` varchar(8) default NULL,
   PRIMARY KEY  (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -310,8 +310,8 @@ CREATE TABLE `tasks` (
   `id` int(10) unsigned NOT NULL auto_increment,
   `projeto_id` int(10) unsigned NOT NULL,
   `usuario_id` int(10) unsigned NOT NULL,
-  `tempo_est` int(11) NOT NULL,
-  `avaliacao` int(10) unsigned NOT NULL,
+  `estimated_time` int(11) NOT NULL,
+  `evaluation` int(10) unsigned NOT NULL,
   `situacao_id` int(10) unsigned NOT NULL,
   PRIMARY KEY  (`id`),
   KEY `FK_tasks_1` (`projeto_id`),
@@ -337,8 +337,8 @@ CREATE TABLE `tasks` (
 DROP TABLE IF EXISTS `usuarios`;
 CREATE TABLE `usuarios` (
   `id` int(10) unsigned NOT NULL auto_increment,
-  `categoria_id` int(10) unsigned NOT NULL,
-  `nome` varchar(32) default NULL,
+  `categories_id` int(10) unsigned NOT NULL,
+  `name` varchar(32) default NULL,
   `cargo` varchar(32) default NULL,
   `pass` varchar(64) default NULL,
   `endereco` varchar(128) default NULL,
@@ -355,8 +355,8 @@ CREATE TABLE `usuarios` (
   `updated_at` datetime NOT NULL,
   `ativado` char(1) default NULL,
   PRIMARY KEY  (`id`),
-  KEY `usuarios_fkindex1` USING BTREE (`categoria_id`),
-  CONSTRAINT `FK_usuarios_1` FOREIGN KEY (`categoria_id`) REFERENCES `categorias` (`id`)
+  KEY `usuarios_fkindex1` USING BTREE (`categories_id`),
+  CONSTRAINT `FK_usuarios_1` FOREIGN KEY (`categories_id`) REFERENCES `categories` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -364,7 +364,7 @@ CREATE TABLE `usuarios` (
 --
 
 /*!40000 ALTER TABLE `usuarios` DISABLE KEYS */;
-INSERT INTO `usuarios` (`id`,`categoria_id`,`nome`,`cargo`,`pass`,`endereco`,`bairro`,`municipio`,`uf`,`cpf`,`email`,`gerente`,`login`,`hashed_password`,`salt`,`created_at`,`updated_at`,`ativado`) VALUES 
+INSERT INTO `usuarios` (`id`,`categories_id`,`name`,`cargo`,`pass`,`endereco`,`bairro`,`municipio`,`uf`,`cpf`,`email`,`gerente`,`login`,`hashed_password`,`salt`,`created_at`,`updated_at`,`ativado`) VALUES 
  (2,3,'WILSON AQUINO DE MAGALHÃES','Tecnico',NULL,'Rua tra la la','mexericas','Embu','SP','15755319847','willinos@gmail.com','mano  brown','willinos','3671f38ce6d9f377d9fb7ba5981b45dbf5abcc42','412261000.500537961562879','2009-04-05 12:23:38','2009-04-05 15:34:30',NULL),
  (5,2,'Administrador','Administrador do Sistema',NULL,'Rio de janeiro','Barra da Tijuca','Rio de janeiro','RJ','','willinos@gmail.com','Wilson aquino','admin','e864b363cd6f0f10abf8e5bb0c711b85ee675ee3','394424800.427083304011527','2009-04-05 15:11:35','2009-04-05 15:11:35',NULL);
 /*!40000 ALTER TABLE `usuarios` ENABLE KEYS */;

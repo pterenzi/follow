@@ -1,0 +1,28 @@
+<h1>Listing pauses</h1>
+
+<table>
+  <tr>
+    <th>Data</th>
+    <th>Task</th>
+    <th>Justificativa</th>
+    <th>Aceito</th>
+    <th>Comment requestor</th>
+  </tr>
+
+<% for pause in @pauses %>
+  <tr>
+    <td><%=h pause.date %></td>
+    <td><%=h pause.task %></td>
+    <td><%=h pause.justification %></td>
+    <td><%=h pause.accepted %></td>
+    <td><%=h pause.comment_requestor %></td>
+    <td><%= link_to 'Show', pause %></td>
+    <td><%= link_to 'Edit', edit_pause_path(pause) %></td>
+    <td><%= link_to 'Destroy', pause, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New pause', new_pause_path %>

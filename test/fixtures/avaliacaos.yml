@@ -1,7 +1,0 @@
-# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
-
-didio:
-    task: didio
-    user: paulo
-    recusada: t
-    comentario_avaliacao: "muito mal feito"

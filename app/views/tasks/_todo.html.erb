@@ -2,22 +2,22 @@
 <div id="task">
   <span id="blink_<%=task.id.to_s %>" >
   
-    <a href="#" title="Detalhes da task" onClick="detalhe_task(<%= task.id %>);"><%= image_tag "info.png", :border=>0 %></a> <a href="#" onClick="toggle(<%= task.id %>, false ,'usuario')" ><span class="hyphenate" lang="pt"><%= task.descricao %></span></a>
+    <a href="#" title="Detalhes da task" onClick="detalhe_task(<%= task.id %>);"><%= image_tag "info.png", :border=>0 %></a> <a href="#" onClick="toggle(<%= task.id %>, false ,'usuario')" ><span class="hyphenate" lang="pt"><%= task.description %></span></a>
  <div style="display:none;" id="form_detalhe_<%=task.id.to_s%>">
-       <%= render :partial=>'tasks/detalhes_da_task', :locals=>{:task=>task} %>
+       <%= render :partial=>'tasks/task_details', :locals=>{:task=>task} %>
    </div>
 
   </span>
   <div style="display: none;"id="toggle_appear_<%= task.id.to_s %>" style="background:#F2F2F2;">
    <table>
 	<tr>
-		<td><p class="link"> <a href="#" onClick="abre_form_termino(<%=task.id%>);return false;" style="text-decoration:none" OnMouseOver="document.stoptodo.src='images/stoph.png'" OnMouseOut="document.stoptodo.src='images/stop.png'"><Img Src="images/stop.png" Name="stop" Width="18" Height="10"Border=""><span>Finalizar</span></a></p>
+		<td><p class="link"> <a href="#" onClick="abre_form_end(<%=task.id%>);return false;" style="text-decoration:none" OnMouseOver="document.stoptodo.src='images/stoph.png'" OnMouseOut="document.stoptodo.src='images/stop.png'"><Img Src="images/stop.png" Name="stop" Width="18" Height="10"Border=""><span>Finalizar</span></a></p>
   </td></tr></table>
-    <%= render :partial=>'tasks/comentarios_de_uma_task', :locals=>{:task=>task, :lado=>'direito'} %>
-    <%= render :partial=>'tasks/form_comentario', :locals=>{:task=>task} %>    
+    <%= render :partial=>'tasks/task_comments', :locals=>{:task=>task, :lado=>'direito'} %>
+    <%= render :partial=>'tasks/comment_for', :locals=>{:task=>task} %>    
     
-     <div style="display:none;" id="abre_termino_<%=task.id.to_s%>">
-         <%= render :partial=>'tasks/termino', :locals=>{:task=>task} %>
+     <div style="display:none;" id="abre_end_<%=task.id.to_s%>">
+         <%= render :partial=>'tasks/end', :locals=>{:task=>task} %>
      </div>
      
   </div>

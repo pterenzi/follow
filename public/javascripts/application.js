@@ -6,21 +6,21 @@ $.ui.dialog.defaults.bgiframe = true;
 $(document).ready(function(){
     
 //  $('#dialog').hide();
-    $("pausa").click(function(event){
+    $("pause").click(function(event){
        alert('entrou');
     });
 });
 
-function abre_form_pausa(id){
-    $('#form_pausa_'+id).dialog({ title: 'Pausa' });
-    $('#form_pausa_'+id).dialog('open');
-    $('#form_pausa_'+id).dialog();
+function abre_form_pause(id){
+    $('#form_pause_'+id).dialog({ title: 'Pause' });
+    $('#form_pause_'+id).dialog('open');
+    $('#form_pause_'+id).dialog();
 };
 
-function abre_form_aprovar_reprovar_pausa(id){
-    $('#form_aprovar_pausa_'+id).dialog({ title: 'Aprovar / Reprovar Pausa' });
-    $('#form_aprovar_pausa_'+id).dialog('open');
-    $('#form_aprovar_pausa_'+id).dialog();
+function abre_form_approuve_disapprove_pause(id){
+    $('#form_aprovar_pause_'+id).dialog({ title: 'Aprovar / Reprovar Pause' });
+    $('#form_aprovar_pause_'+id).dialog('open');
+    $('#form_aprovar_pause_'+id).dialog();
 }
 
 function toggle(task_id,muda_alerta,origem){
@@ -32,16 +32,16 @@ function toggle(task_id,muda_alerta,origem){
   return false;
 };
 
-function abre_form_termino(id){
-    $('#abre_termino_'+id).dialog({ title: 'Término' });
-    $('#abre_termino_'+id).dialog('open');
-    $('#abre_termino_'+id).dialog();
+function abre_form_end(id){
+    $('#abre_end_'+id).dialog({ title: 'Término' });
+    $('#abre_end_'+id).dialog('open');
+    $('#abre_end_'+id).dialog();
 }
 
-function abre_form_avaliacao(id){
-    $('#abre_avaliacao_'+id).dialog({ title: 'Avaliação' });
-    $('#abre_avaliacao_'+id).dialog('open');
-    $('#abre_avaliacao_'+id).dialog();
+function abre_form_evaluation(id){
+    $('#abre_evaluation_'+id).dialog({ title: 'Avaliação' });
+    $('#abre_evaluation_'+id).dialog('open');
+    $('#abre_evaluation_'+id).dialog();
 }
 
 function abre_form_recusa(id){
@@ -51,9 +51,9 @@ function abre_form_recusa(id){
 }
 
 function abre_alerta_recusado(id){
-	$('#form_task_recusada_'+id).dialog({ title: 'Task recusada' });
-    $('#form_task_recusada_'+id).dialog('open');
-    $('#form_task_recusada_'+id).dialog();
+	$('#form_task_refused_'+id).dialog({ title: 'Task refused' });
+    $('#form_task_refused_'+id).dialog('open');
+    $('#form_task_refused_'+id).dialog();
 }
 
 function detalhe_task(id){

@@ -1,84 +1,84 @@
-class PausaPadraosController < ApplicationController
-  # GET /pausa_padraos
-  # GET /pausa_padraos.xml
+class PausePadraosController < ApplicationController
+  # GET /pattern_pauses
+  # GET /pattern_pauses.xml
   def index
-    @pausa_padraos = PausaPadrao.find(:all)
+    @pattern_pauses = PausePadrao.find(:all)
 
     respond_to do |format|
       format.html # index.html.erb
-      format.xml  { render :xml => @pausa_padraos }
+      format.xml  { render :xml => @pattern_pauses }
     end
   end
 
-  # GET /pausa_padraos/1
-  # GET /pausa_padraos/1.xml
+  # GET /pattern_pauses/1
+  # GET /pattern_pauses/1.xml
   def show
-    @pausa_padrao = PausaPadrao.find(params[:id])
+    @pattern_pause = PausePadrao.find(params[:id])
 
     respond_to do |format|
       format.html # show.html.erb
-      format.xml  { render :xml => @pausa_padrao }
+      format.xml  { render :xml => @pattern_pause }
     end
   end
 
-  # GET /pausa_padraos/new
-  # GET /pausa_padraos/new.xml
+  # GET /pattern_pauses/new
+  # GET /pattern_pauses/new.xml
   def new
-    @pausa_padrao = PausaPadrao.new
+    @pattern_pause = PausePadrao.new
 
     respond_to do |format|
       format.html # new.html.erb
-      format.xml  { render :xml => @pausa_padrao }
+      format.xml  { render :xml => @pattern_pause }
     end
   end
 
-  # GET /pausa_padraos/1/edit
+  # GET /pattern_pauses/1/edit
   def edit
-    @pausa_padrao = PausaPadrao.find(params[:id])
+    @pattern_pause = PausePadrao.find(params[:id])
   end
 
-  # POST /pausa_padraos
-  # POST /pausa_padraos.xml
+  # POST /pattern_pauses
+  # POST /pattern_pauses.xml
   def create
-    @pausa_padrao = PausaPadrao.new(params[:pausa_padrao])
+    @pattern_pause = PausePadrao.new(params[:pattern_pause])
 
     respond_to do |format|
-      if @pausa_padrao.save
-        flash[:notice] = 'PausaPadrao was successfully created.'
-        format.html { redirect_to(@pausa_padrao) }
-        format.xml  { render :xml => @pausa_padrao, :status => :created, :location => @pausa_padrao }
+      if @pattern_pause.save
+        flash[:notice] = 'PausePadrao was successfully created.'
+        format.html { redirect_to(@pattern_pause) }
+        format.xml  { render :xml => @pattern_pause, :status => :created, :location => @pattern_pause }
       else
         format.html { render :action => "new" }
-        format.xml  { render :xml => @pausa_padrao.errors, :status => :unprocessable_entity }
+        format.xml  { render :xml => @pattern_pause.errors, :status => :unprocessable_entity }
       end
     end
   end
 
-  # PUT /pausa_padraos/1
-  # PUT /pausa_padraos/1.xml
+  # PUT /pattern_pauses/1
+  # PUT /pattern_pauses/1.xml
   def update
-    @pausa_padrao = PausaPadrao.find(params[:id])
+    @pattern_pause = PausePadrao.find(params[:id])
 
     respond_to do |format|
-      if @pausa_padrao.update_attributes(params[:pausa_padrao])
-        flash[:notice] = 'PausaPadrao was successfully updated.'
-        format.html { redirect_to(@pausa_padrao) }
+      if @pattern_pause.update_attributes(params[:pattern_pause])
+        flash[:notice] = 'PausePadrao was successfully updated.'
+        format.html { redirect_to(@pattern_pause) }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }
-        format.xml  { render :xml => @pausa_padrao.errors, :status => :unprocessable_entity }
+        format.xml  { render :xml => @pattern_pause.errors, :status => :unprocessable_entity }
       end
     end
   end
 
-  # DELETE /pausa_padraos/1
-  # DELETE /pausa_padraos/1.xml
+  # DELETE /pattern_pauses/1
+  # DELETE /pattern_pauses/1.xml
   def destroy
-    @pausa_padrao = PausaPadrao.find(params[:id])
-    @pausa_padrao.destroy
+    @pattern_pause = PausePadrao.find(params[:id])
+    @pattern_pause.destroy
 
     respond_to do |format|
-      format.html { redirect_to(pausa_padraos_url) }
+      format.html { redirect_to(pattern_pauses_url) }
       format.xml  { head :ok }
     end
   end

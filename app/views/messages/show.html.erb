@@ -1,0 +1,15 @@
+<%= error_messages_for :message %>
+
+<% form_for(@message, :html => { :multipart => true }) do |f| %>
+   <div class="depot-form">
+     <fieldset>
+       <p>
+         <legend>Dados do Message <%=  @message.name  %> </legend>
+         <label for="message_name">Nome:</label>
+         <%= f.text_field :name, :size =>  "53" , :readonly => true %>     
+       </p>
+     </fieldset>
+   </div> 
+<% end %>
+
+<%= link_to 'Voltar', messages_path %>

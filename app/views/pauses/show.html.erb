@@ -1,0 +1,27 @@
+<p>
+  <b>Data:</b>
+  <%=h @pause.date %>
+</p>
+
+<p>
+  <b>Task:</b>
+  <%=h @pause.task %>
+</p>
+
+<p>
+  <b>Justificativa:</b>
+  <%=h @pause.justification %>
+</p>
+<p>
+  <b>Aceito:</b>
+  <%=h @pause.accepted %>
+</p>
+
+<p>
+  <b>Comment requestor:</b>
+  <%=h @pause.comment_requestor %>
+</p>
+
+
+<%= link_to 'Edit', edit_pause_path(@pause) %> |
+<%= link_to 'Back', pauses_path %>

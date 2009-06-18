@@ -1,8 +1,8 @@
 <% content_for :leftside do %>
-  <%= render :partial=>"tasks/minhasSolicitacoes" %>
+  <%= render :partial=>"tasks/my_requests" %>
 <% end %>
 <% content_for :rightside do %>
-  <%= render :partial=>"tasks/minhas_tasks" %>
+  <%= render :partial=>"tasks/my_taskss" %>
 <% end %>
 <%= form.label :login %><br />
 <%= form.text_field :login %><br />
@@ -13,11 +13,11 @@
 <%= form.label :password_confirmation %><br />
 <%= form.password_field :password_confirmation %><br />
 <br/>
-<%= form.label :nome %><br />
-<%= form.text_field :nome %><br />
+<%= form.label :name %><br />
+<%= form.text_field :name %><br />
 <br />
-<%= form.label :Categoria%><br/>
-<%= form.select :categoria_id, @categorias %><br/>
+<%= form.label :Category%><br/>
+<%= form.select :category_id, @categories %><br/>
 <br/>
 <%= form.label :Company%><br/>
 <%= form.select :company_id, @companies %>

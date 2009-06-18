@@ -11,27 +11,27 @@
 
 ActiveRecord::Schema.define(:version => 20090617211237) do
 
-  create_table "avaliacaos", :force => true do |t|
+  create_table "evaluations", :force => true do |t|
     t.integer  "task_id"
     t.integer  "user_id"
-    t.integer  "nota"
-    t.string   "comentario_avaliacao"
-    t.string   "comentario_recusa_user"
-    t.boolean  "recusada",               :default => false
+    t.integer  "grade"
+    t.string   "evaluation_comment"
+    t.string   "user_comment"
+    t.boolean  "refused",               :default => false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  create_table "categorias", :force => true do |t|
-    t.string   "nome",       :limit => 32
+  create_table "categories", :force => true do |t|
+    t.string   "name",       :limit => 32
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  create_table "comentarios", :force => true do |t|
+  create_table "comments", :force => true do |t|
     t.integer  "user_id"
-    t.string   "descricao"
+    t.string   "description"
     t.integer  "task_id"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -44,21 +44,21 @@ ActiveRecord::Schema.define(:version => 20090617211237) do
     t.datetime "updated_at"
   end
 
-  create_table "pausa_padraos", :force => true do |t|
-    t.string   "descricao"
+  create_table "pattern_pauses", :force => true do |t|
+    t.string   "description"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  create_table "pausas", :force => true do |t|
+  create_table "pauses", :force => true do |t|
     t.datetime "data"
     t.integer  "task_id"
-    t.string   "justificativa"
-    t.boolean  "aceito"
-    t.string   "comentario_solicitante"
-    t.datetime "reinicio"
-    t.boolean  "padrao"
-    t.integer  "pausa_padrao_id"
+    t.string   "justification"
+    t.boolean  "accepted"
+    t.string   "comment_requestor"
+    t.datetime "restart"
+    t.boolean  "pattern"
+    t.integer  "pattern_pause_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -76,18 +76,7 @@ ActiveRecord::Schema.define(:version => 20090617211237) do
     t.integer "user_id"
   end
 
-  create_table "projetos", :force => true do |t|
-    t.string   "nome",        :limit => 32
-    t.string   "descricao",   :limit => 256
-    t.date     "data_inicio"
-    t.date     "data_fim"
-    t.integer  "prazo",       :limit => 4
-    t.boolean  "ativo"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "recados", :force => true do |t|
+  create_table "messages", :force => true do |t|
     t.integer  "escrito_por"
     t.integer  "para"
     t.datetime "created_at"
@@ -97,16 +86,16 @@ ActiveRecord::Schema.define(:version => 20090617211237) do
   create_table "tasks", :force => true do |t|
     t.integer  "projeto_id"
     t.integer  "user_id"
-    t.integer  "solicitante_id"
-    t.string   "descricao"
-    t.integer  "tempo_est",                      :limit => 4,                    :null => false
+    t.integer  "requestor_id"
+    t.string   "description"
+    t.integer  "estimated_time",                      :limit => 4,                    :null => false
     t.boolean  "alerta_usuario",                              :default => false
-    t.boolean  "alerta_solicitante",                          :default => false
-    t.datetime "termino_at"
-    t.string   "comentario_termino_user"
-    t.string   "comentario_termino_solicitante"
-    t.boolean  "recusada",                                    :default => false
-    t.boolean  "tem_comentario",                              :default => false
+    t.boolean  "alerta_requestor",                          :default => false
+    t.datetime "end_at"
+    t.string   "comment_end_user"
+    t.string   "comment_end_requestor"
+    t.boolean  "refused",                                    :default => false
+    t.boolean  "tem_comment",                              :default => false
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "project_id"
@@ -125,8 +114,8 @@ ActiveRecord::Schema.define(:version => 20090617211237) do
     t.datetime "current_login_at"
     t.string   "last_login_ip"
     t.string   "current_login_ip"
-    t.integer  "categoria_id"
-    t.string   "nome"
+    t.integer  "categories_id"
+    t.string   "name"
     t.integer  "company_id"
   end
 

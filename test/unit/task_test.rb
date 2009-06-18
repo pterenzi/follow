@@ -12,31 +12,31 @@ class TaskTest < ActiveSupport::TestCase
     assert  task.user.nil?
   end
   
-  def test_task_should_pausada
+  def test_task_should_pauseda
     task = tasks(:follow)
-    assert task.pausada
+    assert task.pauseda
   end
   
-  def test_task_should_pausada_padrao
+  def test_task_should_pauseda_pattern
     task = tasks(:follow)
-    assert task.pausada_padrao
+    assert task.pauseda_pattern
   end
   
-  def test_should_pausa_nao_aceita
+  def test_should_pause_nao_aceita
     task = tasks(:didio)
-    assert task.pausa_nao_aceita
-    assert task.justificativa_recusa=='muito mal feito'
+    assert task.pause_nao_aceita
+    assert task.justification_recusa=='muito mal feito'
   end
   
   def test_verify_comments
     task = tasks(:follow)
-    assert task.comentarios.size==1
-    assert task.comentarios[0].descricao == "fazendo os testes"
+    assert task.comments.size==1
+    assert task.comments[0].description == "fazendo os testes"
   end
   
   def test_should_waiting_pause_acception
     task = tasks(:loja)
-    assert task.pausada_esperando_aprovacao
+    assert task.pauseda_esperando_aprovacao
   end
   
   

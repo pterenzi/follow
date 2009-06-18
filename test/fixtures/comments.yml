@@ -1,0 +1,10 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  user: marcio
+  task: follow
+  description: "fazendo os testes"
+
+#two:
+#  user_id: 1
+#  description: MyString

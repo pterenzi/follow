@@ -1,0 +1,2 @@
+module PatternPausesHelper
+end

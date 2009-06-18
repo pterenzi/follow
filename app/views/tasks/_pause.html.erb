@@ -1,0 +1,13 @@
+<% form_tag( :action=>:create_pauser, :controller=>'tasks') do %>
+ <%= hidden_field_tag :task_id, task.id %>
+  <table>
+	<tr>
+		<td valign="top">Justificativa :&nbsp; </td>
+		<td><%= text_area_tag(:justification, '', :size=>"21x2") %></td>
+    </tr>
+    <tr>
+	  <td>&nbsp;</td>
+	  <td><br/><%= submit_tag "Pauser task" %></td>
+    </tr>
+  </table>
+<% end %>

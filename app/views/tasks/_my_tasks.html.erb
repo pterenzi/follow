@@ -1,0 +1,82 @@
+<% content_for :rightside do %>
+    <% name_usuario = ''%>
+    <% if  @my_taskss.empty? %>
+    <div id="name_usuario">
+        <%=t(:no_task)%> 
+    </div>
+    <% end %>
+    <% for task in @my_taskss do  %>
+
+      <% if name_usuario!= task.requestor.name then %>
+        <div id="name_usuario"><%= task.requestor.name %> </div>
+        <% name_usuario = task.requestor.name %> 
+      <% end %>
+
+    <div id="task">
+     
+    <span id="blink_<%=task.id.to_s %>" >
+          <a href="#"  title="Detalhes da task" onClick="detalhe_task(<%= task.id %>);"><%= image_tag "info.png" %></a> <a href="#" onClick=toggle(<%= task.id %>,<%= task.alerta_usuario.nil? ? false : task.alerta_usuario %>,'usuario') ><span class"hyphanate" lang="pt"><%= task.description %></span></a>
+    </span>
+
+    <div style="display: none;"id="toggle_appear_<%= task.id.to_s %>" style="background:#F2F2F2;">
+    
+        <table width="80" border="0" cellspacing="0" cellpadding="0">
+                                      <tr>
+        <td height= "20" align="botton" ><p class="link"><a href="#" onClick="abre_form_recusa(<%=task.id%>);return false;" style="text-decoration:none" OnMouseOver="document.devolver.src='images/backwardh.png'" OnMouseOut="document.devolver.src='images/backward.png'">
+        <Img Src="images/backward.png" Name="devolver" Width="18" Height="10" Border=""><span>Não aceitar esta task</span></a></p></td>
+         
+    
+        <% if task.pauseda_esperando_aprovacao %>
+<% #TODO o aue fazer se ele continua a task antes de aprovar ou não a pause ? %>
+           <td height= "20" align="botton" align="botton"><a href="#"><img src="/images/play.png" border=0 /></td>
+        <% end %>
+
+        <% if task.pauseda  %>
+           <% rota = "/tasks/reiniciar_a_task?task_id=" + task.id.to_s  %>
+    <td height= "20" align="botton"><p class="link"> <a href=<%=rota%> style="text-decoration:none" OnMouseOver="document.play.src='images/pauseh.png'" OnMouseOut="document.play.src='images/play.png'"><Img Src="images/play.png" Name="play" Width="18" Height="10"Border=""><span>Pauser esta task</span></a></p></td>
+        <% end %>
+
+        <% if task.sem_pause || task.pause_nao_aceita %>
+          <td height= "20" align="botton"><p class="link"> <a href="#" onClick="abre_form_pause(<%=task.id%>);return false;"  style="text-decoration:none" OnMouseOver="document.pause.src='images/pauseh.png'" OnMouseOut="document.pause.src='images/play.png'"><Img Src="images/play.png" Name="pause" Width="18" Height="10"Border=""><span>Pauser esta task</span></a></p></td>
+        <% end %>
+
+<td height= "20" align="botton" ><p class="link"><a Href="#" style="text-decoration:none" OnMouseOver="document.foward.src='images/fowardh.png'" OnMouseOut="document.foward.src='images/foward.png'"><Img Src="images/foward.png" Name="foward" Width="18" Height="10"Border=""><span>Reencaminhar</span></a></p></td>
+    
+       <td height= "20" align="botton"><p class="link"> <a href="#" onClick="abre_form_end(<%=task.id%>);return false;" style="text-decoration:none" OnMouseOver="document.stop.src='images/stoph.png'" OnMouseOut="document.stop.src='images/stop.png'"><Img Src="images/stop.png" Name="stop" Width="18" Height="10"Border=""><span>Finalizar</span></a></p></td>
+
+
+      
+         </tr>
+   </table>
+
+        <%= render :partial=>'task_comments', :locals=>{:task=>task, :lado=>'direito'} %>
+        <%= render :partial=>'comment_for', :locals=>{:task=>task} %>    
+    </div>
+   
+   <div style="display:none;" id="form_detalhe_<%=task.id.to_s%>">
+       <%= render :partial=>'task_details', :locals=>{:task=>task} %>
+   </div>
+
+
+   <div style="display:none;" id="form_recusa_<%=task.id.to_s%>">
+       <%= render :partial=>'recusar', :locals=>{:task=>task} %>
+   </div>
+
+
+   <div style="display:none;" id="form_pause_<%=task.id.to_s%>">
+      <%= render :partial=>'pauser', :locals=>{:task=>task, :lado=>'direito'} %>
+   </div>
+
+        <div style="display:none;" id="abre_end_<%=task.id.to_s%>">
+             <%= render :partial=>'end', :locals=>{:task=>task} %>
+        </div>
+
+    <% if task.alerta_usuario %>
+         <% tag = '#blink_'+task.id.to_s %>
+         <%= javascript_tag "pulsar('"+tag+"')" %>
+       <% end %>
+</div>
+<% end %>
+
+<% end %>
+<br>

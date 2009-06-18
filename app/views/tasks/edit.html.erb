@@ -1,8 +1,8 @@
 <% content_for :leftside do %>
-   <%= render :partial=>"minhasSolicitacoes" %>
+   <%= render :partial=>"my_requests" %>
 <% end %>
 <% content_for :rightside do %>
-  <%= render :partial=>"minhas_tasks" %>
+  <%= render :partial=>"my_taskss" %>
 <% end %>
 <% content_for :main do %>
 <h1>Alterar Task</h1>
@@ -17,7 +17,7 @@
  </p>
   <p>
 	<b>Descrição</b><br/>
-	<%= f.text_area :descricao, :cols=>60, :rows=>10 , :disabled=>@task.usuario_que_criou(@usuario_logado.id) %>
+	<%= f.text_area :description, :cols=>60, :rows=>10 , :disabled=>@task.usuario_que_criou(@usuario_logado.id) %>
   </p>
   
   <p>
@@ -33,13 +33,13 @@
   <p>
     <b>Tempo est</b><br />   
        
-    <%= f.text_field :tempo_est %>     
+    <%= f.text_field :estimated_time %>     
   </p>
 
   <p>
-    <b>Avaliacao</b><br />   
+    <b>Evaluation</b><br />   
        
-    <%= f.text_field :avaliacao %>     
+    <%= f.text_field :evaluation %>     
   </p>
   <br/>
   <p>

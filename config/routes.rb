@@ -4,31 +4,31 @@ ActionController::Routing::Routes.draw do |map|
   
   map.resources :projects, :collection => {:insert_user => :get, :remove_user=>:get}
 
-  map.resources :pausa_padraos
+  map.resources :pattern_pauses
    
    map.logout "logout", :controller=>"user_sessions", :action=>"destroy"
   # map.resources :account, :controller => "users"
    map.resources :users
    map.resources :user_sessions
  
-  map.resources :andamentos , :collection=>{:pausar=>:get}
+  map.resources :andamentos , :collection=>{:pauser=>:get}
 
-  map.resources :comentarios
+  map.resources :comments
 
-  map.resources :recados, :collection => {:show_export => :get}
+  map.resources :messages, :collection => {:show_export => :get}
 
-  map.resources :tasks, :collection => {:show_export => :get, :pausar=>:get, :reiniciar_a_task=>:get, 
-         :pausar_padrao=>:get, :reiniciar_padrao=>:get, :encaminhar=>:get, :mudar_alerta=>:get,
-         :encerrar_task=>:get, :avaliar_task=>:get, :recusar_task=>:get, :reencaminhar_task_recusada=>:get  }
+  map.resources :tasks, :collection => {:show_export => :get, :pauser=>:get, :reiniciar_a_task=>:get, 
+         :pauser_pattern=>:get, :reiniciar_pattern=>:get, :encaminhar=>:get, :mudar_alerta=>:get,
+         :encerrar_task=>:get, :avaliar_task=>:get, :recusar_task=>:get, :reencaminhar_task_refused=>:get  }
   
   map.resources :tasks do |tasks|
-       tasks.resources :comentarios
+       tasks.resources :comments
     end 
   
 
-  map.resources :avaliacaos
+  map.resources :evaluations
   
-  map.resources :categorias, :collection => {:show_export => :get}
+  map.resources :categories, :collection => {:show_export => :get}
 
   map.resources :projetos, :collection => {:show_export => :get}
 
