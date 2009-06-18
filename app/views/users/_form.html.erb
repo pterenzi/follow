@@ -1,3 +1,9 @@
+<% content_for :leftside do %>
+  <%= render :partial=>"tasks/minhasSolicitacoes" %>
+<% end %>
+<% content_for :rightside do %>
+  <%= render :partial=>"tasks/minhas_tasks" %>
+<% end %>
 <%= form.label :login %><br />
 <%= form.text_field :login %><br />
 <br />
@@ -11,7 +17,10 @@
 <%= form.text_field :nome %><br />
 <br />
 <%= form.label :Categoria%><br/>
-<%= form.select :categoria_id, @categorias %>
+<%= form.select :categoria_id, @categorias %><br/>
+<br/>
+<%= form.label :Company%><br/>
+<%= form.select :company_id, @companies %>
 <br/>
 <br />
 

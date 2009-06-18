@@ -1,0 +1,28 @@
+<% content_for :leftside do %>
+  <%= render :partial=>"tasks/minhasSolicitacoes" %>
+<% end %>
+<% content_for :rightside do %>
+  <%= render :partial=>"tasks/minhas_tasks" %>
+<% end %>
+<% content_for :main do %>
+<table border="0">
+  <tr>
+	<th width="80">Login</th>
+	<th width="110">Nome</th>
+	<th width="110">Company</th>
+	<th>&nbsp;</th>
+	<th>&nbsp;</th>
+	<th>&nbsp;</th>
+  </tr>
+<% for user in @users do %>
+  <tr>
+	<td><%=h user.login %></td>
+	<td><%=h user.nome %></td>
+	<td><%=h user.company.name unless user.company.nil? %></td>
+	<td><%= link_to 'Show', user %></td>
+    <td><%= link_to 'Edit', edit_user_path(user) %></td>
+    <td><%= link_to 'Destroy', user, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+<% end %>

@@ -5,4 +5,9 @@ class UserTest < ActiveSupport::TestCase
   test "the truth" do
     assert true
   end
+  
+#  def test_user_name
+#    user = Factory.build(:admin)
+#    assert user.login =='paulo'
+#  end
 end

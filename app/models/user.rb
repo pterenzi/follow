@@ -6,6 +6,6 @@ class User < ActiveRecord::Base
   belongs_to :categoria
   has_many :avaliacaos
   has_many :recusas
-  
+  belongs_to :company
   has_and_belongs_to_many :projects
 end

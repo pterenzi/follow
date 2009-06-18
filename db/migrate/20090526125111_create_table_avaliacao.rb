@@ -12,6 +12,6 @@ class CreateTableAvaliacao < ActiveRecord::Migration
   end
 
   def self.down
-    drop_table :avaliacao
+    drop_table :avaliacaos
   end
 end

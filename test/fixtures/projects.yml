@@ -4,6 +4,14 @@ follow:
   name: Follow
   active: true
 
-test:
+encerrada:
   name: Test
+  active: true
+  
+didio:
+  name: Didio
+  active: true
+  
+loja:
+  name: loja
   active: true

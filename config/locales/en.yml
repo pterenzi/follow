@@ -4,6 +4,7 @@
 en:
   back: "Back"
   description: "Description"
+  employee: "Employee"
   estimated_time: "Estimated time"
   hours: "hours"
   logout: "(log-out)"
@@ -16,6 +17,7 @@ en:
   save: "Save"
   tasks: "tasks"
   user: "User"
+  users: "Users"
   
   
   

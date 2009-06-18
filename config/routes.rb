@@ -1,9 +1,10 @@
 ActionController::Routing::Routes.draw do |map|
   
+  map.resources :companies 
+  
   map.resources :projects, :collection => {:insert_user => :get, :remove_user=>:get}
 
-  
-   map.resources :pausa_padraos
+  map.resources :pausa_padraos
    
    map.logout "logout", :controller=>"user_sessions", :action=>"destroy"
   # map.resources :account, :controller => "users"

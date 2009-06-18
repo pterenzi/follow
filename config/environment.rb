@@ -47,10 +47,16 @@ Rails::Initializer.run do |config|
   # Run "rake -D time" for a list of tasks for finding time zone names. Comment line to use default local time.
   config.time_zone = 'UTC'
   config.gem "authlogic" 
+  
+ # config.gem "thoughtbot-factory_girl",
+#               :lib    => "factory_girl",
+#               :source => "http://gems.github.com"
+  
+  
   # The internationalization framework can be changed to have another default locale (standard is :en) or more load paths.
   # All files from config/locales/*.rb,yml are added automatically.
   # config.i18n.load_path << Dir[File.join(RAILS_ROOT, 'my', 'locales', '*.{rb,yml}')]
-  config.i18n.default_locale = :pt_br
+  #config.i18n.default_locale = :pt_br
 
   # Your secret key for verifying cookie session data integrity.
   # If you change this key, all old sessions will become invalid!

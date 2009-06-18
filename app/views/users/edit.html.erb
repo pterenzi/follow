@@ -1,3 +1,4 @@
+<% content_for :main do %>
 <h1>Edit My Account</h1>
  
 <% form_for(@user) do |f| %>
@@ -6,4 +7,6 @@
   <%= f.submit "Update" %>
 <% end %>
  
-<br /><%= link_to "My Profile", account_path %>
+<br />
+<%= link_to "Back", :back%>
+<% end %>

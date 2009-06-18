@@ -109,11 +109,11 @@ def self.tem_task_com_pausa_padrao(tasks)
 end
 
 def justificativa_recusa
-  avaliacao = Avaliacao.find(:all, :conditions=>["recusada='t' and task_id=? and user_id=?", id, user_id])
+  avaliacao = Avaliacao.last( :conditions=>["recusada='t' and task_id=? and user_id=?", id, user_id])
   if avaliacao.nil? 
     return ""
   else
-    return avaliacao[0].comentario_recusa_user
+    return avaliacao.comentario_avaliacao
   end
 end
 

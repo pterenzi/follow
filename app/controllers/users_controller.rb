@@ -4,11 +4,16 @@ class UsersController < ApplicationController
   layout "follow"
 #TODO retirar o comentario abaixo
   before_filter :require_user
-  before_filter :busca_tasks, :only=>[:new]
+  before_filter :busca_tasks
    
+  def index
+    @users = User.all(:order=>"login")  
+  end
+  
   def new
     @user = User.new
     @categorias = Categoria.all(:order=>"nome").collect{|obj| [obj.nome,obj.id]}
+    @companies = Company.all(:order=>:name).collect{|obj| [obj.name,obj.id]}
   end
   
   def create
@@ -28,6 +33,8 @@ class UsersController < ApplicationController
  
   def edit
     @user = @current_user
+    @categorias = Categoria.all(:order=>"nome").collect{|obj| [obj.nome,obj.id]}
+    @companies = Company.all(:order=>:name).collect{|obj| [obj.name,obj.id]}
   end
   
   def update

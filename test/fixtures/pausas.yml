@@ -1,17 +1,30 @@
 # Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
 
-#normal:
-#  data: 2009-04-24 16:24:19
-#  task: one 
-#  justificativa: "Servidor parado"
-#  aceito: true
-#  comentario_solicitante: "Vamos esperar entao"
-#  pausa_padraos: 
+normal:
+  data: 2009-04-24 16:24:19
+  task: follow 
+  justificativa: "Servidor parado"
+  aceito: true
+  comentario_solicitante: "Vamos esperar entao"
 
-#padrao:
-#  data: 2009-04-24 16:24:19
-#  task: two
-#  justificativa: 
-#  aceito: false
-#  comentario_solicitante: 
-#  pausa_padraos: almoco
+padrao:
+  data: 2009-04-24 16:24:19
+  task: follow
+  justificativa: 
+  aceito: false
+  comentario_solicitante: 
+  pausa_padrao_id: almoco
+  
+  
+duvida:
+    data: 2009-04-24 16:24:19
+    task: didio
+    justificativa: "Não tenho tempo"
+    aceito: false
+    comentario_solicitante: "Voce deve se empenhar mais"
+    
+locaweb:
+    data: 2009-04-24 16:24:19
+    task: loja
+    justificativa: "Esperando resposta do wiki"
+    

@@ -1,8 +1,31 @@
 # Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
 
 follow:
-  projeto: follow
+  project: follow
+  descricao: programar
   user: marcio
   solicitante: admin
   tempo_est: 10
+  termino_at: nil
   
+encerrada:
+  project: encerrada
+  descricao: "tarefa encerrada"
+  user: nil
+  solicitante: admin
+  tempo_est: 10
+  termino_at: 2009-05-10
+
+didio:
+    project: didio
+    descricao: "Projeto de pizza"
+    user: paulo
+    solicitante: marcio
+    tempo_est: 20
+    
+loja:
+    project: loja
+    descricao: "Loja da Ana"
+    user: marcio
+    solicitante: marcio
+    tempo_est: 50
