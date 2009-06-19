@@ -295,5 +295,11 @@ class TasksController < ApplicationController
       redirect_to tasks_path
     end
   end
-  
+
+  def verify_updates
+    ultimo_minuto = Time.now - 1.minute
+    @recent_task = Task.all(:conditions=>["user_id=? ", current_user.id])
+    render :json=>@recent_task.to_json
+  end  
+
 end

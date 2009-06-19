@@ -11,6 +11,19 @@ $(document).ready(function(){
     });
 });
 
+
+
+$(window).load(function () {
+    $.timer(500, function (timer) {
+    $.getJSON("/tasks/verify_updates",  function(data){
+        alert(data.task.description);
+    $("#user_id_"+data.task.requestor_id).after(data.task.description);
+        }
+    );
+	timer.stop();
+  });
+});
+
 function abre_form_pause(id){
     $('#form_pause_'+id).dialog({ title: 'Pause' });
     $('#form_pause_'+id).dialog('open');
@@ -51,7 +64,7 @@ function abre_form_recusa(id){
 }
 
 function abre_alerta_recusado(id){
-	$('#form_task_refused_'+id).dialog({ title: 'Task refused' });
+    $('#form_task_refused_'+id).dialog({ title: 'Task refused' });
     $('#form_task_refused_'+id).dialog('open');
     $('#form_task_refused_'+id).dialog();
 }
@@ -84,7 +97,7 @@ function include_user(id,user_id, user_name){
 
 function remove_user(id,user_id, user_name){
     $.get("/projects/remove_user",{'id': id, 'user_id': user_id});
-	onClick="include_user("+ id + "," + user_id + ",'" + user_name + "')"
+    onClick="include_user("+ id + "," + user_id + ",'" + user_name + "')"
     span = "<span id=\"not_selected_"+ user_id + "\">"
     str = span + "<a href='#' onClick=\"" + onClick + "\">" + user_name + "</a><br/></span>";
     $("#not_selected_users").after(str);

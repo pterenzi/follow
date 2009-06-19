@@ -119,7 +119,7 @@ end
 
 def self.busca_my_requests(requestor_id)
   resultado = Array.new
-  @tasks = Task.all(:conditions=>["user_id is not null and requestor_id <> user_id and requestor_id=?", requestor_id])
+  @tasks = Task.all(:order=>"user_id", :conditions=>["user_id is not null and requestor_id <> user_id and requestor_id=?", requestor_id])
   for task in @tasks do
     if task.end_at.nil?
       resultado << task

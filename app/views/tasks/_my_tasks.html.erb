@@ -9,6 +9,7 @@
 
       <% if name_usuario!= task.requestor.name then %>
         <div id="name_usuario"><%= task.requestor.name %> </div>
+        <span id="user_id_<%=task.requestor.id%>"></span>
         <% name_usuario = task.requestor.name %> 
       <% end %>
 
