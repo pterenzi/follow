@@ -24,7 +24,7 @@
  
 /* The following comment is for JSLint: */
 /*global window, ActiveXObject, unescape */
-/*jslint browser: true, eqeqeq: true, immed: true, newcap: true, namen: true, onevar: true, undef: true, white: true, indent: 4*/
+/*jslint browser: true, eqeqeq: true, immed: true, newcap: true, nomen: true, onevar: true, undef: true, white: true, indent: 4*/
 
 /**
  * @fileOverview
@@ -40,9 +40,9 @@
  * @namespace Holds all methods and properties
  * @example
  * &lt;script src = "Hyphenator.js" type = "text/javascript"&gt;&lt;/script&gt;
- * &lt;script type = "text/javascript"&gt;
- *   Hyphenator.run();
- * &lt;/script&gt;
+ * &lt;script type = "text/javascript"&gt;
+ *   Hyphenator.run();
+ * &lt;/script&gt;
  */
 var Hyphenator = (function () {
 
@@ -1047,9 +1047,9 @@ var Hyphenator = (function () {
 		var myBox, bdy, myIdAttribute, myTextNode, myClassAttribute;
 		if (!!(myBox = document.getElementById('HyphenatorToggleBox'))) {
 			if (s) {
-				myBox.firstChild.date = 'Hy-phe-na-ti-on';
+				myBox.firstChild.data = 'Hy-phe-na-ti-on';
 			} else {
-				myBox.firstChild.date = 'Hyphenation';
+				myBox.firstChild.data = 'Hyphenation';
 			}
 		} else {
 			bdy = document.getElementsByTagName('body')[0];
@@ -1205,8 +1205,8 @@ var Hyphenator = (function () {
 			};
 			i = 0;
 			while (!!(n = el.childNodes[i++])) {
-				if (n.nodeType === 3 && n.date.length >= min) { //type 3 = #text -> hyphenate!
-					n.date = n.date.replace(Hyphenator.languages[lang].genRegExp, hyphenate);
+				if (n.nodeType === 3 && n.data.length >= min) { //type 3 = #text -> hyphenate!
+					n.data = n.data.replace(Hyphenator.languages[lang].genRegExp, hyphenate);
 				}
 			}
 		}
@@ -1256,8 +1256,8 @@ var Hyphenator = (function () {
 		}
 		while (!!(n = el.childNodes[i++])) {
 			if (n.nodeType === 3) {
-				n.date = n.date.replace(new RegExp(h, 'g'), '');
-				n.date = n.date.replace(new RegExp(zeroWidthSpace, 'g'), '');
+				n.data = n.data.replace(new RegExp(h, 'g'), '');
+				n.data = n.data.replace(new RegExp(zeroWidthSpace, 'g'), '');
 			} else if (n.nodeType === 1) {
 				removeHyphenationFromElement(n);
 			}
@@ -1361,10 +1361,10 @@ var Hyphenator = (function () {
 		 * </table>
 		 * @public
 		 * @example &lt;script src = "Hyphenator.js" type = "text/javascript"&gt;&lt;/script&gt;
-         * &lt;script type = "text/javascript"&gt;
-         *     Hyphenator.config({'minwordlength':4,'hyphenchar':'|'});
+         * &lt;script type = "text/javascript"&gt;
+         *     Hyphenator.config({'minwordlength':4,'hyphenchar':'|'});
          *     Hyphenator.run();
-         * &lt;/script&gt;
+         * &lt;/script&gt;
          */
 		config: function (obj) {
 			var assert = function (name, type) {
@@ -1463,9 +1463,9 @@ var Hyphenator = (function () {
 		 * Bootstrap function that starts all hyphenation processes when called.
 		 * @public
 		 * @example &lt;script src = "Hyphenator.js" type = "text/javascript"&gt;&lt;/script&gt;
-         * &lt;script type = "text/javascript"&gt;
-         *   Hyphenator.run();
-         * &lt;/script&gt;
+         * &lt;script type = "text/javascript"&gt;
+         *   Hyphenator.run();
+         * &lt;/script&gt;
          */
 		run: function () {
 			var process = function () {
@@ -1499,10 +1499,10 @@ var Hyphenator = (function () {
 		 * @param string A comma separated string of hyphenated words WITH spaces.
 		 * @public
 		 * @example &lt;script src = "Hyphenator.js" type = "text/javascript"&gt;&lt;/script&gt;
-         * &lt;script type = "text/javascript"&gt;
-         *   Hyphenator.addExceptions('de','ziem-lich, Wach-stube');
+         * &lt;script type = "text/javascript"&gt;
+         *   Hyphenator.addExceptions('de','ziem-lich, Wach-stube');
          *   Hyphenator.run();
-         * &lt;/script&gt;
+         * &lt;/script&gt;
          */
 		addExceptions: function (lang, words) {
 			if (lang === '') {
@@ -1528,7 +1528,7 @@ var Hyphenator = (function () {
 		 * @returns string
 		 * @example &lt;script src = "Hyphenator.js" type = "text/javascript"&gt;&lt;/script&gt;
 		 * &lt;script src = "patterns/en.js" type = "text/javascript"&gt;&lt;/script&gt;
-         * &lt;script type = "text/javascript"&gt;
+         * &lt;script type = "text/javascript"&gt;
 		 * var t = Hyphenator.hyphenate('Hyphenation', 'en'); //Hy|phen|ation
 		 * &lt;/script&gt;
 		 */
@@ -1550,8 +1550,8 @@ var Hyphenator = (function () {
 				} else if (typeof target === 'object') {
 					i = 0;
 					while (!!(n = target.childNodes[i++])) {
-						if (n.nodeType === 3 && n.date.length >= min) { //type 3 = #text -> hyphenate!
-							n.date = n.date.replace(Hyphenator.languages[lang].genRegExp, hyphenate);
+						if (n.nodeType === 3 && n.data.length >= min) { //type 3 = #text -> hyphenate!
+							n.data = n.data.replace(Hyphenator.languages[lang].genRegExp, hyphenate);
 						} else if (n.nodeType === 1) {
 							Hyphenator.hyphenate(n, lang);
 						}

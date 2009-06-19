@@ -1,7 +1,7 @@
 class CompaniesController < ApplicationController
  
   layout "follow"
-  before_filter :busca_tasks
+  before_filter :retrieve_tasks
   
   # GET /companies
   # GET /companies.xml

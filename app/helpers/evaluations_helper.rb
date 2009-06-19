@@ -1,2 +1,2 @@
-module EvaluatiosnHelper
+module EvaluationsHelper
 end

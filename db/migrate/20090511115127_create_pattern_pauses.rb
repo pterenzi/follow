@@ -1,4 +1,4 @@
-class CreatePatternsPauses < ActiveRecord::Migration
+class CreatePatternPauses < ActiveRecord::Migration
   def self.up
     create_table :pattern_pauses, :force => true do |t|
       t.string :description

@@ -3,7 +3,7 @@ class User < ActiveRecord::Base
   
   has_many :tasks
   has_many :comments
-  belongs_to :categories
+  belongs_to :category
   has_many :evaluations
   has_many :recusas
   belongs_to :company

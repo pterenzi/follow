@@ -2,7 +2,7 @@ class TasksController < ApplicationController
 
  # before_filter :authorize
   before_filter :require_user
-  before_filter :busca_tasks , :only=>[:index, :show, :new, :edit, :pauser_pattern, :reiniciar_pattern]
+  before_filter :retrieve_tasks , :only=>[:index, :show, :new, :edit, :pauser_pattern, :reiniciar_pattern]
 
   layout 'follow'
 
@@ -59,7 +59,7 @@ class TasksController < ApplicationController
         format.html { redirect_to(tasks_path) }
         format.xml  { render :xml => @task, :status => :created, :location => @task }
       else
-        busca_tasks
+        retrieve_tasks
         format.html { render :action => "new" }
         format.xml  { render :xml => @task.errors, :status => :unprocessable_entity }
       end
@@ -130,7 +130,7 @@ class TasksController < ApplicationController
     @pause.date = Time.now
     @pause.pattern=false
     @task = @pause.task
-    @task.alerta_requestor = true
+    @task.requestor_alert = true
     Task.transaction do
       if @pause.save & @task.save
         redirect_to tasks_path
@@ -156,7 +156,7 @@ class TasksController < ApplicationController
   def aprovar_ou_reprovar_pause
     
     task = Task.find(params[:task_id])
-    task.alerta_requestor = false
+    task.requestor_alert = false
     task.save
     
     @pause = Pause.da_task(params[:task_id])
@@ -190,7 +190,7 @@ class TasksController < ApplicationController
   def pauser_pattern
     debugger
     pattern_pause_id = params[:pattern_pause][:pattern_pause_id]
-    for task in @my_taskss
+    for task in @my_tasks
       create_pattern_pause(task.id,pattern_pause_id)
     end
     redirect_to tasks_path
@@ -198,7 +198,7 @@ class TasksController < ApplicationController
   
   def reiniciar_pattern
     
-    for task in @my_taskss
+    for task in @my_tasks
       debugger
       puts "task : " + task.id.to_s
       pause = Pause.find(:all, :conditions=>["pattern_pause_id not null and task_id=?",task.id]).last
@@ -225,7 +225,7 @@ class TasksController < ApplicationController
   def mudar_alerta
     @task = Task.find(params[:id])
     if params[:campo]=="requestor"
-      @task.alerta_requestor = params[:valor]
+      @task.requestor_alert = params[:valor]
     else
       @task.alerta_usuario = params[:valor]
     end
@@ -238,7 +238,7 @@ class TasksController < ApplicationController
     @task = Task.find(params[:id])
     @task.end_at = Time.now
     @task.comment_end_user = params[:comment_end]
-    @task.alerta_requestor = true
+    @task.requestor_alert = true
     if @task.save
       redirect_to :back
     else
@@ -261,7 +261,7 @@ class TasksController < ApplicationController
   
   def recusar_task
     task = Task.find(params[:task_id])
-    task.alerta_requestor = true  
+    task.requestor_alert = true  
     task.refused = true
     evaluation = Evaluation.new
     evaluation.task_id = task.id
@@ -281,7 +281,7 @@ class TasksController < ApplicationController
   def reencaminhar_task_refused
     @task = Task.find(params[:task_id])
     @task.refused = false
-    @task.alerta_requestor = false
+    @task.requestor_alert = false
     @task.justification_recusa = ""
     if params[:commit]=="ok"
       @task.user_id = params[:task][:user_id]

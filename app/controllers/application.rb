@@ -65,17 +65,17 @@ class ApplicationController < ActionController::Base
   filter_parameter_logging :password
 
 
-  def busca_tasks
-    @pauses_pattern = PausePadrao.all(:order=>"description").collect{|obj| [obj.description,obj.id]}
-    @tem_task_com_pattern_pause = Task.tem_task_com_pattern_pause(@my_taskss)
+  def retrieve_tasks
+    @pauses_pattern = PatternPause.all(:order=>"description").collect{|obj| [obj.description,obj.id]}
+    @tem_task_com_pattern_pause = Task.tem_task_com_pattern_pause(@my_tasks)
     @tasks_encerradas_sem_evaluation = Task.encerradas_sem_evaluation(current_user.id) #Task.all(:conditions=>["end_at is not null and requestor_id=?  ",current_user.id])
     @usuarios = User.find(:all).collect{|obj| [obj.name,obj.id]}
     
     #Com named_scope
-    @projetos = Projeto.all(:order=>'description').collect{|obj| [obj.description,obj.id]}
-    @my_taskss = Task.para_mim(current_user.id).abertas.por_requestor.sem_recusa
-    @minhas_solicitacoes = Task.busca_minhas_solicitacoes(current_user.id)
-    @tasks_sem_usuario = Task.solicitadas_por(current_user.id).sem_user
+    @projetos = Project.all(:order=>'description').collect{|obj| [obj.description,obj.id]}
+    @my_tasks = Task.para_mim(current_user.id).abertas.por_requestor.sem_recusa
+    @my_requests = Task.busca_my_requests(current_user.id)
+    @tasks_without_user = Task.solicitadas_por(current_user.id).sem_user
     @to_do_list = Task.abertas.de_mim_para_mim(current_user.id)    
    
      #TODO colocar isto em minhas tasks   refused<>'t' and

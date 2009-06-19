@@ -1,10 +1,8 @@
 class UsersController < ApplicationController
 
-# TODO colocar layout em users
   layout "follow"
-#TODO retirar o comment abaixo
   before_filter :require_user
-  before_filter :busca_tasks
+  before_filter :retrieve_tasks
    
   def index
     @users = User.all(:order=>"login")  
@@ -12,7 +10,7 @@ class UsersController < ApplicationController
   
   def new
     @user = User.new
-    @categories = Categories.all(:order=>"name").collect{|obj| [obj.name,obj.id]}
+    @categories = Category.all(:order=>"name").collect{|obj| [obj.name,obj.id]}
     @companies = Company.all(:order=>:name).collect{|obj| [obj.name,obj.id]}
   end
   
@@ -21,7 +19,7 @@ class UsersController < ApplicationController
     @user = User.new(params[:user])
     if @user.save
       flash[:notice] = "Usuário criado !"
-      redirect_to tasks_path
+      redirect_to users_path
     else
       render :action => :new
     end
@@ -32,16 +30,16 @@ class UsersController < ApplicationController
   end
  
   def edit
-    @user = @current_user
-    @categories = Categories.all(:order=>"name").collect{|obj| [obj.name,obj.id]}
+    @user = User.find(params[:id])
+    @categories = Category.all(:order=>"name").collect{|obj| [obj.name,obj.id]}
     @companies = Company.all(:order=>:name).collect{|obj| [obj.name,obj.id]}
   end
   
   def update
-    @user = @current_user # makes our views "cleaner" and more consistent
+    @user = User.find(params[:id])
     if @user.update_attributes(params[:user])
-      flash[:notice] = "Account updated!"
-      redirect_to tasks_path
+      flash[:notice] = "User updated!"
+      redirect_to users_path
     else
       render :action => :edit
     end

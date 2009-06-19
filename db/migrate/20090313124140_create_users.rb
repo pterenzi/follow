@@ -12,7 +12,7 @@ class CreateUsers < ActiveRecord::Migration
               t.datetime :current_login_at
               t.string :last_login_ip
               t.string :current_login_ip
-              t.references :categories
+              t.integer :category_id
               t.string :name
             end
 

@@ -23,7 +23,7 @@
 
 <body>
 
-  <%= stylesheet_link_tag 'styles' , 'menu', 'tableNegocios' %>
+  <%= stylesheet_link_tag 'styles', 'menu' %>
 
   <div id="container">
 
@@ -119,7 +119,7 @@
     </div>
 
     <div id="rightsidebar">
-	<% if !@tasks_sem_usuario.empty? %>
+	<% if !@tasks_without_user.empty? %>
      <h2>Encaminhar</h2>
      <div>
        <%= yield :lado_sem_usuario %>
@@ -135,7 +135,7 @@
 		<% if @tem_task_com_pattern_pause %>
 	        <%= render :partial=>"restart_pattern" %>
 	      <% else %>
-	        <%= render :partial=>"pattern_pause" unless @my_taskss.empty? %>
+	        <%= render :partial=>"pattern_pause" unless @my_tasks.empty? %>
 	      <% end %>	
 		
 		</h2>

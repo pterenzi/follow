@@ -1,11 +1,11 @@
 <% content_for :rightside do %>
     <% name_usuario = ''%>
-    <% if  @my_taskss.empty? %>
+    <% if  @my_tasks.empty? %>
     <div id="name_usuario">
         <%=t(:no_task)%> 
     </div>
     <% end %>
-    <% for task in @my_taskss do  %>
+    <% for task in @my_tasks do  %>
 
       <% if name_usuario!= task.requestor.name then %>
         <div id="name_usuario"><%= task.requestor.name %> </div>
@@ -26,12 +26,12 @@
         <Img Src="images/backward.png" Name="devolver" Width="18" Height="10" Border=""><span>Não aceitar esta task</span></a></p></td>
          
     
-        <% if task.pauseda_esperando_aprovacao %>
+        <% if task.paused_esperando_aprovacao %>
 <% #TODO o aue fazer se ele continua a task antes de aprovar ou não a pause ? %>
            <td height= "20" align="botton" align="botton"><a href="#"><img src="/images/play.png" border=0 /></td>
         <% end %>
 
-        <% if task.pauseda  %>
+        <% if task.paused  %>
            <% rota = "/tasks/reiniciar_a_task?task_id=" + task.id.to_s  %>
     <td height= "20" align="botton"><p class="link"> <a href=<%=rota%> style="text-decoration:none" OnMouseOver="document.play.src='images/pauseh.png'" OnMouseOut="document.play.src='images/play.png'"><Img Src="images/play.png" Name="play" Width="18" Height="10"Border=""><span>Pauser esta task</span></a></p></td>
         <% end %>
@@ -50,7 +50,7 @@
    </table>
 
         <%= render :partial=>'task_comments', :locals=>{:task=>task, :lado=>'direito'} %>
-        <%= render :partial=>'comment_for', :locals=>{:task=>task} %>    
+        <%= render :partial=>'comment_form', :locals=>{:task=>task} %>    
     </div>
    
    <div style="display:none;" id="form_detalhe_<%=task.id.to_s%>">

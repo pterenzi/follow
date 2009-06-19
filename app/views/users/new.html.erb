@@ -1,4 +1,10 @@
-<% content_for :main do%>
+<% content_for :leftside do %>
+   <%= render :partial=>"tasks/my_requests" %>
+<% end %>
+<% content_for :rightside do %>
+  <%= render :partial=>"tasks/my_tasks" %>
+<% end %>
+<% content_for :main do %>
 <h1>Registro de novo usuário</h1>
  
 <% form_for(@user) do |f| %>

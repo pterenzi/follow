@@ -54,22 +54,22 @@ body {
     background-image: url(../images/back.gif);
 }
 .texto {
-	font-family: "Trebuchet MS";
-	font-size: 11px;
-	text-decoration: none;
-	line-height: normal;
-	color: #000000;
-	margin: 15px;
+    font-family: "Trebuchet MS";
+    font-size: 11px;
+    text-decoration: none;
+    line-height: normal;
+    color: #000000;
+    margin: 15px;
 }
 .subtitulo {
-	font-family: "Trebuchet MS";
-	font-size: 12px;
-	text-decoration: none;
-	font-weight: bold;
-	color: #ad1c21;
-	line-height: 13px;
-	margin-bottom: 20px;
-	margin-top: 20px;
+    font-family: "Trebuchet MS";
+    font-size: 12px;
+    text-decoration: none;
+    font-weight: bold;
+    color: #ad1c21;
+    line-height: 13px;
+    margin-bottom: 20px;
+    margin-top: 20px;
 }
 
 #banner {
@@ -86,11 +86,11 @@ body {
     margin: 20px auto;
     width: 990px;
     min-height: 500px;
-	_height: 500px;
+    _height: 500px;
     padding: 10px;
     background-color: #fff;
-  	position: relative;
-	overflow: hidden;
+    position: relative;
+    overflow: hidden;
 }
 #container_ext {
     margin: 20px auto;
@@ -201,7 +201,7 @@ body {
     float: right;
     background-color: #EDEDED;
     width: 224px;
-	min-height: 300px;
+    min-height: 300px;
     border-top: solid #fff 1px;
     border-bottom: solid #fff 1px;
 }
@@ -228,7 +228,7 @@ body {
     color: #ad1c21;
     padding: 12px 12px;
     line-height: 14pt;
-	vertical-align:top;
+    vertical-align:top;
 }
 
 #rightsidebartext ul {
@@ -285,10 +285,10 @@ body {
     float: left;
     background-color: #F2F2F2;
     width: 224px;
-	min-height: 300px;
+    min-height: 300px;
     border-top: solid #fff 1px;
     border-bottom: solid #fff 1px;
-  	position: relative;
+    position: relative;
 }
 
 #leftsidebar h2 {
@@ -406,7 +406,7 @@ main {
     border-top: solid #fff 1px;
     width: 990px;
     background-color: #e5ecf7;
-	float: left;
+    float: left;
     
 }
 #footer {
@@ -451,10 +451,10 @@ main {
 #user {
     float: right;
     width: 224px;
-	font-family: "Trebuchet MS", Verdana, Times, serif;
+    font-family: "Trebuchet MS", Verdana, Times, serif;
     font-size: 8pt;
     color: #ad1c21;
-	border-top: solid #fff 1px;
+    border-top: solid #fff 1px;
     border-bottom: solid #fff 1px;
 }
 
@@ -525,9 +525,9 @@ main {
 
 /* START:notice */
 #notice {
-	width:300px;
-	position: relative;
-	float: center;
+    width:300px;
+    position: relative;
+    float: center;
     border: 2px solid red;
     padding: 1em;
     margin-bottom: 2em;
@@ -536,8 +536,8 @@ main {
 }
 
 #notice_container{
-	width:542px;
-	float:left;	
+    width:542px;
+    float:left; 
 }
 
 /* END:notice */
@@ -545,18 +545,18 @@ main {
 
 /* Styles for main page */
 #header {
-	width:990;
-	float:left;
+    width:990;
+    float:left;
 }
 #banner {
     background: #000000 url("../images/logo.jpg") no-repeat left top;
     font-family: "Trebuchet MS", "Microsoft Sans Serif", Times, serif;
     position: relative;
-	float: left;
-	font-size: 8pt;
+    float: left;
+    font-size: 8pt;
     background-color: #ffffff;
     margin-top: 1px;
-    width:224px	; 
+    width:224px ; 
     height:59px;
 }
 
@@ -688,38 +688,38 @@ h3 {
 }
 
 #task {
-	font-family: "Trebuchet MS", Verdana, Times, serif;
+    font-family: "Trebuchet MS", Verdana, Times, serif;
     font-size: 8pt;
     color: black;
     padding-top: 5px; 
     padding-left: 18px;
-	padding-bottom: 10px;
-	padding-right: 8px;
+    padding-bottom: 10px;
+    padding-right: 8px;
     line-height: 10pt;
     border-bottom: 1px solid #999;
-	text-decoration:none;
+    text-decoration:none;
 }
 #task a {
     text-decoration: none;
     color: #000;
-}	
+}   
 #red_comment{
-		color: #ad1c21;
-		padding-left: 10px;
-		font-style: italic;
+        color: #ad1c21;
+        padding-left: 10px;
+        font-style: italic;
 }
 
 #black_comment{
-		color: black;
-		padding-left: 13px;
-		padding-right: 2px;
-		padding-top: 5px;
-		font-style: italic;
+        color: black;
+        padding-left: 13px;
+        padding-right: 2px;
+        padding-top: 5px;
+        font-style: italic;
 }
 #comment_azul{
-		color: #5a78a5;
-		padding-left: 13px;
-		padding-top: 5px;
-		padding-right: 2px;
-		font-style: italic;
+        color: #5a78a5;
+        padding-left: 13px;
+        padding-top: 5px;
+        padding-right: 2px;
+        font-style: italic;
 }

@@ -1,6 +1,6 @@
 require File.dirname(__FILE__) + '/../test_helper'
 
-class ProjetosControllerTest < ActionController::TestCase
+class ProjectsControllerTest < ActionController::TestCase
   def test_should_get_index
     get :index
     assert_response :success
@@ -13,11 +13,11 @@ class ProjetosControllerTest < ActionController::TestCase
   end
 
   def test_should_create_projeto
-    assert_difference('Projeto.count') do
-      post :create, :projeto => { }
+    assert_difference('Project.count') do
+      post :create, :project => { }
     end
 
-    assert_redirected_to projeto_path(assigns(:projeto))
+    assert_redirected_to projeto_path(assigns(:project))
   end
 
   def test_should_show_projeto
@@ -36,7 +36,7 @@ class ProjetosControllerTest < ActionController::TestCase
   end
 
   def test_should_destroy_projeto
-    assert_difference('Projeto.count', -1) do
+    assert_difference('Project.count', -1) do
       delete :destroy, :id => projetos(:one).id
     end
 

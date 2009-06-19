@@ -11,20 +11,8 @@
 
 ActiveRecord::Schema.define(:version => 20090617211237) do
 
-  create_table "evaluations", :force => true do |t|
-    t.integer  "task_id"
-    t.integer  "user_id"
-    t.integer  "grade"
-    t.string   "evaluation_comment"
-    t.string   "user_comment"
-    t.boolean  "refused",               :default => false
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
   create_table "categories", :force => true do |t|
     t.string   "name",       :limit => 32
-    t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -40,6 +28,24 @@ ActiveRecord::Schema.define(:version => 20090617211237) do
   create_table "companies", :force => true do |t|
     t.string   "name"
     t.boolean  "active",     :default => true
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "evaluations", :force => true do |t|
+    t.integer  "task_id"
+    t.integer  "user_id"
+    t.integer  "grade"
+    t.string   "evaluation_comment"
+    t.string   "user_comment"
+    t.boolean  "refused",            :default => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "messages", :force => true do |t|
+    t.integer  "written_by"
+    t.integer  "to"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -76,29 +82,21 @@ ActiveRecord::Schema.define(:version => 20090617211237) do
     t.integer "user_id"
   end
 
-  create_table "messages", :force => true do |t|
-    t.integer  "escrito_por"
-    t.integer  "para"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
   create_table "tasks", :force => true do |t|
-    t.integer  "projeto_id"
+    t.integer  "project_id"
     t.integer  "user_id"
     t.integer  "requestor_id"
     t.string   "description"
-    t.integer  "estimated_time",                      :limit => 4,                    :null => false
-    t.boolean  "alerta_usuario",                              :default => false
-    t.boolean  "alerta_requestor",                          :default => false
+    t.integer  "estimated_time",        :limit => 4,                    :null => false
+    t.boolean  "user_alert",                         :default => false
+    t.boolean  "requestor_alert",                    :default => false
     t.datetime "end_at"
     t.string   "comment_end_user"
     t.string   "comment_end_requestor"
-    t.boolean  "refused",                                    :default => false
-    t.boolean  "tem_comment",                              :default => false
+    t.boolean  "refused",                            :default => false
+    t.boolean  "has_comment",                        :default => false
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "project_id"
   end
 
   create_table "users", :force => true do |t|
@@ -114,7 +112,7 @@ ActiveRecord::Schema.define(:version => 20090617211237) do
     t.datetime "current_login_at"
     t.string   "last_login_ip"
     t.string   "current_login_ip"
-    t.integer  "categories_id"
+    t.integer  "category_id"
     t.string   "name"
     t.integer  "company_id"
   end

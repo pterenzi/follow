@@ -3,7 +3,7 @@ class ProjectsController < ApplicationController
   layout "follow"
   
   before_filter :require_user
-  before_filter :busca_tasks
+  before_filter :retrieve_tasks
 
   
   # GET /projects

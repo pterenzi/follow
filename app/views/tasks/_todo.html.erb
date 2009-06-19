@@ -14,10 +14,10 @@
 		<td><p class="link"> <a href="#" onClick="abre_form_end(<%=task.id%>);return false;" style="text-decoration:none" OnMouseOver="document.stoptodo.src='images/stoph.png'" OnMouseOut="document.stoptodo.src='images/stop.png'"><Img Src="images/stop.png" Name="stop" Width="18" Height="10"Border=""><span>Finalizar</span></a></p>
   </td></tr></table>
     <%= render :partial=>'tasks/task_comments', :locals=>{:task=>task, :lado=>'direito'} %>
-    <%= render :partial=>'tasks/comment_for', :locals=>{:task=>task} %>    
+    <%= render :partial=>'tasks/comment_form', :locals=>{:task=>task} %>    
     
      <div style="display:none;" id="abre_end_<%=task.id.to_s%>">
-         <%= render :partial=>'tasks/end', :locals=>{:task=>task} %>
+         <%= render :partial=>'tasks/close_task', :locals=>{:task=>task} %>
      </div>
      
   </div>

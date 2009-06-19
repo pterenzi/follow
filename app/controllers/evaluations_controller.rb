@@ -16,7 +16,7 @@ class EvaluationsController < ApplicationController
     end
     @evaluation.evaluation_comment = params[:evaluation_comment]
     @evaluation.grade = params[:evaluation]  
-    @task.alerta_requestor=false
+    @task.requestor_alert=false
     if @evaluation.save & @task.save
       flash[:notice] = "Avaliação gravada !"
       redirect_to tasks_path

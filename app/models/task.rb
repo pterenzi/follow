@@ -45,11 +45,11 @@ def sem_usuario
 end
 
 def status
-  return "em pause padrão" if pauseda_pattern
+  return "em pause padrão" if paused_pattern
   return "sem pause" if sem_pause
-  return "pauseda" if pauseda
+  return "paused" if paused
   return "pause não autorizada" if pause_nao_aceita
-  return "pauseda esperando aprovação" if pauseda_esperando_aprovacao
+  return "paused esperando aprovação" if paused_esperando_aprovacao
   return "em andamento"
   end
 
@@ -58,7 +58,7 @@ def sem_pause
   return (pause.nil? || (pause.accepted & !pause.restart.nil?)) 
 end
 
-def pauseda
+def paused
   pause = Pause.find(:all, :conditions=>["pattern_pause_id IS NULL and task_id=?",id]).last
   if pause.nil?
     return false
@@ -80,7 +80,7 @@ def pause_nao_aceita
   end
 end
 
-def pauseda_esperando_aprovacao
+def paused_esperando_aprovacao
   pause = Pause.find(:all, :conditions=>["pattern_pause_id IS NULL and task_id=?",id]).last
   if pause.nil?
     return false
@@ -89,7 +89,7 @@ def pauseda_esperando_aprovacao
   end
 end
 
-def pauseda_pattern
+def paused_pattern
   pause = Pause.find(:all, :conditions=>[" task_id=? and pattern_pause_id not null and restart is null",id]).last
   return !pause.nil?
 end
@@ -103,7 +103,7 @@ def self.tem_task_com_pattern_pause(tasks)
     return false
   end
   for task in tasks
-      return true if task.pauseda_pattern 
+      return true if task.paused_pattern 
   end
   return false
 end
@@ -117,7 +117,7 @@ def justification_recusa
   end
 end
 
-def self.busca_minhas_solicitacoes(requestor_id)
+def self.busca_my_requests(requestor_id)
   resultado = Array.new
   @tasks = Task.all(:conditions=>["user_id is not null and requestor_id <> user_id and requestor_id=?", requestor_id])
   for task in @tasks do
