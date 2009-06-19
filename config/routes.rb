@@ -18,7 +18,7 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :messages, :collection => {:show_export => :get}
 
   map.resources :tasks, :collection => {:show_export => :get, :pauser=>:get, :reiniciar_a_task=>:get, 
-         :pauser_pattern=>:get, :reiniciar_pattern=>:get, :encaminhar=>:get, :mudar_alerta=>:get,
+         :pauser_pattern=>:get, :reiniciar_pattern=>:get, :encaminhar=>:get, :change_alert=>:get,
          :encerrar_task=>:get, :avaliar_task=>:get, :recusar_task=>:get, :reencaminhar_task_refused=>:get  }
   
   map.resources :tasks do |tasks|

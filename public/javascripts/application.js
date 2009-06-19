@@ -25,7 +25,7 @@ function abre_form_approuve_disapprove_pause(id){
 
 function toggle(task_id,muda_alerta,origem){
   if (muda_alerta){
-    $.get("/tasks/mudar_alerta",{'id': task_id, 'valor': "false", 'campo': origem});
+    $.get("/tasks/change_alert",{'id': task_id, 'valor': "false", 'campo': origem});
     parar_pulsar('#blink_'+task_id);
   }
   $('#toggle_appear_'+ task_id).toggle('blind', { percent: 0 },500 ); 
@@ -56,10 +56,10 @@ function abre_alerta_recusado(id){
     $('#form_task_refused_'+id).dialog();
 }
 
-function detalhe_task(id){
-    $('#form_detalhe_'+id).dialog({ title: 'Detalhe da task' });
-    $('#form_detalhe_'+id).dialog('open');
-    $('#form_detalhe_'+id).dialog();
+function task_detail(id){
+    $('#detail_form_'+id).dialog({ title: "Detalhes da tarefa" });
+    $('#detail_form_'+id).dialog('open');
+    $('#detail_form_'+id).dialog();
 }
 
 function pulsar(id){

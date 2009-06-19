@@ -222,12 +222,12 @@ class TasksController < ApplicationController
   end
   
   
-  def mudar_alerta
+  def change_alert
     @task = Task.find(params[:id])
     if params[:campo]=="requestor"
       @task.requestor_alert = params[:valor]
     else
-      @task.alerta_usuario = params[:valor]
+      @task.user_alert = params[:valor]
     end
     @task.save
     puts "Mudar alerta da task : " + params[:id]

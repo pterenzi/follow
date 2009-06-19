@@ -52,9 +52,9 @@ class CommentsController < ApplicationController
     @comment.user_id = current_user.id
     @task = Task.find(params[:task_id])
 
-    @task.alerta_usuario = (@task.requestor== current_user)
+    @task.user_alert = (@task.requestor== current_user)
     @task.requestor_alert = (@task.requestor!= current_user)
-    @task.tem_comment = true
+    @task.has_comment = true
 
     @comment.task_id = params[:task_id]
     @comment.description = params[:description]
