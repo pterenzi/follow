@@ -13,12 +13,13 @@ validates_presence_of :estimated_time, :message=>"não pode ficar em branco!"
 validates_length_of  :estimated_time, :maximum=>4, :message=>"não pode exeder os 4 caracteres!"
 validates_numericality_of  :estimated_time, :message=>"deve ser numérico!"
 
+named_scope :ordenados, :order=>:id
 named_scope :encerradas, :conditions=>{:end_at => !nil}
 named_scope :solicitadas_por, lambda{ |id| {:conditions=>["requestor_id = ?", id]} }
 named_scope :minhas, lambda{ |id| {:conditions=>["user_id = ?", id]} }
 named_scope :outra_pessoa, :conditions=>["user_id <> requestor_id"]
 named_scope :de_mim_para_mim, lambda{ |id| {:conditions=>["user_id = requestor_id and requestor_id = ?", id]} }    
-named_scope :para_mim, lambda{ |id| {:conditions=>["user_id <> requestor_id and user_id = ?", id]} }    
+named_scope :para_mim, lambda{ |id| {:conditions=>["user_id <> requestor_id and user_id = ?", id]}}
 named_scope :abertas, :conditions=>{:end_at => nil}
 #named_scope :sem_evaluation,           
 #            :joins=>:evaluations,          
@@ -121,7 +122,7 @@ def self.busca_my_requests(requestor_id)
   resultado = Array.new
   @tasks = Task.all(:order=>"user_id", :conditions=>["user_id is not null and requestor_id <> user_id and requestor_id=?", requestor_id])
   for task in @tasks do
-    if task.end_at.nil?
+    if (task.end_at.nil?) or (!task.end_at.nil? and task.comment_end_requestor.nil?)
       resultado << task
     else
       a = Evaluation.last(:conditions=>["grade is null and task_id=?",task.id])

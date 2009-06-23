@@ -20,7 +20,7 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :tasks, :collection => {:show_export => :get, :pauser=>:get, :reiniciar_a_task=>:get, 
          :pauser_pattern=>:get, :reiniciar_pattern=>:get, :encaminhar=>:get, :change_alert=>:get,
          :encerrar_task=>:get, :avaliar_task=>:get, :recusar_task=>:get, :reencaminhar_task_refused=>:get,
-         :verify_updates=>:get  }
+         :verify_updates=>:get, :verify_updates_rjs=>:get  }
   
   map.resources :tasks do |tasks|
        tasks.resources :comments

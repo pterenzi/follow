@@ -9,6 +9,7 @@ class EvaluationsController < ApplicationController
     @task = Task.find(params[:task_id])
     @evaluation = Evaluation.last(:conditions=>["task_id=? and user_id=?", params[:task_id],@task.user_id])
     @task.refused = false
+    debugger
     if params[:task][:user].blank?
       @task.user_id = nil
     else
@@ -17,6 +18,7 @@ class EvaluationsController < ApplicationController
     @evaluation.evaluation_comment = params[:evaluation_comment]
     @evaluation.grade = params[:evaluation]  
     @task.requestor_alert=false
+    debugger
     if @evaluation.save & @task.save
       flash[:notice] = "Avaliação gravada !"
       redirect_to tasks_path

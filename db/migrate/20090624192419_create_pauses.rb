@@ -1,7 +1,7 @@
 class CreatePauses < ActiveRecord::Migration
   def self.up
     create_table :pauses, :force => true do |t|
-      t.datetime :data
+      t.datetime :date
       t.references :task
       t.string :justification
       t.boolean :accepted

@@ -73,7 +73,7 @@ class ApplicationController < ActionController::Base
     
     #Com named_scope
     @projetos = Project.all(:order=>'description').collect{|obj| [obj.description,obj.id]}
-    @my_tasks = Task.para_mim(current_user.id).abertas.por_requestor.sem_recusa
+    @my_tasks = Task.para_mim(current_user.id).abertas.por_requestor.sem_recusa.ordenados
     @my_requests = Task.busca_my_requests(current_user.id)
     @tasks_without_user = Task.solicitadas_por(current_user.id).sem_user
     @to_do_list = Task.abertas.de_mim_para_mim(current_user.id)    

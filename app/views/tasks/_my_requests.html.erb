@@ -21,39 +21,39 @@
   <% if task.refused %>
    <% funcao = "abre_alerta_recusado("+ task.id.to_s + ");return false;"%>
    <div style="display:none;" id="form_task_refused_<%=task.id.to_s%>">
-     <%= render :partial=>'tasks/task_refused', :locals=>{:task=>task} %>
+     <%= render :partial=>'tasks/refused_task', :locals=>{:task=>task} %>
    </div>
   <% end %>
 
   <%  if task.paused_esperando_aprovacao %>
-    <% funcao = "abre_form_approuve_disapprove_pause("+ task.id.to_s + ");return false;"%>
-	<div style="display:none;" id="form_aprovar_pause_<%=task.id.to_s%>">
-      <%= render :partial=>'tasks/approuve_disapprove_pause', :locals=>{:task=>task} %>
+    <% funcao = "abre_form_approve_disapprove_pause("+ task.id.to_s + ");return false;"%>
+    <div style="display:none;" id="form_aprovar_pause_<%=task.id.to_s%>">
+      <%= render :partial=>'tasks/approve_disapprove_pause', :locals=>{:task=>task} %>
     </div>
   <% end %>
 
   <% if task.terminada_sem_comment_do_requestor %>
     <% funcao = "abre_form_evaluation("+ task.id.to_s + ");return false;" %>
     <div style="display:none;" id="abre_evaluation_<%=task.id.to_s%>">
-     <%= render :partial=>'evaluation/form_evaluation', :locals=>{:task=>task, :user=>task.user} %> 
+     <%= render :partial=>'evaluation/evaluation_form', :locals=>{:task=>task, :user=>task.user} %> 
     </div>
   <% end %>
   <% if funcao.blank? %>
     <% funcao = "toggle("+ task.id.to_s + ","+ (task.requestor_alert.nil? ? false : task.requestor_alert).to_s + ", 'requestor');" %>
   <% end %>
   <a href="#"  title="Detalhes da task" onClick="task_detail(<%= task.id %>);"><%= image_tag "info.png", :border=>0 %></a> 
-	 <span id="blink_<%=task.id.to_s %>" >
+     <span id="blink_<%=task.id.to_s %>" >
        <a href="#" onClick="<%= funcao %>" ><span class="hyphenate" lang="pt"><%= task.description %></span></a> <br>
      </span>
 
-	<div style="display: none;" id="toggle_appear_<%= task.id.to_s %>" style="background:#F2F2F2;">
+    <div style="display: none;" id="toggle_appear_<%= task.id.to_s %>" style="background:#F2F2F2;">
         <%= render :partial=>'tasks/task_comments', :locals=>{:task=>task, :lado=>'esquerdo'} %>
         <%= render :partial=>'tasks/comment_form', :locals=>{:task=>task} %>
      </div>
 
-	 <div style="display:none;" id="detail_form_<%=task.id.to_s%>">
-	       <%= render :partial=>'tasks/task_details', :locals=>{:task=>task} %>
-	   </div>
+     <div style="display:none;" id="detail_form_<%=task.id.to_s%>">
+           <%= render :partial=>'tasks/task_details', :locals=>{:task=>task} %>
+       </div>
  
    <% if task.requestor_alert %>
      <% tag = '#blink_'+task.id.to_s %>

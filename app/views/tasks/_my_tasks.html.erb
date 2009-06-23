@@ -14,7 +14,7 @@
       <% end %>
 
     <div id="task">
-     
+
     <a href="#"  title="Detalhes da task" onClick="task_detail(<%= task.id %>);"><%= image_tag "info.png", :border=>0 %></a>
     <span id="blink_<%=task.id.to_s %>" >
  
@@ -36,11 +36,11 @@
 
         <% if task.paused  %>
            <% rota = "/tasks/reiniciar_a_task?task_id=" + task.id.to_s  %>
-    <td height= "20" align="botton"><p class="link"> <a href=<%=rota%> style="text-decoration:none" OnMouseOver="document.play.src='images/pauseh.png'" OnMouseOut="document.play.src='images/play.png'"><Img Src="images/play.png" Name="play" Width="18" Height="10"Border=""><span>Pauser esta task</span></a></p></td>
+    <td height= "20" align="botton"><p class="link"> <a href=<%=rota%> style="text-decoration:none" OnMouseOver="document.play.src='images/playh.png'" OnMouseOut="document.play.src='images/pause.png'"><Img Src="images/pause.png" Name="play" Width="18" Height="10"Border=""><span>Reiniciar esta task</span></a></p></td>
         <% end %>
 
         <% if task.sem_pause || task.pause_nao_aceita %>
-          <td height= "20" align="botton"><p class="link"> <a href="#" onClick="abre_form_pause(<%=task.id%>);return false;"  style="text-decoration:none" OnMouseOver="document.pause.src='images/pauseh.png'" OnMouseOut="document.pause.src='images/play.png'"><Img Src="images/play.png" Name="pause" Width="18" Height="10"Border=""><span>Pauser esta task</span></a></p></td>
+          <td height= "20" align="botton"><p class="link"> <a href="#" onClick="abre_form_pause(<%=task.id%>);return false;"  style="text-decoration:none" OnMouseOver="document.pause.src='images/pauseh.png'" OnMouseOut="document.pause.src='images/play.png'"><Img Src="images/play.png" Name="pause" Width="18" Height="10"Border=""><span>Pausar esta task</span></a></p></td>
         <% end %>
 
 <td height= "20" align="botton" ><p class="link"><a Href="#" style="text-decoration:none" OnMouseOver="document.foward.src='images/fowardh.png'" OnMouseOut="document.foward.src='images/foward.png'"><Img Src="images/foward.png" Name="foward" Width="18" Height="10"Border=""><span>Reencaminhar</span></a></p></td>

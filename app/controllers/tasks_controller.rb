@@ -102,7 +102,6 @@ class TasksController < ApplicationController
   
   
   def encaminhar
-    debugger
     @task = Task.find(params[:task_id])
     @task.user_id = params[:task][:user_id]
     @evaluation = Evaluation.new
@@ -131,11 +130,15 @@ class TasksController < ApplicationController
     @pause.pattern=false
     @task = @pause.task
     @task.requestor_alert = true
+    @comment = Comment.new
+    @comment.user_id = current_user.id
+    @comment.task_id = @task.id
+    @comment.description = @pause.justification
     Task.transaction do
-      if @pause.save & @task.save
+      if @pause.save & @task.save & @comment.save
         redirect_to tasks_path
       else
-        flash[:notice] = "Houve um erro ao gravar a pauasa desta task. Se o erro persistir, contate o suporte."
+        flash[:notice] = "Houve um erro ao gravar a pausa desta task. Se o erro persistir, contate o suporte."
         redirect_to tasks_path
       end
     end
@@ -154,24 +157,28 @@ class TasksController < ApplicationController
   end
   
   def aprovar_ou_reprovar_pause
+    @task = Task.find(params[:task_id])
+    @task.requestor_alert = false
+    Task.transaction
+      @task.save
     
-    task = Task.find(params[:task_id])
-    task.requestor_alert = false
-    task.save
-    
-    @pause = Pause.da_task(params[:task_id])
-    if params[:reprovar]
-      @pause.accepted = false
-    else
-      @pause.accepted = true
-    end
-    @pause.comment_requestor = params[:comment]
-    if @pause.save
-      redirect_to tasks_path
-    else
-      flash[:notice] = "Houve um erro na aprovação desta pause."
-      redirect_to tasks_path
-    end
+      @pause = Pause.da_task(params[:task_id])
+      if params[:reprovar]
+        @pause.accepted = false
+      else
+        @pause.accepted = true
+      end
+      @pause.comment_requestor = params[:comment]
+      @comment = Comment.new
+      @comment.user_id = current_user.id
+      @comment.task_id = @task.id
+      @comment.description = @pause.comment_requestor
+      if @pause.save & @comment.save
+        redirect_to tasks_path
+      else
+        flash[:notice] = "Houve um erro na aprovação desta pause."
+        redirect_to tasks_path
+      end
   end
   
   def reiniciar_a_task
@@ -296,10 +303,31 @@ class TasksController < ApplicationController
     end
   end
 
+
+  def verify_updates_rjs
+    puts "Entrou no controller"
+    respond_to do |format|
+      format.html { redirect_to tasks_path }
+      format.js
+    end
+  
+  end
+
   def verify_updates
+  #  debugger
     ultimo_minuto = Time.now - 1.minute
-    @recent_task = Task.all(:conditions=>["user_id=? ", current_user.id])
-    render :json=>@recent_task.to_json
+    @recent_task = Task.all(:order =>:updated_at, :conditions=>["user_id=? ", current_user.id]).last
+    puts "Ultimo minuto : " + ultimo_minuto.to_s
+    puts  @recent_task.updated_at unless @recent_task.nil? 
+    if @recent_task.nil?
+      render :nothing=>true
+    else
+      if @recent_task.updated_at > ultimo_minuto
+        render :json=>@recent_task.to_json
+      else
+        render :nothing=>true
+      end
+    end
   end  
 
 end
