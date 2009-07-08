@@ -14,7 +14,7 @@
   <%= javascript_include_tag 'hyphenator.js' %> 
   <%= javascript_include_tag 'application.js'%>
   <%= javascript_include_tag 'timer.js'%>
-  <%= javascript_include_tag 'prototype.js' %>
+  <%= javascript_include_tag 'jrails.js'%>
 
 <script type="text/javascript">
             Hyphenator.run();
@@ -24,7 +24,7 @@
 
 
 <body>
-
+  <%= periodically_call_remote(:url => "tasks/verify_new_tasks", :frequency => "58") %>
   <%= stylesheet_link_tag 'styles', 'menu' %>
 
   <div id="container">

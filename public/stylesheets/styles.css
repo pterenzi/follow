@@ -677,7 +677,7 @@ h3 {
     list-style: square;
 }
 
-#name_usuario {
+.user_name {
     font-family: "Trebuchet MS", Verdana, Times, serif;
     font-size: 8pt;
     color: #ad1c21;
@@ -686,6 +686,33 @@ h3 {
     padding-bottom: 4px;
     line-height: 14pt;
 }
+
+#name_usuario_sai_daqui {
+    font-family: "Trebuchet MS", Verdana, Times, serif;
+    font-size: 8pt;
+    color: #ad1c21;
+    padding-top: 2px;
+    padding-left: 12px;
+    padding-bottom: 4px;
+    line-height: 14pt;
+}
+
+.task{
+	font-family: "Trebuchet MS", Verdana, Times, serif;
+    font-size: 8pt;
+    color: black;
+    padding-top: 5px; 
+    padding-left: 18px;
+    padding-bottom: 10px;
+    padding-right: 8px;
+    line-height: 10pt;
+    border-bottom: 1px solid #999;
+    text-decoration:none;
+}
+.task a {
+    text-decoration: none;
+    color: #000;
+}   
 
 #task {
     font-family: "Trebuchet MS", Verdana, Times, serif;

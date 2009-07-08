@@ -1,0 +1,8 @@
+if !@recent_task.nil?
+
+  page << "if ($('#user_name_" + @recent_task.requestor_id.to_s + "').length == 0) {"
+    page.insert_html :bottom, "user_name", "<div id='user_name_"+@recent_task.requestor.id.to_s+"'>" +  @recent_task.requestor.name + "</div>"
+  page << "}"
+  
+  page.insert_html :bottom, "user_name_"+@recent_task.requestor_id.to_s, :partial=>"tasks/task", :locals=>{:task=>@recent_task} unless @recent_task.nil?
+end

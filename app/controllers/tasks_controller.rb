@@ -47,9 +47,9 @@ class TasksController < ApplicationController
 
   # POST /tasks POST /tasks.xml
   def create
-    debugger
     @task = Task.new(params[:task])
     @task.requestor_id = current_user.id
+    @task.user_alert = true
     if !@task.user_id.nil?
       Evaluation.create(:task_id=>@task.id, :user_id=>@task.user_id)
     end
@@ -303,31 +303,17 @@ class TasksController < ApplicationController
     end
   end
 
-
-  def verify_updates_rjs
-    puts "Entrou no controller"
-    respond_to do |format|
-      format.html { redirect_to tasks_path }
-      format.js
-    end
-  
-  end
-
-  def verify_updates
-  #  debugger
+  def verify_new_tasks
+    #TODO fazer o meso para messages
     ultimo_minuto = Time.now - 1.minute
     @recent_task = Task.all(:order =>:updated_at, :conditions=>["user_id=? ", current_user.id]).last
-    puts "Ultimo minuto : " + ultimo_minuto.to_s
-    puts  @recent_task.updated_at unless @recent_task.nil? 
-    if @recent_task.nil?
-      render :nothing=>true
-    else
-      if @recent_task.updated_at > ultimo_minuto
-        render :json=>@recent_task.to_json
-      else
-        render :nothing=>true
+    if !@recent_task.nil?
+      if @recent_task.updated_at < ultimo_minuto 
+        @recent_task = nil
       end
     end
-  end  
-
+    @recent_messages = Message.all(:order =>:updated_at, :conditions=>["user_id=? ", current_user.id], :limit=>10)
+    
+  end
+  
 end

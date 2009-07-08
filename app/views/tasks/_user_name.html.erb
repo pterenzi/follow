@@ -1,0 +1,4 @@
+<% if user_name!= task.requestor.name then %>
+  <div id="user_name_<%=task.requestor.id%>" class="user_name"><%= task.requestor.name %> </div>
+  <span id="user_id_<%=task.requestor.id%>"></span>
+<% end %>
