@@ -1,8 +1,27 @@
 if !@recent_task.nil?
-
   page << "if ($('#user_name_" + @recent_task.requestor_id.to_s + "').length == 0) {"
     page.insert_html :bottom, "user_name", "<div id='user_name_"+@recent_task.requestor.id.to_s+"'>" +  @recent_task.requestor.name + "</div>"
   page << "}"
-  
-  page.insert_html :bottom, "user_name_"+@recent_task.requestor_id.to_s, :partial=>"tasks/task", :locals=>{:task=>@recent_task} unless @recent_task.nil?
+  page << "if ($('#user_name_" + @recent_task.requestor_id.to_s + "').length != 0) {"
+    page << "if ($('#task_#{@recent_task.id}').length==0) {"
+    #TODO inserção de uma nova task na última posição
+      page.insert_html :bottom, "user_name_"+@recent_task.requestor_id.to_s, :partial=>"tasks/task", :locals=>{:task=>@recent_task} 
+      page.insert_html :up, "last_task_for_user_"+@recent_task.requestor.user_name, :partial=>"tasks/task", :locals=>{:task=>@recent_task} 
+    page << "}"
+  page << "}"
+  tag = '#blink_'+@recent_task.id.to_s
+  page.call "pulsar",tag
 end
+
+for task in @tasks_comments
+  page["#task_comment_"+ task.id.to_s].remove();
+  if task.requestor_id != current_user
+    lado = "direito"
+  else
+    lado = 'esquerdo'
+  end
+  page.insert_html :bottom, "span_task_comment_"+ task.id.to_s, :partial=>"tasks/task_comments", :locals=>{:task=>task, :lado=>lado} 
+  tag = '#blink_'+task.id.to_s
+  page.call "pulsar",tag
+end
+

@@ -18,8 +18,9 @@ function abre_form_approve_disapprove_pause(id){
 function toggle(task_id,muda_alerta,origem){
   if (muda_alerta){
     $.get("/tasks/change_alert",{'id': task_id, 'valor': "false", 'campo': origem});
-    parar_pulsar('#blink_'+task_id);
+
   }
+    parar_pulsar('#blink_'+task_id);
   $('#toggle_appear_'+ task_id).toggle('blind', { percent: 0 },500 ); 
   return false;
 };

@@ -69,7 +69,7 @@ class TasksController < ApplicationController
   # PUT /tasks/1 PUT /tasks/1.xml
   def update
     @task = Task.find(params[:id])
-    debugger
+    #debugger
     respond_to do |format|
       if @task.update_attributes(params[:task])
         flash[:notice] = 'tasks foi alterado com sucesso!'
@@ -195,7 +195,7 @@ class TasksController < ApplicationController
   
   
   def pauser_pattern
-    debugger
+    #debugger
     pattern_pause_id = params[:pattern_pause][:pattern_pause_id]
     for task in @my_tasks
       create_pattern_pause(task.id,pattern_pause_id)
@@ -206,10 +206,10 @@ class TasksController < ApplicationController
   def reiniciar_pattern
     
     for task in @my_tasks
-      debugger
+      #debugger
       puts "task : " + task.id.to_s
       pause = Pause.find(:all, :conditions=>["pattern_pause_id not null and task_id=?",task.id]).last
-      debugger
+      #debugger
       if !pause.nil? && (!pause.pattern_pause_id.nil? & pause.restart.nil?)
         pause.restart = Time.now
         pause.save
@@ -219,7 +219,7 @@ class TasksController < ApplicationController
   end
   
   def create_pattern_pause(task_id, pattern_pause_id)
-    debugger
+    #debugger
     pause = Pause.new
     pause.task_id = task_id
     pause.date = Time.now
@@ -304,16 +304,11 @@ class TasksController < ApplicationController
   end
 
   def verify_new_tasks
-    #TODO fazer o meso para messages
-    ultimo_minuto = Time.now - 1.minute
-    @recent_task = Task.all(:order =>:updated_at, :conditions=>["user_id=? ", current_user.id]).last
-    if !@recent_task.nil?
-      if @recent_task.updated_at < ultimo_minuto 
-        @recent_task = nil
-      end
+    @recent_task = Task.recent_task(current_user.id)
+    if @recent_task.created_at <= Time.now - 1.minute
+      @recent_task = nil
     end
-    @recent_messages = Message.all(:order =>:updated_at, :conditions=>["user_id=? ", current_user.id], :limit=>10)
-    
+    @tasks_comments = Comment.recent_comments(current_user)
   end
   
 end

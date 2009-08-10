@@ -1,14 +1,12 @@
 # Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
 
 normal:
-  data: 2009-04-24 16:24:19
   task: follow 
   justification: "Servidor parado"
   accepted: true
   comment_requestor: "Vamos esperar entao"
 
 pattern:
-  data: 2009-04-24 16:24:19
   task: follow
   justification: 
   accepted: false
@@ -17,14 +15,12 @@ pattern:
   
   
 duvida:
-    data: 2009-04-24 16:24:19
     task: didio
     justification: "Não tenho tempo"
     accepted: false
     comment_requestor: "Voce deve se empenhar mais"
     
 locaweb:
-    data: 2009-04-24 16:24:19
     task: loja
     justification: "Esperando resposta do wiki"
     

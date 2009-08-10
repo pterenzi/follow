@@ -8,4 +8,6 @@ class User < ActiveRecord::Base
   has_many :recusas
   belongs_to :company
   has_and_belongs_to_many :projects
+  has_many :messages, :foreign_key=>"written_to"
+#  has_many :written_by,  :foreign_key=>"written_by"
 end

@@ -25,7 +25,6 @@ class CommentsController < ApplicationController
   # GET /comments/new
   # GET /comments/new.xml
   def new
-    debugger
     @task = Task.find(params[:task_id])
     
     @comment = Comment.new

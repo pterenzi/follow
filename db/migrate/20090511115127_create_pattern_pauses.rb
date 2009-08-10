@@ -5,6 +5,9 @@ class CreatePatternPauses < ActiveRecord::Migration
 
       t.timestamps
     end
+     PatternPause.create(:description=>"Almoço");
+     PatternPause.create(:description=>"Fim do expediente")
+     PatternPause.create(:description=>"Banheiro")
   end
 
   def self.down

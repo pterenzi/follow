@@ -4,3 +4,4 @@ tmp/**/*
 config/database.yml
 nbproject/*
 db/follow_development
+db/follow_test

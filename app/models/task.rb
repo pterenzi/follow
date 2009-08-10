@@ -146,4 +146,8 @@ def self.encerradas_sem_evaluation(requestor_id)
   return resultado
 end
 
+def self.recent_task(current_user)
+  Task.first(:order=>"created_at desc", :conditions=>["user_id=? ", current_user])
+end
+
 end

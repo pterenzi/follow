@@ -1,9 +1,11 @@
     <div id="task_<%=task.id%>" class="task">
-
+  <%= task.id %> |
     <a href="#"  title="Detalhes da task" onClick="task_detail(<%= task.id %>);"><%= image_tag "info.png", :border=>0 %></a>
     <span id="blink_<%=task.id.to_s %>" >
- 
-      <a href="#" onClick=toggle(<%= task.id %>,<%= task.user_alert.nil? ? false : task.user_alert %>,'usuario') ><span class"hyphanate" lang="pt"><%= task.description %></span></a>
+      <span id="link_toggle_<%=task.id.to_s %>">
+        <a href="#" onClick=toggle(<%= task.id %>,<%= task.user_alert.nil? ? false : task.user_alert %>,'usuario') >
+	  </span>
+	  <span class"hyphanate" lang="pt"><%= task.description %></span></a>
     </span>
 
     <div style="display: none;"id="toggle_appear_<%= task.id.to_s %>" style="background:#F2F2F2;">
@@ -37,26 +39,26 @@
          </tr>
    </table>
 
-        <%= render :partial=>'task_comments', :locals=>{:task=>task, :lado=>'direito'} %>
-        <%= render :partial=>'comment_form', :locals=>{:task=>task} %>    
+        <%= render :partial=>'tasks/task_comments', :locals=>{:task=>task, :lado=>'direito'} %>
+        <%= render :partial=>'tasks/comment_form', :locals=>{:task=>task} %>    
     </div>
    
    <div style="display:none;" id="detail_form_<%=task.id.to_s%>">
-       <%= render :partial=>'task_details', :locals=>{:task=>task} %>
+       <%= render :partial=>'tasks/task_details', :locals=>{:task=>task} %>
    </div>
 
 
    <div style="display:none;" id="form_recusa_<%=task.id.to_s%>">
-       <%= render :partial=>'refuse', :locals=>{:task=>task} %>
+       <%= render :partial=>'tasks/refuse', :locals=>{:task=>task} %>
    </div>
 
 
    <div style="display:none;" id="form_pause_<%=task.id.to_s%>">
-      <%= render :partial=>'pause', :locals=>{:task=>task, :lado=>'direito'} %>
+      <%= render :partial=>'tasks/pause', :locals=>{:task=>task, :lado=>'direito'} %>
    </div>
 
         <div style="display:none;" id="abre_end_<%=task.id.to_s%>">
-             <%= render :partial=>'close_task', :locals=>{:task=>task} %>
+             <%= render :partial=>'tasks/close_task', :locals=>{:task=>task} %>
         </div>
 
     <% if task.user_alert %>

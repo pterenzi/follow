@@ -24,7 +24,7 @@
 
 
 <body>
-  <%= periodically_call_remote(:url => "tasks/verify_new_tasks", :frequency => "58") %>
+  <%= periodically_call_remote(:url => "tasks/verify_new_tasks", :frequency => "59") %>
   <%= stylesheet_link_tag 'styles', 'menu' %>
 
   <div id="container">
@@ -137,7 +137,7 @@
 		<% if @tem_task_com_pattern_pause %>
 	        <%= render :partial=>"restart_pattern" %>
 	      <% else %>
-	        <%= render :partial=>"pattern_pause" unless @my_tasks.empty? %>
+	        <%= render :partial=>"tasks/pattern_pause" unless @my_tasks.empty? %>
 	      <% end %>	
 		
 		</h2>

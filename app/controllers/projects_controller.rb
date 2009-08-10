@@ -107,7 +107,6 @@ def insert_user
 end
 
 def remove_user
-  debugger
   @project = Project.find(params[:id])
   @user = User.find(params[:user_id])
   @project.users.delete(@user)

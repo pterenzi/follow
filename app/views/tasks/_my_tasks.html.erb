@@ -5,13 +5,19 @@
       <%=t(:no_task)%> 
     <% end %>
     </div>
-	<% for task in @my_tasks do  %>
-
-    <%= render :partial=>"tasks/user_name", :locals=>{:task=>task, :user_name=>user_name} %>
-    <% user_name = task.requestor.name %> 
-    <%= render :partial=>"tasks/task", :locals=>{:task=>task} %>
-
-<% end %>
-
+    <% user_name = '' %>
+    <% for task in @my_tasks do  %>
+      <% if user_name!= task.requestor.name then %>
+        <% if !user_name.blank? %>
+          <span id="last_task_for_user_<%= user_name %>"></span>
+        <% end %>
+        <%= render :partial=>"tasks/user_name", :locals=>{:task=>task} %>
+        <% user_name = task.requestor.name %> 
+      <% end %>
+      <%= render :partial=>"tasks/task", :locals=>{:task=>task} %>
+    <% end %>
+    <% if !user_name.blank? %>
+      <span id="last_task_for_user_<%= user_name %>"></span>
+    <% end %>
 <% end %>
 <br>
