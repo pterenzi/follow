@@ -1,0 +1,7 @@
+
+
+<% for message in messages do%>
+  <span id="message_<%=message.id%>">
+  <%= link_to message.content, mark_as_readed_messages_path(:id=>message.id) %>, enviada por <%= message.written_by.name %> às <%= message.created_at.strftime("%d/%m  %H:%M") %><br/>
+  </span>
+<% end %>

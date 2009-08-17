@@ -82,5 +82,9 @@ function remove_user(id,user_id, user_name){
     str = span + "<a href='#' onClick=\"" + onClick + "\">" + user_name + "</a><br/></span>";
     $("#not_selected_users").after(str);
     $("#selected_"+user_id).remove();
-    
+}
+
+function remove_message(id){
+  $.get("/messages/mark_as_readed",{'id': id});
+  $("#message_"+id).remove();
 }

@@ -5,8 +5,16 @@ class MessageTest < ActiveSupport::TestCase
     message = messages(:one)
     paulo = users(:paulo)
     marcio = users(:marcio)
-    debugger
-    assert message.written_to == paulo
+    assert message.user_id == paulo
     assert message.written_by == marcio
   end
+  
+  def test_my_messages
+  	messages = Message.my_messages(391950614)
+  	assert messages.size==1
+  	first = messages[0]
+  	marcio = users(:marcio)
+  	assert first.user_id == marcio
+  end
+  
 end

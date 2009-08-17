@@ -1,7 +1,6 @@
 ActionController::Routing::Routes.draw do |map|
   map.resources :items
 
-  
   map.resources :companies 
   
   map.resources :projects, :collection => {:insert_user => :get, :remove_user=>:get}
@@ -13,11 +12,9 @@ ActionController::Routing::Routes.draw do |map|
    map.resources :users
    map.resources :user_sessions
  
-  map.resources :andamentos , :collection=>{:pauser=>:get}
-
   map.resources :comments
 
-  map.resources :messages, :collection => {:show_export => :get}
+  map.resources :messages, :collection => {:mark_as_readed => :get}
 
   map.resources :tasks, :collection => {:show_export => :get, :pauser=>:get, :reiniciar_a_task=>:get, 
          :pauser_pattern=>:get, :reiniciar_pattern=>:get, :encaminhar=>:get, :change_alert=>:get,
@@ -32,8 +29,6 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :evaluations
   
   map.resources :categories, :collection => {:show_export => :get}
-
-  map.resources :projetos, :collection => {:show_export => :get}
 
   map.root :controller => "tasks"
 

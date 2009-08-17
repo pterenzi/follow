@@ -1,4 +1,10 @@
 one:
   content: "o almoço foi cancelado"
-  written_by: marcio
-  written_to: paulo
+  written_by: 391950614
+  user_id: 253499541
+  
+two:
+  content: "A piscina estava quente"
+  written_by: 253499541
+  user_id: 391950614
+  

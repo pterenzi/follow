@@ -34,12 +34,12 @@
     <div id="banner" >
       <%=  @page_title  %>
     </div>
-	<div id="notice_container">  
-	<% if flash[:notice] -%>
+    <div id="notice_container">  
+    <% if flash[:notice] -%>
       <div id="notice"><%= flash[:notice] %></div>
     <% end -%>
-	</div>
-	<% if current_user %>
+    </div>
+    <% if current_user %>
       <div id="user">
         <%=t(:user) %>: <%= current_user.name %><br>
         Perfil: <%= current_user.category.name %>
@@ -58,7 +58,7 @@
           <ul>
             <li><a href="/projects"  >Projetos</a></li>
             <li><a href="/companies"  >Empresas</a></li>
-			<li><a href="/categories"  >Grupo de Usuários</a></li>
+            <li><a href="/categories"  >Grupo de Usuários</a></li>
             <li><%= link_to "Usuários", users_path %></li>
             
           </ul>
@@ -67,48 +67,48 @@
       </li></ul>
       <ul><li><a href="/messages">Messages</a>
       
-			<ul>
-		   	  <li>
-				<a href="messages/new">Incluir</a>
-	  		  </li>
-		   	  <li>
-				<a href="messages/index">Consultar</a>
-	  		  </li>
-			</ul>
-			</li></ul>
+            <ul>
+              <li>
+                <a href="/messages/new">Incluir</a>
+              </li>
+              <li>
+                <a href="messages/index">Consultar</a>
+              </li>
+            </ul>
+            </li></ul>
       <ul><li><a href="/tasks"><Tasks><%=t(:tasks)%></a>
-			<ul>
-		   	  <li>
-				<a href="/tasks/new">Incluir</a>
-	  		  </li>
-		   	  <li>
-				<a href="tasks/index">Consultar</a>
-	  		  </li>
-			</ul>
-				
+            <ul>
+              <li>
+                <a href="/tasks/new">Incluir</a>
+              </li>
+              <li>
+                <a href="tasks/index">Consultar</a>
+              </li>
+            </ul>
+                
       </li></ul>
       <ul><li><a href="#">Agenda</a>
-			<ul>
-		   	  <li>
-				<a href="eventos/new">Incluir</a>
-	  		  </li>
-		   	  <li>
-				<a href="eventos/index">Consultar</a>
-	  		  </li>
-			</ul>
-	
+            <ul>
+              <li>
+                <a href="eventos/new">Incluir</a>
+              </li>
+              <li>
+                <a href="eventos/index">Consultar</a>
+              </li>
+            </ul>
+    
       </li></ul>
       <ul><li><a href="#">Avaliação</a>
       </li></ul>
       <ul><li><a href="#">Ajuda</a>
-			<ul>
-		   	  <li>
-				<a href="tutoriais/list">Tutoriais</a>
-	  		  </li>
-		   	  <li>
-				<a href="tutoriaiss/index">Fale conosco</a>
-	  		  </li>
-			</ul>
+            <ul>
+              <li>
+                <a href="tutoriais/list">Tutoriais</a>
+              </li>
+              <li>
+                <a href="tutoriaiss/index">Fale conosco</a>
+              </li>
+            </ul>
 
       </li></ul>
       
@@ -116,12 +116,12 @@
     </div>
 
     <div id="leftsidebar">
-	  <h2><%= t(:my_solicitations)%></h2>
+      <h2><%= t(:my_solicitations)%></h2>
       <%= yield :leftside %>
     </div>
 
     <div id="rightsidebar">
-	<% if !@tasks_without_user.empty? %>
+    <% if !@tasks_without_user.empty? %>
      <h2>Encaminhar</h2>
      <div>
        <%= yield :lado_sem_usuario %>
@@ -133,14 +133,14 @@
       <%= render :partial=>"tasks/todo" , :locals=>{:to_do_list=>@to_do_list}%>
     <% end %>
 
-	  <h2><%=t(:my_tasks) %>
-		<% if @tem_task_com_pattern_pause %>
-	        <%= render :partial=>"restart_pattern" %>
-	      <% else %>
-	        <%= render :partial=>"tasks/pattern_pause" unless @my_tasks.empty? %>
-	      <% end %>	
-		
-		</h2>
+      <h2><%=t(:my_tasks) %>
+        <% if @tem_task_com_pattern_pause %>
+            <%= render :partial=>"restart_pattern" %>
+          <% else %>
+            <%= render :partial=>"tasks/pattern_pause" unless @my_tasks.empty? %>
+          <% end %> 
+        
+        </h2>
       <div>
         <%= yield :rightside %>
       </div>
@@ -156,9 +156,8 @@
 
 
     <div id="messages" align="center" >
-      <table >
+	  <span id="first_message"></span>
         <%= yield :messages %>
-      </table>
     </div>
 
 

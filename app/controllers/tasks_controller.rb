@@ -309,6 +309,7 @@ class TasksController < ApplicationController
       @recent_task = nil
     end
     @tasks_comments = Comment.recent_comments(current_user)
+    @recent_messages = Message.recent_messages(current_user)
   end
   
 end

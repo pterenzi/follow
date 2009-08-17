@@ -13,7 +13,7 @@ class CommentsController < ApplicationController
   # GET /comments/1
   # GET /comments/1.xml
   def show
-    @usuarios = Usuario.all.collect{|obj| [obj.name,obj.id]}
+    @users = Usuario.all.collect{|obj| [obj.name,obj.id]}
     @comment = Comment.find(params[:id])
 
     respond_to do |format|
@@ -30,7 +30,7 @@ class CommentsController < ApplicationController
     @comment = Comment.new
     @comment.task_id = @task.id
     @comment.usuario_id = session[:usuario_id]
-    @usuarios = Usuario.all.collect{|obj| [obj.name,obj.id]}
+    @users = Usuario.all.collect{|obj| [obj.name,obj.id]}
 
     respond_to do |format|
       format.html # new.html.erb
@@ -41,7 +41,7 @@ class CommentsController < ApplicationController
   # GET /comments/1/edit
   def edit
     @comment = Comment.find(params[:id])
-    @usuarios = Usuario.all.collect{|obj| [obj.name,obj.id]}
+    @users = Usuario.all.collect{|obj| [obj.name,obj.id]}
   end
 
   # POST /comments
