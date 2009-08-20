@@ -3,7 +3,8 @@
   <%= render :partial=>"my_requests" %>
 <% end %>
 <% content_for :main do %>
-  <%= link_to t(:new_task), new_task_path %>
+  <%= link_to t(:new_task), new_task_path %> | 
+  <%= link_to 'New event', new_event_path %>
   <%= render :partial => "events/index" %>
 <% end %>
 <% content_for :rightside do %>

@@ -88,3 +88,7 @@ function remove_message(id){
   $.get("/messages/mark_as_readed",{'id': id});
   $("#message_"+id).remove();
 }
+
+function new_event(data){
+	alert("new event " + data);
+}

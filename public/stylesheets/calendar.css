@@ -2,7 +2,7 @@
   font-family: verdana, arial, helvetica, sans-serif;
   font-size:   10px;
   line-height: 11px;
-color: blue;
+  color: #455A79;
 }
 #mytable {
 	width: 500px;
@@ -13,7 +13,7 @@ color: blue;
 
 #mytable  td {
   padding: 0em;
-  border: 2px #cfc solid; 
+  border: 1px #455A79 solid; 
   
 }
 
@@ -21,4 +21,7 @@ color: blue;
  height: 65px; 
 }
 
-#mytable th { background: #fc9; }
+#mytable th { background: #455A79; 
+	color :white;
+	border: 1px white solid; 
+  }
