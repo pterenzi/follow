@@ -4,7 +4,7 @@
 <% end %>
 <% content_for :main do %>
   <%= link_to t(:new_task), new_task_path %>
-  
+  <%= render :partial => "events/index" %>
 <% end %>
 <% content_for :rightside do %>
   <%= render :partial=>"my_tasks" %>

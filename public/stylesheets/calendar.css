@@ -1,0 +1,24 @@
+#calendar{
+  font-family: verdana, arial, helvetica, sans-serif;
+  font-size:   10px;
+  line-height: 11px;
+color: blue;
+}
+#mytable {
+	width: 500px;
+	padding: 0em;
+	margin: 1em;
+    border:  1px solid #ccc;
+}
+
+#mytable  td {
+  padding: 0em;
+  border: 2px #cfc solid; 
+  
+}
+
+#mytable  tr {
+ height: 65px; 
+}
+
+#mytable th { background: #fc9; }

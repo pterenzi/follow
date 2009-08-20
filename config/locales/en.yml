@@ -4,6 +4,7 @@
 en:
   back: "Back"
   description: "Description"
+  content: "Content"
   employee: "Employee"
   estimated_time: "Estimated time"
   hours: "hours"
@@ -16,8 +17,10 @@ en:
   project: "Project"
   projects: "Projects"
   save: "Save"
+  search: "Search"
   send_comment: "Send comment"
   tasks: "tasks"
+  the_date: "date"
   user: "User"
   users: "Users"
   

@@ -1,3 +1,0 @@
-puts "entrou no RJS"
-page.alert("bom dia")
-

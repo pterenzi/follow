@@ -1,0 +1,55 @@
+<h1>Listing events</h1>
+
+<table>
+  <tr>
+    <th>Date</th>
+    <th>Content</th>
+  </tr>
+
+<% for event in @events %>
+  <tr>
+    <td><%=h event.date %></td>
+    <td><%=h event.content %></td>
+    <td><%= link_to 'Show', event %></td>
+    <td><%= link_to 'Edit', edit_event_path(event) %></td>
+    <td><%= link_to 'Destroy', event, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+<div id="calendar">
+<% first_day =  Date.new(2009,8,1) %>
+<% wday = first_day.wday %>
+<%= wday %>
+
+<table id="mytable" cellspacing="0">
+<% dias_sa_semana = ["domingo","segunda","terça", "quarta", "quinta", "sexta", "sábado"]%>
+<tr><th>Domingo</th><th>Segunda</th><th>Terça</th><th>Quarta</th><th>Quinta</th><th>Sexta</th><th>Sábado</th></tr>
+<tr >
+	<% (1..wday).each do |wd|  %>
+    	<td>&nbsp;</td>
+    <% end %>
+    
+<% data = first_day %>
+<% while data.month == first_day.month do %>
+  <% events = Event.all(:conditions=>["date = ?", data.to_s] )%>  
+  <% if events.blank? %>  
+	<td width="120" valign="top" onclick="new_event('<%=data%>');">
+  <% else %>
+	<td width="120" valign="top" >
+  <% end %>
+  <%= data.day.to_s %> <br/>
+  <% for event in events %>
+    . <%= link_to event.content, edit_event_path(event) %><br/>
+  <% end %> 
+  </td>
+  <% data += 1.day %>
+  <% if data.wday ==0 %>
+    </tr>
+    <tr height="80">
+  <% end %>
+<% end %>
+</table>
+</div>
+<%= link_to 'New event', new_event_path %>

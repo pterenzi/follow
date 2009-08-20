@@ -92,5 +92,32 @@ class MessagesController < ApplicationController
        # redirect_to(tasks_url)
         render :json => "true"
       end
-   
-   end
+      
+      def search
+       sql = "user_id = " + current_user.id.to_s 
+        if params[:content]
+          sql += " and content like '%" + params[:content] + "%'"
+        end
+        if params[:written_by]
+          sql += " and written_by = " + params[:written_by]
+        end
+        if params[:month][:month] and params[:year][:year]
+          sql += " and created_at between '" + first_day(params[:month][:month],params[:year][:year]) + "' and '" + last_day(params[:month][:month],params[:year][:year]) + "'"
+        end
+       debugger
+        @messages = Message.find(:all, :conditions=>sql) 
+      end 
+
+  private
+  
+  def first_day(month,year)
+    Date.new(year.to_i,month.to_i,1).to_s
+  end
+  
+  def last_day(month,year)
+    d = Date.new(year.to_i,month.to_i,1)
+    d = d + 1.month - 1.day
+    d.to_s
+  end
+
+end

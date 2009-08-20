@@ -9,5 +9,6 @@ class User < ActiveRecord::Base
   belongs_to :company
   has_and_belongs_to_many :projects
   has_many :messages
+  has_many :events
 #  has_many :written_by,  :foreign_key=>"written_by"
 end
