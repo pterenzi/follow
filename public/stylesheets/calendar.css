@@ -17,10 +17,12 @@
   
 }
 
-#mytable  tr {
+#mytable  trr {
  height: 65px; 
 }
-
+#trth{
+	height: 30px;
+}
 #mytable th { background: #455A79; 
 	color :white;
 	border: 1px white solid; 

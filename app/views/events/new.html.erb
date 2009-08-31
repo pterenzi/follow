@@ -1,6 +1,13 @@
-<h1>New event</h1>
 
-<% form_for(@event) do |f| %>
+<% content_for :leftside do %>
+  <%= render :partial=>"tasks/my_requests" %>
+<% end %>
+<% content_for :main do %>
+  <%= link_to t(:new_task), new_task_path %> | 
+  <%= link_to 'New event', new_event_path %>
+  <%= render :partial => "events/index" %>
+
+  <% form_for(@event) do |f| %>
   <%= f.error_messages %>
 
   <p>
@@ -11,17 +18,26 @@
     <%= f.label :content %><br />
     <%= f.text_field :content %>
   </p>
-  <p>
-    <%= f.label :user_id %><br />
-    <%= f.text_field :user_id %>
-  </p>
-  <p>
-    <%= f.label :written_by %><br />
-    <%= f.text_field :written_by %>
-  </p>
+  <%= f.hidden_field :user_id %>
+  <%= f.hidden_field :written_by %>
   <p>
     <%= f.submit "Create" %>
   </p>
 <% end %>
 
-<%= link_to 'Back', events_path %>
+<% end %>
+<% content_for :rightside do %>
+  <%= render :partial=>"tasks/my_tasks" %>
+<% end %>
+<% content_for :lado_sem_usuario do %>
+  <%= render :partial=>"tasks/tasks_without_user"%>
+<% end %>
+
+<% content_for :messages do %>
+  <tr>
+  	<td><%= render :partial=>"messages/my_messages" %>
+  </tr>
+<% end %>
+
+
+

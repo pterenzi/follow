@@ -1,5 +1,5 @@
 ActionController::Routing::Routes.draw do |map|
-  map.resources :events
+  map.resources :events, :collection=>{:new_event=>:get, :display_calendar=>:get}
 
   map.resources :items
 

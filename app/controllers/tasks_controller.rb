@@ -305,8 +305,10 @@ class TasksController < ApplicationController
 
   def verify_new_tasks
     @recent_task = Task.recent_task(current_user.id)
-    if @recent_task.created_at <= Time.now - 1.minute
-      @recent_task = nil
+    if !@recent_task.nil?
+      if @recent_task.created_at <= Time.now - 1.minute
+        @recent_task = nil
+      end
     end
     @tasks_comments = Comment.recent_comments(current_user)
     @recent_messages = Message.recent_messages(current_user)

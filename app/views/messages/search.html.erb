@@ -5,7 +5,7 @@ Searching messages<br/>
   <%= t(:content) %>
   <%= text_field_tag :content, params[:content] %><br/>
   <%= t(:users) %>
-  <%= select_tag :written_by, options_for_select(@users) %><br/>
+  <%= select_tag :written_by,  options_for_select(@users) %><br/>
   <%= t(:the_date) %>  
   <%= select_month Date.today, :prefix=>:month , :include_blank=>true %>
   <%= select_year Date.today, :prefix=>:year , :include_blank=>true %><br/>

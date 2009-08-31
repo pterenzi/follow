@@ -1,4 +1,7 @@
 class EventsController < ApplicationController
+  
+  before_filter :retrieve_tasks
+  layout "follow"
   # GET /events
   # GET /events.xml
   def index
@@ -25,7 +28,8 @@ class EventsController < ApplicationController
   # GET /events/new.xml
   def new
     @event = Event.new
-
+    @event.user_id = current_user
+    @event.written_by = current_user
     respond_to do |format|
       format.html # new.html.erb
       format.xml  { render :xml => @event }
@@ -41,11 +45,12 @@ class EventsController < ApplicationController
   # POST /events.xml
   def create
     @event = Event.new(params[:event])
-
+    @event.user_id = current_user.id
+    @event.written_by = current_user.id
     respond_to do |format|
       if @event.save
         flash[:notice] = 'Event was successfully created.'
-        format.html { redirect_to(@event) }
+        format.html { redirect_to( tasks_path() ) }
         format.xml  { render :xml => @event, :status => :created, :location => @event }
       else
         format.html { render :action => "new" }
@@ -58,11 +63,11 @@ class EventsController < ApplicationController
   # PUT /events/1.xml
   def update
     @event = Event.find(params[:id])
-
+#TODO fazer o update event via jquery
     respond_to do |format|
       if @event.update_attributes(params[:event])
         flash[:notice] = 'Event was successfully updated.'
-        format.html { redirect_to(@event) }
+        format.html { redirect_to(tasks_path) }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }
@@ -82,4 +87,20 @@ class EventsController < ApplicationController
       format.xml  { head :ok }
     end
   end
+  
+  def new_event(data)
+      @event = Event.new
+      @event.date = Date.new(params[:date])
+      render :json => "true"
+  end
+  
+  def next_month
+    @date_calendar = Date.new(2009,9,01)
+  end
+  
+  def display_calendar
+    puts " entrou no display"
+    #render :json => "true"
+  end
+
 end

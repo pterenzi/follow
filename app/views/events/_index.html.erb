@@ -1,36 +1,58 @@
 
 <br />
 <div id="calendar">
-<% first_day =  Date.new(2009,8,1) %>
+	<%= @date_calendar.strftime("%m")%> 
+	<a href="#" onclick="display_calendar();">next</a>
+<% first_day =  Date.new(@date_calendar.year,@date_calendar.month,1) %>
 <% wday = first_day.wday %>
 
 <table id="mytable" cellspacing="0">
 <% dias_sa_semana = ["domingo","segunda","terça", "quarta", "quinta", "sexta", "sábado"]%>
-<tr><th>Domingo</th><th>Segunda</th><th>Terça</th><th>Quarta</th><th>Quinta</th><th>Sexta</th><th>Sábado</th></tr>
-<tr >
-	<% (1..wday).each do |wd|  %>
+<tr height="25px" >
+	<th>Segunda</th><th>Terça</th><th>Quarta</th><th>Quinta</th><th>Sexta</th><th>Sábado</th></tr>
+<tr height="40px">
+	<% (2..wday).each do |wd|  %>
     	<td>&nbsp;</td>
     <% end %>
     
-<% data = first_day %>
-<% while data.month == first_day.month do %>
-  <% events = Event.all(:conditions=>["date = ?", data.to_s] )%>  
-  <% if events.blank? %>  
-	<td width="120" valign="top" onclick="new_event('<%=data%>');">
-  <% else %>
-	<td width="120" valign="top" >
-  <% end %>
-  <%= data.day.to_s %> <br/>
-  <% for event in events %>
-    . <%= link_to event.content, edit_event_path(event) %><br/>
-  <% end %> 
-  </td>
-  <% data += 1.day %>
-  <% if data.wday ==0 %>
+<% date = first_day %>
+
+<% while date.month == first_day.month do %>
+ 
+    <% events = Event.by_date(date,current_user.id)%>  
+
+    <% if date.to_s == Date.today.to_s %>
+      <% color = "#A1211A"%>
+    <% else %>
+      <% color = "#ffffff"%>
+    <% end %>
+    <% if events.blank? %>  
+	  <td width="120" bgcolor = <%=color%> valign="top" onclick="new_event('<%=date%>');">
+    <% else %>
+	  <td width="120" bgcolor = <%=color%> valign="top" >
+    <% end %>
+    <%= date.day.to_s %> <br/>
+    <% for event in events %>.
+         <a href="#" onClick="edit_event(<%=event.id%>,'<%=event.content%>','<%=date%>');"><%=event.content%></a>
+    <% end %> 
+    </td>
+ 
+  <% date += 1.day %>
+  <% if date.wday ==0 %>
     </tr>
-    <tr height="80">
-  <% end %>
+    <tr height="40">
+	<% date += 1.day %>
+ <% end %>  
 <% end %>
 </table>
 </div>
-
+<% form_for @event  do |f| %>
+	<p>Date :</p>
+	<% #TODO testar isto aqui %>
+	<span id="event_method">metodo do evento</span>
+	<%= f.hidden_field :id %>
+	<%= f.date_select :date, :order=>[:day,:month,:year], :id=>"selecao" %>
+	<%= f.text_field :content %>
+	<%= f.submit "Save"%>
+<% end %>
+<p/>

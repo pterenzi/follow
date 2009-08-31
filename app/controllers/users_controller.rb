@@ -27,7 +27,7 @@ class UsersController < ApplicationController
   def show
     @user = @current_user
   end
- 
+ #TODO Update users including company
   def edit
     @user = User.find(params[:id])
     @categories = Category.all(:order=>"name").collect{|obj| [obj.name,obj.id]}
@@ -35,6 +35,7 @@ class UsersController < ApplicationController
   end
   
   def update
+debugger
     @user = User.find(params[:id])
     if @user.update_attributes(params[:user])
       flash[:notice] = "User updated!"

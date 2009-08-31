@@ -1,0 +1,3 @@
+page.alert(" entro no rjs")
+page["#calendar"].remove();
+page.insert_html :bottom, "calendar","<h1>inseriu aqui</h1>"

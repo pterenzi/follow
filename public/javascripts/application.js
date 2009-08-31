@@ -73,6 +73,7 @@ function include_user(id,user_id, user_name){
     str = span + "<a href='#' onClick=\"" + onClick + "\">" + user_name + "</a><br/></span>";
     $("#selected_users").after(str);
     $("#not_selected_"+user_id).remove();
+    $("#event_method").remove();
 }
 
 function remove_user(id,user_id, user_name){
@@ -89,6 +90,3 @@ function remove_message(id){
   $("#message_"+id).remove();
 }
 
-function new_event(data){
-	alert("new event " + data);
-}

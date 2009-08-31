@@ -101,7 +101,7 @@ class MessagesController < ApplicationController
         if params[:written_by]
           sql += " and written_by = " + params[:written_by]
         end
-        if params[:month][:month] and params[:year][:year]
+        if params[:month] and params[:year]
           sql += " and created_at between '" + first_day(params[:month][:month],params[:year][:year]) + "' and '" + last_day(params[:month][:month],params[:year][:year]) + "'"
         end
        debugger

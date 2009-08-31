@@ -9,14 +9,15 @@
   <!-- This must be first -->
   <%= javascript_include_tag 'jquery-1.3.2.min.js' %>
   <%= javascript_include_tag 'jquery-ui-1.7.1.custom.min.js'%>
-  <%= javascript_include_tag 'pulse.jquery.js' %>
   <%= stylesheet_link_tag 'jquery-ui-1.7.1.custom.css'%>
   <%= stylesheet_link_tag 'calendar'%>
   <%= javascript_include_tag 'hyphenator.js' %> 
   <%= javascript_include_tag 'application.js'%>
   <%= javascript_include_tag 'timer.js'%>
   <%= javascript_include_tag 'jrails.js'%>
-
+  <%= javascript_include_tag 'select_boxes.js'%>
+  <%= javascript_include_tag 'pulse.jquery.js' %>
+  <%= javascript_include_tag 'calendar.js' %>
 <script type="text/javascript">
             Hyphenator.run();
 </script>
@@ -55,22 +56,26 @@
     <div class="pd_menu_01 ">
       <ul><li><a href="/index.html">Home</a>
       </li></ul>
-      <ul><li><a href="#">Cadastros</a>
+      <% if current_user.category_id==1 %>
+        <ul><li><a href="#"><%=t(:tables)%></a>
           <ul>
-            <li><a href="/projects"  >Projetos</a></li>
-            <li><a href="/companies"  >Empresas</a></li>
-            <li><a href="/categories"  >Grupo de Usuários</a></li>
-            <li><%= link_to "Usuários", users_path %></li>
+            <li><a href="/projects"  ><%=t(:projects)%></a></li>
+            <li><a href="/companies"  ><%=t(:companies)%></a></li>
+            <li><a href="/categories"  ><%=t(:user_groups)%></a></li>
+            
+            <li><%= link_to t(:users), users_path %></li>
             
           </ul>
+       </li></ul>
+     <% end %>
+       
+   <ul><li><a href="#"><%=t(:reports)%></a>
       </li></ul>
-      <ul><li><a href="#">Relatorios</a>
-      </li></ul>
-      <ul><li><a href="/messages">Messages</a>
+      <ul><li><a href="/messages"><%=t(:messages)%></a>
       
             <ul>
               <li>
-                <a href="/messages/new">Incluir</a>
+                <a href="/messages/new"><%= t(:new)%></a>
               </li>
               <li>
 	            <%= link_to "Search", search_messages_path %>
@@ -80,21 +85,21 @@
       <ul><li><a href="/tasks"><Tasks><%=t(:tasks)%></a>
             <ul>
               <li>
-                <a href="/tasks/new">Incluir</a>
+                <a href="/tasks/new"><%=t(:new)%></a>
               </li>
               <li>
-                <a href="tasks/index">Consultar</a>
+                <a href="tasks/index"><%=t(:search)%></a>
               </li>
             </ul>
                 
       </li></ul>
-      <ul><li><a href="#">Agenda</a>
+      <ul><li><a href="#"><%=t(:calendar)%></a>
             <ul>
               <li>
-                <a href="eventos/new">Incluir</a>
+                <a href="eventos/new"><%=t(:new)%></a>
               </li>
               <li>
-                <a href="eventos/index">Consultar</a>
+                <a href="eventos/index"><%=t(:search)%></a>
               </li>
             </ul>
     

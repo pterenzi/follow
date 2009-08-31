@@ -78,7 +78,10 @@ class ApplicationController < ActionController::Base
     @tasks_without_user = Task.solicitadas_por(current_user.id).sem_user
     @to_do_list = Task.abertas.de_mim_para_mim(current_user.id)    
     @messages = Message.not_readed(current_user)
-    @events = Event.find(:all)
+    @events = Event.find(:all, :conditions=>["user_id=?",current_user.id])
+    @date_calendar = Date.today
+    @event = Event.new
+    #TODO link para o proximo mes
      #TODO colocar isto em minhas tasks   refused<>'t' and
      #TODO testar <> 't' em outros bancos
    end
