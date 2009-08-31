@@ -1,8 +1,8 @@
 
 <br />
-<div id="calendar">
-	<%= @date_calendar.strftime("%m")%> 
-	<a href="#" onclick="display_calendar();">next</a>
+<%= link_to_remote "<", :url=>{:controller=>"events", :action=>"display_calendar", :date=>@date_calendar-1.month} %>
+<%= @date_calendar.strftime("%m / %y") %>
+<%= link_to_remote ">", :url=>{:controller=>"events", :action=>"display_calendar", :date=>@date_calendar+1.month} %>
 <% first_day =  Date.new(@date_calendar.year,@date_calendar.month,1) %>
 <% wday = first_day.wday %>
 
@@ -33,7 +33,7 @@
     <% end %>
     <%= date.day.to_s %> <br/>
     <% for event in events %>.
-         <a href="#" onClick="edit_event(<%=event.id%>,'<%=event.content%>','<%=date%>');"><%=event.content%></a>
+ <%= link_to_remote "#{event.content}", :url=>edit_event_path(event), :method=>:get %>
     <% end %> 
     </td>
  
@@ -46,6 +46,7 @@
 <% end %>
 </table>
 </div>
+<div id="event_form">
 <% form_for @event  do |f| %>
 	<p>Date :</p>
 	<% #TODO testar isto aqui %>
@@ -56,3 +57,4 @@
 	<%= f.submit "Save"%>
 <% end %>
 <p/>
+</div>

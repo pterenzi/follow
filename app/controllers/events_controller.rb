@@ -30,15 +30,19 @@ class EventsController < ApplicationController
     @event = Event.new
     @event.user_id = current_user
     @event.written_by = current_user
-    respond_to do |format|
-      format.html # new.html.erb
-      format.xml  { render :xml => @event }
-    end
+    render :update do |page|
+       page.replace_html "event_form", :partial =>
+    "new_event_form", :locals => { :event => @event }
+     end
   end
 
   # GET /events/1/edit
   def edit
     @event = Event.find(params[:id])
+     render :update do |page|
+       page.replace_html "event_form", :partial =>
+    "edit_event_form", :locals => { :event => @event }
+     end
   end
 
   # POST /events
@@ -99,8 +103,8 @@ class EventsController < ApplicationController
   end
   
   def display_calendar
-    puts " entrou no display"
-    #render :json => "true"
+    date = params[:date].split("-")
+    @date_calendar = Date.new(date[0].to_i,date[1].to_i,1)
   end
 
 end

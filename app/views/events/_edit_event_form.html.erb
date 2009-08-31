@@ -1,0 +1,18 @@
+ <% form_for(@event) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :date %><br />
+    <%= f.date_select :date %>
+  </p>
+  <p>
+    <%= f.label :content %><br />
+    <%= f.text_field :content %>
+  </p>
+  <%= f.hidden_field :user_id %>
+  <%= f.hidden_field :written_by %>
+  <p>
+    <%= f.submit "Update" %>
+  </p>
+<% end %>
+
