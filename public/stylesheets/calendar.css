@@ -8,22 +8,23 @@
 	width: 500px;
 	padding: 0em;
 	margin: 1em;
-    border:  1px solid #ccc;
+    border-top:  1px solid #ccc;
+	border-left:  1px solid #ccc;
 }
 
 #mytable  td {
   padding: 0em;
-  border: 1px #455A79 solid; 
-  
+  border-right: 1px #ccc solid; 
+  border-bottom: 1px #ccc solid;
+  width:65px;
 }
 
-#mytable  trr {
+#mytable  tr {
  height: 65px; 
 }
-#trth{
-	height: 30px;
-}
-#mytable th { background: #455A79; 
+
+#mytable th { background: #5a78a5; 
+	text-align: center;
 	color :white;
-	border: 1px white solid; 
+	border-right: 1px #ccc solid; 
   }
