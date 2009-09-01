@@ -51,76 +51,10 @@
      <% end %>
   </div>
 </div>
-    
-       
-    <div class="pd_menu_01 ">
-      <ul><li><a href="/index.html">Home</a>
-      </li></ul>
-      <% if current_user.category_id==1 %>
-        <ul><li><a href="#"><%=t(:tables)%></a>
-          <ul>
-            <li><a href="/projects"  ><%=t(:projects)%></a></li>
-            <li><a href="/companies"  ><%=t(:companies)%></a></li>
-            <li><a href="/categories"  ><%=t(:user_groups)%></a></li>
-            
-            <li><%= link_to t(:users), users_path %></li>
-            
-          </ul>
-       </li></ul>
-     <% end %>
-       
-   <ul><li><a href="#"><%=t(:reports)%></a>
-      </li></ul>
-      <ul><li><a href="/messages"><%=t(:messages)%></a>
-      
-            <ul>
-              <li>
-                <a href="/messages/new"><%= t(:new)%></a>
-              </li>
-              <li>
-	            <%= link_to "Search", search_messages_path %>
-              </li>
-            </ul>
-            </li></ul>
-      <ul><li><a href="/tasks"><Tasks><%=t(:tasks)%></a>
-            <ul>
-              <li>
-                <a href="/tasks/new"><%=t(:new)%></a>
-              </li>
-              <li>
-                <a href="tasks/index"><%=t(:search)%></a>
-              </li>
-            </ul>
-                
-      </li></ul>
-      <ul><li><a href="#"><%=t(:calendar)%></a>
-            <ul>
-              <li>
-                <a href="eventos/new"><%=t(:new)%></a>
-              </li>
-              <li>
-                <a href="eventos/index"><%=t(:search)%></a>
-              </li>
-            </ul>
-    
-      </li></ul>
-      <ul><li><a href="#">Avaliação</a>
-      </li></ul>
-      <ul><li><a href="#">Ajuda</a>
-            <ul>
-              <li>
-                <a href="tutoriais/list">Tutoriais</a>
-              </li>
-              <li>
-                <a href="tutoriaiss/index">Fale conosco</a>
-              </li>
-            </ul>
-
-      </li></ul>
-      
-      
-    </div>
-
+   <div class="pd_menu_01 ">
+      <%= render :partial=>"layouts/menu"%> 
+   </div>
+   
     <div id="leftsidebar">
       <h2><%= t(:my_solicitations)%></h2>
       <%= yield :leftside %>
@@ -157,14 +91,14 @@
       <div id="contenttxt" >
         <%= yield :main %>
       </div>
-
+	 <div id="messages" align="center" >
+		  <span id="first_message"></span>
+	        <%= yield :messages %>
+	    </div>
     </div>
 
 
-    <div id="messages" align="center" >
-	  <span id="first_message"></span>
-        <%= yield :messages %>
-    </div>
+   
 
 
 

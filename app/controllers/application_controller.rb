@@ -81,7 +81,6 @@ class ApplicationController < ActionController::Base
     @events = Event.find(:all, :conditions=>["user_id=?",current_user.id])
     @date_calendar = Date.today
     @event = Event.new
-    #TODO link para o proximo mes
      #TODO colocar isto em minhas tasks   refused<>'t' and
      #TODO testar <> 't' em outros bancos
    end

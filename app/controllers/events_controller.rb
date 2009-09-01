@@ -30,7 +30,7 @@ class EventsController < ApplicationController
     @event = Event.new
     @event.user_id = current_user
     @event.written_by = current_user
-    render :update do |page|
+    render :create do |page|
        page.replace_html "event_form", :partial =>
     "new_event_form", :locals => { :event => @event }
      end
@@ -42,6 +42,8 @@ class EventsController < ApplicationController
      render :update do |page|
        page.replace_html "event_form", :partial =>
     "edit_event_form", :locals => { :event => @event }
+       page["#event_form"].show();
+       page["#event_content"].focus();
      end
   end
 
@@ -51,23 +53,25 @@ class EventsController < ApplicationController
     @event = Event.new(params[:event])
     @event.user_id = current_user.id
     @event.written_by = current_user.id
-    respond_to do |format|
+#    respond_to do |format|
       if @event.save
-        flash[:notice] = 'Event was successfully created.'
-        format.html { redirect_to( tasks_path() ) }
-        format.xml  { render :xml => @event, :status => :created, :location => @event }
+        @date_calendar = @event.date
+        redirect_to display_calendar_events_path(:date=>@date_calendar)
+      #  flash[:notice] = 'Event was successfully created.'
+#        format.html { redirect_to( tasks_path() ) }
+#        format.xml  { render :xml => @event, :status => :created, :location => @event }
       else
         format.html { render :action => "new" }
         format.xml  { render :xml => @event.errors, :status => :unprocessable_entity }
       end
-    end
+    #end
   end
 
   # PUT /events/1
   # PUT /events/1.xml
   def update
     @event = Event.find(params[:id])
-#TODO fazer o update event via jquery
+#TODO fazer o update event via jquery, retornando rjs
     respond_to do |format|
       if @event.update_attributes(params[:event])
         flash[:notice] = 'Event was successfully updated.'
@@ -96,10 +100,6 @@ class EventsController < ApplicationController
       @event = Event.new
       @event.date = Date.new(params[:date])
       render :json => "true"
-  end
-  
-  def next_month
-    @date_calendar = Date.new(2009,9,01)
   end
   
   def display_calendar

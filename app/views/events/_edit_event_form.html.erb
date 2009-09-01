@@ -2,16 +2,15 @@
   <%= f.error_messages %>
 
   <p>
-    <%= f.label :date %><br />
+    <%= f.label :date %>
     <%= f.date_select :date %>
-  </p>
-  <p>
-    <%= f.label :content %><br />
+ 
+    <%= f.label :content %>
     <%= f.text_field :content %>
-  </p>
+
   <%= f.hidden_field :user_id %>
   <%= f.hidden_field :written_by %>
-  <p>
+ 
     <%= f.submit "Update" %>
   </p>
 <% end %>
