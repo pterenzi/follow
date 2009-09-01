@@ -3,15 +3,16 @@
 
   <p>
     <%= f.label :date %>
-    <%= f.date_select :date %>
+    <%= f.date_select :date, :order=>[:day,:month,:year] %>
  
     <%= f.label :content %>
     <%= f.text_field :content %>
 
   <%= f.hidden_field :user_id %>
   <%= f.hidden_field :written_by %>
- 
-    <%= f.submit "Update" %>
+ <br/>
+    <%= f.submit "Update" %>  <%= link_to image_tag("trash.jpg",:size=>"28x28", :border=>0), event, :confirm => 'Are you sure?', :method => :delete %>
+	
   </p>
 <% end %>
 

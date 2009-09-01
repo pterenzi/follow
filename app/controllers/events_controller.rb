@@ -53,18 +53,18 @@ class EventsController < ApplicationController
     @event = Event.new(params[:event])
     @event.user_id = current_user.id
     @event.written_by = current_user.id
-#    respond_to do |format|
+    respond_to do |format|
       if @event.save
-        @date_calendar = @event.date
-        redirect_to display_calendar_events_path(:date=>@date_calendar)
+#       @date_calendar = @event.date
+#        redirect_to display_calendar_events_path(:date=>@date_calendar)
       #  flash[:notice] = 'Event was successfully created.'
-#        format.html { redirect_to( tasks_path() ) }
-#        format.xml  { render :xml => @event, :status => :created, :location => @event }
+        format.html { redirect_to( tasks_path() ) }
+        format.xml  { render :xml => @event, :status => :created, :location => @event }
       else
         format.html { render :action => "new" }
         format.xml  { render :xml => @event.errors, :status => :unprocessable_entity }
       end
-    #end
+    end
   end
 
   # PUT /events/1
@@ -91,16 +91,16 @@ class EventsController < ApplicationController
     @event.destroy
 
     respond_to do |format|
-      format.html { redirect_to(events_url) }
+      format.html { redirect_to(tasks_path) }
       format.xml  { head :ok }
     end
   end
   
-  def new_event(data)
-      @event = Event.new
-      @event.date = Date.new(params[:date])
-      render :json => "true"
-  end
+ # def new_event(data)
+#      @event = Event.new
+#      @event.date = Date.new(params[:date])
+#      render :json => "true"
+#  end
   
   def display_calendar
     date = params[:date].split("-")
