@@ -81,6 +81,7 @@ class ApplicationController < ActionController::Base
     @events = Event.find(:all, :conditions=>["user_id=?",current_user.id])
     @date_calendar = Date.today
     @event = Event.new
+    @evaluation = Evaluation.new
      #TODO colocar isto em minhas tasks   refused<>'t' and
      #TODO testar <> 't' em outros bancos
    end

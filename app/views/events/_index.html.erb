@@ -39,17 +39,20 @@
       <% else %>
 	    <td width="120" bgcolor = <%=color%> valign="top" >
       <% end %>
-      <%= date.day.to_s %> <br/>
+      <%= link_to_remote date.day.to_s,:url=>new_event_path(:date=>date), :method=>:get %> <br/>
       <% for event in events %>
-          .<%= link_to_remote "#{event.content}", :url=>edit_event_path(event), :method=>:get %>
+          .<%= link_to_remote "#{event.content}", :url=>edit_event_path(event), :method=>:get %><br/>
      <% end %> 
       </td>
    <% end %>
    <% date += 1.day %>
    <% if date.wday==0 %>
      </tr>
-     <tr height="40">
 	 <% date += 1.day %>
+	 <% if date.month == first_day.month %>
+	   <tr height="40">
+	 <% end %>
+    
   <% end %>  
 <% end %>
 </table>

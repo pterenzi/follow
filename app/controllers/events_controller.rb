@@ -28,11 +28,14 @@ class EventsController < ApplicationController
   # GET /events/new.xml
   def new
     @event = Event.new
+    @event.date = Date.strptime(params[:date])
     @event.user_id = current_user
     @event.written_by = current_user
-    render :create do |page|
+    render :update do |page|
        page.replace_html "event_form", :partial =>
     "new_event_form", :locals => { :event => @event }
+      page["#event_form"].show();
+      page["#event_content"].focus();
      end
   end
 

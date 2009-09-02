@@ -3,11 +3,16 @@ class EvaluationsController < ApplicationController
   def create
     
   end
+  
+  def edit
+    @evaluation = Evaluation.last(:conditions=>["task_id=? and user_id=?", params[:task_id],@task.user_id])
+  end
 
   def update
     @task = Task.find(params[:task_id])
     @evaluation = Evaluation.last(:conditions=>["task_id=? and user_id=?", params[:task_id],@task.user_id])
     @task.refused = false
+    debugger
     if params[:task][:user].blank?
       @task.user_id = nil
     else

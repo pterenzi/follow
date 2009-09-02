@@ -1,1 +1,1 @@
-page.replace_html "calendar", :partial=>"events/index", :locals=>{:date_calendar=>@date_calendar}
+#page.replace_html "calendar", :partial=>"events/index", :locals=>{:date_calendar=>@date_calendar}
