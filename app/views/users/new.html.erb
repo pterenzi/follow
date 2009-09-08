@@ -6,23 +6,23 @@
   <%= f.label :login %><br />
   <%= f.text_field :login %><br />
   <br />
-
+<%= f.label :password %><br />
+<%= f.password_field :password %><br />
+<br/>
+<%= f.label :password_confirmation %><br />
+<%= f.password_field :password_confirmation %><br /><br/>
   <%= f.label :name %><br />
   <%= f.text_field :name %><br />
   <br />
-<%= current_user.category.name%>
-  <% if current_user.category.name.downcase=="gestor"%>
     <%= f.label :Category%><br/>
     <%= f.select :category_id, @categories %><br/>
     <br/>
-  <% end %>
 <%= f.label :Company%><br/>
 <%= f.select :company_id, @companies %>
-<br/>
-  <%= f.submit "Update" %>
+<br/><br/>
+  <%= f.submit "Create" %>
 <% end %>
  
 <br />
-<%= link_to "Back", :back%> |
-<%= link_to " change password", change_password_user_path(@user) %>
+<%= link_to "Back", :back%> 
 <% end %>

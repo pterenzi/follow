@@ -8,11 +8,11 @@
 
 <% form_for @category do |f| %>
 
-<%= error_messages_for :categories %>
-<%= f.label_for :name %>
+<%= f.error_messages %>
+<%= f.label :name %>
 <%= f.text_field :name %>
 <br/>
-<%= f.submit "Update"%>
+<%= f.submit "Create"%>
 <% end %>
 <%= link_to 'Voltar', categories_path %>
 <% end %>

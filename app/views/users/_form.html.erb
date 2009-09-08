@@ -2,18 +2,15 @@
 <%= form.label :login %><br />
 <%= form.text_field :login %><br />
 <br />
-<%= form.label :password, form.object.new_record? ? nil : "Change password" %><br />
-<%= form.password_field :password %><br />
-<br/>
-<%= form.label :password_confirmation %><br />
-<%= form.password_field :password_confirmation %><br />
-<br/>
+
 <%= form.label :name %><br />
 <%= form.text_field :name %><br />
 <br />
-<%= form.label :Category%><br/>
-<%= form.select :category_id, @categories %><br/>
-<br/>
+<% if @user.category.name=="admin"%>
+  <%= form.label :Category%><br/>
+  <%= form.select :category_id, @categories %><br/>
+  <br/>
+<% end %>
 <%= form.label :Company%><br/>
 <%= form.select :company_id, @companies %>
 <br/>

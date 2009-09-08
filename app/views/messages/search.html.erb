@@ -5,13 +5,14 @@ Searching messages<br/>
   <%= t(:content) %>
   <%= text_field_tag :content, params[:content] %><br/>
   <%= t(:users) %>
-  <%= select_tag :written_by,  options_for_select(@users) %><br/>
+  
+<%= select "user", "user_id", @users, :include_blank=>true %><br/>
   <%= t(:the_date) %>  
-  <%= select_month Date.today, :prefix=>:month , :include_blank=>true %>
-  <%= select_year Date.today, :prefix=>:year , :include_blank=>true %><br/>
+  <%= select_month Date.today , :include_blank=>true %>
+  <%= select_year Date.today , :date=>params[:date],:include_blank=>true %><br/>
 
 <br/>
-  <%= submit_tag t(:search) %>
+  <%= submit_tag t(:search), :name=>nil %>
 
 <% end %>
 

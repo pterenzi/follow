@@ -34,6 +34,7 @@
 <div>
   <div id="cabecalho">
     <div id="banner" >
+	  <%= image_tag "Logo.jpg"%>
       <%=  @page_title  %>
     </div>
     <div id="notice_container">  
@@ -46,6 +47,7 @@
         <%=t(:user) %>: <%= current_user.name %><br>
         Perfil: <%= current_user.category.name %>
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <%= link_to t(:my_data), edit_user_path(current_user) %> |
         <%= link_to t(:logout), logout_path %>
        </div>
      <% end %>

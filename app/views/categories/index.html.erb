@@ -1,19 +1,14 @@
+<% content_for :main do%>
 <p>
   <%= link_to 'Cadastrar Novo Categoria', new_category_path %>
 </p>
 <%  @export = false  %>
 <table class="tableNegocios">
-  <tfoot>
-    <tr>
-      <th scope="row" colspan="8"><%=  link_to 'Exportar para Excel',  show_export_category_url  %></th>
-    </tr>
-  </tfoot>
-  </tbody>
-  <%=  render(:partial => "header_list")  %>
-  <%=  render(:partial => "category", :collection => @category, :object => @export)  %>
+  <tbody>
+  <%=  render(:partial => "category", :collection => @categories)  %>
   </tbody>
 </table>
 
 <br />
 
-
+<% end %>

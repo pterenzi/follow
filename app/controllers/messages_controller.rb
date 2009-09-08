@@ -37,7 +37,6 @@ class MessagesController < ApplicationController
 
    # POST /messages POST /messages.xml
    def create
-      debugger
       @message = Message.new(params[:message])
       @message.written_by = User.find(current_user.id)
       respond_to do |format|
@@ -94,15 +93,20 @@ class MessagesController < ApplicationController
       end
       
       def search
+        debugger
+        if params[:user_id]
+        @user = User.find(params[:user_id])
+      end
        sql = "user_id = " + current_user.id.to_s 
-        if params[:content]
+        if params[:content] && !params[:content].blank?
           sql += " and content like '%" + params[:content] + "%'"
         end
         if params[:written_by]
           sql += " and written_by = " + params[:written_by]
         end
-        if params[:month] and params[:year]
-          sql += " and created_at between '" + first_day(params[:month][:month],params[:year][:year]) + "' and '" + last_day(params[:month][:month],params[:year][:year]) + "'"
+        if params[:date] 
+          sql += " and created_at between '" + first_day(params[:date][:month],params[:date][:year]) + 
+                "' and '" + last_day(params[:date][:month],params[:date][:year]) + "'"
         end
        debugger
         @messages = Message.find(:all, :conditions=>sql) 

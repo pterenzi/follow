@@ -1,15 +1,27 @@
-<%= error_messages_for :categories %>
-
-<% form_for(@category, :html => { :multipart => true }) do |f| %>
-   <div class="depot-form">
-     <fieldset>
-       <p>
-         <legend>Dados do Categories <%=  @category.name  %> </legend>
-         <label for="categories_name">Nome:</label>
-         <%= f.text_field :name, :size =>  "53" , :readonly => true %>     
-       </p>
-     </fieldset>
-   </div> 
+<% content_for :leftside do %>
+   <%= render :partial=>"tasks/my_requests" %>
 <% end %>
+<% content_for :rightside do %>
+  <%= render :partial=>"tasks/my_tasks" %>
+<% end %>
+<% content_for :main do %>
+       <p>
+         <%= t(:user_group) %> :
+         <%= @category.name %>     
+       </p>
 
+<br/>
+<p><%= t(:users_associated)%></p>
+	<br/>
+<table>
+	<tr>
+		<th width="200px"><%=t(:name)%></th>
+		<th width="140px"><%= t(:login)%></th>
+		<th width="160px"><%= t(:company)%></th>
+	</tr>
+	
+	<%= render :partial=>"user", :collection=>@users %>
+</table >
+<br/>
 <%= link_to 'Voltar', categories_path %>
+<% end %>
