@@ -2,15 +2,15 @@
  <%= hidden_field_tag :task_id, task.id %>
  <%= hidden_field_tag :user_id, user.id %>
 
-  <%= radio_button_tag (:evaluation, "1") %>
+  <%= radio_button_tag(:evaluation, "1") %>
   <%= label_tag :evaluation_pessimo, :Ruim %>
-  <%= radio_button_tag (:evaluation, "2") %>
+  <%= radio_button_tag(:evaluation, "2") %>
   <%= label_tag :evaluation_pessimo, :Insuficiente %>
-  <%= radio_button_tag (:evaluation, "3") %>
+  <%= radio_button_tag(:evaluation, "3") %>
   <%= label_tag :evaluation_pessimo, :Suficiente %><br /><br />
-  <%= radio_button_tag (:evaluation, "4") %>
+  <%= radio_button_tag(:evaluation, "4") %>
   <%= label_tag :evaluation_pessimo, "Bom" %>
-  <%= radio_button_tag (:evaluation, "5") %>
+  <%= radio_button_tag(:evaluation, "5") %>
   <%= label_tag :evaluation_pessimo, :Ótimo %><br/><br/>
   <p>
    Comentário :<br/>

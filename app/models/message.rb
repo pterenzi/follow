@@ -3,7 +3,6 @@ class Message < ActiveRecord::Base
 
 belongs_to :written_by, :class_name => "User", :foreign_key => "written_by"
 belongs_to :user
-#TODO fazer pesquisa de messsages antigas por data e writtem_by
 named_scope :my_messages, lambda{ |id| {:conditions=>["user_id = ?", id]} }
 named_scope :not_readed, lambda{ |id| {:conditions=>["user_id = ? and readed IS NULL", id], :order => "created_at DESC"} }
 

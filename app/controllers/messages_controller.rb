@@ -93,22 +93,26 @@ class MessagesController < ApplicationController
       end
       
       def search
-        debugger
-        if params[:user_id]
-        @user = User.find(params[:user_id])
-      end
-       sql = "user_id = " + current_user.id.to_s 
+        @date = Date.today
+        sql = "user_id = " + current_user.id.to_s 
         if params[:content] && !params[:content].blank?
           sql += " and content like '%" + params[:content] + "%'"
         end
-        if params[:written_by]
-          sql += " and written_by = " + params[:written_by]
+        debugger
+        if params[:user]
+          if !params[:user][:id].blank?
+            sql += " and written_by = " + params[:user][:id]
+            @user = User.find(params[:user][:id])
+          end
         end
         if params[:date] 
           sql += " and created_at between '" + first_day(params[:date][:month],params[:date][:year]) + 
                 "' and '" + last_day(params[:date][:month],params[:date][:year]) + "'"
+          @date = Date.new(params[:date][:year].to_i,params[:date][:month].to_i,1)
+        else
+          sql += " and created_at between '" + first_day(Date.today.month,Date.today.year) + 
+                "' and '" + last_day(Date.today.month,Date.today.year) + "'"
         end
-       debugger
         @messages = Message.find(:all, :conditions=>sql) 
       end 
 

@@ -33,7 +33,7 @@ class UsersController < ApplicationController
   def show
     @user = @current_user
   end
- #TODO Update users including company
+
   def edit
     @user = User.find(params[:id])
     @categories = Category.all(:order=>"name").collect{|obj| [obj.name,obj.id]}

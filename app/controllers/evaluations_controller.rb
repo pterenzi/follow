@@ -9,6 +9,7 @@ class EvaluationsController < ApplicationController
   end
 
   def update
+    #TODO definir user_id para update de evaluation
     @task = Task.find(params[:task_id])
     @evaluation = Evaluation.last(:conditions=>["task_id=? and user_id=?", params[:task_id],@task.user_id])
     @task.refused = false
