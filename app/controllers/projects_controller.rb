@@ -101,9 +101,13 @@ def insert_user
   @project = Project.find(params[:id])
   @user = User.find(params[:user_id])
   @project.users << @user
-  @project.save
+  debugger
+  if @project.save
   #TODO tratar excessão, levando-se em conta que é uma rotina ajax
   render :json => "true"
+  else
+   render :json=>"false"
+  end
 end
 
 def remove_user
@@ -115,5 +119,12 @@ def remove_user
   render :json => "true"
 end
 
+def retrieve_users
+  #TODO tratar quando o projeto nao tem usuario associados
+  debugger
+  @project = Project.find(params[:id])
+  puts @project.users.collect{|obj| [obj.name,obj.id]}
+   render :json => @project.users.collect{|obj| [obj.name,obj.id]}
+end
 
 end

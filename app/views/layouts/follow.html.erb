@@ -26,7 +26,7 @@
 
 
 <body>
-  <%= periodically_call_remote(:url => "tasks/verify_new_tasks", :frequency => "59") %>
+  <%= periodically_call_remote(:url => "/tasks/verify_new_tasks", :frequency => "59") %>
   <%= stylesheet_link_tag 'styles', 'menu' %>
 
   <div id="container">

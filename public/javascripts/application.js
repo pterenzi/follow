@@ -90,3 +90,21 @@ function remove_message(id){
   $("#message_"+id).remove();
 }
 
+function project_selected(){
+	if ($("#task_project_id").val() == ""){
+	  $("#user_select").hide();
+	}else {
+    $.getJSON("/projects/retrieve_users",{'id': $("#task_project_id").val()},
+       function(data){
+            $("#task_user_id").html("<option value=''>Selecione uma Opção</option>");
+            saida = "";
+            for (var i = 0; i < data.length; i++){
+              saida = saida + data[i]
+              $("#task_user_id").append(new Option(data[i][0],data[i][1]));
+            }
+            $("#user_select").show();
+       }
+    );
+  }
+}
+

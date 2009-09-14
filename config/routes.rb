@@ -6,7 +6,8 @@ ActionController::Routing::Routes.draw do |map|
 
   map.resources :companies 
   
-  map.resources :projects, :collection => {:insert_user => :get, :remove_user=>:get}
+  map.resources :projects, :collection => {:insert_user => :get, 
+      :remove_user=>:get, :retrieve_users=>:get}
 
   map.resources :pattern_pauses
    

@@ -10,4 +10,6 @@ class User < ActiveRecord::Base
   has_many :messages
   has_many :events
 #  has_many :written_by,  :foreign_key=>"written_by"
+#TODO criar campo prefered language
+#TODO criar link para alterar linguagem
 end

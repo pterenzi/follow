@@ -16,13 +16,15 @@
 <p>
   <b><%=t(:projects) %></b><br />   
   
-  <%= f.select  :project_id, @projetos,{:prompt=>"Selecione uma Opção"}  %>      
+  <%= f.select  :project_id, @projetos,{:prompt=>"Selecione uma Opção"}, :onChange=>"project_selected();"  %>      
 </p>
+<div id="user_select" style="display:none;" >
 <p>
   <b><%=t(:user) %></b><br />   
   
   <%= f.select :user_id,@users,{:prompt=>"Selecione uma Opção"} %>      
 </p>
+
   <p>
     <b><%= t(:description) %></b><br/>
     <%= f.text_area :description, :cols=>60, :rows=>10 %>
@@ -39,6 +41,7 @@
   <p>
     <%= f.submit t(:save) %>
   </p>
+</div>
 <% end %>
 <br/>
 <%= link_to t(:back), tasks_path %>
