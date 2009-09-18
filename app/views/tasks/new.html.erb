@@ -1,10 +1,4 @@
-<% content_for :leftside do %>
-   <%= render :partial=>"my_requests" %>
-<% end %>
-<% content_for :rightside do %>
-  <%= render :partial=>"my_tasks" %>
-<% end %>
-
+<%= render :partial=>"layouts/moldura" %>
 <% content_for :main do%>
 <h1><%= t(:new_task)%></h1>
 <br/>
@@ -14,15 +8,23 @@
 <% form_for(@task) do |f| %>
 
 <p>
-  <b><%=t(:projects) %></b><br />   
-  
-  <%= f.select  :project_id, @projetos,{:prompt=>"Selecione uma Opção"}, :onChange=>"project_selected();"  %>      
+	<table>
+		<tr>
+			<td><%=t(:company)%></td>
+			<td><b><%=t(:projects) %></b></td>
+		</tr>
+		<tr>
+			<td><%= select_tag  :company_id, options_for_select(@companies), :include_blank=>:true, :onChange=>"project_selected();"  %> </td>
+			<td><%= select_tag  :project_id, options_for_select(@projetos),:onChange=>"project_selected();" %> </td>
+		</tr>
+	</table>
+       
 </p>
-<div id="user_select" style="display:none;" >
+<div id="user_select"  >
 <p>
   <b><%=t(:user) %></b><br />   
   
-  <%= f.select :user_id,@users,{:prompt=>"Selecione uma Opção"} %>      
+  <%= f.select :user_id,@users,{:prompt=>"Selecione um colaborador"} %>      
 </p>
 
   <p>

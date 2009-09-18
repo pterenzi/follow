@@ -1,18 +1,13 @@
-<% content_for :leftside do %>
-   <%= render :partial=>"tasks/my_requests" %>
-<% end %>
-<% content_for :rightside do %>
-  <%= render :partial=>"tasks/my_tasks" %>
-<% end %>
+<%= render :partial=>"layouts/moldura" %>
 <% content_for :main do %>
 
 <% form_for @category do |f| %>
 
 <%= error_messages_for :categories %>
-<%= f.label_for :name %>
+<%= f.label :name %>
 <%= f.text_field :name %>
 <br/>
 <%= f.submit "Update"%>
 <% end %>
-<%= link_to 'Voltar', categories_path %>
+<%= link_to t(:back), categories_path %>
 <% end %>

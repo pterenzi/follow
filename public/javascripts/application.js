@@ -91,20 +91,25 @@ function remove_message(id){
 }
 
 function project_selected(){
-	if ($("#task_project_id").val() == ""){
-	  $("#user_select").hide();
-	}else {
-    $.getJSON("/projects/retrieve_users",{'id': $("#task_project_id").val()},
+	$("#task_user_id").hide();
+    $.getJSON("/projects/retrieve_users",{'company_id': $("#company_id").val(),
+'project_id': $("#project_id").val()},
        function(data){
-            $("#task_user_id").html("<option value=''>Selecione uma Opção</option>");
+            $("#task_user_id").html("<option value=''>Selecione um colaborador</option>");
             saida = "";
             for (var i = 0; i < data.length; i++){
-              saida = saida + data[i]
+              saida = saida + data[i];
               $("#task_user_id").append(new Option(data[i][0],data[i][1]));
             }
-            $("#user_select").show();
+			$("#task_user_id").show();
+
        }
     );
-  }
 }
 
+function project_selected0(){
+	alert("zero");
+}
+function company_selected(){
+	alert("selecionou company");
+}

@@ -1,9 +1,4 @@
-<% content_for :leftside do %>
-  <%= render :partial=>"tasks/my_requests" %>
-<% end %>
-<% content_for :rightside do %>
-  <%= render :partial=>"tasks/my_tasks" %>
-<% end %>
+<%= render :partial=>"layouts/moldura" %>
 <% content_for :main do %><p>
   <b>Name:</b>
   <%=h @company.name %>

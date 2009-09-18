@@ -5,7 +5,7 @@
 <br/>
 <p>
 	<b><%=t(:project)%>:</b>
-	<%= task.project.name %>
+	<%= task.project.name unless task.project.nil?%>
 </p>
 <br/>
 <p>

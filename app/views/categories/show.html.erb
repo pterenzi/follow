@@ -1,16 +1,14 @@
-<% content_for :leftside do %>
-   <%= render :partial=>"tasks/my_requests" %>
-<% end %>
-<% content_for :rightside do %>
-  <%= render :partial=>"tasks/my_tasks" %>
-<% end %>
+<%= render :partial=>"layouts/moldura" %>
 <% content_for :main do %>
        <p>
-         <%= t(:user_group) %> :
+         <%= t(:category) %> :
          <%= @category.name %>     
        </p>
 
 <br/>
+<% if @category.users.empty? %>
+  <%= t(:no_users_associated) %><br/><br/>
+<% else %>
 <p><%= t(:users_associated)%></p>
 	<br/>
 <table>
@@ -23,5 +21,6 @@
 	<%= render :partial=>"user", :collection=>@users %>
 </table >
 <br/>
-<%= link_to 'Voltar', categories_path %>
+<% end %>
+<%= link_to t(:back), categories_path %>
 <% end %>

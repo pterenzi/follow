@@ -32,7 +32,7 @@ class CategoriesController < ApplicationController
 
    # GET /categories/1/edit
    def edit
-      @categories = Category.find(params[:id])
+     @category = Category.find(params[:id])
    end
 
    # POST /categories POST /categories.xml
@@ -52,16 +52,15 @@ class CategoriesController < ApplicationController
 
       # PUT /categories/1 PUT /categories/1.xml
       def update
-         @categories = Category.find(params[:id])
+         @category = Category.find(params[:id])
          respond_to do |format|
-            if @categories.update_attributes(params[:categories])
+            if @category.update_attributes(params[:category])
                flash[:notice] = 'A categories foi alterada com sucesso!'
-               format.html { redirect_to(@categories) }
-
+               format.html { redirect_to(@category) }
                format.xml  { head :ok }
             else
                format.html { render :action => "edit" }
-               format.xml  { render :xml => @categories.errors, :status => :unprocessable_entity }
+               format.xml  { render :xml => @category.errors, :status => :unprocessable_entity }
             end
          end
       end

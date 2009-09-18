@@ -1,9 +1,16 @@
+<%= render :partial=>"layouts/moldura" %>
 <% content_for :main do%>
 <p>
-  <%= link_to 'Cadastrar Novo Categoria', new_category_path %>
-</p>
+  <%= link_to t(:new_category), new_category_path %>
+</p><br/>
 <%  @export = false  %>
 <table class="tableNegocios">
+	<tr>
+	  <th><%= t(:name)%></th>
+	  <th>&nbsp;</th>
+	  <th>&nbsp;</th>
+	  <th>&nbsp;</th>
+	</tr>
   <tbody>
   <%=  render(:partial => "category", :collection => @categories)  %>
   </tbody>

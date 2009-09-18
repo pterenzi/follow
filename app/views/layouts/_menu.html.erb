@@ -6,7 +6,7 @@
          <ul>
            <li><a href="/projects"  ><%=t(:projects)%></a></li>
            <li><a href="/companies"  ><%=t(:companies)%></a></li>
-           <li><a href="/categories"  ><%=t(:user_groups)%></a></li>
+           <li><a href="/categories"  ><%=t(:categories)%></a></li>
            
            <li><%= link_to t(:users), users_path %></li>
            
@@ -27,13 +27,13 @@
              </li>
            </ul>
            </li></ul>
-     <ul><li><a href="/tasks"><Tasks><%=t(:tasks)%></a>
+     <ul><li><a href="/tasks"><%=t(:Tasks)%></a>
            <ul>
              <li>
                <a href="/tasks/new"><%=t(:new)%></a>
              </li>
              <li>
-               <a href="tasks/index"><%=t(:search)%></a>
+               <%=link_to t(:search), search_tasks_path %></a>
              </li>
            </ul>
                
@@ -41,10 +41,10 @@
      <ul><li><a href="#"><%=t(:calendar)%></a>
            <ul>
              <li>
-               <a href="eventos/new"><%=t(:new)%></a>
+               <a href="events/new"><%=t(:new)%></a>
              </li>
              <li>
-               <a href="eventos/index"><%=t(:search)%></a>
+               <a href="events/index"><%=t(:search)%></a>
              </li>
            </ul>
    

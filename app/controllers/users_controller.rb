@@ -48,7 +48,7 @@ class UsersController < ApplicationController
     end
     if @user.update_attributes(params[:user])
      # flash[:notice] = "User updated!"
-      redirect_to tasks_path
+      redirect_to users_path
     else
       @companies = Company.all(:order=>:name).collect{|obj| [obj.name,obj.id]}
       render :action => :edit

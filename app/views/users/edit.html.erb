@@ -1,6 +1,7 @@
+<%= render :partial=>"layouts/moldura" %>
 <% content_for :main do %>
-<h1>Edit My Account</h1>
- 
+<h2>Edit My Account</h2>
+ <br/>
 <% form_for(@user) do |f| %>
   <%= f.error_messages %>
   <%= f.label :login %><br />
@@ -10,9 +11,8 @@
   <%= f.label :name %><br />
   <%= f.text_field :name %><br />
   <br />
-<%= current_user.category.name%>
   <% if current_user.category.name.downcase=="gestor"%>
-    <%= f.label :Category%><br/>
+    <%= f.label :category%><br/>
     <%= f.select :category_id, @categories %><br/>
     <br/>
   <% end %>

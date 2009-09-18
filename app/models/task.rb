@@ -7,7 +7,6 @@ has_many :comments
 has_many :pauses
 has_many :evaluations
 
-validates_presence_of :project_id, :message=>"não pode ficar em branco!"
 validates_presence_of :description, :message=>"não pode ficar em branco!"
 validates_presence_of :estimated_time, :message=>"não pode ficar em branco!"
 validates_length_of  :estimated_time, :maximum=>4, :message=>"não pode exeder os 4 caracteres!"

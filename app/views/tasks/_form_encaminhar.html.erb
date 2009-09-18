@@ -2,8 +2,21 @@
 <% form_tag (:action=>"encaminhar", :controller=>"tasks")  do |f| %>
  <%= hidden_field_tag :task_id, task.id %>
   <p>
-   Usuário :
-    <%= select :task, :user_id, @users %>
+    <% if task.project.nil? %>
+      <%= t(:user) %> :
+      <%= select :task, :user_id, @users %>
+    <% else %>
+      <table>
+      	<tr>
+          <td><%= t(:project)%> : </td>
+          <td><%= task.project.name %></td>
+        </tr>
+        <tr>
+        	<td><%= t(:user) %> :</td>
+            <td><%= select :task, :user_id, task.project.users.collect{|obj| [obj.name,obj.id]} %></td>
+        </tr>
+      </table>
+    <% end %>
   </p>
   <br/>
   <p>

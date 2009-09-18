@@ -9,6 +9,8 @@ class User < ActiveRecord::Base
   has_and_belongs_to_many :projects
   has_many :messages
   has_many :events
+  
+  validates_presence_of :company
 #  has_many :written_by,  :foreign_key=>"written_by"
 #TODO criar campo prefered language
 #TODO criar link para alterar linguagem

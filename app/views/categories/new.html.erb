@@ -1,9 +1,4 @@
-<% content_for :leftside do %>
-   <%= render :partial=>"tasks/my_requests" %>
-<% end %>
-<% content_for :rightside do %>
-  <%= render :partial=>"tasks/my_tasks" %>
-<% end %>
+<%= render :partial=>"layouts/moldura" %>
 <% content_for :main do %>
 
 <% form_for @category do |f| %>
@@ -14,5 +9,5 @@
 <br/>
 <%= f.submit "Create"%>
 <% end %>
-<%= link_to 'Voltar', categories_path %>
+<%= link_to t(:back), categories_path %>
 <% end %>

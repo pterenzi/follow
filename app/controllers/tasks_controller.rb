@@ -2,7 +2,8 @@ class TasksController < ApplicationController
 
  # before_filter :authorize
   before_filter :require_user
-  before_filter :retrieve_tasks , :only=>[:index, :show, :new, :edit, :pauser_pattern, :reiniciar_pattern]
+  before_filter :retrieve_tasks , :only=>[:index, :show, :new, :edit, :pauser_pattern,
+      :search, :reiniciar_pattern]
 
   layout 'follow'
 
@@ -30,7 +31,9 @@ class TasksController < ApplicationController
   # GET /tasks/new GET /tasks/new.xml
   def new
     @task = Task.new
-    @projetos = Project.all(:order=>'name').collect{|obj| [obj.name,obj.id]}
+    @companies = Company.all(:order=>'name').collect{|obj| [obj.name,obj.id]}.insert(0,"")
+    @projetos = Project.all(:order=>'name').collect{|obj| [obj.name,obj.id]}.insert(0,"")
+    
 
     respond_to do |format|
       format.html # new.html.erb
@@ -47,8 +50,11 @@ class TasksController < ApplicationController
 
   # POST /tasks POST /tasks.xml
   def create
+    debugger
+    
     @task = Task.new(params[:task])
     @task.requestor_id = current_user.id
+    @task.project_id = params[:project_id] unless params[:project_id].blank?
     @task.user_alert = true
     if !@task.user_id.nil?
       Evaluation.create(:task_id=>@task.id, :user_id=>@task.user_id)
@@ -59,6 +65,9 @@ class TasksController < ApplicationController
         format.html { redirect_to(tasks_path) }
         format.xml  { render :xml => @task, :status => :created, :location => @task }
       else
+        @companies = Company.all(:order=>'name').collect{|obj| [obj.name,obj.id]}.insert(0,"")
+        @projetos = Project.all(:order=>'name').collect{|obj| [obj.name,obj.id]}.insert(0,"")
+        
         retrieve_tasks
         format.html { render :action => "new" }
         format.xml  { render :xml => @task.errors, :status => :unprocessable_entity }
@@ -312,6 +321,12 @@ class TasksController < ApplicationController
     end
     @tasks_comments = Comment.recent_comments(current_user)
     @recent_messages = Message.recent_messages(current_user)
+  end
+  
+  def search
+    @date = Date.today
+    sql = " 1=1"
+    @messages = Message.find(:all, :conditions=>sql)  
   end
   
 end

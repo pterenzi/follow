@@ -1,15 +1,11 @@
-<% content_for :leftside do %>
-  <%= render :partial=>"tasks/my_requests" %>
-<% end %>
-<% content_for :rightside do %>
-  <%= render :partial=>"tasks/my_tasks" %>
-<% end %>
+<%= render :partial=>"layouts/moldura" %>
 <% content_for :main do %>
 <table border="0">
   <tr>
 	<th width="80">Login</th>
 	<th width="110">Nome</th>
 	<th width="110">Company</th>
+	<th width="90"><%=t(:category)%></th>
 	<th>&nbsp;</th>
 	<th>&nbsp;</th>
 	<th>&nbsp;</th>
@@ -19,6 +15,7 @@
 	<td><%=h user.login %></td>
 	<td><%=h user.name %></td>
 	<td><%=h user.company.name unless user.company.nil? %></td>
+	<td><%= link_to user.category.name, edit_category_path(user.category) %></td>
 	<td><%= link_to 'Show', user %></td>
     <td><%= link_to 'Edit', edit_user_path(user) %></td>
     <td><%= link_to 'Destroy', user, :confirm => 'Are you sure?', :method => :delete %></td>
