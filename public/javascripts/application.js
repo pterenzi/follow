@@ -66,8 +66,8 @@ function parar_pulsar(id){
     $(id).recover();
 }
 
-function include_user(id,user_id, user_name){
-    $.get("/projects/insert_user",{'id': id, 'user_id': user_id});
+function include_user(id,user_id, user_name,controller){
+    $.get("/"+controller + "/insert_user",{'id': id, 'user_id': user_id});
     onClick="remove_user("+ id + "," + user_id + ",'" + user_name + "')"
     span = "<span id=\"selected_"+ user_id + "\">"
     str = span + "<a href='#' onClick=\"" + onClick + "\">" + user_name + "</a><br/></span>";
@@ -76,8 +76,9 @@ function include_user(id,user_id, user_name){
     $("#event_method").remove();
 }
 
-function remove_user(id,user_id, user_name){
-    $.get("/projects/remove_user",{'id': id, 'user_id': user_id});
+function remove_user(id,user_id, user_name,controller){
+alert("remove_user");   
+ $.get("/"+controller+"/remove_user",{'id': id, 'user_id': user_id});
     onClick="include_user("+ id + "," + user_id + ",'" + user_name + "')"
     span = "<span id=\"not_selected_"+ user_id + "\">"
     str = span + "<a href='#' onClick=\"" + onClick + "\">" + user_name + "</a><br/></span>";
@@ -90,10 +91,23 @@ function remove_message(id){
   $("#message_"+id).remove();
 }
 
+function filter_user(user_group_id){
+	$("#not_selected_users").html("");
+	  $.getJSON("/user_groups/retrieve_users",{'company_id': $("#company_id").val(),
+	'project_id': $("#project_id").val(),'user_group_id': user_group_id },
+	       function(data){
+		    list = ""
+			for (var i = 0; i < data.length; i++){
+              list = list + "<a href='#' onClick='include_user(" + user_group_id + "," + 
+  data[i][0] + "," + data[i][1] + ",'user_groups')>"+ data[i][0]+ "</a><br/>"
+            }
+          $("#not_selected_users").html(list);
+		});
+}
 function project_selected(){
 	$("#task_user_id").hide();
     $.getJSON("/projects/retrieve_users",{'company_id': $("#company_id").val(),
-'project_id': $("#project_id").val()},
+'project_id': $("#project_id").val(),'user_group_id': $("#user_group_id").val() },
        function(data){
             $("#task_user_id").html("<option value=''>Selecione um colaborador</option>");
             saida = "";
@@ -101,15 +115,12 @@ function project_selected(){
               saida = saida + data[i];
               $("#task_user_id").append(new Option(data[i][0],data[i][1]));
             }
-			$("#task_user_id").show();
-
+            if (data.length>0) {
+			  $("#task_user_id").show();
+            }else{
+			  $("#task_user_id").hide();
+            }
        }
     );
 }
 
-function project_selected0(){
-	alert("zero");
-}
-function company_selected(){
-	alert("selecionou company");
-}

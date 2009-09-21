@@ -10,12 +10,14 @@
 <p>
 	<table>
 		<tr>
-			<td><%=t(:company)%></td>
-			<td><b><%=t(:projects) %></b></td>
+			<td width="130px"><%=t(:company)%></td>
+			<td width="130px"><%=t(:projects) %></td>
+			<td width="130px"><%=t(:user_group)%></td>
 		</tr>
 		<tr>
 			<td><%= select_tag  :company_id, options_for_select(@companies), :include_blank=>:true, :onChange=>"project_selected();"  %> </td>
 			<td><%= select_tag  :project_id, options_for_select(@projetos),:onChange=>"project_selected();" %> </td>
+			<td><%= select_tag  :user_group_id, options_for_select(@user_groups),:onChange=>"project_selected();" %> </td>
 		</tr>
 	</table>
        

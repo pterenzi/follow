@@ -33,7 +33,7 @@ class TasksController < ApplicationController
     @task = Task.new
     @companies = Company.all(:order=>'name').collect{|obj| [obj.name,obj.id]}.insert(0,"")
     @projetos = Project.all(:order=>'name').collect{|obj| [obj.name,obj.id]}.insert(0,"")
-    
+    @user_groups = UserGroup.all(:order=>'name').collect{|obj| [obj.name,obj.id]}.insert(0,"")
 
     respond_to do |format|
       format.html # new.html.erb

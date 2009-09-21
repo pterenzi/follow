@@ -750,3 +750,10 @@ h3 {
         padding-right: 2px;
         font-style: italic;
 }
+
+#not_selected_users, #selected_users{
+	width: 200px;
+	height: 120px;
+	background-color: yellow;
+	border: 1px solid #999;
+}

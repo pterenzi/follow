@@ -129,10 +129,16 @@ def retrieve_users
   if !params[:project_id].blank?
     @project = Project.find(params[:project_id])
   end
-  
+  @user_group = nil
+  if !params[:user_group_id].blank?
+    @user_group = UserGroup.find(params[:user_group_id])
+  end
   @users = User.all(:order=>:name, :conditions=>sql)
   if !@project.nil?
     @users = @users & @project.users
+  end
+  if !@user_group.nil?
+    @users = @users & @user_group.users
   end
   render :json => @users.collect{|obj| [obj.name,obj.id]}
 end

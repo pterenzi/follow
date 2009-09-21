@@ -44,9 +44,10 @@
     </div>
     <% if current_user %>
       <div id="user">
-        <%=t(:user) %>: <%= current_user.name %><br>
+        <%=t(:user) %>: <%= current_user.name %><br/>
         Perfil: <%= current_user.category.name %>
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <%= render :partial=>"layouts/language" %>
         <%= link_to t(:my_data), edit_user_path(current_user) %> |
         <%= link_to t(:logout), logout_path %>
        </div>
@@ -89,15 +90,14 @@
     </div>
 
     <div id="main">
-
       <div id="contenttxt" >
         <%= yield :main %>
       </div>
+    </div>
 	 <div id="messages" align="center" >
 		  <span id="first_message"></span>
 	        <%= yield :messages %>
 	    </div>
-    </div>
 
 
    

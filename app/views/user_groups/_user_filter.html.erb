@@ -1,0 +1,12 @@
+<table>
+	<tr>
+		<td width="130px"><%=t(:company)%></td>
+		<td width="130px"><%=t(:projects) %></td>
+	</tr>
+	<tr>
+	<td><%= select_tag  :company_id, options_for_select(@companies), :include_blank=>:true, :onChange=>"filter_user(#{@user_group.id});"  %> </td>
+	<td><%= select_tag  :project_id, options_for_select(@projects),:onChange=>"filter_user(#{@user_group.id});" %> 
+		<% #TODO nao está funcionando. VErificar resultado de filter_user %>
+		</td>
+	</tr>
+</table>

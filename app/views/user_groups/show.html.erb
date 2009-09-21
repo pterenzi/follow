@@ -1,0 +1,16 @@
+<%= render :partial=>"layouts/moldura" %>
+<% content_for :main do %>
+<p>
+  <b>Name:</b>
+  <%=h @user_group.name %>
+</p>
+
+<p>
+  <b>Active:</b>
+  <%=h @user_group.active %>
+</p>
+
+<%= link_to t(:manage_users), manage_users_user_groups_path(:id=>@user_group.id) %> | 
+<%= link_to 'Edit', edit_user_group_path(@user_group) %> |
+<%= link_to 'Back', user_groups_path %>
+<% end %>

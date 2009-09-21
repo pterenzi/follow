@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20090820165001) do
+ActiveRecord::Schema.define(:version => 20090920144213) do
 
   create_table "categories", :force => true do |t|
     t.string   "name",       :limit => 32
@@ -110,6 +110,18 @@ ActiveRecord::Schema.define(:version => 20090820165001) do
     t.boolean  "has_comment",                        :default => false
     t.datetime "created_at"
     t.datetime "updated_at"
+  end
+
+  create_table "user_groups", :force => true do |t|
+    t.string   "name"
+    t.boolean  "active"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "user_groups_users", :id => false, :force => true do |t|
+    t.integer "user_id"
+    t.integer "user_group_id"
   end
 
   create_table "users", :force => true do |t|

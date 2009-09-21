@@ -1,4 +1,7 @@
 ActionController::Routing::Routes.draw do |map|
+
+  map.resources :user_groups, :collection=>{:manage_users=>:get, :insert_user=>:get,
+        :retrieve_users=>:get, :remove_user=>:get}
   
   map.resources :events, :collection=>{:new_event=>:get, :display_calendar=>:get}
 
@@ -28,7 +31,8 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :tasks do |tasks|
        tasks.resources :comments
     end 
-  
+
+  map.change_language "change_language", :controller=>"languages", :action=>"change_language"
 
   map.resources :evaluations
   

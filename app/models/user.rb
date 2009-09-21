@@ -9,6 +9,7 @@ class User < ActiveRecord::Base
   has_and_belongs_to_many :projects
   has_many :messages
   has_many :events
+  has_and_belongs_to_many :user_groups
   
   validates_presence_of :company
 #  has_many :written_by,  :foreign_key=>"written_by"

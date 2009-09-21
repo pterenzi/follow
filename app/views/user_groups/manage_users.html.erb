@@ -1,0 +1,34 @@
+<%= render :partial=>"layouts/moldura" %>
+<% content_for :main do %>
+<% #TODO fazer o jquery com on opme %>
+<h1> <%= t(:user_group) + " : " + @user_group.name  %></h1>
+<p/><br/>
+<%= t(:selected) %> <br/>
+<div id="selected_users">
+<% for u in @included do%>
+  <span id="selected_<%=u.id %>">
+  <a href="#" onClick="remove_user(<%=  @user_group.id %>,<%= u.id %>, '<%= u.name %>','user_groups' )"><%= u.name %></a><br/>
+    </span>    
+<% end %>
+</div>
+<%= t(:instructions_to_remove)%>
+
+<br/><br/>
+
+ <%= t(:not_selected) %><br/>
+<%= render :partial=>"user_filter" %>
+<br/>
+<div id="not_selected_users">
+    <% for u in @not_selected do%>
+      <span id="not_selected_<%= u.id %>">
+      <a href="#" onClick="include_user(<%=  @user_group.id %>,<%= u.id %>, '<%= u.name %>','user_groups' )"><%= u.name %></a><br/>
+      </span>
+    <% end %>
+</div>
+<%= t(:click_user_name) %> <%= t(:user_group)%><br/>
+
+
+<br/>
+<%= link_to t(:back), :back %>
+
+<% end %>

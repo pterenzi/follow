@@ -1,8 +1,8 @@
 <%= render :partial=>"layouts/moldura" %>
 <% content_for :main do %>
-<h1>Editing company</h1>
+<h1>Editing user_group</h1>
 
-<% form_for(@company) do |f| %>
+<% form_for(@user_group) do |f| %>
   <%= f.error_messages %>
 
   <p>
@@ -14,11 +14,10 @@
     <%= f.check_box :active %>
   </p>
   <p>
-    <%= f.submit "Update" %>
+    <%= f.submit 'Update' %>
   </p>
 <% end %>
 
-<%= link_to 'Show', @company %> |
-<%= link_to 'Back', companies_path %> |
-
+<%= link_to 'Show', @user_group %> |
+<%= link_to 'Back', user_groups_path %>
 <% end %>
