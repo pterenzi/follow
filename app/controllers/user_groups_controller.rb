@@ -115,7 +115,6 @@ class UserGroupsController < ApplicationController
   
   
   def insert_user
-    debugger
     @user_group = UserGroup.find(params[:id])
     @user = User.find(params[:user_id])
     @user_group.users << @user

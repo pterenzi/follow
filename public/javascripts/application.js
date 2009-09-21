@@ -71,18 +71,17 @@ function include_user(id,user_id, user_name,controller){
     onClick="remove_user("+ id + "," + user_id + ",'" + user_name + "')"
     span = "<span id=\"selected_"+ user_id + "\">"
     str = span + "<a href='#' onClick=\"" + onClick + "\">" + user_name + "</a><br/></span>";
-    $("#selected_users").after(str);
+    $("#selected_users").append(str);
     $("#not_selected_"+user_id).remove();
     $("#event_method").remove();
 }
 
 function remove_user(id,user_id, user_name,controller){
-alert("remove_user");   
  $.get("/"+controller+"/remove_user",{'id': id, 'user_id': user_id});
     onClick="include_user("+ id + "," + user_id + ",'" + user_name + "')"
     span = "<span id=\"not_selected_"+ user_id + "\">"
     str = span + "<a href='#' onClick=\"" + onClick + "\">" + user_name + "</a><br/></span>";
-    $("#not_selected_users").after(str);
+    $("#not_selected_users").append(str);
     $("#selected_"+user_id).remove();
 }
 
