@@ -1,10 +1,14 @@
  <% form_for(@event) do |f| %>
   <%= f.error_messages %>
-
+type <%= event.type%>
   <p>
-    <%= f.label :date %>
-    <%= f.date_select :date, :order=>[:day,:month,:year] %>
- 
+	<%= f.radio_button :event_type, "1"%>&nbsp;<%= f.label(:type_1, t(:personal))%><br/>
+	<%= f.radio_button :event_type, "2"%>&nbsp;<%= f.label(:type_2, t(:user_group))%>&nbsp;<%= select_tag :user_group_id, options_for_select(@user_groups.collect{|obj| [obj.name,obj.id]}) %><br/>
+	<%= f.radio_button :event_type, "3"%>&nbsp;<%= f.label(:type_3, t(:project))%>&nbsp;<%= select_tag :project_id, options_for_select(@projects.collect{|obj| [obj.name,obj.id]}) %><br/>
+	<%= f.radio_button :event_type, "4"%>&nbsp;<%= f.label(:type_4, t(:company))%>&nbsp;<%= select_tag :company_id, options_for_select(@companies.collect{|obj| [obj.name,obj.id]}) %><br/>
+    <%= f.label :start_at %>
+    <%= f.datetime_select :start_at, :order=>[:day,:month,:year] %>
+    <br/>
     <%= f.label :content %>
     <%= f.text_field :content %>
 

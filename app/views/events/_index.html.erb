@@ -61,7 +61,7 @@
 <% form_for @event  do |f| %>
 	<p>Date :</p>
 	<%= f.hidden_field :id %>
-	<%= f.date_select :date, :order=>[:day,:month,:year], :id=>"selecao" %>
+	<%= f.date_select :start_at, :order=>[:day,:month,:year], :id=>"selecao" %>
 	<%= f.text_field :content %>
 	<%= f.submit "Save"%>|
 	

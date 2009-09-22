@@ -34,6 +34,7 @@ en:
   no_task: "You don't have any pending task"
   no_users_associated: "There are no user associated with"
   not_selected: "Not selected"
+  personal: "Personal"
   project: "Project"
   projects: "Projects"
   readed: "readed at"

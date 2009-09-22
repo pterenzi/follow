@@ -31,6 +31,7 @@ pt_br:
   no_task: "Não há nenhuma tarefa direcionada para você no momento"
   no_users_associated: "Não há nenhum usuário associado"
   not_selected: "Não selecionados"
+  personal: "Pessoal"
   project: "Projeto"
   projects: "Projetos"
   readed: "lido em"

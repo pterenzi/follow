@@ -27,8 +27,13 @@ class EventsController < ApplicationController
   # GET /events/new
   # GET /events/new.xml
   def new
+    @projects = Project.active
+    @user_groups = UserGroup.active
+    @companies = Company.active
     @event = Event.new
-    @event.date = Date.strptime(params[:date])
+    debugger
+    @event.event_type = 1
+    @event.start_at = params[:date]
     @event.user_id = current_user
     @event.written_by = current_user
     render :update do |page|
@@ -41,6 +46,10 @@ class EventsController < ApplicationController
 
   # GET /events/1/edit
   def edit
+    #TODO colocar o type selecionado
+    @projects = Project.active
+    @user_groups = UserGroup.active
+    @companies = Company.active
     @event = Event.find(params[:id])
      render :update do |page|
        page.replace_html "event_form", :partial =>
@@ -53,20 +62,26 @@ class EventsController < ApplicationController
   # POST /events
   # POST /events.xml
   def create
-    @event = Event.new(params[:event])
-    @event.user_id = current_user.id
-    @event.written_by = current_user.id
+    debugger
+    @users = case
+      when params[:event][:event_type]=="1" then current_user
+      when params[:event][:event_type]=="2" then UserGroup.find(params[:user_group_id]).users  
+      when params[:event][:event_type]=="3" then Project.find(params[:project_id]).users  
+      when params[:event][:event_type]=="4" then Company.find(params[:company_id]).users  
+    end
+    for user in @users do
+      @event = Event.new(params[:event])
+      @event.user_id = user.id
+      @event.written_by = current_user.id
+      @event.save
+    end
+#TODO tratar erro ao savar um event
     respond_to do |format|
-      if @event.save
 #       @date_calendar = @event.date
 #        redirect_to display_calendar_events_path(:date=>@date_calendar)
       #  flash[:notice] = 'Event was successfully created.'
         format.html { redirect_to( tasks_path() ) }
         format.xml  { render :xml => @event, :status => :created, :location => @event }
-      else
-        format.html { render :action => "new" }
-        format.xml  { render :xml => @event.errors, :status => :unprocessable_entity }
-      end
     end
   end
 

@@ -20,10 +20,11 @@
   border-right: 1px #ccc solid; 
   border-bottom: 1px #ccc solid;
   width:65px;
+  height:65px;
 }
 
 #mytable  tr {
- height: 65px; 
+ height: 20px; 
 }
 
 #mytable th { background: #5a78a5; 

@@ -1,3 +1,57 @@
 #TODO Submit ia JavaScript para pause padrão
 #TODO Associar users a projetos, de forma que quando um projeto é selecionado para a criação da task, somente os users daquele projeto apareçam na lista
 #TODO Nõo chamar javascript para alterar alerta toda vez que clicar no link em my_tasks e my_requests
+
+
+
+ulo:  Agenda:
+     1) Fiz umas pequenas alterações no CSS. O layout ficou um pouco mais agradável. Segue em anexo o arquivo com as modificações.
+  2) Notei que o domingo não é listado na visualização por mês. Tentei modificar isso, porém sem sucesso.
+
+     3) É necessário revisar a localização. Logado em inglês os dias da semana aparecem em português
+
+   4) Ao clicar para inserir o evento, a data aparece invertida nos combos (primeiro o ano depois o mês e por fim o dia). Acho que o ideal aqui seria usarmos um datepicker do jQuery (Icon trigger)
+5)  Falta um botão pra cancelar, caso o usuário desista de inserir um novo evento.
+
+     6) Falta um radio button ou combo para que o usuário selecione se o evento cadastrado é para a empresa, projeto, grupo de trabalho aos quais o usuário  pertence ou se é particular. E falta também, é claro, fazer todo a programação para esta funcionalidade. O ideal, é que estas categorias de eventos sejam codificadas por cores. Assim, quando o usuário inserir diversos eventos de categorias diferentes na agenda, será fácil a identificação de a qual categoria o evento  pertence. 
+
+	     7) Os eventos precisam de informações complementares, tais como:
+	               - hora de início e término- evento de dia inteiro
+				               - evento com múltiplos dias
+				
+				
+							#month_calendar{
+							       font-size: 14px;
+							}
+							#calendar{
+							 font-family: verdana, arial, helvetica, sans-serif;
+							 font-size:   10px;
+							 line-height: 11px;
+							 color: #455A79;
+							}
+							#mytable {
+							       width: 500px;
+							       padding: 0em;
+							       margin: 1em;
+							   border-top:  1px solid #ccc;
+							       border-left:  1px solid #ccc;
+							}
+
+							#mytable  td {padding: 0em;
+							 border-right: 1px #ccc solid;
+							 border-bottom: 1px #ccc solid;
+							 width:65px;
+							 height:65px;
+							}
+
+							#mytable  tr {
+							height: 20px;
+							}
+							#mytable th { background: #5a78a5;
+							       text-align: center;
+							       color :white;
+							       border-right: 1px #ccc solid;
+							 }
+							e o _index.html.erb
+							<div id="month_calendar">
+							       <table border="0" width="500px"><tr><td
