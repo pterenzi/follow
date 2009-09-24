@@ -31,7 +31,6 @@ class EventsController < ApplicationController
     @user_groups = UserGroup.active
     @companies = Company.active
     @event = Event.new
-    debugger
     @event.event_type = 1
     @event.start_at = params[:date]
     @event.user_id = current_user

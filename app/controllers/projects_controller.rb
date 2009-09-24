@@ -119,28 +119,5 @@ def remove_user
   render :json => "true"
 end
 
-def retrieve_users
-  #TODO colocar em outro controller . provavelmente user
-  sql = " 1=1 "
-  if !params[:company_id].blank?
-    sql << " and company_id = #{params[:company_id]}"
-  end
-  @project = nil
-  if !params[:project_id].blank?
-    @project = Project.find(params[:project_id])
-  end
-  @user_group = nil
-  if !params[:user_group_id].blank?
-    @user_group = UserGroup.find(params[:user_group_id])
-  end
-  @users = User.all(:order=>:name, :conditions=>sql)
-  if !@project.nil?
-    @users = @users & @project.users
-  end
-  if !@user_group.nil?
-    @users = @users & @user_group.users
-  end
-  render :json => @users.collect{|obj| [obj.name,obj.id]}
-end
 
 end

@@ -105,7 +105,7 @@ function filter_user(user_group_id){
 }
 function project_selected(){
 	$("#task_user_id").hide();
-    $.getJSON("/projects/retrieve_users",{'company_id': $("#company_id").val(),
+    $.getJSON("/users/retrieve_users",{'company_id': $("#company_id").val(),
 'project_id': $("#project_id").val(),'user_group_id': $("#user_group_id").val() },
        function(data){
             $("#task_user_id").html("<option value=''>Selecione um colaborador</option>");
