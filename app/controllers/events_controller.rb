@@ -27,12 +27,20 @@ class EventsController < ApplicationController
   # GET /events/new
   # GET /events/new.xml
   def new
+    @days = Array.new
+    @days << ""
+    (1..31).each do |day| 
+      @days << day
+    end
+    @week_days =  [""] + I18n.t('date.day_names')
     @projects = Project.active
     @user_groups = UserGroup.active
     @companies = Company.active
+    @repeat_until = Date.today + 1.month
     @event = Event.new
     @event.event_type = 1
-    @event.start_at = params[:date]
+    @event.start_at = params[:date] + " 09:00" 
+    @event.end_at = @event.start_at + 1.hour
     @event.user_id = current_user
     @event.written_by = current_user
     render :update do |page|
@@ -61,13 +69,15 @@ class EventsController < ApplicationController
   # POST /events
   # POST /events.xml
   def create
-    debugger
+    @users = Array.new
     @users = case
-      when params[:event][:event_type]=="1" then current_user
+      when params[:event][:event_type]=="1" then current_user.to_a
       when params[:event][:event_type]=="2" then UserGroup.find(params[:user_group_id]).users  
       when params[:event][:event_type]=="3" then Project.find(params[:project_id]).users  
       when params[:event][:event_type]=="4" then Company.find(params[:company_id]).users  
     end
+    debugger
+    days = create_event_days(params)
     for user in @users do
       @event = Event.new(params[:event])
       @event.user_id = user.id
@@ -75,6 +85,7 @@ class EventsController < ApplicationController
       @event.save
     end
 #TODO tratar erro ao savar um event
+#TODO tentar usar rjs instead
     respond_to do |format|
 #       @date_calendar = @event.date
 #        redirect_to display_calendar_events_path(:date=>@date_calendar)
@@ -122,6 +133,23 @@ class EventsController < ApplicationController
   def display_calendar
     date = params[:date].split("-")
     @date_calendar = Date.new(date[0].to_i,date[1].to_i,1)
+  end
+  
+  private
+  
+  def create_event_days(params)
+    days = Array.new
+    if params[:repeat_to_repeat]== "1"
+      if params[:wday]!= ""
+        date = params[:start_date]
+        
+      else
+        
+      end
+    else
+      days << params[:star_date].to_a
+    end
+    days
   end
 
 end

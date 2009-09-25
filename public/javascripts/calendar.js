@@ -1,9 +1,15 @@
-function new_event(data){
-//	$('#event_form').hide();
- //   comps = data.split("-");
- //   $("#event_date_3i").selectOptions(parseInt(comps[2],10)+"");
- //   $("#event_date_2i").selectOptions(parseInt(comps[1],10)+"");
- //   $('#event_content').focus();
- //   $('#event_content').val('');
-	$.get("/events/new");
+function display_repeat_all(){
+  //alert($("#repeat_to_repeat").val());
+  $("#repeat_all").show();
+}
+
+function clear_week_days(){
+	//alert("limpar");
+	$("#wday").selectOptions("");
+}
+function clear_month_days(){
+	$("#day").selectOptions("");
+}
+function hide_event_form(){
+	$("#event_form").hide();
 }

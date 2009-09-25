@@ -123,3 +123,25 @@ function project_selected(){
     );
 }
 
+function populate_user_select(element){
+	alert(element);
+	$("#"+element).hide();
+    $.getJSON("/users/retrieve_users",{'company_id': $("#company_id").val(),
+'project_id': $("#project_id").val(),'user_group_id': $("#user_group_id").val() },
+       function(data){
+	alert(data);
+            $("#"+element).html("<option value=''></option>");
+            saida = "";
+            for (var i = 0; i < data.length; i++){
+              saida = saida + data[i];
+              $("#"+element).append(new Option(data[i][0],data[i][1]));
+            }
+            if (data.length>0) {
+			  $("#"+element).show();
+            }else{
+			  $("#"+element).hide();
+            }
+       }
+    );
+}
+

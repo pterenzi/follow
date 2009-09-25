@@ -16,7 +16,7 @@ ActionController::Routing::Routes.draw do |map|
    
    map.logout "logout", :controller=>"user_sessions", :action=>"destroy"
   # map.resources :account, :controller => "users"
-   map.resources :users, :member=>{:change_password=>:get} , :retrieve_users=>:get
+   map.resources :users, :member=>{:change_password=>:get} , :collection=>{:retrieve_users=>:get}
    map.resources :user_sessions
  
   map.resources :comments

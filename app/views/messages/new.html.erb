@@ -2,10 +2,22 @@
 <% content_for :main do %>
 <% form_for @message do |f| %>
   <%= f.error_messages %>
+<table>
+	<tr>
+		<td width="130px"><%=t(:company)%></td>
+		<td width="130px"><%=t(:projects) %></td>
+		<td width="130px"><%=t(:user_group)%></td>
+	</tr>
+	<tr>
+		<td><%= select_tag  :company_id, options_for_select(@companies), :include_blank=>:true, :onChange=>"populate_user_select('user_id');"  %> </td>
+		<td><%= select_tag  :project_id, options_for_select(@projects),:onChange=>"populate_user_select('user_id');" %> </td>
+		<td><%= select_tag  :user_group_id, options_for_select(@user_groups),:onChange=>"populate_user_select('user_id');" %> </td>
+	</tr>
+</table>
 
   <p>
     <b><%=t(:user) %></b><br />   
-    <%= f.select :user_id,@users,{:prompt=>"Selecione uma Opção"} %>      
+    <%= select_tag :user_id, @users , :multiple=>true %>      
   </p>
   <p>
     <%= f.label :content %><br />

@@ -6,11 +6,11 @@
 
         <a href="#"  title="Detalhes da task" onClick="task_detail(<%= task.id %>);"><%= image_tag "info.png", :border=>0 %></a> <a href="#" onClick="$('#encaminhar_<%= task.id.to_s %>').toggle('blind', { percent: 0 },500 ); return false;"><span class="hyphenate" lang="pt"><%= task.description %></span></a>
         <div style="display: none;"id="encaminhar_<%= task.id.to_s %>" style="background:#F2F2F2;">
-        <%= render :partial=>'form_encaminhar', :locals=>{:task=>task} %>
+        <%= render :partial=>'tasks/form_encaminhar', :locals=>{:task=>task} %>
         </div>
 
 	 <div style="display:none;" id="detail_form_<%=task.id.to_s%>">
-	       <%= render :partial=>'task_details', :locals=>{:task=>task} %>
+	       <%= render :partial=>'tasks/task_details', :locals=>{:task=>task} %>
 	   </div>
 
       </div>

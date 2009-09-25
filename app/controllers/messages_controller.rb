@@ -28,6 +28,9 @@ class MessagesController < ApplicationController
    # GET /messages/new GET /messages/new.xml
    def new
       @message = Message.new
+      @projects = Project.active.collect{|obj| [obj.name,obj.id]}.insert(0,"")
+      @user_groups = UserGroup.active.collect{|obj| [obj.name,obj.id]}.insert(0,"")
+      @companies = Company.active.collect{|obj| [obj.name,obj.id]}.insert(0,"")
    end
 
    # GET /messages/1/edit
