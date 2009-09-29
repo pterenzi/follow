@@ -21,11 +21,9 @@
 	</tr>
 	<tr>
 		<td><%= f.label t(:start_at) %></td>
-		<td><%= f.datetime_select :start_at, :order=>[:day,:month,:year] %></td>
-	</tr>
-	<tr>
-		<td> <%= f.label t(:end_at) %></td>
-		<td><%= f.datetime_select :end_at, :order=>[:day,:month,:year] %></td>
+		
+		<td><%= f.datetime_select :start_at, :order=>[:day,:month,:year], :minute_step=>5 %> 
+			until <%= f.time_select :end_at, :minute_step=>5 %> </td>
 	</tr>
 	<tr>
 		<td><%= f.label :content %></td>
@@ -34,13 +32,12 @@
 	<tr>
 		<td><%= check_box :repeat, :to_repeat, {:onclick=>"display_repeat_all();"} %> <%= t(:repeat_all) %> </td>
 		<td><div id="repeat_all" style="display:none;">
-	    <%= select_tag :day, options_for_select(@days), :onchange=>"clear_week_days();"%>  -  
-		<%= select_tag :wday, options_for_select(@week_days), :onchange=>"clear_month_days();"%>
-		<%= select_date @repeat_until, :order=>[:day,:month,:year]%></div></td>
+	    <%= text_field_tag :months,'12', :size=>3 %> <%= t(:months)%>
+		</div></td>
 	</tr>
 	<tr>
-		<td>&nbsp;</td>
-		<td><%= f.submit "Create" %></td><td>  <%= button_to "Cancel", :onclick=>"hide_event_form();" %></td>
+		<td><%= f.submit "Create" -%></td>
+		<td><%= button_to "Cancel", :onclick=>"hide_event_form();" %></td>
 	</tr>
 </table>
 

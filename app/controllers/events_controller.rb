@@ -27,12 +27,6 @@ class EventsController < ApplicationController
   # GET /events/new
   # GET /events/new.xml
   def new
-    @days = Array.new
-    @days << ""
-    (1..31).each do |day| 
-      @days << day
-    end
-    @week_days =  [""] + I18n.t('date.day_names')
     @projects = Project.active
     @user_groups = UserGroup.active
     @companies = Company.active
@@ -40,6 +34,7 @@ class EventsController < ApplicationController
     @event = Event.new
     @event.event_type = 1
     @event.start_at = params[:date] + " 09:00" 
+    @end_at  = @event.start_at.hour + 1.hour
     @event.end_at = @event.start_at + 1.hour
     @event.user_id = current_user
     @event.written_by = current_user
@@ -76,13 +71,33 @@ class EventsController < ApplicationController
       when params[:event][:event_type]=="3" then Project.find(params[:project_id]).users  
       when params[:event][:event_type]=="4" then Company.find(params[:company_id]).users  
     end
-    debugger
-    days = create_event_days(params)
-    for user in @users do
-      @event = Event.new(params[:event])
-      @event.user_id = user.id
-      @event.written_by = current_user.id
-      @event.save
+   # days = create_event_days(params)
+    if params[:repeat][:to_repeat]== "1"
+      number = params[:months].to_i
+    else
+      number = 1
+    end
+    (1..number).each do |m|
+      for user in @users do
+        @event = Event.new
+        @event.event_type = params[:event][:event_type]
+        @event.content = params[:event][:content]
+        start_date  =Time.local(params[:event]["start_at(1i)"].to_i,
+             params[:event]["start_at(2i)"].to_i,
+             params[:event]["start_at(3i)"].to_i,
+             params[:event]["start_at(4i)"].to_i,
+             params[:event]["start_at(5i)"].to_i)
+        @event.start_at = start_date + m.months - 1.month
+        end_date =   Time.local(params[:event]["end_at(1i)"].to_i,
+            params[:event]["end_at(2i)"].to_i,
+            params[:event]["end_at(3i)"].to_i,
+            params[:event]["end_at(4i)"].to_i,
+            params[:event]["end_at(5i)"].to_i)
+        @event.end_at = end_date + m.months - 1.month
+        @event.user_id = user.id
+        @event.written_by = current_user.id
+        @event.save
+      end
     end
 #TODO tratar erro ao savar um event
 #TODO tentar usar rjs instead
@@ -139,17 +154,28 @@ class EventsController < ApplicationController
   
   def create_event_days(params)
     days = Array.new
-    if params[:repeat_to_repeat]== "1"
-      if params[:wday]!= ""
-        date = params[:start_date]
-        
-      else
-        
+    if params[:repeat][:to_repeat]== "1"
+      initial_date = Time.new(params[:event]["start_at(1i)"].to_i,
+          params[:event]["start_at(2i)"].to_i,
+          params[:event]["start_at(3i)"].to_i,
+          params[:event]["start_at(4i)"].to_i,
+          params[:event]["start_at(5i)"].to_i)
+      
+      final_date = initial_date + params[:months].to_i.months
+      one_date = initial_date
+      while one_date < final_date
+        days << one_date.to_a
+        one_date = one_date + 1.month
       end
     else
-      days << params[:star_date].to_a
+      days << params[:event][:star_date].to_a
     end
     days
   end
 
 end
+
+#TODO date picker
+#TODO retirar combo de minutos e deixar campo
+
+
