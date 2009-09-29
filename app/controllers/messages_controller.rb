@@ -40,18 +40,29 @@ class MessagesController < ApplicationController
 
    # POST /messages POST /messages.xml
    def create
-      @message = Message.new(params[:message])
-      @message.written_by = User.find(current_user.id)
+      erro = false
+      users = params[:user_id]
+      users.each do |user|
+        debugger
+        @message = Message.new(params[:message])
+        @message.user_id = user
+        @message.written_by = User.find(current_user.id)
+        erro = true unless @message.save
+      end
       respond_to do |format|
-          if @message.save
-             flash[:notice] = 'A message foi cadastrada com sucesso!'
-             format.html { redirect_to(tasks_path) }
-             format.xml  { render :xml => @message, :status => :created, :location => @message }
-          else
-             format.html { render :action => "new" }
-             format.xml  { render :xml => @message.errors, :status => :unprocessable_entity }
-          end
-       end
+        if (erro==true)
+          flash[:notice] = 'A message foi cadastrada com sucesso!'
+          format.html { redirect_to(tasks_path) }
+          format.xml  { render :xml => @message, :status => :created, :location => @message }
+        else
+          @projects = Project.active.collect{|obj| [obj.name,obj.id]}.insert(0,"")
+          @user_groups = UserGroup.active.collect{|obj| [obj.name,obj.id]}.insert(0,"")
+          @companies = Company.active.collect{|obj| [obj.name,obj.id]}.insert(0,"")
+          
+          format.html { render :action => "new" }
+          format.xml  { render :xml => @message.errors, :status => :unprocessable_entity }
+        end
+      end
     end
 
       # PUT /messages/1 PUT /messages/1.xml
