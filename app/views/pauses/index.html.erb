@@ -16,9 +16,9 @@
     <td><%=h pause.justification %></td>
     <td><%=h pause.accepted %></td>
     <td><%=h pause.comment_requestor %></td>
-    <td><%= link_to 'Show', pause %></td>
-    <td><%= link_to 'Edit', edit_pause_path(pause) %></td>
-    <td><%= link_to 'Destroy', pause, :confirm => 'Are you sure?', :method => :delete %></td>
+    <td><%= link_to t(:show), pause %></td>
+    <td><%= link_to t(:edit), edit_pause_path(pause) %></td>
+    <td><%= link_to t(:destroy), pause, :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>
 <% end %>
 </table>

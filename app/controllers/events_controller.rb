@@ -5,6 +5,7 @@ class EventsController < ApplicationController
   # GET /events
   # GET /events.xml
   def index
+    debugger
     @events = Event.find(:all)
 
     respond_to do |format|

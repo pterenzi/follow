@@ -1,23 +1,22 @@
 <%= render :partial=>"layouts/moldura" %>
 <% content_for :main do %>
-<h1>Editing user_group</h1>
+<h1><%= t(:editing).capitalize +  t(:user_group) %></h1>
 
 <% form_for(@user_group) do |f| %>
   <%= f.error_messages %>
 
   <p>
-    <%= f.label :name %><br />
+    <%= f.label t(:name) %><br />
     <%= f.text_field :name %>
-  </p>
+  </p><br/>
   <p>
-    <%= f.label :active %><br />
-    <%= f.check_box :active %>
-  </p>
+    <%= f.check_box :active %>&nbsp;<%= f.label t(:active) %><br/>
+  </p><br/>
   <p>
-    <%= f.submit 'Update' %>
+    <%= f.submit t(:update) %>
   </p>
 <% end %>
-
-<%= link_to 'Show', @user_group %> |
-<%= link_to 'Back', user_groups_path %>
+<br/>
+<%= link_to t(:show), @user_group %> |
+<%= link_to t(:back), user_groups_path %>
 <% end %>

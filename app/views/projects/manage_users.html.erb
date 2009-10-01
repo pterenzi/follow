@@ -4,7 +4,7 @@
 <h1>Projeto : <%= @project.name  %></h1>
 <p/><br/>
  Selecionados <br/>
-<div id="selected_users">
+<div id="group">
 <% for u in @included do%>
   <span id="selected_<%=u.id %>">
   <a href="#" onClick="remove_user(<%=  @project.id %>,<%= u.id %>, '<%= u.name %>' )"><%= u.name %></a><br/>
@@ -15,7 +15,7 @@
 
  Fora do projeto <br/>
 (clique no name do usuario para incluí-lo no projeto)<br/>
-<div id="not_selected_users">
+<div id="group">
     <% for u in @not_selected do%>
       <span id="not_selected_<%= u.id %>">
       <a href="#" onClick="include_user(<%=  @project.id %>,<%= u.id %>, '<%= u.name %>' )"><%= u.name %></a><br/>
@@ -24,7 +24,6 @@
 </div>
 
 
-<br/>voltar
-<%= link_to t(:back), project_path(@project) %>
+<br/><%= link_to t(:back), project_path(@project) %>
 
 <% end %>

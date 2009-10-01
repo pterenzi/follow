@@ -1,13 +1,14 @@
 <%= render :partial=>"layouts/moldura" %>
 <% content_for :main do %>
-
+<h1><%= t(:editing).capitalize + t(:category) %></h1>
 <% form_for @category do |f| %>
 
 <%= error_messages_for :categories %>
-<%= f.label :name %>
+<%= f.label t(:name) %>
 <%= f.text_field :name %>
-<br/>
-<%= f.submit "Update"%>
+<br/><br/>
+<%= f.submit t(:update)%>
 <% end %>
+<br/>
 <%= link_to t(:back), categories_path %>
 <% end %>

@@ -213,7 +213,6 @@ class TasksController < ApplicationController
   end
   
   def reiniciar_pattern
-    
     for task in @my_tasks
       #debugger
       puts "task : " + task.id.to_s
@@ -326,7 +325,7 @@ class TasksController < ApplicationController
   def search
     @date = Date.today
     sql = " 1=1"
-    @messages = Message.find(:all, :conditions=>sql)  
+    #@messages = Message.find(:all, :conditions=>sql)  
   end
   
 end

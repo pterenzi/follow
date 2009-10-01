@@ -1,5 +1,5 @@
 <div id="month_calendar">
-	<table border="0" width="500px"><tr><td align="right" width="30%">
+	<table class = "transparent" border="0" width="500px"><tr><td align="right" width="30%">
 <%= link_to_remote "<", :url=>{:controller=>"events", :action=>"display_calendar", :date=>@date_calendar-1.month} %>
 </td>
 <td  align="center" width="40%"><%= I18n.t('date.month_names')[@date_calendar.month] %> / <%= @date_calendar.year %> </td>
@@ -34,12 +34,12 @@
     <% else %>
       <% color = "#ffffff"%>
     <% end %>
-	    <td width="120" bgcolor = <%=color%> valign="top" >
-      <%= link_to_remote date.day.to_s,:url=>new_event_path(:date=>date), :method=>:get %> <br/>
-      <% for event in events %>
-          .<%= link_to_remote "#{event.content}", :url=>edit_event_path(event), :method=>:get %><br/>
-     <% end %> 
-      </td>
+	<td width="120" bgcolor = <%=color%> valign="top" >
+    <%= link_to_remote date.day.to_s,:url=>new_event_path(:date=>date), :method=>:get %> <br/>
+    <% for event in events %>
+       .<%= link_to_remote "#{event.content}", :url=>edit_event_path(event), :method=>:get %><br/>
+    <% end %> 
+    </td>
    <% date += 1.day %>
    <% if date.wday==0 %>
      </tr>
@@ -49,6 +49,10 @@
     
   <% end %>  
 <% end %>
+  <% while date.wday > 0 and date.wday < 6 do%>
+     <td>&nbsp;</td>
+    <% date = date + 1.day %>
+  <% end %>
 </table>
 
 <div id="event_form" style="display:none;">

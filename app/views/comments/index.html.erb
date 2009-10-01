@@ -12,9 +12,9 @@
   <tr>
     <td><%=h comment.usuario_id %></td>
     <td><%=h comment.description %></td>
-    <td><%= link_to 'Show', comment %></td>
-    <td><%= link_to 'Edit', edit_comment_path(comment) %></td>
-    <td><%= link_to 'Destroy', comment, :confirm => 'Are you sure?', :method => :delete %></td>
+    <td><%= link_to t(:show), comment %></td>
+    <td><%= link_to t(:edit), edit_comment_path(comment) %></td>
+    <td><%= link_to t(:destroy), comment, :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>
 <% end %>
 </table>

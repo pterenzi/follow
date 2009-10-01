@@ -1,10 +1,11 @@
 <%= render :partial=>"layouts/moldura" %>
 <% content_for :main do %>
+<h1><%= t(:listing) + t(:users) %></h1>
 <table border="0">
   <tr>
-	<th width="80">Login</th>
-	<th width="110">Nome</th>
-	<th width="110">Company</th>
+	<th width="80"><%= t(:login) %></th>
+	<th width="110"><%= t(:name) %></th>
+	<th width="110"><%= t(:company) %></th>
 	<th width="90"><%=t(:category)%></th>
 	<th>&nbsp;</th>
 	<th>&nbsp;</th>
@@ -16,11 +17,12 @@
 	<td><%=h user.name %></td>
 	<td><%=h user.company.name unless user.company.nil? %></td>
 	<td><%= link_to user.category.name, edit_category_path(user.category) %></td>
-	<td><%= link_to 'Show', user %></td>
-    <td><%= link_to 'Edit', edit_user_path(user) %></td>
-    <td><%= link_to 'Destroy', user, :confirm => 'Are you sure?', :method => :delete %></td>
+	<td><%= link_to t(:show), user %></td>
+    <td><%= link_to t(:edit), edit_user_path(user) %></td>
+    <td><%= link_to t(:destroy), user, :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>
 <% end %>
 </table>
-<%= link_to "New User", new_user_path() %>
+<br/>
+<%= link_to t(:new) + t(:user) , new_user_path() %>
 <% end %>

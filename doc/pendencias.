@@ -1,3 +1,8 @@
+30/set/2009
+ falta pesquisa por evento, pesquisa por task, avaliação, relatórios, ajuda
+
+
+
 #TODO Submit ia JavaScript para pause padrão
 #TODO Associar users a projetos, de forma que quando um projeto é selecionado para a criação da task, somente os users daquele projeto apareçam na lista
 #TODO Nõo chamar javascript para alterar alerta toda vez que clicar no link em my_tasks e my_requests

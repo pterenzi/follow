@@ -1,8 +1,9 @@
 <%= render :partial=>"layouts/moldura" %>
 <% content_for :main do %>
+<h1><%= t(:new) + t(:message) %></h1>
 <% form_for @message do |f| %>
   <%= f.error_messages %>
-<table>
+<table class="transparent" >
 	<tr>
 		<td width="130px"><%=t(:company)%></td>
 		<td width="130px"><%=t(:projects) %></td>
@@ -13,19 +14,24 @@
 		<td><%= select_tag  :project_id, options_for_select(@projects),:onChange=>"populate_user_select('user_id');" %> </td>
 		<td><%= select_tag  :user_group_id, options_for_select(@user_groups),:onChange=>"populate_user_select('user_id');" %> </td>
 	</tr>
+	<tr>
+		<td>
+		    <%=t(:user) %><br />  <br/> 
+		    <%= select_tag :user_id, @users , :multiple=>true %>      
+		  </td>
+	</tr>
 </table>
 
+  
   <p>
-    <b><%=t(:user) %></b><br />   
-    <%= select_tag :user_id, @users , :multiple=>true %>      
-  </p>
-  <p>
-    <%= f.label :content %><br />
+    <%= f.label t(:content) %><br />
     <%= f.text_field :content %>
   </p>
+  <br/>
   <p>
-    <%= f.submit "Create" %>
+    <%= f.submit t(:create) %>
   </p>
 <% end %>
-
+<br/>
+<%= link_to t(:back), tasks_path %>
 <% end %>

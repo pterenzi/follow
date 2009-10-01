@@ -1,25 +1,28 @@
 <%= render :partial=>"layouts/moldura" %>
 <% content_for :main do %>
-<h1>Listing projects</h1>
+<h1><%= t(:listing) +  " " + t(:projects) %></h1>
 
-<table>
+<table >
   <tr>
-    <th>Name</th>
-    <th>Active</th>
+    <th width="100pxm"><%= t(:name) %></th>
+    <th width="30px"><%= t(:active) %></th>
+    <th width="50px">&nbsp;</th>
+    <th width="50px">&nbsp;</th>
+    <th width="50px">&nbsp;</th>
   </tr>
 
 <% for project in @projects %>
   <tr>
     <td><%=h project.name %></td>
     <td><%=h project.active %></td>
-    <td><%= link_to 'Show', project %></td>
-    <td><%= link_to 'Edit', edit_project_path(project) %></td>
-    <td><%= link_to 'Destroy', project, :confirm => 'Are you sure?', :method => :delete %></td>
+    <td align="center"><%= link_to t(:show), project %></td>
+    <td align="center"><%= link_to t(:edit), edit_project_path(project) %></td>
+    <td align="center"><%= link_to t(:destroy), project, :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>
 <% end %>
 </table>
 
 <br />
 
-<%= link_to 'New project', new_project_path %>
+<%= link_to t(:new) + t(:project), new_project_path %>
 <% end %>

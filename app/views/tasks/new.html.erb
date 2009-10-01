@@ -8,7 +8,7 @@
 <% form_for(@task) do |f| %>
 
 <p>
-	<table>
+	<table class="transparent">
 		<tr>
 			<td width="130px"><%=t(:company)%></td>
 			<td width="130px"><%=t(:projects) %></td>
@@ -26,7 +26,7 @@
 <p>
   <b><%=t(:user) %></b><br />   
   
-  <%= f.select :user_id, @users,{:prompt=>"Selecione um colaborador",options={:id=>"task_user_id"}} %>      
+  <%= f.select :user_id, @users,{:prompt=>"Selecione um colaborador",:options=>{:id=>"task_user_id"}} %>      
 </p>
 
   <p>

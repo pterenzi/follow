@@ -1,20 +1,22 @@
 <%= render :partial=>"layouts/moldura" %>
 <% content_for :main do %><p>
-  <b>Name:</b>
+  <b><%= t(:name) %>:</b>
   <%=h @company.name %>
 </p>
 
 <p>
-  <b>Active:</b>
+  <b><%= t(:active) %>:</b>
   <%=h @company.active %>
 </p>
 <br/>
 <%= t(:users) %><br/>
+<div id="group">
 <% for user in @company.users do %>
 <%= link_to user.login, edit_user_url(user) %><br/>
 <% end %>
-<br/><br/>
+</div>
+<br/>
 
-<%= link_to 'Edit', edit_company_path(@company) %> |
-<%= link_to 'Back', companies_path %> 
+<%= link_to t(:edit), edit_company_path(@company) %> |
+<%= link_to t(:back), companies_path %> 
 <% end %>

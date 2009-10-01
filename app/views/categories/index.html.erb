@@ -1,8 +1,7 @@
 <%= render :partial=>"layouts/moldura" %>
 <% content_for :main do%>
-<p>
-  <%= link_to t(:new_category), new_category_path %>
-</p><br/>
+<h1><%= t(:listing) + t(:categories) %></h1>
+
 <%  @export = false  %>
 <table class="tableNegocios">
 	<tr>
@@ -15,7 +14,9 @@
   <%=  render(:partial => "category", :collection => @categories)  %>
   </tbody>
 </table>
-
-<br />
+<br/>
+<p>
+  <%= link_to t(:new_category), new_category_path %>
+</p><br/>
 
 <% end %>

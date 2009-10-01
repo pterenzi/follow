@@ -1,8 +1,8 @@
 <%= render :partial=>"layouts/moldura" %>
 <% content_for :main do %>
-<h2>Searching messages</h2><br/>
+<h1>Searching messages</h1><br/>
 <% form_tag search_messages_path() do  %>
-<table>
+<table class="transparent">
   <tr><td align="right"><%= t(:content) %> :</td>
   <td><%= text_field_tag :content, params[:content] %></td>
   </tr>
@@ -24,17 +24,17 @@
 <p>
 <table>
 	<tr>
-		<th><%=t(:message)%></th>
-		<th><%= t(:sent_by)%></th>
-		<th><%= t(:at)%></th>
-		<th><%= t(:readed)%></th>
+		<th width="220px"><%=t(:message)%></th>
+		<th width="130px"><%= t(:sent_by)%></th>
+		<th width="100px"><%= t(:at)%></th>
+		<th width="100px"><%= t(:readed)%></th>
 	</tr>
 <% for message in @messages%>
   <tr>
-  	<td width="220px"><%= message.content %></td>
-    <td width="130px"><%= message.written_by.name %></td>
-    <td width="100px"><%= message.created_at.strftime("%d/%m  %H:%M") %></td>
-    <td width="100px"><%= message.readed.strftime("%d/%m  %H:%M") unless message.readed.nil? %></td>
+  	<td><%= message.content %></td>
+    <td><%= message.written_by.name %></td>
+    <td><%= message.created_at.strftime("%d/%m  %H:%M") %></td>
+    <td><%= message.readed.strftime("%d/%m  %H:%M") unless message.readed.nil? %></td>
   </tr>
 <% end %>
 </table>

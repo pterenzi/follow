@@ -8,9 +8,9 @@
 <% for pattern_pause in @pattern_pauses %>
   <tr>
     <td><%=h pattern_pause.description %></td>
-    <td><%= link_to 'Show', pattern_pause %></td>
-    <td><%= link_to 'Edit', edit_pattern_pause_path(pattern_pause) %></td>
-    <td><%= link_to 'Destroy', pattern_pause, :confirm => 'Are you sure?', :method => :delete %></td>
+    <td><%= link_to t(:show), pattern_pause %></td>
+    <td><%= link_to t(:edit), edit_pattern_pause_path(pattern_pause) %></td>
+    <td><%= link_to t(:destroy), pattern_pause, :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>
 <% end %>
 </table>

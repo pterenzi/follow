@@ -1,0 +1,6 @@
+ <%=t(:user) %>: <%= current_user.name %> (  <%= current_user.category.name %> )<br/>
+
+ <%= link_to "english", change_language_path(:locale=>"en") %> | 
+ <%= link_to "portugues" , change_language_path(:locale=>"pt-BR")%> | 
+ <%= link_to t(:my_data), edit_user_path(current_user) %> |
+ <%= link_to t(:logout), logout_path %>

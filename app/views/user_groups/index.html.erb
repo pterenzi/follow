@@ -4,8 +4,12 @@
 
 <table>
   <tr>
-    <th>Name</th>
-    <th>Active</th>
+    <th><%= t(:name) %></th>
+    <th><%= t(:active) %></th>
+    <th>&nbsp;</th>
+    <th>&nbsp;</th>
+    <th>&nbsp;</th>
+    <th>&nbsp;</th>
   </tr>
 
 <% @user_groups.each do |user_group| %>
@@ -13,9 +17,9 @@
     <td><%=h user_group.name %></td>
     <td><%=h user_group.active %></td>
     <td><%= link_to t(:manage_users), manage_users_user_groups_path(:id=>user_group.id) %></td>
-    <td><%= link_to 'Show', user_group %></td>
-    <td><%= link_to 'Edit', edit_user_group_path(user_group) %></td>
-    <td><%= link_to 'Destroy', user_group, :confirm => 'Are you sure?', :method => :delete %></td>
+    <td><%= link_to t(:show), user_group %></td>
+    <td><%= link_to t(:edit), edit_user_group_path(user_group) %></td>
+    <td><%= link_to t(:destroy), user_group, :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>
 <% end %>
 </table>

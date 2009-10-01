@@ -1,7 +1,7 @@
 Task refused por <%= task.user.name %>.<br />
 Justificativa: <%= task.justification_recusa %>
 <br /><br/>
-<% form_tag( :action=>"update", :controller=>"evaluations" ) do %>
+<% form_tag( :action=>t(:update), :controller=>"evaluations" ) do %>
 <%= hidden_field_tag :task_id, task.id %>
 
 <%= radio_button_tag (:evaluation, "1") %>

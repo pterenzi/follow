@@ -9,7 +9,7 @@
 <% if @category.users.empty? %>
   <%= t(:no_users_associated) %><br/><br/>
 <% else %>
-<p><%= t(:users_associated)%></p>
+<%= t(:users_associated)%>
 	<br/>
 <table>
 	<tr>
@@ -22,5 +22,6 @@
 </table >
 <br/>
 <% end %>
-<%= link_to t(:back), categories_path %>
+<%= link_to t(:back), categories_path %> | 
+<%= link_to t(:edit), edit_category_path(@category)%>
 <% end %>

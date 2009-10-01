@@ -18,6 +18,7 @@
   <%= javascript_include_tag 'select_boxes.js'%>
   <%= javascript_include_tag 'pulse.jquery.js' %>
   <%= javascript_include_tag 'calendar.js' %>
+  <%= stylesheet_link_tag 'table_css_styles/sea_glass.css'%>
   
 <script type="text/javascript">
             Hyphenator.run();
@@ -45,12 +46,7 @@
     </div>
     <% if current_user %>
       <div id="user">
-        <%=t(:user) %>: <%= current_user.name %><br/>
-        Perfil: <%= current_user.category.name %>
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        <%= render :partial=>"layouts/language" %>
-        <%= link_to t(:my_data), edit_user_path(current_user) %> |
-        <%= link_to t(:logout), logout_path %>
+	    <%= render :partial=>"layouts/user" %>
        </div>
      <% end %>
   </div>

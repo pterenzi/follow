@@ -1,29 +1,29 @@
 <%= render :partial=>"layouts/moldura" %>
 <% content_for :main do%>
-<h1>Edit My Account</h1>
+<h1><%= t(:new) + t(:user) %></h1>
  
 <% form_for(@user) do |f| %>
   <%= f.error_messages %>
   <%= f.label :login %><br />
   <%= f.text_field :login %><br />
   <br />
-<%= f.label :password %><br />
+<%= f.label t(:password) %><br />
 <%= f.password_field :password %><br />
 <br/>
-<%= f.label :password_confirmation %><br />
+<%= f.label t(:password_confirmation) %><br />
 <%= f.password_field :password_confirmation %><br /><br/>
-  <%= f.label :name %><br />
+  <%= f.label t(:name) %><br />
   <%= f.text_field :name %><br />
   <br />
-    <%= f.label :Category%><br/>
+    <%= f.label t(:category) %><br/>
     <%= f.select :category_id, @categories %><br/>
     <br/>
-<%= f.label :Company%><br/>
+<%= f.label t(:company) %><br/>
 <%= f.select :company_id, @companies %>
 <br/><br/>
-  <%= f.submit "Create" %>
+  <%= f.submit t(:create) %>
 <% end %>
  
 <br />
-<%= link_to "Back", :back%> 
+<%= link_to t(:back), :back%> 
 <% end %>

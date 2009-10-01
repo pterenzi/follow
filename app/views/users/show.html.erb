@@ -1,5 +1,6 @@
 <%= render :partial=>"layouts/moldura" %>
 <% content_for :main do %>
+<h1><%= t("user").capitalize %> </h1>
 <p>
   <b>Login:</b>
   <%=h @user.login %>
@@ -35,7 +36,7 @@
   <%=h @user.current_login_ip %>
 </p>
  
- 
-<%= link_to 'Edit', edit_user_path(@user) %> | 
-<%= link_to 'Back', users_path %>
+ <br/>
+<%= link_to t(:edit), edit_user_path(@user) %> | 
+<%= link_to t(:back), users_path %>
 <% end %>

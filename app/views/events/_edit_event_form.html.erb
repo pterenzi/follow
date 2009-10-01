@@ -14,7 +14,7 @@ type <%= event.type%>
 
   <%= f.hidden_field :user_id %>
   <%= f.hidden_field :written_by %>&nbsp;
-    <%= f.submit "Update" %>  <%= link_to image_tag("trash.jpg",:size=>"28x28", :border=>0), event, :confirm => 'Are you sure?', :method => :delete %>
+    <%= f.submit t(:update) %>  <%= link_to image_tag("trash.jpg",:size=>"28x28", :border=>0), event, :confirm => 'Are you sure?', :method => :delete %>
 	
   </p>
 <% end %>

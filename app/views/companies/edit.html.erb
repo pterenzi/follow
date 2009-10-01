@@ -1,24 +1,24 @@
 <%= render :partial=>"layouts/moldura" %>
 <% content_for :main do %>
-<h1>Editing company</h1>
+<h1><%= t(:editing).capitalize + t(:company) %> </h1>
 
 <% form_for(@company) do |f| %>
   <%= f.error_messages %>
 
   <p>
-    <%= f.label :name %><br />
+    <%= f.label t(:name) %><br/>
     <%= f.text_field :name %>
   </p>
+  <br/>
   <p>
-    <%= f.label :active %><br />
-    <%= f.check_box :active %>
-  </p>
+    <%= f.check_box :active %> &nbsp; <%= f.label :active %>
+  </p><br />
   <p>
-    <%= f.submit "Update" %>
+    <%= f.submit t(:update) %>
   </p>
 <% end %>
-
-<%= link_to 'Show', @company %> |
-<%= link_to 'Back', companies_path %> |
+<br/>
+<%= link_to t(:show), @company %> |
+<%= link_to t(:back), companies_path %>
 
 <% end %>

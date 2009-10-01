@@ -1,22 +1,26 @@
 <%= render :partial=>"layouts/moldura" %>
 <% content_for :main do %>
+<h1><%= t(:show).capitalize + " " + t("project")%></h1>
 <p>
-  <b>Name:</b>
+  <b><%= t(:name) %> :</b>
   <%=h @project.name %>
 </p>
 
 <p>
-  <b>Active:</b>
+  <b><%= t(:active) %> :</b>
   <%=h @project.active %>
 </p>
+<br/>
 <p>
-  <b>Users</b><br/>
+  <b><%= t(:users).capitalize %></b><br/>
+  <div id="group">
   <% for user in @project.users %>
     <%= user.name %><br/>
   <% end %>
+  </div>
 </p>
 
-<%= link_to 'Manage users', :controller=>"projects", :action=>"manage_users", :id=>@project.id %> |
-<%= link_to 'Edit', edit_project_path(@project) %> |
-<%= link_to 'Back', projects_path %>
+<%= link_to t(:manage_users), :controller=>"projects", :action=>"manage_users", :id=>@project.id %> |
+<%= link_to t(:edit), edit_project_path(@project) %> |
+<%= link_to t(:back), projects_path %>
 <% end %>
