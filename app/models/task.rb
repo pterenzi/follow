@@ -19,7 +19,7 @@ named_scope :minhas, lambda{ |id| {:conditions=>["user_id = ?", id]} }
 named_scope :outra_pessoa, :conditions=>["user_id <> requestor_id"]
 named_scope :de_mim_para_mim, lambda{ |id| {:conditions=>["user_id = requestor_id and requestor_id = ?", id]} }    
 named_scope :para_mim, lambda{ |id| {:conditions=>["user_id <> requestor_id and user_id = ?", id]}}
-named_scope :abertas, :conditions=>{:end_at => nil}
+named_scope :abertas, :conditions=>["start_at <= ? and end_at IS NULL",Time.now.strftime("%Y-%m-%d %H:%M") ]
 #named_scope :sem_evaluation,           
 #            :joins=>:evaluations,          
 #            lambda{ |id,user_id| {:conditions=>{"evaluations.task_id=? and evaluations.user_id=?",id, user_id}} }

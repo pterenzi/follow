@@ -30,6 +30,10 @@
 </p>
 
   <p>
+  	<b><%= t(:start_at) %></b><br/>
+    <%= f.datetime_select :start_at,  :order=>[:day,:month,:year] %>
+  </p>
+  <p>
     <b><%= t(:description) %></b><br/>
     <%= f.text_area :description, :cols=>60, :rows=>10 %>
   </p>

@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20090920144213) do
+ActiveRecord::Schema.define(:version => 20091002125017) do
 
   create_table "categories", :force => true do |t|
     t.string   "name",       :limit => 32
@@ -112,6 +112,7 @@ ActiveRecord::Schema.define(:version => 20090920144213) do
     t.boolean  "has_comment",                        :default => false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.datetime "start_at"
   end
 
   create_table "user_groups", :force => true do |t|

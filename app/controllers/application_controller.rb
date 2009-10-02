@@ -8,16 +8,16 @@ class ApplicationController < ActionController::Base
     before_filter :set_locale
     
     def set_locale
-      debugger
-      if params[:locale]
+      #if params[:locale]
         I18n.locale = params[:locale]
-      else
-        I18n.locale = "pt-BR"
-      end
+      #else
+      #  I18n.locale = "pt-BR"
+      #end
     end
     
     def default_url_options(options={})
       logger.debug "default_url_options is passed options: #{options.inspect}\n"
+#debugger
       { :locale => I18n.locale }
     end
     

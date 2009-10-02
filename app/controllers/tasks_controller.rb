@@ -31,6 +31,7 @@ class TasksController < ApplicationController
   # GET /tasks/new GET /tasks/new.xml
   def new
     @task = Task.new
+    @task.start_at = Time.now
     @companies = Company.all(:order=>'name').collect{|obj| [obj.name,obj.id]}.insert(0,"")
     @projetos = Project.all(:order=>'name').collect{|obj| [obj.name,obj.id]}.insert(0,"")
     @user_groups = UserGroup.all(:order=>'name').collect{|obj| [obj.name,obj.id]}.insert(0,"")
