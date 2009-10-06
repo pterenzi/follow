@@ -5,40 +5,31 @@
 <%= error_messages_for :task %>
 
 <% form_for(@task) do |f| %>
-<p>
-   <b>Projetos</b><br />   
-   
-   <%= f.select :projeto_id,@projetos,{:prompt=>"Selecione uma Opção"} %>      
- </p>
   <p>
-	<b>Descrição</b><br/>
-	<%= f.text_area :description, :cols=>60, :rows=>10 , :disabled=>@task.usuario_que_criou(@usuario_logado.id) %>
+   <b><%=t(:project) %></b><br />   
+   <%= f.select :project_id,@projects %>      
+  </p>
+  <p>
+  	<b><%= t(:start_at) %></b><br/>
+    <%= f.datetime_select :start_at,  :order=>[:day,:month,:year] %>
+  </p>
+  <p>
+	<b><%= t(:description) %></b><br/>
+	<%= f.text_area :description, :cols=>60, :rows=>10 %>
+	<% #, :disabled=>@task.usuario_que_criou(@usuario_logado.id) %>
   </p>
   
   <p>
-    <b>Situação</b><br />   
-    <%= f.select :situacao_id,@situacaos,{:prompt=>"Selecione uma Opção"} %>  | <%= @task.situacao_id  %>
+    <b><%=t(:user) %></b><br />   
+    <%= f.select :user_id,@users %> 
   </p>
-
   <p>
-    <b>Delegado a : </b><br />   
-    <%= f.select :usuario_id,@users,{:prompt=>"Selecione uma Opção"} %>   | <%=  @task.usuario_id %>
-  </p>
-
-  <p>
-    <b>Tempo est</b><br />   
-       
+    <b><%= t(:estimated_time)%></b><br/>   
     <%= f.text_field :estimated_time %>     
-  </p>
-
-  <p>
-    <b>Evaluation</b><br />   
-       
-    <%= f.text_field :evaluation %>     
   </p>
   <br/>
   <p>
-    <%= f.submit "Atualizar" %>
+    <%= f.submit t(:save) %>
   </p>
 <% end %>
 

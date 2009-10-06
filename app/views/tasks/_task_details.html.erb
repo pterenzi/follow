@@ -9,5 +9,13 @@
 </p>
 <br/>
 <p>
+	<b><%=t(:start_at)%>:</b>
+	<%= task.start_at.to_time.to_s(:short) %>
+	<% #TODO internacionalizar a saida do campo start_at %>
+</p>
+<br/>
+<p>
 	<b>Solicitado há <%= task.tempo_decorrido %> </b>
 </p>
+<span style = float:right;>
+<%= link_to t(:edit), edit_task_path(task.id) %></span>

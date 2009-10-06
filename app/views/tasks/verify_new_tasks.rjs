@@ -6,6 +6,8 @@ if !@recent_task.nil?
     page << "if ($('#task_#{@recent_task.id}').length==0) {"
     #TODO inserção de uma nova task na última posição
       page.insert_html :bottom, "user_name_"+@recent_task.requestor_id.to_s, :partial=>"tasks/task", :locals=>{:task=>@recent_task} 
+     #TODO deu erro aqui no verify new task
+     
       page.insert_html :up, "last_task_for_user_"+@recent_task.requestor.user_name, :partial=>"tasks/task", :locals=>{:task=>@recent_task} 
     page << "}"
   page << "}"

@@ -146,7 +146,7 @@ def self.encerradas_sem_evaluation(requestor_id)
 end
 
 def self.recent_task(current_user)
-  Task.first(:order=>"created_at desc", :conditions=>["user_id=? ", current_user])
+  Task.first(:order=>"start_at desc", :conditions=>["start_at < ?  and user_id=? ", Time.now.strftime("%Y-%m-%d %H:%M") ,current_user])
 end
 
 end

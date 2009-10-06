@@ -45,14 +45,13 @@ class TasksController < ApplicationController
   # GET /tasks/1/edit
   def edit
     @task = Task.find(params[:id])
-    @projetos = Project.all(:order=>'name').collect{|obj| [obj.description,obj.id]}
-    @situacaos = Situacao.find(:all).collect{|obj| [obj.description,obj.id]}
-  end
+    @companies = Company.all(:order=>'name').collect{|obj| [obj.name,obj.id]}.insert(0,"")
+    @projects = Project.all(:order=>'name').collect{|obj| [obj.name,obj.id]}.insert(0,"")
+    @user_groups = UserGroup.all(:order=>'name').collect{|obj| [obj.name,obj.id]}.insert(0,"")
+ end
 
   # POST /tasks POST /tasks.xml
   def create
-    debugger
-    
     @task = Task.new(params[:task])
     @task.requestor_id = current_user.id
     @task.project_id = params[:project_id] unless params[:project_id].blank?
@@ -79,19 +78,15 @@ class TasksController < ApplicationController
   # PUT /tasks/1 PUT /tasks/1.xml
   def update
     @task = Task.find(params[:id])
-    #debugger
     respond_to do |format|
       if @task.update_attributes(params[:task])
         flash[:notice] = 'tasks foi alterado com sucesso!'
-        format.html { redirect_to(@task) }
-
+        format.html { redirect_to tasks_path }
         format.xml  { head :ok }
       else
-
-        @projetos = Project.find(:all).collect{|obj| [obj.id,obj.id]}
-        @situacaos = Situacao.find(:all).collect{|obj| [obj.id,obj.id]}
-
-
+        @companies = Company.all(:order=>'name').collect{|obj| [obj.name,obj.id]}.insert(0,"")
+        @projects = Project.all(:order=>'name').collect{|obj| [obj.name,obj.id]}.insert(0,"")
+        @user_groups = UserGroup.all(:order=>'name').collect{|obj| [obj.name,obj.id]}.insert(0,"")
         format.html { render :action => "edit" }
         format.xml  { render :xml => @task.errors, :status => :unprocessable_entity }
       end
@@ -311,11 +306,15 @@ class TasksController < ApplicationController
       redirect_to tasks_path
     end
   end
-
+#TODO esta fazendo mesmo qundo esta em outra página que não a principal.
   def verify_new_tasks
     @recent_task = Task.recent_task(current_user.id)
+puts "recent tasks ..."
+    puts @recent_task.start_at unless @recent_task.nil?
     if !@recent_task.nil?
-      if @recent_task.created_at <= Time.now - 1.minute
+      puts "recent_task(2)" + @recent_task.start_at.strftime("%Y-%m-%d %H:%M")
+      puts "time.now " + Time.now.strftime("%Y-%m-%d %H:%M")
+      if @recent_task.start_at.strftime("%Y-%m-%d %H:%M") <= (Time.now - 3.minutes).strftime("%Y-%m-%d %H:%M")
         @recent_task = nil
       end
     end
