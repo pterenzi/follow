@@ -319,8 +319,18 @@ class TasksController < ApplicationController
   end
   
   def search
+    debugger
     @date = Date.today
     sql = " 1=1"
+    if !params[:content].blank?
+      sql = sql + " and description like '%" + params[:content] + "%'"
+    end
+    if params[:user]=="user"
+      sql = sql + " and user_id = " + current_user.id.to_s
+    else
+      sql = sql + " and requestor_id = " + current_user.id.to_s
+    end
+    @tasks_list = Task.all(:conditions=>sql, :order=>"start_at DESC")
     #@messages = Message.find(:all, :conditions=>sql)  
   end
   

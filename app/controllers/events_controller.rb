@@ -152,7 +152,7 @@ class EventsController < ApplicationController
     debugger
     if params[:content]
       sql="user_id = #{current_user.id} and content like '%" + params[:content] + "%'"
-      @event_list = Event.all(:conditions=>sql)
+      @event_list = Event.all(:conditions=>sql, :order=>"start_at DESC")
     else
       @event_list = []
     end
