@@ -306,14 +306,10 @@ class TasksController < ApplicationController
       redirect_to tasks_path
     end
   end
-#TODO esta fazendo mesmo qundo esta em outra página que não a principal.
+
   def verify_new_tasks
     @recent_task = Task.recent_task(current_user.id)
-puts "recent tasks ..."
-    puts @recent_task.start_at unless @recent_task.nil?
     if !@recent_task.nil?
-      puts "recent_task(2)" + @recent_task.start_at.strftime("%Y-%m-%d %H:%M")
-      puts "time.now " + Time.now.strftime("%Y-%m-%d %H:%M")
       if @recent_task.start_at.strftime("%Y-%m-%d %H:%M") <= (Time.now - 3.minutes).strftime("%Y-%m-%d %H:%M")
         @recent_task = nil
       end

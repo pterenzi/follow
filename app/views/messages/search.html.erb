@@ -1,6 +1,6 @@
 <%= render :partial=>"layouts/moldura" %>
 <% content_for :main do %>
-<h1>Searching messages</h1><br/>
+<h2><%= t(:searching) + " " + t(:message).pluralize%></h2><br/>
 <% form_tag search_messages_path() do  %>
 <table class="transparent">
   <tr><td align="right"><%= t(:content) %> :</td>

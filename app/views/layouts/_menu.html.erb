@@ -18,7 +18,7 @@
      <ul><li><a href="#"><%=t(:messages)%></a>
            <ul>
 	         <li><%= link_to t(:new), new_message_path %></li>
-             <li><%= link_to "Search", search_messages_path %></li>
+             <li><%= link_to t(:search), search_messages_path %></li>
            </ul>
            </li></ul>
      <ul><li><a href="/tasks"><%=t(:Tasks)%></a>
@@ -30,7 +30,7 @@
      </li></ul>
      <ul><li><a href="#"><%=t(:calendar)%></a>
            <ul>
-             <li><%= link_to t(:search), events_path %></li>
+             <li><%= link_to t(:search), search_events_path %></li>
            </ul>
        </li>
      </ul>

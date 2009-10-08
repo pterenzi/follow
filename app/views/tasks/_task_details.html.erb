@@ -11,6 +11,7 @@
 <p>
 	<b><%=t(:start_at)%>:</b>
 	<%= task.start_at.to_time.to_s(:short) %>
+	<%= task.start_at.strftime("%D/%m/%Y %H%M")%>
 	<% #TODO internacionalizar a saida do campo start_at %>
 </p>
 <br/>

@@ -50,6 +50,7 @@ en:
   reports: "Reports"
   save: "Save"
   search: "Search"
+  searching: "Searching"
   searching_tasks: "Searching tasks"
   selected: "Selected"
   send_comment: "Send comment"
@@ -62,6 +63,7 @@ en:
   the_date: "date"
   update : t(:update)
   user: "User"
+  user_filter: "User filter"
   users: "Users"
   users_associated: "Users associated"
   user_group: "User group"

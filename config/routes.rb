@@ -3,7 +3,8 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :user_groups, :collection=>{:manage_users=>:get, :insert_user=>:get,
         :retrieve_users=>:get, :remove_user=>:get}
   
-  map.resources :events, :collection=>{:new_event=>:get, :display_calendar=>:get}
+  map.resources :events, :collection=>{:new_event=>:get,
+     :display_calendar=>:get, :search=>:get}
 
   map.resources :items
 

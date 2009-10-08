@@ -1,5 +1,5 @@
 <% content_for :messages do %>
-<% for message in @messages do%>
+<% for message in @messages_list do%>
   <span id="message_<%=message.id%>">
   <a href="#" onClick="remove_message(<%=message.id%>);" ><%= message.content %> </a>, enviada por <%= message.written_by.name %> às <%= message.created_at.strftime("%d/%m  %H:%M") %><br/>
   </span>

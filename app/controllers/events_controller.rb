@@ -6,8 +6,6 @@ class EventsController < ApplicationController
   # GET /events.xml
   def index
     debugger
-    @events = Event.find(:all)
-
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @events }
@@ -49,7 +47,6 @@ class EventsController < ApplicationController
 
   # GET /events/1/edit
   def edit
-    #TODO colocar o type selecionado
     @projects = Project.active
     @user_groups = UserGroup.active
     @companies = Company.active
@@ -151,6 +148,15 @@ class EventsController < ApplicationController
     @date_calendar = Date.new(date[0].to_i,date[1].to_i,1)
   end
   
+  def search
+    debugger
+    if params[:content]
+      sql="user_id = #{current_user.id} and content like '%" + params[:content] + "%'"
+      @event_list = Event.all(:conditions=>sql)
+    else
+      @event_list = []
+    end
+  end
   private
   
   def create_event_days(params)
@@ -173,6 +179,8 @@ class EventsController < ApplicationController
     end
     days
   end
+
+  
 
 end
 

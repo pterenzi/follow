@@ -1,16 +1,17 @@
 <%= render :partial=>"layouts/moldura" %>
 <% content_for :main do %>
-index
+search do events
 <h2><%= t(:search) + " " + t(:event)%></h2>
-<% form_tag do %>
+<% form_tag search_events_path() do %>
 <%= label_tag :event_content %><br/>
 <%= text_field_tag :content %><br/>
 <br/>
-<%= submit_tag t(:search) %>
+<%= submit_tag t(:search), :name=>nil %>
 <% end %>
-
-<% for event in @events do %>
+<% if !@event_list.nil? %>
+<% for event in @event_list do %>
   <%= event.start_at %>
-  <%= event.content %>
+  <%= event.content %><br/>
+<% end %>
 <% end %>
 <% end %>

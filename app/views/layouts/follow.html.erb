@@ -28,12 +28,14 @@
 
 
 <body>
+	<% if controller.controller_name == 'tasks' && controller.action_name = "index" %>
   <%= periodically_call_remote(:url => "/tasks/verify_new_tasks", :frequency => "59") %>
+  <% end %>
   <%= stylesheet_link_tag 'styles', 'menu' %>
 
   <div id="container">
 
-<div>
+<div>	
   <div id="cabecalho">
     <div id="banner" >
 	  <%= image_tag "Logo.jpg"%>

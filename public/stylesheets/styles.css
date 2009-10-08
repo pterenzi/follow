@@ -628,12 +628,12 @@ h1 {
     color: #226;
     text-decoration: underline;
     padding-bottom: 1em;
-
 }
 
 h2 {
     font:  120% sans-serif;
     color: #226;
+    padding-bottom: 1em;
 }
 h3 {
     font:  100% "Trebuchet MS";

@@ -31,6 +31,7 @@ class MessagesController < ApplicationController
       @projects = Project.active.collect{|obj| [obj.name,obj.id]}.insert(0,"")
       @user_groups = UserGroup.active.collect{|obj| [obj.name,obj.id]}.insert(0,"")
       @companies = Company.active.collect{|obj| [obj.name,obj.id]}.insert(0,"")
+      @users = User.all(:order=>"name").collect{|obj| [obj.name,obj.id]}
    end
 
    # GET /messages/1/edit
@@ -58,6 +59,7 @@ class MessagesController < ApplicationController
           @projects = Project.active.collect{|obj| [obj.name,obj.id]}.insert(0,"")
           @user_groups = UserGroup.active.collect{|obj| [obj.name,obj.id]}.insert(0,"")
           @companies = Company.active.collect{|obj| [obj.name,obj.id]}.insert(0,"")
+          @users = User.all(:order=>"name").collect{|obj| [obj.name,obj.id]}.insert(0,"")
           
           format.html { render :action => "new" }
           format.xml  { render :xml => @message.errors, :status => :unprocessable_entity }

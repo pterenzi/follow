@@ -1,23 +1,25 @@
 <% content_for :rightside do %>
-    <% user_name = ''%>
-    <div id="user_name" class="user_name">
+  <div id="user_name" class="user_name">
     <% if  @my_tasks.empty? %>
+      <span id="no_task">
       <%=t(:no_task)%> 
+      </span>
     <% end %>
-    </div>
-    <% user_name = '' %>
-    <% for task in @my_tasks do  %>
+  </div>    
+   
+  <% user_name = ''%>
+  <% for task in @my_tasks do  %>
       <% if user_name!= task.requestor.name then %>
         <% if !user_name.blank? %>
-          <span id="last_task_for_user_<%= user_name %>"></span>
+          <span id="last_task_for_user_<%= task.requestor.id %>"></span>
         <% end %>
         <%= render :partial=>"tasks/user_name", :locals=>{:task=>task} %>
         <% user_name = task.requestor.name %> 
       <% end %>
       <%= render :partial=>"tasks/task", :locals=>{:task=>task} %>
-    <% end %>
+  <% end %>
     <% if !user_name.blank? %>
-      <span id="last_task_for_user_<%= user_name %>"></span>
+      <span id="last_task_for_user_<%= task.requestor.id %>"></span>
     <% end %>
 <% end %>
-<br>
+<br/>
