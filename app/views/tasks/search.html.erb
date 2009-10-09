@@ -15,14 +15,14 @@
 <table>
 	<tr>
 		<th width="200px"><%= t(:description)%></th>
-		<th><%= params[:user]=="user"? t(:for_me): t(:requestor) %></th>
+		<th><%= params[:user]=="user"? t(:requested_by): t(:solicitated_for) %></th>
 		<th><%= t(:start_at)%></th>
 		<th>Status</th>
 	</tr>
   <% @tasks_list.each() do |task|  %>
     <tr>
     	<td><%= task.description %></td>
-        <td><%= task.requestor.name%></td>
+        <td><%= params[:user]=="user"? task.requestor.name : task.user.name%></td>
         <td><%= task.start_at.to_s(:short) %></td>
         <td><%= task.status%></td>
     </tr>

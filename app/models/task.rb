@@ -13,16 +13,17 @@ validates_length_of  :estimated_time, :maximum=>4, :message=>"não pode exeder o
 validates_numericality_of  :estimated_time, :message=>"deve ser numérico!"
 
 named_scope :ordenados, :order=>:id
-named_scope :encerradas, :conditions=>{:end_at => !nil}
+named_scope :encerradas, :conditions=>["NOT end_at ISNULL"]
 named_scope :solicitadas_por, lambda{ |id| {:conditions=>["requestor_id = ?", id]} }
 named_scope :minhas, lambda{ |id| {:conditions=>["user_id = ?", id]} }
 named_scope :outra_pessoa, :conditions=>["user_id <> requestor_id"]
 named_scope :de_mim_para_mim, lambda{ |id| {:conditions=>["user_id = requestor_id and requestor_id = ?", id]} }    
 named_scope :para_mim, lambda{ |id| {:conditions=>["user_id <> requestor_id and user_id = ?", id]}}
 named_scope :abertas, :conditions=>["start_at <= ? and end_at IS NULL",Time.now.strftime("%Y-%m-%d %H:%M") ]
-#named_scope :sem_evaluation,           
-#            :joins=>:evaluations,          
-#            lambda{ |id,user_id| {:conditions=>{"evaluations.task_id=? and evaluations.user_id=?",id, user_id}} }
+#TODO fazer este lambda. Talvez fazer método ao invez de named_scope
+named_scope :sem_evaluation  , lambda {|id, user_id| {
+            :joins => ["INNER JOIN evaluations ON evaluations.task_id = tasks.id"],
+            :conditions=>["evaluations.task_id=? and evaluations.user_id=?",id, user_id]}}
 named_scope :sem_user, :conditions=>["user_id is null"]
 named_scope :com_user, :conditions=>["user_id != '?' ",nil]
 named_scope :por_requestor, :order=>:requestor_id
@@ -45,11 +46,13 @@ def sem_usuario
 end
 
 def status
+  return "encerrada aguardando avaliação" if terminada_sem_comment_do_requestor
+  return "encerrada" if finished
   return "em pause padrão" if paused_pattern
   return "sem pause" if sem_pause
   return "paused" if paused
   return "pause não autorizada" if pause_nao_aceita
-  return "paused esperando aprovação" if paused_esperando_aprovacao
+  return "pausada, esperando aprovação" if paused_esperando_aprovacao
   return "em andamento"
   end
 
@@ -95,7 +98,18 @@ def paused_pattern
 end
 
 def terminada_sem_comment_do_requestor
-  return !end_at.nil? & comment_end_requestor.nil?
+  evaluation = Evaluation.last(:conditions=>["task_id = ?", id])
+  return !end_at.nil? & evaluation.evaluation_comment.nil?
+  #TODO trocar o nome de evaluation_comment para apenas evaluation
+end
+
+def finished_and_evaluated
+  evaluation = Evaluation.last(:conditions=>["task_id = ?", id])
+  return !end_at.nil? & !evaluation.grade.nil?
+end
+
+def finished
+  return !end_at.nil? 
 end
 
 def self.tem_task_com_pattern_pause(tasks)
@@ -115,22 +129,6 @@ def justification_recusa
   else
     return evaluation.evaluation_comment
   end
-end
-
-def self.busca_my_requests(requestor_id)
-  resultado = Array.new
-  @tasks = Task.all(:order=>"user_id", :conditions=>["user_id is not null and requestor_id <> user_id and requestor_id=?", requestor_id])
-  for task in @tasks do
-    if (task.end_at.nil?) or (!task.end_at.nil? and task.comment_end_requestor.nil?)
-      resultado << task
-    else
-      a = Evaluation.last(:conditions=>["grade is null and task_id=?",task.id])
-      if !a.nil?
-        resultado << task
-      end
-    end
-  end
-  return resultado
 end
 
 def self.encerradas_sem_evaluation(requestor_id)

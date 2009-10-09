@@ -56,11 +56,12 @@ class TasksController < ApplicationController
     @task.requestor_id = current_user.id
     @task.project_id = params[:project_id] unless params[:project_id].blank?
     @task.user_alert = true
-    if !@task.user_id.nil?
-      Evaluation.create(:task_id=>@task.id, :user_id=>@task.user_id)
-    end
+    
     respond_to do |format|
       if @task.save
+        if !@task.user_id.nil?
+          Evaluation.create(:task_id=>@task.id, :user_id=>@task.user_id)
+        end
         flash[:notice] = 'Task foi cadastrado com sucesso!'
         format.html { redirect_to(tasks_path) }
         format.xml  { render :xml => @task, :status => :created, :location => @task }
@@ -320,6 +321,7 @@ class TasksController < ApplicationController
   
   def search
     debugger
+    params[:user]="user" unless !params[:user].nil?
     @date = Date.today
     sql = " 1=1"
     if !params[:content].blank?
