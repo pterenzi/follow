@@ -191,6 +191,7 @@ pt-BR:
       password: "senha"
       password_confirmation: "confirmação da senha"
       personal: "Pessoal"
+      preferred_language: "idioma"
       project: "Projeto"
       projects: "Projetos"
       readed: "lido em"

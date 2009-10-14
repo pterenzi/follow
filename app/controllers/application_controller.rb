@@ -8,11 +8,11 @@ class ApplicationController < ActionController::Base
     before_filter :set_locale
     
     def set_locale
-      #if params[:locale]
+      if params[:locale]
         I18n.locale = params[:locale]
       #else
       #  I18n.locale = "pt-BR"
-      #end
+      end
     end
     
     def default_url_options(options={})
@@ -89,6 +89,7 @@ class ApplicationController < ActionController::Base
     @evaluation = Evaluation.new
      #TODO colocar isto em minhas tasks   refused<>'t' and
      #TODO testar <> 't' em outros bancos
+     #TODO colocar o 'h' nas views para evitar Cross-site Scripting
    end
    
 end

@@ -21,6 +21,9 @@
 <%= f.label t(:company) %><br/>
 <%= f.select :company_id, @companies %>
 <br/><br/>
+<%= f.radio_button :preferred_languaged %>
+<%= f.label t(:preferred_language) %>
+<br/><br/>
   <%= f.submit t(:create) %>
 <% end %>
  

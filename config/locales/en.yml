@@ -47,6 +47,7 @@ en:
   no_users_associated: "There are no user associated with"
   not_selected: "Not selected"
   personal: "Personal"
+  preferred_language: "language"
   project: "Project"
   projects: "Projects"
   readed: "readed at"

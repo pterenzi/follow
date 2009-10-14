@@ -14,6 +14,11 @@ class UserSessionsController < ApplicationController
        @user_session = UserSession.new(params[:user_session])
        if @user_session.save
        #  flash[:notice] = "Login successful!"
+      # if current_user
+#       debugger
+         user = User.find_by_login(@user_session.login)
+         I18n.locale = user.preferred_language
+       #end
          redirect_to tasks_path
        else
          render :action => :new

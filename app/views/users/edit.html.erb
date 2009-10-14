@@ -20,7 +20,11 @@
 <%= f.select :company_id, @companies %>
 <br/>
 <br/>
-  <%= f.submit t(:update) %>
+<%= f.radio_button :preferred_language, "pt-BR" %>
+<%= f.label("preferred_language_pt-BR" , :portugues) %>&nbsp;&nbsp;
+<%= f.radio_button :preferred_language, "en" %>
+<%= f.label("preferred_language_en" , :english) %>
+<br/><br/>  <%= f.submit t(:update) %>
 <% end %>
  
 <br />
