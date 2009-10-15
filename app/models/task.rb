@@ -12,21 +12,21 @@ validates_presence_of :estimated_time, :message=>"não pode ficar em branco!"
 validates_length_of  :estimated_time, :maximum=>4, :message=>"não pode exeder os 4 caracteres!"
 validates_numericality_of  :estimated_time, :message=>"deve ser numérico!"
 
-named_scope :ordenados, :order=>:id
-named_scope :encerradas, :conditions=>["NOT end_at ISNULL"]
-named_scope :solicitadas_por, lambda{ |id| {:conditions=>["requestor_id = ?", id]} }
-named_scope :minhas, lambda{ |id| {:conditions=>["user_id = ?", id]} }
-named_scope :outra_pessoa, :conditions=>["user_id <> requestor_id"]
+named_scope :abertas, :conditions=>["start_at <= ? and end_at IS NULL",(Time.now+1.minute).strftime("%Y-%m-%d %H:%M") ]
+named_scope :com_user, :conditions=>["user_id != '?' ",nil]
 named_scope :de_mim_para_mim, lambda{ |id| {:conditions=>["user_id = requestor_id and requestor_id = ?", id]} }    
+named_scope :encerradas, :conditions=>["NOT end_at ISNULL"]
+named_scope :minhas, lambda{ |id| {:conditions=>["user_id = ?", id]} }
+named_scope :ordenados, :order=>:id
+named_scope :outra_pessoa, :conditions=>["user_id <> requestor_id"]
 named_scope :para_mim, lambda{ |id| {:conditions=>["user_id <> requestor_id and user_id = ?", id]}}
-named_scope :abertas, :conditions=>["start_at <= ? and end_at IS NULL",Time.now.strftime("%Y-%m-%d %H:%M") ]
+named_scope :por_requestor, :order=>:requestor_id
+named_scope :solicitadas_por, lambda{ |id| {:conditions=>["requestor_id = ?", id]} }
 #TODO fazer este lambda. Talvez fazer método ao invez de named_scope
 named_scope :sem_evaluation  , lambda {|id, user_id| {
             :joins => ["INNER JOIN evaluations ON evaluations.task_id = tasks.id"],
             :conditions=>["evaluations.task_id=? and evaluations.user_id=?",id, user_id]}}
 named_scope :sem_user, :conditions=>["user_id is null"]
-named_scope :com_user, :conditions=>["user_id != '?' ",nil]
-named_scope :por_requestor, :order=>:requestor_id
 named_scope :sem_recusa, :conditions=>["refused='f'"]
 
 def usuario_que_criou(usuario_id)
@@ -146,5 +146,6 @@ end
 def self.recent_task(current_user)
   Task.first(:order=>"start_at desc", :conditions=>["start_at < ?  and user_id=? ", Time.now.strftime("%Y-%m-%d %H:%M") ,current_user])
 end
+
 
 end

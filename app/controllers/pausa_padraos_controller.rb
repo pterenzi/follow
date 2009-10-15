@@ -1,8 +1,8 @@
-class PausePadraosController < ApplicationController
+class PatternPausesController < ApplicationController
   # GET /pattern_pauses
   # GET /pattern_pauses.xml
   def index
-    @pattern_pauses = PausePadrao.find(:all)
+    @pattern_pauses = PatternPause.find(:all)
 
     respond_to do |format|
       format.html # index.html.erb
@@ -13,7 +13,7 @@ class PausePadraosController < ApplicationController
   # GET /pattern_pauses/1
   # GET /pattern_pauses/1.xml
   def show
-    @pattern_pause = PausePadrao.find(params[:id])
+    @pattern_pause = PatternPause.find(params[:id])
 
     respond_to do |format|
       format.html # show.html.erb
@@ -24,7 +24,7 @@ class PausePadraosController < ApplicationController
   # GET /pattern_pauses/new
   # GET /pattern_pauses/new.xml
   def new
-    @pattern_pause = PausePadrao.new
+    @pattern_pause = PatternPause.new
 
     respond_to do |format|
       format.html # new.html.erb
@@ -34,17 +34,17 @@ class PausePadraosController < ApplicationController
 
   # GET /pattern_pauses/1/edit
   def edit
-    @pattern_pause = PausePadrao.find(params[:id])
+    @pattern_pause = PatternPause.find(params[:id])
   end
 
   # POST /pattern_pauses
   # POST /pattern_pauses.xml
   def create
-    @pattern_pause = PausePadrao.new(params[:pattern_pause])
+    @pattern_pause = PatternPause.new(params[:pattern_pause])
 
     respond_to do |format|
       if @pattern_pause.save
-        flash[:notice] = 'PausePadrao was successfully created.'
+        flash[:notice] = 'PatternPause was successfully created.'
         format.html { redirect_to(@pattern_pause) }
         format.xml  { render :xml => @pattern_pause, :status => :created, :location => @pattern_pause }
       else
@@ -57,11 +57,11 @@ class PausePadraosController < ApplicationController
   # PUT /pattern_pauses/1
   # PUT /pattern_pauses/1.xml
   def update
-    @pattern_pause = PausePadrao.find(params[:id])
+    @pattern_pause = PatternPause.find(params[:id])
 
     respond_to do |format|
       if @pattern_pause.update_attributes(params[:pattern_pause])
-        flash[:notice] = 'PausePadrao was successfully updated.'
+        flash[:notice] = 'PatternPause was successfully updated.'
         format.html { redirect_to(@pattern_pause) }
         format.xml  { head :ok }
       else
@@ -74,7 +74,7 @@ class PausePadraosController < ApplicationController
   # DELETE /pattern_pauses/1
   # DELETE /pattern_pauses/1.xml
   def destroy
-    @pattern_pause = PausePadrao.find(params[:id])
+    @pattern_pause = PatternPause.find(params[:id])
     @pattern_pause.destroy
 
     respond_to do |format|

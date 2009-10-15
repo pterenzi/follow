@@ -13,7 +13,7 @@ class PatternPausesControllerTest < ActionController::TestCase
   end
 
   test "should create pattern_pause" do
-    assert_difference('PausePadrao.count') do
+    assert_difference('PatternPause.count') do
       post :create, :pattern_pause => { }
     end
 
@@ -36,7 +36,7 @@ class PatternPausesControllerTest < ActionController::TestCase
   end
 
   test "should destroy pattern_pause" do
-    assert_difference('PausePadrao.count', -1) do
+    assert_difference('PatternPause.count', -1) do
       delete :destroy, :id => pattern_pauses(:one).id
     end
 

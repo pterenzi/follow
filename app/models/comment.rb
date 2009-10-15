@@ -6,10 +6,11 @@ class Comment < ActiveRecord::Base
   
   
   def self.recent_comments(current_user)
-    recent_comments = Comment.all(:order=>"created_at Desc", :limit=>20)
+    recent_comments = Comment.all(:order=>"created_at Desc", 
+              :conditions=>["created_at >=? ", (Time.now - 2.minutes).strftime("%Y-%m-%d %H:%M")])
     tasks_comments = Array.new
     for comment in recent_comments
-      if (comment.created_at > Time.now - 1.minute ) && (comment.task.user_id == current_user.id)
+      if (comment.task.user_id == current_user.id) or (comment.task.requestor_id == current_user.id )
         if !tasks_comments.include?(comment.task.id)
           tasks_comments << comment.task
         end

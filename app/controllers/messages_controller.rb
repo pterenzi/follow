@@ -129,7 +129,7 @@ class MessagesController < ApplicationController
           sql += " and created_at between '" + first_day(Date.today.month,Date.today.year) + 
                 "' and '" + last_day(Date.today.month,Date.today.year) + "'"
         end
-        @messages = Message.find(:all, :conditions=>sql) 
+        @messages = Message.find(:all, :include=>[:written_by], :conditions=>sql) 
       end 
 
   private

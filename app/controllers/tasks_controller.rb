@@ -19,7 +19,6 @@ class TasksController < ApplicationController
   def show
     @task = Task.find(params[:id])
     @comments = Comment.all(:conditions=>["task_id=?",@task.id])
-    @situacaos = Situacao.find(:all).collect{|obj| [obj.description,obj.id]}
     @pause = Pause.da_task(@task.id)
     
     respond_to do |format|
@@ -125,7 +124,6 @@ class TasksController < ApplicationController
   
   def pauser
     @task = Task.find(params[:id])
-    @situacaos = Situacao.find(:all).collect{|obj| [obj.description,obj.id]}
   end
   
   def create_pauser

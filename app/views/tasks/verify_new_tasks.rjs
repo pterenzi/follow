@@ -11,7 +11,7 @@ if !@recent_task.nil?
   tag = '#blink_'+@recent_task.id.to_s
   page.call "pulsar",tag
 end
-#TODO verificar comments do lado esquerdo
+
 for task in @tasks_comments
   page["#task_comment_"+ task.id.to_s].remove();
   if task.requestor_id != current_user
