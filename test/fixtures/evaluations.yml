@@ -1,7 +1,8 @@
 # Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
 
 didio:
-    task: didio
-    user: paulo
+    task_id: 3
+    user_id: 2
     refused: t
-    evaluation_comment: "muito mal feito"
+    comment: "muito mal feito"
+    grade: 3

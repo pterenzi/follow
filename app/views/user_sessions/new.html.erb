@@ -10,7 +10,7 @@
         <% form_for @user_session, :url => user_sessions_path  do |f|%>
  <%= f.error_messages %>
            <%= f.label :login %><br />
-          <%= f.text_field :login %><br />
+          <%= f.text_field h(:login) %><br />
           <br />
           <%= f.label :password %><br />
           <%= f.password_field :password %><br />

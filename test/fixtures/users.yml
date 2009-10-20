@@ -1,6 +1,7 @@
 # Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
 
  marcio:
+     id: 1
      login: marcio
      name: Marcio Aun Migueis
      crypted_password: "98061606dbe28704e4edb3126ee4d5fbc9ea0ce8cf58a00a9e8d40ec10f67a5847b4bc34a2f9b38f66ce782f26768be1f6df87d1ae1be8501010d02109fc0aeb"
@@ -9,6 +10,7 @@
      company: ana
 
  paulo:
+     id: 2
      login: admin
      name: Administrador
      crypted_password: "98061606dbe28704e4edb3126ee4d5fbc9ea0ce8cf58a00a9e8d40ec10f67a5847b4bc34a2f9b38f66ce782f26768be1f6df87d1ae1be8501010d02109fc0aeb"

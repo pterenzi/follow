@@ -6,7 +6,7 @@
 
 <% form_tag search_messages_path() do  %>
   <%= t(:content) %>
-  <%= text_field_tag :content, params[:content] %><br/>
+  <%= text_field_tag h(:content), params[:content] %><br/>
   <%= t(:users) %>
   <%= select_tag :written_by,  options_for_select(@users) %><br/>
   <%= t(:the_date) %>  

@@ -10,7 +10,7 @@ type <%= event.type%>
     <%= f.datetime_select :start_at, :order=>[:day,:month,:year] %>
     <br/>
     <%= f.label :content %>
-    <%= f.text_field :content %>
+    <%= f.text_field h(:content) %>
 
   <%= f.hidden_field :user_id %>
   <%= f.hidden_field :written_by %>&nbsp;

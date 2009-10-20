@@ -1,5 +1,7 @@
 class User < ActiveRecord::Base
-  acts_as_authentic
+  acts_as_authentic do |u|
+    u.logged_in_timeout = 20.minutes
+  end
   
   has_many :tasks
   has_many :comments
@@ -13,5 +15,4 @@ class User < ActiveRecord::Base
   
   validates_presence_of :company
 #  has_many :written_by,  :foreign_key=>"written_by"
-#TODO criar campo prefered language
 end

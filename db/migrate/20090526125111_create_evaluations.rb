@@ -4,7 +4,7 @@ class CreateEvaluations < ActiveRecord::Migration
       t.references :task
       t.references :user
       t.integer :grade
-      t.string :evaluation_comment
+      t.string :comment
       t.string :user_comment
       t.boolean :refused, :default=>false
       t.timestamps

@@ -15,7 +15,7 @@
 
     <% funcao = ""%>
     <% if task.paused %>
-      <% @pause = Pause.da_task(task.id)%>
+      <% @pause = Pause.from_task(task.id)%>
    <% end %>
 
   <% if task.refused %>
@@ -35,7 +35,7 @@
   <% if task.terminada_sem_comment_do_requestor %>
     <% funcao = "abre_form_evaluation("+ task.id.to_s + ");return false;" %>
     <div style="display:none;" id="abre_evaluation_<%=task.id.to_s%>">
-     <%= render :partial=>'evaluation/evaluation_form', :locals=>{:task=>task, :user=>task.user} %> 
+     <%= render :partial=>'evaluations/evaluation_form', :locals=>{:task=>task, :user=>task.user} %> 
     </div>
   <% end %>
   <% if funcao.blank? %>

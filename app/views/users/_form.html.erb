@@ -1,10 +1,10 @@
 
 <%= form.label :login %><br />
-<%= form.text_field :login %><br />
+<%= form.text_field h(:login) %><br />
 <br />
 
 <%= form.label :name %><br />
-<%= form.text_field :name %><br />
+<%= form.text_field h(:name) %><br />
 <br />
 <% if @user.category.name=="admin"%>
   <%= form.label :Category%><br/>

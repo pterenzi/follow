@@ -1,11 +1,10 @@
 class Pause < ActiveRecord::Base
   belongs_to :task
-  
-  def self.da_task(task_id)
-    @pause = Pause.find(:all, :conditions=>["task_id=?",task_id]).last
-    return @pause
-  end
-  
+ 
+  named_scope :from_task, lambda{ |task_id| {:conditions=>["task_id=?",task_id], 
+                          :order=>"created_at"} }
+  named_scope :minhas, lambda{ |id| {:conditions=>["user_id = ?", id]} }
+
   def tempo_de_solicitacao
     minutos = ((Time.now - created_at) / 60 ).to_i
     horas = nil

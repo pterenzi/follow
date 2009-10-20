@@ -3,7 +3,7 @@ class Task < ActiveRecord::Base
 belongs_to :project
 belongs_to :user
 belongs_to :requestor, :class_name => "User", :foreign_key => "requestor_id"
-has_many :comments
+has_many :comments, :include=>[:user]
 has_many :pauses
 has_many :evaluations
 
@@ -13,7 +13,7 @@ validates_length_of  :estimated_time, :maximum=>4, :message=>"não pode exeder o
 validates_numericality_of  :estimated_time, :message=>"deve ser numérico!"
 
 named_scope :abertas, :conditions=>["start_at <= ? and end_at IS NULL",(Time.now+1.minute).strftime("%Y-%m-%d %H:%M") ]
-named_scope :com_user, :conditions=>["user_id != '?' ",nil]
+named_scope :for_user, lambda{ |user_id| {:conditions=>["user_id = '?' ",user_id]}}
 named_scope :de_mim_para_mim, lambda{ |id| {:conditions=>["user_id = requestor_id and requestor_id = ?", id]} }    
 named_scope :encerradas, :conditions=>["NOT end_at ISNULL"]
 named_scope :minhas, lambda{ |id| {:conditions=>["user_id = ?", id]} }
@@ -22,17 +22,17 @@ named_scope :outra_pessoa, :conditions=>["user_id <> requestor_id"]
 named_scope :para_mim, lambda{ |id| {:conditions=>["user_id <> requestor_id and user_id = ?", id]}}
 named_scope :por_requestor, :order=>:requestor_id
 named_scope :solicitadas_por, lambda{ |id| {:conditions=>["requestor_id = ?", id]} }
-#TODO fazer este lambda. Talvez fazer método ao invez de named_scope
-named_scope :sem_evaluation  , lambda {|id, user_id| {
+#TODO fazer este lambda. Talvez fazer método ao invez de named_scope. Parece que 
+   # sem_evluation vem com com_evaluation 
+named_scope :sem_evaluation  , lambda {|task_id, user_id| {
             :joins => ["INNER JOIN evaluations ON evaluations.task_id = tasks.id"],
-            :conditions=>["evaluations.task_id=? and evaluations.user_id=?",id, user_id]}}
-named_scope :sem_user, :conditions=>["user_id is null"]
+            :conditions=>["evaluations.task_id=? and evaluations.user_id=? and grade ISNULL",task_id, user_id]}}
 named_scope :sem_recusa, :conditions=>["refused='f'"]
+named_scope :sem_user, :conditions=>["user_id is null"]
 
-def usuario_que_criou(usuario_id)
-  usuario = Usuario.find(usuario_id)
-  usuario_id == requestor_id
-  #TODO test unitario para este metodo
+def usuario_que_criou(user_id)
+  user = User.find(user_id)
+  user_id == requestor_id
 end
 
 def tempo_decorrido
@@ -71,7 +71,9 @@ def paused
 end
 
 def pause_nao_aceita
-  pause = Pause.da_task(id)
+  #TODO estudar mais de uma pause par aum atask, em função do user_id, e não
+  #  do task_id
+  pause = Pause.from_task(id)
   if pause.nil? 
     return false
   else
@@ -99,8 +101,7 @@ end
 
 def terminada_sem_comment_do_requestor
   evaluation = Evaluation.last(:conditions=>["task_id = ?", id])
-  return !end_at.nil? & evaluation.evaluation_comment.nil?
-  #TODO trocar o nome de evaluation_comment para apenas evaluation
+  return !end_at.nil? & evaluation.comment.nil?
 end
 
 def finished_and_evaluated
@@ -127,7 +128,7 @@ def justification_recusa
   if evaluation.nil? 
     return ""
   else
-    return evaluation.evaluation_comment
+    return evaluation.comment
   end
 end
 
@@ -147,5 +148,13 @@ def self.recent_task(current_user)
   Task.first(:order=>"start_at desc", :conditions=>["start_at < ?  and user_id=? ", Time.now.strftime("%Y-%m-%d %H:%M") ,current_user])
 end
 
+  def grade
+    if finished_and_evaluated
+       evaluation = Evaluation.last(:conditions=>["task_id = ?", id])
+       return evaluation.grade
+    else
+      return "---"
+    end
+  end
 
 end

@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20091014113254) do
+ActiveRecord::Schema.define(:version => 20091019204345) do
 
   create_table "categories", :force => true do |t|
     t.string   "name",       :limit => 32
@@ -44,15 +44,12 @@ ActiveRecord::Schema.define(:version => 20091014113254) do
     t.integer  "task_id"
     t.integer  "user_id"
     t.integer  "grade"
-    t.string   "evaluation_comment"
+    t.string   "comment"
     t.string   "user_comment"
-    t.boolean  "refused",            :default => false
+    t.boolean  "refused",      :default => false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
-
-  add_index "evaluations", ["task_id"], :name => "index_evaluations_on_task_id"
-  add_index "evaluations", ["user_id"], :name => "index_evaluations_on_user_id"
 
   create_table "events", :force => true do |t|
     t.datetime "start_at"
@@ -100,10 +97,12 @@ ActiveRecord::Schema.define(:version => 20091014113254) do
     t.integer  "pattern_pause_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "user_id"
   end
 
   add_index "pauses", ["id"], :name => "index_pauses_on_id"
   add_index "pauses", ["task_id"], :name => "index_pauses_on_task_id"
+  add_index "pauses", ["user_id"], :name => "index_pauses_on_user_id"
 
   create_table "projects", :force => true do |t|
     t.string   "name",        :limit => 32

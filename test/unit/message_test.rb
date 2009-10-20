@@ -5,16 +5,16 @@ class MessageTest < ActiveSupport::TestCase
     message = messages(:one)
     paulo = users(:paulo)
     marcio = users(:marcio)
-    assert message.user_id == paulo
-    assert message.written_by == marcio
+    assert message.user_id == paulo.id
+    assert message.written_by.id == marcio.id
   end
   
   def test_my_messages
-  	messages = Message.my_messages(391950614)
+  	messages = Message.my_messages(1)
   	assert messages.size==1
   	first = messages[0]
   	marcio = users(:marcio)
-  	assert first.user_id == marcio
+  	assert first.user == marcio
   end
   
 end

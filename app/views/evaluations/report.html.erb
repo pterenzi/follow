@@ -1,0 +1,32 @@
+<%= render :partial=>"layouts/moldura" %>
+<% content_for :main do %>
+<h2><%=  @search_type=="user"?  t(:my_tasks) : t(:requested_by_me)%> </h2>
+<% form_tag report_evaluations_path do %>
+  <%= hidden_field_tag :search_type, @search_type %>
+  <%= label t(:user), @search_type == "requestor" ? t(:user) : t(:requestor) %> : 
+  <%= select_tag :user_id, options_for_select(@users)  %>
+  <%= submit_tag t(:search) %>
+<% end %>
+<br/>
+<p>
+	<%= t(:searching) %> : <%= @searched_user %> <br/>
+	<br/>
+<table>
+	<tr>
+		<th width="220px"><%= t(:description)%></th>
+		<th><%= @search_type=="user"?  t(:requestor): t(:user)%></th>
+		<th><%= t(:grade) %></th>
+		<th><%= t(:details) %></th>
+	</tr>
+<% @tasks.each do |task| %>
+  <tr>
+  	<td><%= task.description %></td>
+    <td><%= @search_type=="user"?  task.requestor.name : task.user.name%></td>
+    <td align="right"><%= task.grade %></td>
+    <td align="center"><%= image_tag "info.png", :border=>0%></td>
+<% #TODO fazer o details de uma task e abrir em pop-up aqui%>
+  </tr>  
+<% end %>
+</table>
+</p>
+<% end %>

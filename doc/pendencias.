@@ -4,7 +4,6 @@
 
 
 #TODO Submit ia JavaScript para pause padrão
-#TODO Associar users a projetos, de forma que quando um projeto é selecionado para a criação da task, somente os users daquele projeto apareçam na lista
 #TODO Nõo chamar javascript para alterar alerta toda vez que clicar no link em my_tasks e my_requests
 
 
@@ -18,7 +17,7 @@ ulo:  Agenda:
    4) Ao clicar para inserir o evento, a data aparece invertida nos combos (primeiro o ano depois o mês e por fim o dia). Acho que o ideal aqui seria usarmos um datepicker do jQuery (Icon trigger)
 5)  Falta um botão pra cancelar, caso o usuário desista de inserir um novo evento.
 
-     6) Falta um radio button ou combo para que o usuário selecione se o evento cadastrado é para a empresa, projeto, grupo de trabalho aos quais o usuário  pertence ou se é particular. E falta também, é claro, fazer todo a programação para esta funcionalidade. O ideal, é que estas categorias de eventos sejam codificadas por cores. Assim, quando o usuário inserir diversos eventos de categorias diferentes na agenda, será fácil a identificação de a qual categoria o evento  pertence. 
+     6) Falta um radio button ou combo para que o usuário selecione se o evento cadastrado é para a empresa, projeto, grupo de trabalho aos quais o usuário  pertence ou se é particular. E falta também, é claro, fazer toda a programação para esta funcionalidade. O ideal, é que estas categorias de eventos sejam codificadas por cores. Assim, quando o usuário inserir diversos eventos de categorias diferentes na agenda, será fácil a identificação de a qual categoria o evento  pertence. 
 
 	     7) Os eventos precisam de informações complementares, tais como:
 	               - hora de início e término- evento de dia inteiro

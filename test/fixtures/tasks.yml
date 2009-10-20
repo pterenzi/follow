@@ -1,31 +1,35 @@
 # Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
 
 follow:
-  project: follow
-  description: programar
-  user: marcio
-  requestor: admin
-  estimated_time: 10
-  end_at: nil
+    id: 1
+    project: follow
+    description: programar
+    user_id: 1
+    requestor_id: 2
+    estimated_time: 10
+    end_at: nil
   
 encerrada:
-  project: encerrada
-  description: "tarefa encerrada"
-  user: nil
-  requestor: admin
-  estimated_time: 10
-  end_at: 2009-05-10
+    id: 2    
+    project: encerrada
+    description: "tarefa encerrada"
+    user_id: nil
+    requestor_id: admin
+    estimated_time: 10
+    end_at: 2009-05-10
 
 didio:
+    id: 3
     project: didio
     description: "Projeto de pizza"
-    user: paulo
-    requestor: marcio
+    user_id: 1
+    requestor_id: 2
     estimated_time: 20
     
 loja:
+    id: 4
     project: loja
     description: "Loja da Ana"
-    user: marcio
-    requestor: marcio
+    user_id: 2
+    requestor_id: 1
     estimated_time: 50

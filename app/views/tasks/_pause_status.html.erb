@@ -11,7 +11,7 @@
         Aguardando aprovação
       <% end %>
    <% else %>
-      <%= Pause.da_task(@task.id).comment_requestor %>
+      <%= Pause.from_task(@task.id).comment_requestor %>
       <%= link_to "Reiniciar a task", :controller=>"tasks", :action=>"reiniciar_a_task" , :task_id=> @task.id %>          
     <% end %>
   <% end %>

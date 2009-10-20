@@ -4,7 +4,7 @@
 <h2><%= t(:search) + " " + t(:event)%></h2>
 <% form_tag search_events_path() do %>
   <%= label_tag t(:event_content) %><br/>
-  <%= text_field_tag :content %><br/>
+  <%= text_field_tag h(:content) %><br/>
   <br/>
   <%= submit_tag t(:search), :name=>nil %>
 <% end %>

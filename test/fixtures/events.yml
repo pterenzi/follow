@@ -1,13 +1,13 @@
 # Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
 
 one:
-  date: 2009-08-20
+  start_at: 2009-08-20 09:00
   content: MyString
   user_id: 1
   written_by: 1
 
 two:
-  date: 2009-08-20
+  start_at: 2009-08-20 09:00
   content: MyString
   user_id: 1
   written_by: 1

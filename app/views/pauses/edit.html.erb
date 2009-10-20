@@ -9,11 +9,11 @@
   </p>
   <p>
     <%= f.label :task %><br />
-    <%= f.text_field :task %>
+    <%= f.text_field h(:task) %>
   </p>
   <p>
     <%= f.label :justification %><br />
-    <%= f.text_field :justification %>
+    <%= f.text_field h(:justification) %>
   </p>
   <p>
     <%= f.label :accepted %><br />
@@ -21,7 +21,7 @@
   </p>
   <p>
     <%= f.label :comment_requestor %><br />
-    <%= f.text_field :comment_requestor %>
+    <%= f.text_field h(:comment_requestor) %>
   </p>
   <p>
     <%= f.submit t(:update) %>

@@ -27,12 +27,12 @@
 	</tr>
 	<tr>
 		<td><%= f.label :content %></td>
-		<td><%= f.text_field :content %></td>
+		<td><%= f.text_field h(:content) %></td>
 	</tr>
 	<tr>
 		<td><%= check_box :repeat, :to_repeat, {:onclick=>"display_repeat_all();"} %> <%= t(:repeat_all) %> </td>
 		<td><div id="repeat_all" style="display:none;">
-	    <%= text_field_tag :months,'12', :size=>3 %> <%= t(:months)%>
+	    <%= text_field_tag h(:months),'12', :size=>3 %> <%= t(:months)%>
 		</div></td>
 	</tr>
 	<tr>

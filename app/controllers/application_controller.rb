@@ -80,7 +80,7 @@ class ApplicationController < ActionController::Base
     @projetos = Project.all(:order=>'description').collect{|obj| [obj.description,obj.id]}
     @my_tasks = Task.para_mim(current_user.id).abertas.por_requestor.sem_recusa.ordenados
     @my_requests = Task.abertas.solicitadas_por(current_user.id)
- @my_requests = @my_requests + @tasks_encerradas_sem_evaluation
+    @my_requests = @my_requests + @tasks_encerradas_sem_evaluation
     @tasks_without_user = Task.solicitadas_por(current_user.id).sem_user
     @to_do_list = Task.abertas.de_mim_para_mim(current_user.id)    
     @messages_list = Message.not_readed(current_user)
@@ -88,9 +88,7 @@ class ApplicationController < ActionController::Base
     @date_calendar = Date.today
     @event = Event.new
     @evaluation = Evaluation.new
-     #TODO colocar isto em minhas tasks   refused<>'t' and
      #TODO testar <> 't' em outros bancos
-     #TODO colocar o 'h' nas views para evitar Cross-site Scripting
    end
    
 end

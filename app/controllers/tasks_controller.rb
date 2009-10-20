@@ -3,7 +3,7 @@ class TasksController < ApplicationController
  # before_filter :authorize
   before_filter :require_user
   before_filter :retrieve_tasks , :only=>[:index, :show, :new, :edit, :pauser_pattern,
-      :search, :reiniciar_pattern]
+      :search, :reiniciar_pattern_pausen]
 
   layout 'follow'
 
@@ -19,7 +19,7 @@ class TasksController < ApplicationController
   def show
     @task = Task.find(params[:id])
     @comments = Comment.all(:conditions=>["task_id=?",@task.id])
-    @pause = Pause.da_task(@task.id)
+    @pause = Pause.from_task(@task.id)
     
     respond_to do |format|
       format.html # show.html.erb
@@ -166,7 +166,7 @@ class TasksController < ApplicationController
     Task.transaction
       @task.save
     
-      @pause = Pause.da_task(params[:task_id])
+      @pause = Pause.from_task(params[:task_id])
       if params[:reprovar]
         @pause.accepted = false
       else
@@ -186,7 +186,7 @@ class TasksController < ApplicationController
   end
   
   def reiniciar_a_task
-    @pause = Pause.da_task(params[:task_id])
+    @pause = Pause.from_task(params[:task_id])
     @pause.restart = Time.now
     @pause.accepted = true
     if @pause.save
@@ -207,7 +207,7 @@ class TasksController < ApplicationController
     redirect_to tasks_path
   end
   
-  def reiniciar_pattern
+  def reiniciar_pattern_pause
     for task in @my_tasks
       #debugger
       puts "task : " + task.id.to_s
@@ -240,7 +240,6 @@ class TasksController < ApplicationController
       @task.user_alert = params[:valor]
     end
     @task.save
-    puts "Mudar alerta da task : " + params[:id]
     render :json => "true"
   end
   
@@ -260,7 +259,7 @@ class TasksController < ApplicationController
   def avaliar_task
     @task = Task.find(params[:id])
     @task.evaluation = params[:evaluation]
-    @task.comment_end_requestor = params[:evaluation_comment]
+    @task.comment_end_requestor = params[:comment]
     if @task.save  
       redirect_to :back  
     else

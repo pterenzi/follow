@@ -23,7 +23,7 @@
 	<%= select_tag :user_id,options_for_select(@users) , :multiple=>true %>      
   <p><br/>
     <%= f.label t(:content) %><br />
-    <%= f.text_field :content %>
+    <%= f.text_field h(:content) %>
   </p>
   <br/>
   <p>

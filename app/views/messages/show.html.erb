@@ -6,7 +6,7 @@
        <p>
          <legend>Dados do Message <%=  @message.name  %> </legend>
          <label for="message_name">Nome:</label>
-         <%= f.text_field :name, :size =>  "53" , :readonly => true %>     
+         <%= f.text_field h(:name), :size =>  "53" , :readonly => true %>     
        </p>
      </fieldset>
    </div> 

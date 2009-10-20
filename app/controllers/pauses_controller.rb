@@ -41,7 +41,7 @@ class PausesController < ApplicationController
   # POST /pauses.xml
   def create
     @pause = Pause.new(params[:pause])
-
+    @pause.user_id = current_user.id
     respond_to do |format|
       if @pause.save
         flash[:notice] = 'Pause was successfully created.'

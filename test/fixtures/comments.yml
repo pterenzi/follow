@@ -1,8 +1,8 @@
 # Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
 
 one:
-  user: marcio
-  task: follow
+  user_id: 1
+  task_id: 1
   description: "fazendo os testes"
 
 #two:

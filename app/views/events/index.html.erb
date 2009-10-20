@@ -4,7 +4,7 @@ index
 <h2><%= t(:search) + " " + t(:event)%></h2>
 <% form_tag do %>
 <%= label_tag :event_content %><br/>
-<%= text_field_tag :content %><br/>
+<%= text_field_tag h(:content) %><br/>
 <br/>
 <%= submit_tag t(:search) %>
 <% end %>

@@ -25,7 +25,7 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :messages, :collection => {:mark_as_readed => :get,:search=>:get}
 
   map.resources :tasks, :collection => {:show_export => :get, :pauser=>:get, :reiniciar_a_task=>:get, 
-         :pauser_pattern=>:get, :reiniciar_pattern=>:get, :encaminhar=>:get, :change_alert=>:get,
+         :pauser_pattern=>:get, :reiniciar_pattern_pause=>:get, :encaminhar=>:get, :change_alert=>:get,
          :encerrar_task=>:get, :avaliar_task=>:get, :recusar_task=>:get, :reencaminhar_task_refused=>:get,
          :verify_updates=>:get, :verify_new_tasks=>:get, :search=>:get  }
   
@@ -35,7 +35,7 @@ ActionController::Routing::Routes.draw do |map|
 
   map.change_language "change_language", :controller=>"languages", :action=>"change_language"
 
-  map.resources :evaluations
+  map.resources :evaluations, :collection =>{:report =>:get }
   
   map.resources :categories, :collection => {:show_export => :get}
 

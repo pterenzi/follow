@@ -34,7 +34,13 @@
            </ul>
        </li>
      </ul>
-     <ul><li><a href="#">Avaliação</a>
+     <ul><li><a href="#"><%= t(:evaluation)%></a>
+	   <ul>
+	   	<li><%= link_to t(:requested_by_me), 
+	report_evaluations_path(:search_type=>:requestor) %></li>
+	    <li><%= link_to t(:my_tasks), 
+	report_evaluations_path(:search_type=>:user) %></li>
+	   </ul>
      </li></ul>
      <ul><li><a href="#">Ajuda</a>
            <ul>

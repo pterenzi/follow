@@ -4,7 +4,7 @@
 <% form_tag search_messages_path() do  %>
 <table class="transparent">
   <tr><td align="right"><%= t(:content) %> :</td>
-  <td><%= text_field_tag :content, params[:content] %></td>
+  <td><%= text_field_tag h(:content), params[:content] %></td>
   </tr>
   <tr>
 	<td align="right"><%= t(:users) %> :</td>

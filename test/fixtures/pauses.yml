@@ -1,13 +1,15 @@
 # Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
 
 normal:
-  task: follow 
+  task_id: 1 
+  user_id: 1
   justification: "Servidor parado"
   accepted: true
   comment_requestor: "Vamos esperar entao"
 
 pattern:
-  task: follow
+  task_id: 1
+  user_id: 1
   justification: 
   accepted: false
   comment_requestor: 
@@ -15,12 +17,13 @@ pattern:
   
   
 duvida:
-    task: didio
+    task_id: 3
+    user_id: 1
     justification: "Não tenho tempo"
     accepted: false
     comment_requestor: "Voce deve se empenhar mais"
     
 locaweb:
-    task: loja
+    task_id: 4
     justification: "Esperando resposta do wiki"
     

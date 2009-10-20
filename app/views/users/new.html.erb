@@ -5,7 +5,7 @@
 <% form_for(@user) do |f| %>
   <%= f.error_messages %>
   <%= f.label :login %><br />
-  <%= f.text_field :login %><br />
+  <%= f.text_field h(:login) %><br />
   <br />
 <%= f.label t(:password) %><br />
 <%= f.password_field :password %><br />
@@ -13,7 +13,7 @@
 <%= f.label t(:password_confirmation) %><br />
 <%= f.password_field :password_confirmation %><br /><br/>
   <%= f.label t(:name) %><br />
-  <%= f.text_field :name %><br />
+  <%= f.text_field h(:name) %><br />
   <br />
     <%= f.label t(:category) %><br/>
     <%= f.select :category_id, @categories %><br/>
