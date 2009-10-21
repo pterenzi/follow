@@ -157,4 +157,48 @@ end
     end
   end
 
+  def info
+    result = "Description : " + description + "<br/>"
+    result += "requested by :" + requestor.name  + " at " + start_at.to_s + "<br/>"
+    users.each do |user|
+      evaluation = Evaluation.from_user(id,user.id)
+      result += " user : " + user.name + " grade : " + evaluation.first.grade.to_s + 
+          " comment : " + evaluation.first.comment + "<br/>"
+    end
+    result += "end at : " + end_at.to_s + "<br/>"
+    result += " duration : " + duration_in_hours + "<br/>" 
+    result
+  end
+  
+  def users
+    evaluations = Evaluation.all(:conditions=>["task_id = ?",id])
+    list = []
+    evaluations.each do |eval| 
+      list << eval.user
+    end 
+    list
+  end
+  #TODO ver se precisa do campo refused em evaluation.rb
+  
+  def duration
+    total = 0
+    total_pause = 0
+    users.each do |user|
+      pauses = Pause.from_an_user_in_a_task(id,user.id)
+      pauses.each do |pause|
+        total_pause += pause.duration_in_minutes
+      end
+    end
+    if end_at.nil?
+      total = Time.now - start_at - total_pause
+    else
+      total = end_at - start_at - total_pause.minutes
+    end
+  end
+  
+  def duration_in_hours
+    hour = duration / 3600
+    (duration / 3600).to_i.to_s + ":" + ((hour - hour.to_i) * 60).to_i.to_s
+  end
+  
 end

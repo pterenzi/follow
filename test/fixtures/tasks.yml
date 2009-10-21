@@ -33,3 +33,10 @@ loja:
     user_id: 2
     requestor_id: 1
     estimated_time: 50
+    
+tenis:
+    id: 5
+    project: tenis mau mau
+    description: "Tenis Mau Mau"
+    requestor_id: 1
+    estimated_time: 20

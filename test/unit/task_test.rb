@@ -44,12 +44,20 @@ class TaskTest < ActiveSupport::TestCase
     marcio = users(:marcio)
     assert task.usuario_que_criou(marcio.id) 
   end
-
+  
   def test_for_user
-    tasks =  
-    debugger
     assert Task.for_user(1).size==2
     assert Task.for_user(2).size==1
     assert Task.for_user(5).size==0
+  end
+  
+  def test_users
+    task = tasks(:didio)
+    assert task.users.size==2
+  end
+  
+  def test_duration
+    task = tasks(:tenis)
+    assert task.duration == 210
   end
 end

@@ -6,3 +6,13 @@ didio:
     refused: t
     comment: "muito mal feito"
     grade: 3
+    
+didio2:
+    task_id: 3
+    user_id: 3
+    refused: f
+    comment: "legal"
+    grade: 3
+tenis:
+    task_id: 5
+    user_id: 1

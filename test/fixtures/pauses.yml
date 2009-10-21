@@ -15,6 +15,24 @@ pattern:
   comment_requestor: 
   pattern_pause_id: almoco
   
+normal2:
+    task_id: 5 
+    user_id: 1
+    justification: "Servidor parado"
+    accepted: true
+    comment_requestor: "Vamos esperar entao"
+    created_at: "2009-10-05 10:00"
+    restart: "2009-10-05 12:00"
+
+pattern2:
+    task_id: 5
+    user_id: 1
+    justification: 
+    accepted: false
+    comment_requestor: 
+    pattern_pause_id: almoco
+    created_at: "2009-10-05 14:00"
+    restart: "2009-10-05 15:30"
   
 duvida:
     task_id: 3
@@ -26,4 +44,3 @@ duvida:
 locaweb:
     task_id: 4
     justification: "Esperando resposta do wiki"
-    
