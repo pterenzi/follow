@@ -23,8 +23,12 @@
   	<td><%= task.description %></td>
     <td><%= @search_type=="user"?  task.requestor.name : task.user.name%></td>
     <td align="right"><%= task.grade %></td>
-    <td align="center"><%= image_tag "info.png", :border=>0%></td>
+    <td align="center"><a href="#"><%= image_tag "info.png", :border=>0, :onclick=>"open_info_task(#{task.id})"%></a></td>
 <% #TODO fazer o details de uma task e abrir em pop-up aqui%>
+<div style="display:none;" id="info_task_<%=task.id.to_s%>">
+       <%= task.info %>
+   </div>
+
   </tr>  
 <% end %>
 </table>

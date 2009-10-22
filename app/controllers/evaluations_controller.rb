@@ -12,12 +12,7 @@ class EvaluationsController < ApplicationController
     @evaluation = Evaluation.last(:conditions=>["task_id=? and user_id=?", params[:task_id],@task.user_id])
     @task.refused = false
     debugger
-    #TODO pra que setar o user_id ?
-    if params[:user_id].blank?
-      @task.user_id = nil
-    else
-      @task.user_id = params[:user_id]
-    end
+    
     @evaluation.comment = params[:comment]
     @evaluation.grade = params[:evaluation]  
     @task.requestor_alert=false

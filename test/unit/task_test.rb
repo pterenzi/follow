@@ -56,8 +56,14 @@ class TaskTest < ActiveSupport::TestCase
     assert task.users.size==2
   end
   
-  def test_duration
+  def test_duration_in_hours
     task = tasks(:tenis)
-    assert task.duration == 210
+    assert task.duration_in_hours == "14:30"
+  end
+  
+  def test_in_time
+    task=tasks(:tenis)
+    assert task.in_time == true
+    assert task.delayed == false
   end
 end

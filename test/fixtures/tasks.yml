@@ -40,3 +40,5 @@ tenis:
     description: "Tenis Mau Mau"
     requestor_id: 1
     estimated_time: 20
+    start_at: "2009-10-05 10:00"
+    end_at: "2009-10-06 4:00"

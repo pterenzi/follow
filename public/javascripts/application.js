@@ -144,3 +144,8 @@ function populate_user_select(element){
     );
 }
 
+function open_info_task(task_id){
+   $('#info_task_'+task_id).dialog({ title: 'Task details' });
+   $('#info_task_'+task_id).dialog('open');
+   $('#info_task_'+task_id).dialog();
+}

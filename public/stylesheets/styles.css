@@ -771,3 +771,14 @@ h3 {
 	padding-left: 0.5em;
 	width: 26em;
 }
+
+#in_time{
+	background-color: green;
+	width:10px;
+	float: left;
+}
+#delayed{
+	background-color: green;
+	width:10px;
+	float: red;
+}

@@ -71,8 +71,6 @@ def paused
 end
 
 def pause_nao_aceita
-  #TODO estudar mais de uma pause par aum atask, em função do user_id, e não
-  #  do task_id
   pause = Pause.from_task(id)
   if pause.nil? 
     return false
@@ -159,13 +157,14 @@ end
 
   def info
     result = "Description : " + description + "<br/>"
-    result += "requested by :" + requestor.name  + " at " + start_at.to_s + "<br/>"
+    result += "requested by :" + requestor.name  + " at " + start_at.strftime("%x") + "  " + start_at.strftime("%H:%M") + "<br/>"
     users.each do |user|
       evaluation = Evaluation.from_user(id,user.id)
-      result += " user : " + user.name + " grade : " + evaluation.first.grade.to_s + 
-          " comment : " + evaluation.first.comment + "<br/>"
+      result += " user : " + user.name + "<br/> grade : " + evaluation.first.grade.to_s + 
+          " <br/>comment : " + evaluation.first.comment + "<br/>"
     end
-    result += "end at : " + end_at.to_s + "<br/>"
+    result += "end at : " + end_at.strftime("%x") + "  " + end_at.strftime("%H:%M")  + "<br/>"
+    result += " estimated time : " + estimated_time.to_s + "<br/>"
     result += " duration : " + duration_in_hours + "<br/>" 
     result
   end
@@ -178,8 +177,7 @@ end
     end 
     list
   end
-  #TODO ver se precisa do campo refused em evaluation.rb
-  
+
   def duration
     total = 0
     total_pause = 0
@@ -201,4 +199,11 @@ end
     (duration / 3600).to_i.to_s + ":" + ((hour - hour.to_i) * 60).to_i.to_s
   end
   
+  def in_time
+    duration < (estimated_time * 3600)  
+  end
+  
+  def delayed
+    in_time==false
+  end
 end

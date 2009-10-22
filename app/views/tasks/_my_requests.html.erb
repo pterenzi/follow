@@ -41,7 +41,8 @@
   <% if funcao.blank? %>
     <% funcao = "toggle("+ task.id.to_s + ","+ (task.requestor_alert.nil? ? false : task.requestor_alert).to_s + ", 'requestor');" %>
   <% end %>
-  <a href="#"  title="Detalhes da task" onClick="task_detail(<%= task.id %>);"><%= image_tag "info.png", :border=>0 %></a> 
+  <% info = (task.in_time==true ? "info_in_time.png" : "info_delayed.png") %>
+  <a href="#"  title="Detalhes da task" onClick="task_detail(<%= task.id %>);"><%= image_tag info, :border=>0 %></a> 
      <span id="blink_<%=task.id.to_s %>" >
        <a href="#" onClick="<%= funcao %>" ><span class="hyphenate" lang="pt"><%= task.description %></span></a> <br>
      </span>
