@@ -1,0 +1,5 @@
+<H2>Manage users of client <%= @client.name %></h2>
+<p>Total users license : <%= @client.users_license %></p>
+<p>Available licenses : <%= @client.available_license %></p>
+<p><%= link_to 'new user', new_user_path(:client => @client.id)%></p>
+<% #TODO fazer super-user do follow cadsatrndo novos users para clients %>

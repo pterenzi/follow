@@ -7,6 +7,7 @@ class CreateProjects < ActiveRecord::Migration
       t.boolean :active 
       t.timestamps
     end
+    add_index :projects, :id
   end
   
   def self.down

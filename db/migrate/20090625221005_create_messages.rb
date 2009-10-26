@@ -7,7 +7,9 @@ class CreateMessages < ActiveRecord::Migration
       t.integer :user_id
       t.timestamps
     end
+     add_index :messages, :id
      add_index :messages, :written_by
+     add_index :messages, :user_id
   end
   
   def self.down

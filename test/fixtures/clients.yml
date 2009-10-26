@@ -1,0 +1,16 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+ford:
+  id: 1
+  name: Ford Motors
+  start_at: 2009-10-23
+  active: true
+  valid_until: 2009-11-09
+  users_license: 5
+
+two:
+  name: MyString
+  start_at: 2009-10-23
+  active: false
+  valid_until: 2009-10-23
+  users_license: 1

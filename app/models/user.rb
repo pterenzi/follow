@@ -2,7 +2,8 @@ class User < ActiveRecord::Base
   acts_as_authentic do |u|
     u.logged_in_timeout = 20.minutes
   end
-  
+  belongs_to :role
+  belongs_to :client
   has_many :tasks
   has_many :comments
   belongs_to :category
@@ -14,5 +15,4 @@ class User < ActiveRecord::Base
   has_and_belongs_to_many :user_groups
   
   validates_presence_of :company
-#  has_many :written_by,  :foreign_key=>"written_by"
 end

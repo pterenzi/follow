@@ -6,8 +6,15 @@ class UserSessionsController < ApplicationController
      before_filter :require_user, :only => :destroy
 
      def new
-       @user_session = UserSession.new
-       @my_tasks = Hash.new
+       @client = Client.find_by_name(params[:client])
+       if @client.nil?
+         flash[:notice] = "Cliente não existe"
+       else
+         flash[:notice] = nil
+         session[:client] = @client.id
+         @user_session = UserSession.new
+         @my_tasks = Hash.new
+       end
      end
 
      def create

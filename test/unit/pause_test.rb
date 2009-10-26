@@ -8,7 +8,7 @@ class PauseTest < ActiveSupport::TestCase
   end
   
   def test_accepted
-    assert Pause.accepted.size==2
+    assert Pause.accepted(1).size==2
   end
   
   def test_duration_in_minutes

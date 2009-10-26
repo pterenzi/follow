@@ -9,15 +9,27 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20091019204345) do
+ActiveRecord::Schema.define(:version => 20091026110739) do
 
   create_table "categories", :force => true do |t|
+    t.integer  "client_id"
     t.string   "name",       :limit => 32
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
+  add_index "categories", ["client_id"], :name => "index_categories_on_client_id"
   add_index "categories", ["id"], :name => "index_categories_on_id"
+
+  create_table "clients", :force => true do |t|
+    t.string   "name"
+    t.date     "start_at"
+    t.boolean  "active"
+    t.date     "valid_until"
+    t.integer  "users_license"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "comments", :force => true do |t|
     t.integer  "user_id"
@@ -34,10 +46,12 @@ ActiveRecord::Schema.define(:version => 20091019204345) do
   create_table "companies", :force => true do |t|
     t.string   "name"
     t.boolean  "active",     :default => true
+    t.integer  "client_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
+  add_index "companies", ["client_id"], :name => "index_companies_on_client_id"
   add_index "companies", ["id"], :name => "index_companies_on_id"
 
   create_table "evaluations", :force => true do |t|
@@ -50,6 +64,9 @@ ActiveRecord::Schema.define(:version => 20091019204345) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "evaluations", ["task_id"], :name => "index_evaluations_on_task_id"
+  add_index "evaluations", ["user_id"], :name => "index_evaluations_on_user_id"
 
   create_table "events", :force => true do |t|
     t.datetime "start_at"
@@ -95,14 +112,15 @@ ActiveRecord::Schema.define(:version => 20091019204345) do
     t.datetime "restart"
     t.boolean  "pattern"
     t.integer  "pattern_pause_id"
+    t.integer  "user_id"
+    t.integer  "client_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "user_id"
   end
 
+  add_index "pauses", ["client_id"], :name => "index_pauses_on_client_id"
   add_index "pauses", ["id"], :name => "index_pauses_on_id"
   add_index "pauses", ["task_id"], :name => "index_pauses_on_task_id"
-  add_index "pauses", ["user_id"], :name => "index_pauses_on_user_id"
 
   create_table "projects", :force => true do |t|
     t.string   "name",        :limit => 32
@@ -121,6 +139,16 @@ ActiveRecord::Schema.define(:version => 20091019204345) do
 
   add_index "projects_users", ["project_id", "user_id"], :name => "index_projects_users_on_project_id_and_user_id"
 
+  create_table "roles", :force => true do |t|
+    t.string   "name"
+    t.string   "description"
+    t.integer  "level"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "roles", ["id"], :name => "index_roles_on_id"
+
   create_table "tasks", :force => true do |t|
     t.integer  "project_id"
     t.integer  "user_id"
@@ -134,11 +162,13 @@ ActiveRecord::Schema.define(:version => 20091019204345) do
     t.string   "comment_end_requestor"
     t.boolean  "refused",                            :default => false
     t.boolean  "has_comment",                        :default => false
+    t.integer  "client_id"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.datetime "start_at"
   end
 
+  add_index "tasks", ["client_id"], :name => "index_tasks_on_client_id"
   add_index "tasks", ["id"], :name => "index_tasks_on_id"
   add_index "tasks", ["project_id"], :name => "index_tasks_on_project_id"
   add_index "tasks", ["requestor_id"], :name => "index_tasks_on_requestor_id"
@@ -147,10 +177,12 @@ ActiveRecord::Schema.define(:version => 20091019204345) do
   create_table "user_groups", :force => true do |t|
     t.string   "name"
     t.boolean  "active"
+    t.integer  "client_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
+  add_index "user_groups", ["client_id"], :name => "index_user_groups_on_client_id"
   add_index "user_groups", ["id"], :name => "index_user_groups_on_id"
 
   create_table "user_groups_users", :id => false, :force => true do |t|
@@ -175,11 +207,14 @@ ActiveRecord::Schema.define(:version => 20091019204345) do
     t.string   "current_login_ip"
     t.integer  "category_id"
     t.string   "name"
+    t.integer  "client_id"
     t.integer  "company_id"
     t.string   "preferred_language"
+    t.integer  "role"
   end
 
   add_index "users", ["category_id"], :name => "index_users_on_category_id"
+  add_index "users", ["client_id"], :name => "index_users_on_client_id"
   add_index "users", ["company_id"], :name => "index_users_on_company_id"
   add_index "users", ["id"], :name => "index_users_on_id"
   add_index "users", ["last_request_at"], :name => "index_users_on_last_request_at"

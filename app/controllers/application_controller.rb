@@ -5,7 +5,15 @@ class ApplicationController < ActionController::Base
     helper :all # include all helpers, all the time
     helper_method :current_user_session, :current_user
     filter_parameter_logging :password, :password_confirmation
-    before_filter :set_locale
+    before_filter :find_client, :set_locale
+    
+    
+    def find_client
+      debugger
+      if session[:client]
+        @client= Client.find(session[:client])
+      end
+    end
     
     def set_locale
       if params[:locale]
@@ -18,10 +26,22 @@ class ApplicationController < ActionController::Base
     def default_url_options(options={})
       logger.debug "default_url_options is passed options: #{options.inspect}\n"
 #debugger
-      { :locale => I18n.locale }
+      if session[:client]
+        
+        { :locale => I18n.locale, :client=>@client.name }
+      else
+        { :locale => I18n.locale }
+      end
     end
     
     private
+    
+      def verify_super_user
+        if !session[:super_user]
+          redirect_to :login_super_user
+        end
+      end
+      
       def current_user_session
         return @current_user_session if defined?(@current_user_session)
         @current_user_session = UserSession.find
@@ -88,7 +108,7 @@ class ApplicationController < ActionController::Base
     @date_calendar = Date.today
     @event = Event.new
     @evaluation = Evaluation.new
-     #TODO testar <> 't' em outros bancos
+     #TODO testar <> 't' em outros bancos. No Sqlite funciona somente desta maneira
    end
    
 end

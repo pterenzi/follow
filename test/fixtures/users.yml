@@ -17,6 +17,7 @@
      password_salt: z6Qou51RMFfTcaSjVsPH
      persistence_token: 3b9274bcc5210051239260b92001c604a0b6116393a37403895b442fdd9d5c158869f2148e1d32a6d389a0ee637544ca3f13422aff214a6b257cfc936637ce91
      company: way
+     client_id: 1
      
  ana_paula:
     id: 3
@@ -26,3 +27,4 @@
     password_salt: z6Qou51RMFfTcaSjVsPH
     persistence_token: 3b9274bcc5210051239260b92001c604a0b6116393a37403895b442fdd9d5c158869f2148e1d32a6d389a0ee637544ca3f13422aff214a6b257cfc936637ce91
     company: ana
+    client_id: 1

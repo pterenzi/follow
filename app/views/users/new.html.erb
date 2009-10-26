@@ -21,8 +21,10 @@
 <%= f.label t(:company) %><br/>
 <%= f.select :company_id, @companies %>
 <br/><br/>
-<%= f.radio_button :preferred_languaged %>
-<%= f.label t(:preferred_language) %>
+<%= f.radio_button :preferred_language, "pt-BR" %>
+<%= f.label("preferred_language_pt-BR" , :portugues) %>&nbsp;&nbsp;
+<%= f.radio_button :preferred_language, "en" %>
+<%= f.label("preferred_language_en" , :english) %>
 <br/><br/>
   <%= f.submit t(:create) %>
 <% end %>

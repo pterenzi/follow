@@ -39,7 +39,8 @@
   <div id="cabecalho">
     <div id="banner" >
 	  <%= image_tag "Logo.jpg"%>
-      <%=  @page_title  %>
+      <%= @page_title  %>
+      <%= @client.name %>
     </div>
     <div id="notice_container">  
     <% if flash[:notice] -%>

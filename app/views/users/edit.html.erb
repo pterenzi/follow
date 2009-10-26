@@ -11,7 +11,7 @@
   <%= f.label t(:name) %><br />
   <%= f.text_field h(:name) %><br />
   <br />
-  <% if current_user.category.name.downcase=="gestor"%>
+  <% if current_user.role.level==0%>
     <%= f.label t(:category) %><br/>
     <%= f.select :category_id, @categories %><br/>
     <br/>

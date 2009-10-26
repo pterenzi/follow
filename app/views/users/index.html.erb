@@ -24,5 +24,6 @@
 <% end %>
 </table>
 <br/>
-<%= link_to t(:new) + t(:user) , new_user_path() %>
+<%= link_to t(:new) + t(:user) , new_user_path() unless @client.license_full %>
+<%= @client.available_license %> <%= t(:available_licenses)%>
 <% end %>

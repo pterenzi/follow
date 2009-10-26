@@ -4,6 +4,7 @@ class CreateUserUserGroups < ActiveRecord::Migration
       t.integer :user_id
       t.integer :user_group_id
     end
+    add_index :user_groups_users, [:user_group_id, :user_id]
   end
 
   def self.down

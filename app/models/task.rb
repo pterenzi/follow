@@ -12,6 +12,7 @@ validates_presence_of :estimated_time, :message=>"não pode ficar em branco!"
 validates_length_of  :estimated_time, :maximum=>4, :message=>"não pode exeder os 4 caracteres!"
 validates_numericality_of  :estimated_time, :message=>"deve ser numérico!"
 
+named_scope :from_client, lambda {| client_id| {:conditions=>["client_id=?", client_id]}}
 named_scope :abertas, :conditions=>["start_at <= ? and end_at IS NULL",(Time.now+1.minute).strftime("%Y-%m-%d %H:%M") ]
 named_scope :for_user, lambda{ |user_id| {:conditions=>["user_id = '?' ",user_id]}}
 named_scope :de_mim_para_mim, lambda{ |id| {:conditions=>["user_id = requestor_id and requestor_id = ?", id]} }    

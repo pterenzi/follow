@@ -1,44 +1,37 @@
 ActionController::Routing::Routes.draw do |map|
-
-  map.resources :user_groups, :collection=>{:manage_users=>:get, :insert_user=>:get,
-        :retrieve_users=>:get, :remove_user=>:get}
-  
+ 
+  map.resources :clients, :collection=>{:manage_users=>:get}
+  map.resources :categories, :collection => {:show_export => :get}
+  map.resources :comments
+  map.resources :companies 
+  map.resources :evaluations, :collection =>{:report =>:get }
   map.resources :events, :collection=>{:new_event=>:get,
      :display_calendar=>:get, :search=>:get}
-
   map.resources :items
-
-  map.resources :companies 
-  
+  map.resources :messages, :collection => {:mark_as_readed => :get,:search=>:get}
+  map.resources :pattern_pauses
   map.resources :projects, :collection => {:insert_user => :get, 
       :remove_user=>:get}
+  map.resources :tasks, :collection => {:show_export => :get, :pauser=>:get, :reiniciar_a_task=>:get, 
+             :pauser_pattern=>:get, :reiniciar_pattern_pause=>:get, :encaminhar=>:get, :change_alert=>:get,
+             :encerrar_task=>:get, :avaliar_task=>:get, :recusar_task=>:get, :reencaminhar_task_refused=>:get,
+             :verify_updates=>:get, :verify_new_tasks=>:get, :search=>:get  }
 
-  map.resources :pattern_pauses
+  map.resources :tasks do |tasks|
+     tasks.resources :comments
+  end 
+  map.resources :user_groups, :collection=>{:manage_users=>:get, :insert_user=>:get,
+        :retrieve_users=>:get, :remove_user=>:get}
+   
+   map.login_super_user "login_super_user", :controller=>"admin", :action=>"login_super_user"
+   map.validate_super_user "validate_super_user", :controller=>"admin", :action=>"validate_super_user"
    
    map.logout "logout", :controller=>"user_sessions", :action=>"destroy"
+   map.logout_admin "logout_admin", :controller=>"admin", :action=>"logout"
   # map.resources :account, :controller => "users"
    map.resources :users, :member=>{:change_password=>:get} , :collection=>{:retrieve_users=>:get}
    map.resources :user_sessions
- 
-  map.resources :comments
-
-  map.resources :messages, :collection => {:mark_as_readed => :get,:search=>:get}
-
-  map.resources :tasks, :collection => {:show_export => :get, :pauser=>:get, :reiniciar_a_task=>:get, 
-         :pauser_pattern=>:get, :reiniciar_pattern_pause=>:get, :encaminhar=>:get, :change_alert=>:get,
-         :encerrar_task=>:get, :avaliar_task=>:get, :recusar_task=>:get, :reencaminhar_task_refused=>:get,
-         :verify_updates=>:get, :verify_new_tasks=>:get, :search=>:get  }
-  
-  map.resources :tasks do |tasks|
-       tasks.resources :comments
-    end 
-
-  map.change_language "change_language", :controller=>"languages", :action=>"change_language"
-
-  map.resources :evaluations, :collection =>{:report =>:get }
-  
-  map.resources :categories, :collection => {:show_export => :get}
-
+   map.change_language "change_language", :controller=>"languages", :action=>"change_language"
   map.root :controller => "tasks"
 
   # The priority is based upon order of creation: first created -> highest priority.

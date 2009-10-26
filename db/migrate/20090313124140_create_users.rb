@@ -14,11 +14,17 @@ class CreateUsers < ActiveRecord::Migration
               t.string :current_login_ip
               t.integer :category_id
               t.string :name
+              t.integer :client_id
+              t.integer :company_id
             end
 
+            add_index :users, :id
+            add_index :users, :client_id
+            add_index :users, :category_id
             add_index :users, :login
             add_index :users, :persistence_token
             add_index :users, :last_request_at
+            add_index :users, :company_id
   end
 
   def self.down

@@ -5,10 +5,16 @@ class UsersController < ApplicationController
   before_filter :retrieve_tasks
    
   def index
-    @users = User.all(:order=>"login")  
+    @users = User.all(:order=>"login", :conditions=>["client_id = ?", session[:client] ])  
   end
   
   def new
+    if @client.users_license > User.how_many_from_client(@client_id)
+      redirect_to users_path
+    end
+    if current_user.role.level>0
+      redirect_to users_path
+    end
     @user = User.new
     @categories = Category.all(:order=>"name").collect{|obj| [obj.name,obj.id]}
     @companies = Company.all(:order=>:name).collect{|obj| [obj.name,obj.id]}

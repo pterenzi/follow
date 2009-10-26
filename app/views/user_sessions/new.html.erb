@@ -3,11 +3,11 @@
 <% content_for :main do %>
 <div class="depot-form">
   <div align="center">
+      <% if @client %>
     <div  style="width: 300px; border: 2px; ">
       <fieldset>
         <legend>Log In</legend>
-        
-        <% form_for @user_session, :url => user_sessions_path  do |f|%>
+        <% form_for @user_session, :url=>user_sessions_path  do |f|%>
  <%= f.error_messages %>
            <%= f.label :login %><br />
           <%= f.text_field h(:login) %><br />
@@ -19,6 +19,9 @@
         <% end %>
       </fieldset>
     </div>
+    <% else %>
+      Cliente não existe
+    <% end%>
   </div>
 </div>
 

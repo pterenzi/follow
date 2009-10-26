@@ -1,7 +1,7 @@
      <ul>
 	   <li><%= link_to "Home", tasks_path %></li>
 	 </ul>
-     <% if current_user.category_id==1 %>
+     <% if current_user.role.level==1 %>
        <ul><li><a href="#"><%=t(:tables)%></a>
          <ul>
            <li><%=link_to t(:projects), projects_path %></li>

@@ -1,0 +1,28 @@
+<p>
+  <b>Name:</b>
+  <%=h @client.name %>
+</p>
+
+<p>
+  <b>Start at:</b>
+  <%=h @client.start_at %>
+</p>
+
+<p>
+  <b>Active:</b>
+  <%=h @client.active %>
+</p>
+
+<p>
+  <b>Valid until:</b>
+  <%=h @client.valid_until %>
+</p>
+
+<p>
+  <b>Users license:</b>
+  <%=h @client.users_license %>
+</p>
+
+
+<%= link_to 'Edit', edit_client_path(@client) %> |
+<%= link_to 'Back', clients_path %>

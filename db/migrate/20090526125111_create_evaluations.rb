@@ -9,6 +9,8 @@ class CreateEvaluations < ActiveRecord::Migration
       t.boolean :refused, :default=>false
       t.timestamps
     end
+    add_index :evaluations, :user_id
+    add_index :evaluations, :task_id
   end
 
   def self.down

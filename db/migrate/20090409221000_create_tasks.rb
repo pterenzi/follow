@@ -14,9 +14,15 @@ class CreateTasks < ActiveRecord::Migration
     t.string :comment_end_requestor
     t.boolean :refused, :default=>false
     t.boolean :has_comment, :default=>false
+    t.references :client
     t.timestamps
 
     end
+    add_index :tasks, :id
+    add_index :tasks, :project_id
+    add_index :tasks, :requestor_id
+    add_index :tasks, :user_id
+    add_index :tasks, :client_id
   end
 
   def self.down
