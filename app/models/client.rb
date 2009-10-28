@@ -2,6 +2,7 @@ class Client < ActiveRecord::Base
   validates_numericality_of :users_license
   validates_presence_of :name
   
+  has_many :companies
   has_many :users
   has_many :categories
  

@@ -6,7 +6,7 @@
 	<th width="80"><%= t(:login) %></th>
 	<th width="110"><%= t(:name) %></th>
 	<th width="110"><%= t(:company) %></th>
-	<th width="90"><%=t(:category)%></th>
+	<th width="90"><%=t(:role)%></th>
 	<th>&nbsp;</th>
 	<th>&nbsp;</th>
 	<th>&nbsp;</th>
@@ -16,7 +16,7 @@
 	<td><%=h user.login %></td>
 	<td><%=h user.name %></td>
 	<td><%=h user.company.name unless user.company.nil? %></td>
-	<td><%= link_to user.category.name, edit_category_path(user.category) %></td>
+	<td><%= user.role.name unless user.role.nil? %></td>
 	<td><%= link_to t(:show), user %></td>
     <td><%= link_to t(:edit), edit_user_path(user) %></td>
     <td><%= link_to t(:destroy), user, :confirm => 'Are you sure?', :method => :delete %></td>
@@ -24,6 +24,6 @@
 <% end %>
 </table>
 <br/>
-<%= link_to t(:new) + t(:user) , new_user_path() unless @client.license_full %>
-<%= @client.available_license %> <%= t(:available_licenses)%>
+<%= link_to t(:new) + t(:user) , new_user_path() unless @client.license_full %> ( 
+<%= @client.available_license %> <%= t(:available_licenses)%> )
 <% end %>

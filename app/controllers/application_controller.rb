@@ -9,9 +9,11 @@ class ApplicationController < ActionController::Base
     
     
     def find_client
-      debugger
-      if session[:client]
-        @client= Client.find(session[:client])
+      return if session[:super_user]
+      if session[:client_id]
+        @client= Client.find(session[:client_id])
+      else
+        @client = Client.find_by_name(params[:client])
       end
     end
     
@@ -26,7 +28,7 @@ class ApplicationController < ActionController::Base
     def default_url_options(options={})
       logger.debug "default_url_options is passed options: #{options.inspect}\n"
 #debugger
-      if session[:client]
+      if session[:client_id]
         
         { :locale => I18n.locale, :client=>@client.name }
       else
@@ -53,10 +55,15 @@ class ApplicationController < ActionController::Base
       end
 
       def require_user
+        return true if session[:super_user]
         unless current_user
           store_location
           flash[:notice] = "Por favor, autentique-se"
-          redirect_to new_user_session_url
+          if params[:client]
+            redirect_to new_user_session_url(:client=>params[:client])
+          else
+            redirect_to new_user_session_url
+          end
 #          redirect_to(:controller => "login", :action => "login")
           return false
         end
@@ -94,10 +101,10 @@ class ApplicationController < ActionController::Base
     @pauses_pattern = PatternPause.all(:order=>"description").collect{|obj| [obj.description,obj.id]}
     @tem_task_com_pattern_pause = Task.tem_task_com_pattern_pause(@my_tasks)
     @tasks_encerradas_sem_evaluation = Task.encerradas_sem_evaluation(current_user.id) #Task.all(:conditions=>["end_at is not null and requestor_id=?  ",current_user.id])
-    @users = User.find(:all, :order=>:name).collect{|obj| [obj.name,obj.id]}
+    @users = User.by_name.from_client(session[:client_id]).collect{|obj| [obj.name,obj.id]}
     
     #Com named_scope
-    @projetos = Project.all(:order=>'description').collect{|obj| [obj.description,obj.id]}
+    @projetos = Project.by_name.from_client(session[:client_id]).collect{|obj| [obj.description,obj.id]}
     @my_tasks = Task.para_mim(current_user.id).abertas.por_requestor.sem_recusa.ordenados
     @my_requests = Task.abertas.solicitadas_por(current_user.id)
     @my_requests = @my_requests + @tasks_encerradas_sem_evaluation

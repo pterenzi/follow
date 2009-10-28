@@ -14,6 +14,7 @@ class CreateUsers < ActiveRecord::Migration
               t.string :current_login_ip
               t.integer :category_id
               t.string :name
+              t.string :email
               t.integer :client_id
               t.integer :company_id
             end

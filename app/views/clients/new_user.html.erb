@@ -1,0 +1,29 @@
+<h1>Novo usuário do cliente <%= @client.name %></h1>
+ 
+<% form_for@user ,:url=> create_user_client_path do |f| %>
+  <%= f.error_messages %>
+  <%= f.hidden_field :client_id %>
+  <%= f.hidden_field :company_id %>
+
+  <%= f.label :login %><br />
+  <%= f.text_field h(:login) %><br />
+  <br />
+  <%= f.label t(:name) %><br />
+  <%= f.text_field h(:name) %><br />
+  <br />
+  <br />
+  <%= f.label :email %><br />
+  <%= f.text_field h(:email) %><br />
+  <%= f.hidden_field :password %>
+  <%= f.hidden_field :password_confirmation %>
+  <br/>
+  <%= f.radio_button :preferred_language, "pt-BR" %>
+  <%= f.label("preferred_language_pt-BR" , :portugues) %>&nbsp;&nbsp;
+  <%= f.radio_button :preferred_language, "en" %>
+  <%= f.label("preferred_language_en" , :english) %>
+<br/><br/>
+  <%= f.submit t(:create) %>
+<% end %>
+ 
+<br />
+<%= link_to t(:back), :back%> 

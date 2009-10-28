@@ -6,7 +6,7 @@ class CompaniesController < ApplicationController
   # GET /companies
   # GET /companies.xml
   def index
-    @companies = Company.find(:all)
+    @companies = Company.from_client(session[:client_id])
 
     respond_to do |format|
       format.html # index.html.erb

@@ -28,10 +28,10 @@ class MessagesController < ApplicationController
    # GET /messages/new GET /messages/new.xml
    def new
       @message = Message.new
-      @projects = Project.active.collect{|obj| [obj.name,obj.id]}.insert(0,"")
-      @user_groups = UserGroup.active.collect{|obj| [obj.name,obj.id]}.insert(0,"")
-      @companies = Company.active.collect{|obj| [obj.name,obj.id]}.insert(0,"")
-      @users = User.all(:order=>"name").collect{|obj| [obj.name,obj.id]}
+      @projects = Project.active.by_name.from_client(session[:client_id]).collect{|obj| [obj.name,obj.id]}.insert(0,"")
+      @user_groups = UserGroup.by_name.active.from_client(session[:client_id]).collect{|obj| [obj.name,obj.id]}.insert(0,"")
+      @companies = Company.by_name.active.from_client(session[:client_id]).collect{|obj| [obj.name,obj.id]}.insert(0,"")
+      @users = User.by_name.from_client(session[:client_id]).collect{|obj| [obj.name,obj.id]}
    end
 
    # GET /messages/1/edit
@@ -56,10 +56,10 @@ class MessagesController < ApplicationController
           format.html { redirect_to(tasks_path) }
           format.xml  { render :xml => @message, :status => :created, :location => @message }
         else
-          @projects = Project.active.collect{|obj| [obj.name,obj.id]}.insert(0,"")
-          @user_groups = UserGroup.active.collect{|obj| [obj.name,obj.id]}.insert(0,"")
-          @companies = Company.active.collect{|obj| [obj.name,obj.id]}.insert(0,"")
-          @users = User.all(:order=>"name").collect{|obj| [obj.name,obj.id]}.insert(0,"")
+          @projects = Project.active.by_name.from_client(session[:client_id]).collect{|obj| [obj.name,obj.id]}.insert(0,"")
+          @user_groups = UserGroup.active.by_name.from_client(session[:client_id]).collect{|obj| [obj.name,obj.id]}.insert(0,"")
+          @companies = Company.active.by_name.from_client(session[:client_id]).collect{|obj| [obj.name,obj.id]}.insert(0,"")
+          @users = User.by_name.from_client(session[:client_id]).collect{|obj| [obj.name,obj.id]}.insert(0,"")
           
           format.html { render :action => "new" }
           format.xml  { render :xml => @message.errors, :status => :unprocessable_entity }
@@ -114,7 +114,6 @@ class MessagesController < ApplicationController
         if params[:content] && !params[:content].blank?
           sql += " and content like '%" + params[:content] + "%'"
         end
-        debugger
         if params[:user]
           if !params[:user][:id].blank?
             sql += " and written_by = " + params[:user][:id]

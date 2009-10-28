@@ -7,9 +7,7 @@ class CreateCategories < ActiveRecord::Migration
     end
     add_index :categories, :id
     add_index :categories, :client_id 
-    Category.create(:name=>"Gestor");
-    Category.create(:name=>"Adminstrador")
-    Category.create(:name=>"Usuário")
+   
   end
   
   def self.down

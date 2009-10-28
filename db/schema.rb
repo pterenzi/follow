@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20091026110739) do
+ActiveRecord::Schema.define(:version => 20091027142913) do
 
   create_table "categories", :force => true do |t|
     t.integer  "client_id"
@@ -128,8 +128,10 @@ ActiveRecord::Schema.define(:version => 20091026110739) do
     t.boolean  "active"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "client_id"
   end
 
+  add_index "projects", ["client_id"], :name => "index_projects_on_client_id"
   add_index "projects", ["id"], :name => "index_projects_on_id"
 
   create_table "projects_users", :id => false, :force => true do |t|
@@ -207,10 +209,11 @@ ActiveRecord::Schema.define(:version => 20091026110739) do
     t.string   "current_login_ip"
     t.integer  "category_id"
     t.string   "name"
+    t.string   "email"
     t.integer  "client_id"
     t.integer  "company_id"
     t.string   "preferred_language"
-    t.integer  "role"
+    t.integer  "role_id"
   end
 
   add_index "users", ["category_id"], :name => "index_users_on_category_id"

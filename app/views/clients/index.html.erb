@@ -16,7 +16,7 @@
     <td><%=h client.active %></td>
     <td><%=h client.valid_until %></td>
     <td><%=h client.users_license %></td>
-    <td><%= link_to 'Manage users', manage_users_clients_path(:id=>client.id) %></td>
+    <td><%= link_to 'Manage users', manage_users_clients_path(:client_id=>client.id) %></td>
     <td><%= link_to 'Show', client %></td>
     <td><%= link_to 'Edit', edit_client_path(client) %></td>
     <td><%= link_to 'Destroy', client, :confirm => 'Are you sure?', :method => :delete %></td>

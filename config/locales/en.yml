@@ -68,6 +68,7 @@ en:
   requested_by: "requested by"
   requested_by_me: "requested by me"
   requestor: "requestor"
+  role: "role"
   save: "Save"
   search: "Search"
   searching: "Searching"

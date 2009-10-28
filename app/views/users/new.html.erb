@@ -11,9 +11,14 @@
 <%= f.password_field :password %><br />
 <br/>
 <%= f.label t(:password_confirmation) %><br />
-<%= f.password_field :password_confirmation %><br /><br/>
+<%= f.password_field :password_confirmation %><br />
+<br/>
   <%= f.label t(:name) %><br />
   <%= f.text_field h(:name) %><br />
+<br/>
+  <%= f.label :email %><br />
+  <%= f.text_field h(:email) %><br />
+
   <br />
     <%= f.label t(:category) %><br/>
     <%= f.select :category_id, @categories %><br/>

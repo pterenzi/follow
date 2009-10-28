@@ -1,0 +1,5 @@
+<h1>Selecione sua empresa</h1>
+
+<% @clients.each do |client| %>
+	<%= link_to client.name, tasks_path(:client=>client.name) %>
+<% end %>

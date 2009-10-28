@@ -10,7 +10,7 @@
 <body>
 <div id="menu">
 	<%= link_to "Clients", clients_path %> | 
-	<%= link_to "Logout", "logout_admin"%>
+	<%= link_to "Logout", "/logout_admin" if session[:super_user]%>
 </div>
 <p style="color: green"><%= flash[:notice] %></p>
 

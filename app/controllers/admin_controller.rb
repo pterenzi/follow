@@ -15,9 +15,8 @@ class AdminController < ApplicationController
   end
   
   def logout
-    session[:client] = nil
+    session[:super_user] = nil
+    current_user_session.destroy
     redirect_to :login_super_user
-    
   end
-  
 end

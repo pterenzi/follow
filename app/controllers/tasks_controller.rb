@@ -1,6 +1,5 @@
 class TasksController < ApplicationController
 
- # before_filter :authorize
   before_filter :require_user
   before_filter :retrieve_tasks , :only=>[:index, :show, :new, :edit, :pauser_pattern,
       :search, :reiniciar_pattern_pausen]
@@ -31,9 +30,9 @@ class TasksController < ApplicationController
   def new
     @task = Task.new
     @task.start_at = Time.now
-    @companies = Company.all(:order=>'name').collect{|obj| [obj.name,obj.id]}.insert(0,"")
-    @projetos = Project.all(:order=>'name').collect{|obj| [obj.name,obj.id]}.insert(0,"")
-    @user_groups = UserGroup.all(:order=>'name').collect{|obj| [obj.name,obj.id]}.insert(0,"")
+    @companies = Company.by_name.from_client(session[:client_id]).collect{|obj| [obj.name,obj.id]}.insert(0,"")
+    @projetos = Project.by_name.from_client(session[:client_id]).collect{|obj| [obj.name,obj.id]}.insert(0,"")
+    @user_groups = UserGroup.by_name.from_client(session[:client_id]).collect{|obj| [obj.name,obj.id]}.insert(0,"")
 
     respond_to do |format|
       format.html # new.html.erb

@@ -1,6 +1,8 @@
 ActionController::Routing::Routes.draw do |map|
  
-  map.resources :clients, :collection=>{:manage_users=>:get}
+  map.resources :clients, :collection=>{:manage_users=>:get, :select_client=> :get}
+  map.new_user_client "new_user_client", :controller=>:clients, :action=>:new_user
+  map.create_user_client "create_user_client", :controller=>:clients, :action=>:create_user
   map.resources :categories, :collection => {:show_export => :get}
   map.resources :comments
   map.resources :companies 
@@ -32,7 +34,7 @@ ActionController::Routing::Routes.draw do |map|
    map.resources :users, :member=>{:change_password=>:get} , :collection=>{:retrieve_users=>:get}
    map.resources :user_sessions
    map.change_language "change_language", :controller=>"languages", :action=>"change_language"
-  map.root :controller => "tasks"
+   map.root :controller => "tasks", :action=>"index"
 
   # The priority is based upon order of creation: first created -> highest priority.
 

@@ -9,7 +9,7 @@ class ProjectsController < ApplicationController
   # GET /projects
   # GET /projects.xml
   def index
-    @projects = Project.find(:all)
+    @projects = Project.from_client(session[:client_id])
 
     respond_to do |format|
       format.html # index.html.erb
@@ -21,7 +21,6 @@ class ProjectsController < ApplicationController
   # GET /projects/1.xml
   def show
     @project = Project.find(params[:id])
-
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @project }
@@ -32,7 +31,8 @@ class ProjectsController < ApplicationController
   # GET /projects/new.xml
   def new
     @project = Project.new
-
+    #@client = Client.find_by_name(params[:client])
+    @project.client_id = @client.id
     respond_to do |format|
       format.html # new.html.erb
       format.xml  { render :xml => @project }
@@ -48,7 +48,7 @@ class ProjectsController < ApplicationController
   # POST /projects.xml
   def create
     @project = Project.new(params[:project])
-
+    @project.client_id = session[:client_id]
     respond_to do |format|
       if @project.save
         flash[:notice] = 'Project was successfully created.'
@@ -93,7 +93,7 @@ class ProjectsController < ApplicationController
 def manage_users
   @project = Project.find(params[:id])
   @included = @project.users
-  @users = User.all(:order=>:name)
+  @users = User.by_name.from_client(session[:client_id])
   @not_selected =  @users - @project.users
 end
 

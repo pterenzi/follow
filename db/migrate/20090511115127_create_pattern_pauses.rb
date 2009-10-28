@@ -2,7 +2,6 @@ class CreatePatternPauses < ActiveRecord::Migration
   def self.up
     create_table :pattern_pauses, :force => true do |t|
       t.string :description
-
       t.timestamps
     end
     add_index :pattern_pauses, :id

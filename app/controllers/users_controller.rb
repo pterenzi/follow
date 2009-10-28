@@ -5,11 +5,13 @@ class UsersController < ApplicationController
   before_filter :retrieve_tasks
    
   def index
-    @users = User.all(:order=>"login", :conditions=>["client_id = ?", session[:client] ])  
+    @users = User.all(:order=>"login", 
+           :conditions=>["client_id = ?", session[:client_id] ],
+           :include=>[:company, :role])  
   end
   
   def new
-    if @client.users_license > User.how_many_from_client(@client_id)
+    if @client.available_license < 1
       redirect_to users_path
     end
     if current_user.role.level>0
@@ -21,10 +23,10 @@ class UsersController < ApplicationController
   end
   
   def create
-    debugger
     params[:password] = '1234'
     params[:confirmation_password] = '1234'
     @user = User.new(params[:user])
+    @user.client_id = @client.id
     if @user.save
       flash[:notice] = "Usuário criado !"
       redirect_to users_path
@@ -42,8 +44,8 @@ class UsersController < ApplicationController
 
   def edit
     @user = User.find(params[:id])
-    @categories = Category.all(:order=>"name").collect{|obj| [obj.name,obj.id]}
     @companies = Company.all(:order=>:name).collect{|obj| [obj.name,obj.id]}
+    @roles = Role.all(:order=>:level).collect{|obj| [obj.name,obj.id]}
   end
   
   def update

@@ -1,5 +1,22 @@
 <H2>Manage users of client <%= @client.name %></h2>
 <p>Total users license : <%= @client.users_license %></p>
 <p>Available licenses : <%= @client.available_license %></p>
-<p><%= link_to 'new user', new_user_path(:client => @client.id)%></p>
-<% #TODO fazer super-user do follow cadsatrndo novos users para clients %>
+<p><%= link_to 'new user', new_user_client_path(:client_id => @client.id)%> | 
+	<%= link_to "Back", clients_path%></p>
+<p>
+<table border="1">	
+  <tr>
+  	<td>Login</td>
+    <td>Nome</td>
+    <td>email</td>
+    <td>Role</td>
+  </tr>
+  <% @client.users.each do |user|  %>
+    <tr>
+      <td><%= user.login %></td>
+      <td><%= user.name %></td>  
+      <td><%= user.email %></td>
+      <td><%= user.role.name %></td>
+    </tr>
+  <% end %>
+</table>

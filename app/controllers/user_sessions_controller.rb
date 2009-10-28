@@ -6,12 +6,17 @@ class UserSessionsController < ApplicationController
      before_filter :require_user, :only => :destroy
 
      def new
-       @client = Client.find_by_name(params[:client])
+       if params[:client]
+         @client = Client.find_by_name(params[:client])
+       else
+         @client = Client.find(session[:client_id]) if session[:client_id]
+       end
        if @client.nil?
          flash[:notice] = "Cliente não existe"
+         redirect_to select_client_clients_path
        else
          flash[:notice] = nil
-         session[:client] = @client.id
+         session[:client_id] = @client.id
          @user_session = UserSession.new
          @my_tasks = Hash.new
        end

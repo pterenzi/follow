@@ -8,7 +8,8 @@ class CategoriesController < ApplicationController
 
    # GET /categories GET /categories.xml
    def index
-      @categories = Category.find(:all).from_client(session[:client])
+     debugger
+      @categories = Category.from_client(session[:client_id])
       respond_to do |format|
          format.html # index.html.erb
          format.xml  { render :xml => @categories }

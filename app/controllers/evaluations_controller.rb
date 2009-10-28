@@ -11,7 +11,6 @@ class EvaluationsController < ApplicationController
     @task = Task.find(params[:task_id])
     @evaluation = Evaluation.last(:conditions=>["task_id=? and user_id=?", params[:task_id],@task.user_id])
     @task.refused = false
-    debugger
     
     @evaluation.comment = params[:comment]
     @evaluation.grade = params[:evaluation]  
@@ -28,7 +27,7 @@ class EvaluationsController < ApplicationController
     @search_type = params[:search_type]
     debugger
     @users = [t(:all)]
-    @users +=  User.all(:order=>"name").collect{|obj| [obj.name,obj.id]}
+    @users +=  User.by_name.from_client(session[:client_id]).collect{|obj| [obj.name,obj.id]}
     @tasks = []
     if params[:user_id]
       @searched_user = t(:all)
