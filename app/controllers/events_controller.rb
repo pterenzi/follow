@@ -27,8 +27,8 @@ class EventsController < ApplicationController
   # GET /events/new.xml
   def new
     @projects = Project.active
-    @user_groups = UserGroup.active(session[:client_id])
-    @companies = Company.active(session[:client_id])
+    @user_groups = UserGroup.active(current_user.client_id)
+    @companies = Company.active(current_user.client_id)
     @repeat_until = Date.today + 1.month
     @event = Event.new
     @event.event_type = 1

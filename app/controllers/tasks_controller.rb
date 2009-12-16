@@ -8,6 +8,7 @@ class TasksController < ApplicationController
 
   # GET /tasks GET /tasks.xml
   def index
+    debugger
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @tasks }
@@ -30,9 +31,9 @@ class TasksController < ApplicationController
   def new
     @task = Task.new
     @task.start_at = Time.now
-    @companies = Company.by_name.from_client(session[:client_id]).collect{|obj| [obj.name,obj.id]}.insert(0,"")
-    @projetos = Project.by_name.from_client(session[:client_id]).collect{|obj| [obj.name,obj.id]}.insert(0,"")
-    @user_groups = UserGroup.by_name.from_client(session[:client_id]).collect{|obj| [obj.name,obj.id]}.insert(0,"")
+    @companies = Company.by_name.from_client(current_user.client_id).collect{|obj| [obj.name,obj.id]}.insert(0,"")
+    @projetos = Project.by_name.from_client(current_user.client_id).collect{|obj| [obj.name,obj.id]}.insert(0,"")
+    @user_groups = UserGroup.by_name.from_client(current_user.client_id).collect{|obj| [obj.name,obj.id]}.insert(0,"")
 
     respond_to do |format|
       format.html # new.html.erb

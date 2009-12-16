@@ -13,16 +13,17 @@ validates_length_of  :estimated_time, :maximum=>4, :message=>"não pode exeder o
 validates_numericality_of  :estimated_time, :message=>"deve ser numérico!"
 
 named_scope :from_client, lambda {| client_id| {:conditions=>["client_id=?", client_id]}}
-named_scope :abertas, :conditions=>["start_at <= ? and end_at IS NULL",(Time.now+1.minute).strftime("%Y-%m-%d %H:%M") ]
+named_scope :abertas, :conditions=>["start_at <= ? and end_at IS NULL",(Time.now+1.minute).strftime("%Y-%m-%d %H:%M") ], 
+                :include=>[:project]
 named_scope :for_user, lambda{ |user_id| {:conditions=>["user_id = '?' ",user_id]}}
-named_scope :de_mim_para_mim, lambda{ |id| {:conditions=>["user_id = requestor_id and requestor_id = ?", id]} }    
+named_scope :de_mim_para_mim, lambda{ |id| {:conditions=>["tasks.user_id = tasks.requestor_id and tasks.requestor_id = ?", id]} }    
 named_scope :encerradas, :conditions=>["NOT end_at ISNULL"]
 named_scope :minhas, lambda{ |id| {:conditions=>["user_id = ?", id]} }
-named_scope :ordenados, :order=>:id
+named_scope :ordenados, :order=>:id, :include=>[:comments]
 named_scope :outra_pessoa, :conditions=>["user_id <> requestor_id"]
-named_scope :para_mim, lambda{ |id| {:conditions=>["user_id <> requestor_id and user_id = ?", id]}}
-named_scope :por_requestor, :order=>:requestor_id
-named_scope :solicitadas_por, lambda{ |id| {:conditions=>["requestor_id = ?", id]} }
+named_scope :para_mim, lambda{ |id| {:conditions=>["tasks.user_id <> tasks.requestor_id and tasks.user_id = ?", id]}}
+named_scope :por_requestor, :order=>:requestor_id, :include=>[:requestor]
+named_scope :solicitadas_por, lambda{ |id| {:conditions=>["requestor_id = ?", id], :include=>[:user,:requestor,:comments]} }
 #TODO fazer este lambda. Talvez fazer método ao invez de named_scope. Parece que 
    # sem_evluation vem com com_evaluation 
 named_scope :sem_evaluation  , lambda {|task_id, user_id| {

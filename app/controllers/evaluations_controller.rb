@@ -27,7 +27,7 @@ class EvaluationsController < ApplicationController
     @search_type = params[:search_type]
     debugger
     @users = [t(:all)]
-    @users +=  User.by_name.from_client(session[:client_id]).collect{|obj| [obj.name,obj.id]}
+    @users +=  User.by_name.from_client(current_user.client_id).collect{|obj| [obj.name,obj.id.to_s]}
     @tasks = []
     if params[:user_id]
       @searched_user = t(:all)

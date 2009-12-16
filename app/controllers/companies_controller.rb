@@ -6,7 +6,7 @@ class CompaniesController < ApplicationController
   # GET /companies
   # GET /companies.xml
   def index
-    @companies = Company.from_client(session[:client_id])
+    @companies = Company.from_client(current_user.client_id)
 
     respond_to do |format|
       format.html # index.html.erb
@@ -18,7 +18,6 @@ class CompaniesController < ApplicationController
   # GET /companies/1.xml
   def show
     @company = Company.find(params[:id])
-    
    
     respond_to do |format|
       format.html # show.html.erb
@@ -47,7 +46,7 @@ class CompaniesController < ApplicationController
   # POST /companies.xml
   def create
     @company = Company.new(params[:company])
-
+    @company.client_id = current_user.client_id
     respond_to do |format|
       if @company.save
         flash[:notice] = 'Company was successfully created.'

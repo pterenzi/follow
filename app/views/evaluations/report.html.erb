@@ -4,7 +4,7 @@
 <% form_tag report_evaluations_path do %>
   <%= hidden_field_tag :search_type, @search_type %>
   <%= label t(:user), @search_type == "requestor" ? t(:user) : t(:requestor) %> : 
-  <%= select_tag :user_id, options_for_select(@users)  %>
+  <%= select_tag :user_id, options_for_select(@users, params[:user_id])  %>
   <%= submit_tag t(:search) %>
 <% end %>
 <br/>

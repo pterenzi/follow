@@ -6,7 +6,7 @@ class UsersController < ApplicationController
    
   def index
     @users = User.all(:order=>"login", 
-           :conditions=>["client_id = ?", session[:client_id] ],
+           :conditions=>["client_id = ?", current_user.client_id ],
            :include=>[:company, :role])  
   end
   

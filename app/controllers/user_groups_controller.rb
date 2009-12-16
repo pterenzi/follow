@@ -4,7 +4,7 @@ class UserGroupsController < ApplicationController
   # GET /user_groups
   # GET /user_groups.xml
   def index
-    @user_groups = UserGroup.from_client(session[:client_id]).active
+    @user_groups = UserGroup.from_client(current_user.client_id).active
 
     respond_to do |format|
       format.html # index.html.erb
@@ -43,7 +43,7 @@ class UserGroupsController < ApplicationController
   # POST /user_groups.xml
   def create
     @user_group = UserGroup.new(params[:user_group])
-    @user_group.client_id = session[:client_id]
+    @user_group.client_id = current_user.client_id
     respond_to do |format|
       if @user_group.save
         flash[:notice] = 'UserGroup was successfully created.'
@@ -87,11 +87,11 @@ class UserGroupsController < ApplicationController
   
   def manage_users
     #TODO colocar no companies and project o client_id
-    @companies = Company.by_name.from_client(session[:client_id]).collect{|obj| [obj.name,obj.id]}.insert(0,"")
-    @projects = Project.by_name.from_client(session[:client_id]).collect{|obj| [obj.name,obj.id]}.insert(0,"")
+    @companies = Company.by_name.from_client(current_user.client_id).collect{|obj| [obj.name,obj.id]}.insert(0,"")
+    @projects = Project.by_name.from_client(current_user.client_id).collect{|obj| [obj.name,obj.id]}.insert(0,"")
     @user_group = UserGroup.find(params[:id])
     @included = @user_group.users
-    @users = User.by_name.from_client(session[:client_id])
+    @users = User.by_name.from_client(current_user.client_id)
     @not_selected =  @users - @user_group.users
   end
   

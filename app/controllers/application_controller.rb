@@ -101,10 +101,10 @@ class ApplicationController < ActionController::Base
     @pauses_pattern = PatternPause.all(:order=>"description").collect{|obj| [obj.description,obj.id]}
     @tem_task_com_pattern_pause = Task.tem_task_com_pattern_pause(@my_tasks)
     @tasks_encerradas_sem_evaluation = Task.encerradas_sem_evaluation(current_user.id) #Task.all(:conditions=>["end_at is not null and requestor_id=?  ",current_user.id])
-    @users = User.by_name.from_client(session[:client_id]).collect{|obj| [obj.name,obj.id]}
+    @users = User.by_name.from_client(current_user.client_id).collect{|obj| [obj.name,obj.id]}
     
     #Com named_scope
-    @projetos = Project.by_name.from_client(session[:client_id]).collect{|obj| [obj.description,obj.id]}
+    @projetos = Project.by_name.from_client(current_user.client_id).collect{|obj| [obj.description,obj.id]}
     @my_tasks = Task.para_mim(current_user.id).abertas.por_requestor.sem_recusa.ordenados
     @my_requests = Task.abertas.solicitadas_por(current_user.id)
     @my_requests = @my_requests + @tasks_encerradas_sem_evaluation
@@ -115,6 +115,7 @@ class ApplicationController < ActionController::Base
     @date_calendar = Date.today
     @event = Event.new
     @evaluation = Evaluation.new
+    @client = current_user.client
      #TODO testar <> 't' em outros bancos. No Sqlite funciona somente desta maneira
    end
    
