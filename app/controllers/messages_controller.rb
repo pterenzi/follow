@@ -44,15 +44,14 @@ class MessagesController < ApplicationController
       erro = false
       users = params[:user_id]
       users.each do |user|
-        debugger
         @message = Message.new(params[:message])
         @message.user_id = user
         @message.written_by = User.find(current_user.id)
         erro = true unless @message.save
       end
       respond_to do |format|
-        if (erro==true)
-          flash[:notice] = 'A message foi cadastrada com sucesso!'
+        if (erro!=true)
+          flash[:notice] = t(:message_created)
           format.html { redirect_to(tasks_path) }
           format.xml  { render :xml => @message, :status => :created, :location => @message }
         else

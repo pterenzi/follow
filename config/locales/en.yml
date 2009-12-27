@@ -41,6 +41,7 @@ en:
   logout: "log-out"
   manage_users: "Manage users"
   message: "Message"
+  message_created: "Message was successfully created!"
   messages: "Messages"
   months: "months"
   my_data: "my data"
@@ -80,6 +81,7 @@ en:
   solicitated_for: "solicitated for"
   start_at: "Start at"
   tables: "Tables"
+  task_created: 'Task successfuly created !'
   tasks: "tasks"
   Tasks: "Tasks"
   the_date: "date"

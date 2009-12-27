@@ -61,7 +61,7 @@ class TasksController < ApplicationController
         if !@task.user_id.nil?
           Evaluation.create(:task_id=>@task.id, :user_id=>@task.user_id)
         end
-        flash[:notice] = 'Task foi cadastrado com sucesso!'
+        flash[:notice] = t(:task_created)
         format.html { redirect_to(tasks_path) }
         format.xml  { render :xml => @task, :status => :created, :location => @task }
       else

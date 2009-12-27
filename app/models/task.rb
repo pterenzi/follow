@@ -22,8 +22,8 @@ named_scope :minhas, lambda{ |id| {:conditions=>["user_id = ?", id]} }
 named_scope :ordenados, :order=>:id, :include=>[:comments]
 named_scope :outra_pessoa, :conditions=>["user_id <> requestor_id"]
 named_scope :para_mim, lambda{ |id| {:conditions=>["tasks.user_id <> tasks.requestor_id and tasks.user_id = ?", id]}}
-named_scope :por_requestor, :order=>:requestor_id, :include=>[:requestor]
-named_scope :solicitadas_por, lambda{ |id| {:conditions=>["requestor_id = ?", id], :include=>[:user,:requestor,:comments]} }
+named_scope :por_requestor, :order=>:requestor_id , :include=>[:requestor]
+named_scope :solicitadas_por, lambda{ |id| {:conditions=>["requestor_id = ?", id], :include=>[:user,:requestor, :comments]} }
 #TODO fazer este lambda. Talvez fazer método ao invez de named_scope. Parece que 
    # sem_evluation vem com com_evaluation 
 named_scope :sem_evaluation  , lambda {|task_id, user_id| {
@@ -31,6 +31,7 @@ named_scope :sem_evaluation  , lambda {|task_id, user_id| {
             :conditions=>["evaluations.task_id=? and evaluations.user_id=? and grade ISNULL",task_id, user_id]}}
 named_scope :sem_recusa, :conditions=>["refused='f'"]
 named_scope :sem_user, :conditions=>["user_id is null"]
+named_scope :with_user_defined, :conditions=>["user_id NOT NULL"]
 
 def usuario_que_criou(user_id)
   user = User.find(user_id)
