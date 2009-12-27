@@ -16,7 +16,7 @@
 		</tr>
 		<tr>
 			<td><%= select_tag  :company_id, options_for_select(@companies), :include_blank=>:true, :onChange=>"project_selected('message_user_id');"  %> </td>
-			<td><%= select_tag  :project_id, options_for_select(@projetos),:onChange=>"project_selected('message_user_id');" %> </td>
+			<td><%= select_tag  :project_id, options_for_select(@projects),:onChange=>"project_selected('message_user_id');" %> </td>
 			<td><%= select_tag  :user_group_id, options_for_select(@user_groups),:onChange=>"project_selected('message_user_id');" %> </td>
 		</tr>
 	</table>

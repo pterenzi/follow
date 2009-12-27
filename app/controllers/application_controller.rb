@@ -104,7 +104,7 @@ class ApplicationController < ActionController::Base
     @users = User.by_name.from_client(current_user.client_id).collect{|obj| [obj.name,obj.id]}
     
     #Com named_scope
-    @projetos = Project.by_name.from_client(current_user.client_id).collect{|obj| [obj.description,obj.id]}
+    @projects = Project.by_name.from_client(current_user.client_id).collect{|obj| [obj.description,obj.id]}
     @my_tasks = Task.para_mim(current_user.id).abertas.por_requestor.sem_recusa.ordenados
     @my_requests = Task.abertas.solicitadas_por(current_user.id)
     @my_requests = @my_requests + @tasks_encerradas_sem_evaluation

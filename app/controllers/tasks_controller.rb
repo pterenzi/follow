@@ -32,7 +32,7 @@ class TasksController < ApplicationController
     @task = Task.new
     @task.start_at = Time.now
     @companies = Company.by_name.from_client(current_user.client_id).collect{|obj| [obj.name,obj.id]}.insert(0,"")
-    @projetos = Project.by_name.from_client(current_user.client_id).collect{|obj| [obj.name,obj.id]}.insert(0,"")
+    @projects = Project.by_name.from_client(current_user.client_id).collect{|obj| [obj.name,obj.id]}.insert(0,"")
     @user_groups = UserGroup.by_name.from_client(current_user.client_id).collect{|obj| [obj.name,obj.id]}.insert(0,"")
 
     respond_to do |format|
@@ -66,7 +66,8 @@ class TasksController < ApplicationController
         format.xml  { render :xml => @task, :status => :created, :location => @task }
       else
         @companies = Company.all(:order=>'name').collect{|obj| [obj.name,obj.id]}.insert(0,"")
-        @projetos = Project.all(:order=>'name').collect{|obj| [obj.name,obj.id]}.insert(0,"")
+        @projects = Project.all(:order=>'name').collect{|obj| [obj.name,obj.id]}.insert(0,"")
+        @user_groups = UserGroup.all(:order=>'name').collect{|obj| [obj.name,obj.id]}.insert(0,"")
         
         retrieve_tasks
         format.html { render :action => "new" }
