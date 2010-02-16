@@ -77,7 +77,6 @@ body {
     font-family: "Trebuchet MS", Verdana, Times, serif;
     font-size: 8pt;
     background-color: #ffffff;
-    margin-top: 1px;
     width:224px; 
     height:59px;
 }
@@ -92,6 +91,7 @@ body {
     position: relative;
     overflow: hidden;
 }
+
 #container_ext {
     margin: 20px auto;
     width: 990px;
@@ -199,7 +199,7 @@ body {
 
 #rightsidebar {
     float: right;
-    background-color: #EDEDED;
+    background-color: #f2f2f2;
     width: 224px;
     min-height: 300px;
     border-top: solid #fff 1px;
@@ -783,3 +783,14 @@ h3 {
 	float: red;
 }
 
+.pageHeader {background: transparent; width:1010px; margin:auto;}  
+.pageHeader .b1, .pageHeader .b2, .pageHeader .b3, .pageHeader .b4, .pageHeader .b1b, .pageHeader .b2b, .pageHeader .b3b, .pageHeader .b4b {display:block; overflow:hidden; font-size:1px;}  
+.pageHeader .b1, .pageHeader .b2, .pageHeader .b3, .pageHeader .b1b, .pageHeader .b2b, .pageHeader .b3b {height:1px;}  
+.pageHeader .b2, .pageHeader .b3, .pageHeader .b4 {background:#fff; border-left:0px solid #fff; border-right:1px solid #fff;}  
+.pageHeader .b1 {margin:0 5px; background:#fff;}  
+.pageHeader .b2 {margin:0 3px; border-width:0 2px;}  
+.pageHeader .b3 {margin:0 2px;}  
+.pageHeader .b4 {height:2px; margin:0 1px;}  
+.pageHeader .conteudo {padding:0px 10px 0px 10px;display:block; background:#fff; border-left:0px solid #fff; border-right:1px solid #fff;}  
+.pageHeader .conteudo H1{color: #352F2F;width: 91px;left: 10px;top: 15px;}
+.pageHeader .conteudo H2{ color: #352F2F; font-size: 13px; }
