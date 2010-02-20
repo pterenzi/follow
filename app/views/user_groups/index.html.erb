@@ -1,6 +1,6 @@
 <%= render :partial=>"layouts/moldura" %>
 <% content_for :main do %>
-<h1><%= t(:listing) + " "+ t(:user_groups) %></h1>
+<h1><%= t(:user_groups) %></h1>
 
 <table>
   <tr>
@@ -26,6 +26,6 @@
 
 <br />
 
-<%= link_to t(:new) + t(:user_group), new_user_group_path %>
+<%= link_to t(:new_user_group), new_user_group_path %>
 
 <% end %>

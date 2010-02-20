@@ -1,6 +1,6 @@
 <%= render :partial=>"layouts/moldura" %>
 <% content_for :main do%>
-<h1><%= t(:listing) + t(:categories) %></h1>
+<h1><%=  t(:categories) %></h1>
 
 <%  @export = false  %>
 <table class="tableNegocios">
@@ -16,7 +16,7 @@
 </table>
 <br/>
 <p>
-  <%= link_to t(:new_category), new_category_path %>
+ <%= link_to t(:new_category), new_category_path %>
 </p><br/>
 
 <% end %>

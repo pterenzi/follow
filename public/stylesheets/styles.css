@@ -49,6 +49,7 @@ p.link a:hover {color:#fff;}
   display: block;}
 
 
+
 body {
     background-color: #5F5F5F;
     background-image: url(../images/back.gif);
@@ -82,12 +83,10 @@ body {
 }
 
 #container {
-    margin: 20px auto;
     width: 990px;
     min-height: 500px;
     _height: 500px;
-    padding: 10px;
-    background-color: #fff;
+
     position: relative;
     overflow: hidden;
 }
@@ -102,11 +101,9 @@ body {
 }
 
 #container2 {
-    margin: 20px auto;
-    width: 990px;
-    height: 653px;
-    padding: 10px;
+    width: 1100px;
     background-color: #fff;
+
 }
 #header-{
     height : 116px;
@@ -283,7 +280,7 @@ body {
 
 #leftsidebar {
     float: left;
-    background-color: #F2F2F2;
+    background-color: #f2f2f2;
     width: 224px;
     min-height: 300px;
     border-top: solid #fff 1px;
@@ -445,7 +442,7 @@ main {
 
 .depot-form fieldset {
     background: #efe;
-    background-color: #F2F2F2;
+    background-color: #f2f2f2;
 }
 
 #user {
@@ -626,7 +623,7 @@ main {
 h1 {
     font:  150% sans-serif;
     color: #226;
-    text-decoration: underline;
+    text-decoration: none;
     padding-bottom: 1em;
 }
 
@@ -634,10 +631,12 @@ h2 {
     font:  120% sans-serif;
     color: #226;
     padding-bottom: 1em;
+    text-decoration: none;
 }
 h3 {
     font:  100% "Trebuchet MS";
     color: #a7a9ac;
+    text-decoration: none;
 }
 
 
@@ -783,14 +782,14 @@ h3 {
 	float: red;
 }
 
-.pageHeader {background: transparent; width:1010px; margin:auto;}  
-.pageHeader .b1, .pageHeader .b2, .pageHeader .b3, .pageHeader .b4, .pageHeader .b1b, .pageHeader .b2b, .pageHeader .b3b, .pageHeader .b4b {display:block; overflow:hidden; font-size:1px;}  
-.pageHeader .b1, .pageHeader .b2, .pageHeader .b3, .pageHeader .b1b, .pageHeader .b2b, .pageHeader .b3b {height:1px;}  
-.pageHeader .b2, .pageHeader .b3, .pageHeader .b4 {background:#fff; border-left:0px solid #fff; border-right:1px solid #fff;}  
-.pageHeader .b1 {margin:0 5px; background:#fff;}  
-.pageHeader .b2 {margin:0 3px; border-width:0 2px;}  
-.pageHeader .b3 {margin:0 2px;}  
-.pageHeader .b4 {height:2px; margin:0 1px;}  
-.pageHeader .conteudo {padding:0px 10px 0px 10px;display:block; background:#fff; border-left:0px solid #fff; border-right:1px solid #fff;}  
-.pageHeader .conteudo H1{color: #352F2F;width: 91px;left: 10px;top: 15px;}
-.pageHeader .conteudo H2{ color: #352F2F; font-size: 13px; }
+.container2 {background: transparent; width:1010px; margin:auto;}  
+.container2 .b1, .container2 .b2, .container2 .b3, .container2 .b4, .container2 .b1b, .container2 .b2b, .container2 .b3b, .container2 .b4b {display:block; overflow:hidden; font-size:1px;}  
+.container2 .b1, .container2 .b2, .container2 .b3, .container2 .b1b, .container2 .b2b, .container2 .b3b {height:1px;}  
+.container2 .b2, .container2 .b3, .container2 .b4 {background:#fff; border-left:0px solid #fff; border-right:1px solid #fff;}  
+.container2 .b1 {margin:0 5px; background:#fff;}  
+.container2 .b2 {margin:0 3px; border-width:0 2px;}  
+.container2 .b3 {margin:0 2px;}  
+.container2 .b4 {height:2px; margin:0 1px;}  
+.container2 .conteudo {padding:0px 10px 0px 10px;display:block; background:#fff; border-left:0px solid #fff; border-right:1px solid #fff;}  
+.container2 .conteudo H1{color: #352F2F;width: 91px;left: 10px;top: 15px;}
+.container2 .conteudo H2{ color: #352F2F; font-size: 13px; }

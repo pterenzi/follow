@@ -7,8 +7,8 @@
     <%= radio_button_tag :user , :user , params[:user]=="user" %>
     <%= label_tag :user_user, t(:for_me) %>
     <br/><br/>
-    <%= label_tag t(:content)%>
-    <%= text_field_tag h(:content), params[:content], :size=>20 %><br/><br/>
+    <%= label_tag t(:task)%>
+    <%= text_field_tag h(:content), params[:content], :size=>40 %><br/><br/>
     <%= submit_tag t(:search) %>
   <% end %>
 <p><br/>

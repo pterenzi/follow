@@ -26,7 +26,7 @@
 			until <%= f.time_select :end_at, :minute_step=>5 %> </td>
 	</tr>
 	<tr>
-		<td><%= f.label :content %></td>
+		<td><%= f.label t(:content) %></td>
 		<td><%= f.text_field h(:content) %></td>
 	</tr>
 	<tr>
@@ -37,7 +37,7 @@
 	</tr>
 	<tr>
 		<td><%= f.submit t(:create) -%></td>
-		<td><%= button_to "Cancel", :onclick=>"hide_event_form();" %></td>
+		<td><%= button_to t(:cancel), :onclick=>"hide_event_form();" %></td>
 	</tr>
 </table>
 

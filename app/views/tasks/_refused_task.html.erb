@@ -1,4 +1,5 @@
-Task refused por <%= task.user.name %>.<br />
+<h2> <%= task.user.name + " " + t(:task_refused)%>  <strong><%= task.description %></strong>.</h2><br />
+
 Justificativa: <%= task.justification_recusa %>
 <br /><br/>
 <% form_tag( :action=>t(:update), :controller=>"evaluations" ) do %>
