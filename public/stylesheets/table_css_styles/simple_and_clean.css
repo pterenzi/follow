@@ -20,4 +20,4 @@ table  td a:link, table  td a:visited{color:#666666;text-decoration:none;font-we
 table  td a:hover{color:#009900;text-decoration:underline;font-weight: bold;}
 table  a[title^="Download"]{background:url(http://www.leandropessoa.com.br/table/img/icPADRAO.gif) no-repeat center;padding:20px 0px 0px 15px;}
 table tbody td a[href="http://www.leandropessoa.com.br"]{margin:0 auto;height:15px;border-bottom:0;padding:3px 0px 0px 18px;font-weight:bold;color:#FF8601;background:url(http://www.leandropessoa.com.br/table/img/check.gif);background-repeat: no-repeat;}
-table tfoot th, tfoot td{background:url(http://www.leandropessoa.com.br/table/img/TableCaption.jpg);padding:10px;text-align:center;font:15px 'Verdana', Arial, Helvetica, sans-serif;font-style:italic;font-weight:bold;border-bottom:3px solid #cccccc;border-top:1px solid #DFDFDF;}
+table tfoot th, tfoot td{background:url(http://www.leandropessoa.com.br/table/img/TableCaption.jpg);padding:10px;text-align:center;font:15px 'Verdana', Arial, Helvetica, sans-serif;font-style:italic;font-weight:bold;border-bottom:3px solid #cccccc;border-top:1px solid #f2f2f2;}

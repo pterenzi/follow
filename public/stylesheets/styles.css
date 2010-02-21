@@ -83,10 +83,12 @@ body {
 }
 
 #container {
+    margin: 20px auto;
     width: 990px;
     min-height: 500px;
     _height: 500px;
-
+    padding: 10px;
+    background-color: #fff;
     position: relative;
     overflow: hidden;
 }
@@ -139,7 +141,7 @@ body {
 }
 
 #headermenu a:hover {
-    color: #F5F5F5;
+    color: #d3d3d3;
     text-decoration: underline;
 }
 
@@ -196,7 +198,7 @@ body {
 
 #rightsidebar {
     float: right;
-    background-color: #f2f2f2;
+    background-color: #d3d3d3;
     width: 224px;
     min-height: 300px;
     border-top: solid #fff 1px;
@@ -280,7 +282,7 @@ body {
 
 #leftsidebar {
     float: left;
-    background-color: #f2f2f2;
+    background-color: #d3d3d3;
     width: 224px;
     min-height: 300px;
     border-top: solid #fff 1px;
@@ -355,6 +357,11 @@ main {
     float: left;
     width: 495px;
     /*height: 500px;*/
+}
+
+#Recados { 
+    float: left;
+    width: 495px;
     
 }
 
@@ -400,10 +407,11 @@ main {
 #messages {
     font-family: "Trebuchet MS", Verdana, Times, serif;
     font-size: 8pt;
-    border-top: solid #fff 1px;
-    width: 990px;
+    width: 50%;
     background-color: #e5ecf7;
     float: left;
+	margin-left:25%;
+	margin-right:25%;
     
 }
 #footer {
@@ -442,7 +450,7 @@ main {
 
 .depot-form fieldset {
     background: #efe;
-    background-color: #f2f2f2;
+    background-color: #d3d3d3;
 }
 
 #user {
@@ -529,7 +537,8 @@ main {
     padding: 1em;
     margin-bottom: 2em;
     background-color: #f0f0f0;
-    font: bold smallest sans-serif;
+	margin-left:20%;
+	margin-right:20%;d3d3d3
 }
 
 #notice_container{
@@ -756,14 +765,14 @@ h3 {
 #not_selected_users, #selected_users{
 	width: 200px;
 	height: 120px;
-	background-color: #f2f2f2;
+	background-color: #d3d3d3;
 	border: 1px solid #999;
 }
 
 #group{
 	padding-top: 0.5em;
 	margin-top: 1em;
-	background-color: #f2f2f2;
+	background-color: #d3d3d3;
 	border: 1px solid #999;
 	padding-bottom: 0.5em;
 	margin-bottom: 1em;
@@ -793,3 +802,5 @@ h3 {
 .container2 .conteudo {padding:0px 10px 0px 10px;display:block; background:#fff; border-left:0px solid #fff; border-right:1px solid #fff;}  
 .container2 .conteudo H1{color: #352F2F;width: 91px;left: 10px;top: 15px;}
 .container2 .conteudo H2{ color: #352F2F; font-size: 13px; }
+
+

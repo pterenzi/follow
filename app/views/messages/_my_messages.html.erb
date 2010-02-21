@@ -1,7 +1,19 @@
 <% content_for :messages do %>
+<table width="495" border="0" cellspacing="0" cellpadding="0" align="center">
+  <tr>
+    <th scope="col">&nbsp;</th>
+    <th scope="col">Recado</th>
+    <th scope="col">De</th>
+    <th scope="col">Data/Hora</th>
+  </tr>
 <% for message in @messages_list do%>
-  <span id="message_<%=message.id%>">
-  <a href="#" onClick="remove_message(<%=message.id%>);" ><%= message.content %> </a>, enviada por <%= message.written_by.name %> às <%= message.created_at.strftime("%d/%m  %H:%M") %><br/>
-  </span>
+  <tr>
+    <td width="25">    <a href="#"  title="Marcar com lida" onClick="remove_message(<%=message.id%>);"><%= image_tag "ok.png", :border=>0 %></a>  </td>
+    <td width="300"><%= message.content %> </td>
+    <td width="100"><%= message.written_by.name %></td>
+    <td width="70"><%= message.created_at.strftime("%d/%m  %H:%M") %></td>
+  </tr>
 <% end %>
+
+</table>
 <% end %>
