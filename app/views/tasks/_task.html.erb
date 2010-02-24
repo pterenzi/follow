@@ -1,10 +1,10 @@
-    	<div id="task_<%=task.id%>" class="task">
-    <a href="#"  title="Detalhes da task" onClick="task_detail(<%= task.id %>);"><%= image_tag "info.png", :border=>0 %></a>
+    <div id="task_<%=task.id%>" class="task">
+    <a href="#"  title="Detalhes da tarefa" onClick="task_detail(<%= task.id %>);"><%= image_tag "info.png", :border=>0 %></a>
     <span id="blink_<%=task.id.to_s %>" >
       <span id="link_toggle_<%=task.id.to_s %>">
         <a href="#" onClick=toggle(<%= task.id %>,<%= task.user_alert.nil? ? false : task.user_alert %>,'usuario') >
 	  </span>
-	  <span class"hyphanate" lang="pt"><%= task.description %></span></a>
+	  <span class"hyphenate text" lang="pt"><%= task.description %></span></a>
     </span>
 
     <div style="display: none;"id="toggle_appear_<%= task.id.to_s %>" style="background:#d3d3d3;">

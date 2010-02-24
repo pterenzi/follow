@@ -2,7 +2,7 @@
 <% content_for :main do %>
 <h1><%= t(:companies) %></h1>
 
-<table>
+<table width="520">
   <tr>
     <th><%= t(:name) %></th>
     <th><%= t(:active) %></th>
@@ -15,9 +15,9 @@
   <tr>
     <td><%=h company.name %></td>
     <td><%=h company.active %></td>
-    <td><%= link_to t(:show), company %></td>
-    <td><%= link_to t(:edit), edit_company_path(company) %></td>
-    <td><%= link_to t(:destroy), company, :confirm => 'Are you sure?', :method => :delete %></td>
+    <td width="20"><%= link_to image_tag("info.png", :size=>"16x16", :border=>0), company %></td>
+    <td width="20"><%= link_to image_tag("edit.png", :size=>"16x16", :border=>0), edit_company_path(company) %></td>
+    <td width="20"><%= link_to image_tag("trash.png",:size=>"16x16", :border=>0), company, :confirm => t('Are you sure?'), :method => :delete %></td>
   </tr>
 <% end %>
 </table>

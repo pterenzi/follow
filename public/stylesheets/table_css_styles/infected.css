@@ -28,7 +28,7 @@ table td,table th {
 
 table thead th {
 	text-align: center;
-	background: #F5F5F5;
+	background: #d3d3d3;
 	color: #666;
 	border: 1px solid #FFF;
 	text-transform:uppercase;
@@ -98,5 +98,5 @@ table tfoot th, table tfoot td {
 	font-family:Georgia, "Times New Roman", Times, serif;
 	font-size:22px; font-weight:bold; font-style:italic;
 	border-bottom:3px solid #CCC;
-	border-top:1px solid #f2f2f2;
+	border-top:1px solid #d3d3d3;
 }

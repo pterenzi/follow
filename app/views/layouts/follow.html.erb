@@ -20,20 +20,13 @@
   <%= javascript_include_tag 'calendar.js' %>
   <%= javascript_include_tag 'calendar.js' %>
   <%= javascript_include_tag 'jquery.corner.js' %>
-  <%= javascript_include_tag 'jquery.jNice.js' %>
   <%= stylesheet_link_tag 'table_css_styles/sea_glass.css'%>
-
   
 <script type="text/javascript">
-            Hyphenator.run();
-
+Hyphenator.run();
 $('#container').corner("20");
 $('#leftsidebar').corner("20");
 $('#rightsidebar').corner("20");
-
-
-
-
 </script>
 
 </head>
@@ -52,6 +45,7 @@ $('#rightsidebar').corner("20");
 <div>	
   <div id="cabecalho">
     <div id="banner" >
+	
 	  <%= image_tag "Logo.jpg"%>
       <%= @page_title  %>
 

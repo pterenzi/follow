@@ -2,13 +2,13 @@
 <div id="task">
   <span id="blink_<%=task.id.to_s %>" >
   
-    <a href="#" title="Detalhes da task" onClick="task_detail(<%= task.id %>);"><%= image_tag "info.png", :border=>0 %></a> <a href="#" onClick="toggle(<%= task.id %>, false ,'usuario')" ><span class="hyphenate" lang="pt"><%= task.description %></span></a>
+    <a href="#" title="Detalhes da tarefa" onClick="task_detail(<%= task.id %>);"><%= image_tag "info.png", :border=>0 %></a> <a href="#" onClick="toggle(<%= task.id %>, false ,'usuario')" ><span class="hyphenate" lang="pt"><%= task.description %></span></a>
  <div style="display:none;" id="detail_form_<%=task.id.to_s%>">
        <%= render :partial=>'tasks/task_details', :locals=>{:task=>task} %>
    </div>
 
   </span>
-  <div style="display: none;"id="toggle_appear_<%= task.id.to_s %>" style="background:#f2f2f2;">
+  <div style="display: none;"id="toggle_appear_<%= task.id.to_s %>" style="background:#d3d3d3;">
    <table>
 	<tr>
 		<td><p class="link"> <a href="#" onClick="abre_form_end(<%=task.id%>);return false;" style="text-decoration:none" OnMouseOver="document.stoptodo.src='images/stoph.png'" OnMouseOut="document.stoptodo.src='images/stop.png'"><Img Src="images/stop.png" Name="stop" Width="18" Height="10"Border=""><span>Finalizar</span></a></p>

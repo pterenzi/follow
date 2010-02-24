@@ -1,25 +1,25 @@
 <%= render :partial=>"layouts/moldura" %>
 <% content_for :main do %>
 <h1><%= t(:users) %></h1>
-<table border="0">
+<table width="520" border="0">
   <tr>
 	<th width="80"><%= t(:login) %></th>
 	<th width="110"><%= t(:name) %></th>
-	<th width="110"><%= t(:company) %></th>
+	<th 	><%= t(:company) %></th>
 	<th width="90"><%=t(:role)%></th>
-	<th>&nbsp;</th>
-	<th>&nbsp;</th>
-	<th>&nbsp;</th>
+	<th width="20">&nbsp;</th>
+	<th width="20">&nbsp;</th>
+	<th width="20">&nbsp;</th>
   </tr>
 <% for user in @users do %>
   <tr>
-	<td><%=h user.login %></td>
+	<td>• <%=h user.login %></td>
 	<td><%=h user.name %></td>
 	<td><%=h user.company.name unless user.company.nil? %></td>
 	<td><%= user.role.name unless user.role.nil? %></td>
-	<td><%= link_to t(:show), user %></td>
-    <td><%= link_to t(:edit), edit_user_path(user) %></td>
-    <td><%= link_to t(:destroy), user, :confirm => 'Are you sure?', :method => :delete %></td>
+	<td><%= link_to image_tag("info.png", :size=>"16x16", :border=>0), user %></td>
+    <td><%= link_to image_tag("edit.png", :size=>"16x16", :border=>0), edit_user_path(user) %></td>
+    <td><%= link_to image_tag("trash.png",:size=>"16x16", :border=>0), user, :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>
 <% end %>
 </table>
