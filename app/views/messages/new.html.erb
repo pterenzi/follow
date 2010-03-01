@@ -22,8 +22,8 @@
 	<%=t(:user) %><br />  
 	<%= select_tag :user_id,options_for_select(@users) , :multiple=>true %>      
   <p><br/>
-    <%= f.label t(:content) %><br />
-    <%= f.text_field h(:content) %>
+    <%= f.label t(:message) %><br />
+    <%= f.text_field h(:content), :size=>90 %>
   </p>
   <br/>
   <p>

@@ -5,7 +5,7 @@
   <%= render :partial=>"tasks/my_tasks" %>
 <% end %>
 <% content_for :main do %>
-<h1>Editing project</h1>
+<h1><%= t(:editing).capitalize + " " + t(:project) %></h1>
 
 <% form_for(@project) do |f| %>
   <%= f.error_messages %>
@@ -14,15 +14,17 @@
     <%= f.label t(:name) %><br />
     <%= f.text_field h(:name) %>
   </p>
+  <br/>
   <p>
-    <%= f.label :active %><br />
     <%= f.check_box :active %>
+    <%= f.label :active %>
   </p>
+  <br/>
   <p>
     <%= f.submit t(:update) %>
   </p>
 <% end %>
-
+<br/>
 <%= link_to t(:show), @project %> |
 <%= link_to t(:back), projects_path %>
 <% end %>

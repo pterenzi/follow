@@ -1,8 +1,13 @@
 class Message < ActiveRecord::Base
 #Relacionamentos
 
+validates_presence_of :user_id, :on => :create, :message => "can't be blank"
+validates_presence_of :content, :on => :create, :message => "can't be blank"
+
 belongs_to :written_by, :class_name => "User", :foreign_key => "written_by"
 belongs_to :user
+
+named_scope :order_by_created_at, :order=>:created_at
 named_scope :my_messages, lambda{ |id| {:conditions=>["user_id = ?", id]} }
 named_scope :not_readed, lambda{ |id| {:conditions=>["user_id = ? and readed IS NULL", id], 
   :order => "created_at DESC",

@@ -22,7 +22,8 @@
 	<tr>
 		<td><%= f.label t(:start_at) %></td>
 		
-		<td><%= f.datetime_select :start_at, :order=>[:day,:month,:year], :minute_step=>5 %> 
+		<td>
+		<%= f.datetime_select :start_at, :order=>[:day,:month,:year], :minute_step=>5 %> 
 			until <%= f.time_select :end_at, :minute_step=>5 %> </td>
 	</tr>
 	<tr>

@@ -19,6 +19,7 @@ named_scope :for_user, lambda{ |user_id| {:conditions=>["user_id = '?' ",user_id
 named_scope :de_mim_para_mim, lambda{ |id| {:conditions=>["tasks.user_id = tasks.requestor_id and tasks.requestor_id = ?", id]} }    
 named_scope :encerradas, :conditions=>["NOT end_at ISNULL"]
 named_scope :minhas, lambda{ |id| {:conditions=>["user_id = ?", id]} }
+named_scope :not_mines, lambda{ |id| {:conditions=>["user_id <> ?", id]} }
 named_scope :ordenados, :order=>:id, :include=>[:comments]
 named_scope :outra_pessoa, :conditions=>["user_id <> requestor_id"]
 named_scope :para_mim, lambda{ |id| {:conditions=>["tasks.user_id <> tasks.requestor_id and tasks.user_id = ?", id]}}

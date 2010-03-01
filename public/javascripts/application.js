@@ -3,6 +3,11 @@
 
 $.ui.dialog.defaults.bgiframe = true;
 
+$(document).ready(function(){
+   $("#datepicker").datepicker();
+ });
+
+
 function abre_form_pause(id){
     $('#form_pause_'+id).dialog({ title: 'Pause' });
     $('#form_pause_'+id).dialog('open');

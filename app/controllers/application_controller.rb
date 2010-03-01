@@ -106,11 +106,13 @@ class ApplicationController < ActionController::Base
     #Com named_scope
     @projects = Project.by_name.from_client(current_user.client_id).collect{|obj| [obj.description,obj.id]}
     @my_tasks = Task.para_mim(current_user.id).abertas.por_requestor.sem_recusa.ordenados
-    @my_requests = Task.abertas.solicitadas_por(current_user.id).with_user_defined
+    @my_requests = Task.abertas.solicitadas_por(current_user.id).with_user_defined.not_mines(current_user)
     @my_requests = @my_requests + @tasks_encerradas_sem_evaluation
+  #  debugger
     @tasks_without_user = Task.solicitadas_por(current_user.id).sem_user
+    puts @tasks_without_user
     @to_do_list = Task.abertas.de_mim_para_mim(current_user.id)    
-    @messages_list = Message.not_readed(current_user)
+    @messages_list = Message.not_readed(current_user).order_by_created_at
     @events = Event.find(:all, :conditions=>["user_id=?",current_user.id])
     @date_calendar = Date.today
     @event = Event.new

@@ -41,13 +41,19 @@ class MessagesController < ApplicationController
 
    # POST /messages POST /messages.xml
    def create
+     @message = Message.new(params[:message])
       erro = false
       users = params[:user_id]
-      users.each do |user|
-        @message = Message.new(params[:message])
-        @message.user_id = user
-        @message.written_by = User.find(current_user.id)
-        erro = true unless @message.save
+      if users.nil?
+        erro = true
+        @message.errors.add(:user_id, ' : Select at least one user')
+      else
+        users.each do |user|
+          @message = Message.new(params[:message])
+          @message.user_id = user
+          @message.written_by = User.find(current_user.id)
+          erro = true unless @message.save
+        end
       end
       respond_to do |format|
         if (erro!=true)
@@ -58,7 +64,7 @@ class MessagesController < ApplicationController
           @projects = Project.active.by_name.from_client(current_user.client_id).collect{|obj| [obj.name,obj.id]}.insert(0,"")
           @user_groups = UserGroup.active.by_name.from_client(current_user.client_id).collect{|obj| [obj.name,obj.id]}.insert(0,"")
           @companies = Company.active.by_name.from_client(current_user.client_id).collect{|obj| [obj.name,obj.id]}.insert(0,"")
-          @users = User.by_name.from_client(current_user.client_id).collect{|obj| [obj.name,obj.id]}.insert(0,"")
+          @users = User.by_name.from_client(current_user.client_id).collect{|obj| [obj.name,obj.id]}
           
           format.html { render :action => "new" }
           format.xml  { render :xml => @message.errors, :status => :unprocessable_entity }
