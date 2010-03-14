@@ -175,6 +175,7 @@ pt-BR:
       event: "agenda"
       event_date: "Data do evento"
       event_content: "conteúdo do evento"
+      type_event: "Evento"
       for_me: "para mim"
       grade: "nota"
       hours: "horas"

@@ -1,16 +1,16 @@
  <% form_for(@event) do |f| %>
   <%= f.error_messages %>
-type <%= event.type%>
+<span class="user_name">Evento</span><br><br> 
   <p>
-	<%= f.radio_button :event_type, "1"%>&nbsp;<%= f.label(:type_1, t(:personal))%><br/>
-	<%= f.radio_button :event_type, "2"%>&nbsp;<%= f.label(:type_2, t(:user_group))%>&nbsp;<%= select_tag :user_group_id, options_for_select(@user_groups.collect{|obj| [obj.name,obj.id]}) %><br/>
-	<%= f.radio_button :event_type, "3"%>&nbsp;<%= f.label(:type_3, t(:project))%>&nbsp;<%= select_tag :project_id, options_for_select(@projects.collect{|obj| [obj.name,obj.id]}) %><br/>
-	<%= f.radio_button :event_type, "4"%>&nbsp;<%= f.label(:type_4, t(:company))%>&nbsp;<%= select_tag :company_id, options_for_select(@companies.collect{|obj| [obj.name,obj.id]}) %><br/>
-    <%= f.label :start_at %>
+	<%= f.radio_button :event_type, "1"%>&nbsp;<%= f.label(:type_1, t(:personal))%><br/><br>
+	<%= f.radio_button :event_type, "2"%>&nbsp;<%= f.label(:type_2, t(:user_group))%>&nbsp;<%= select_tag :user_group_id, options_for_select(@user_groups.collect{|obj| [obj.name,obj.id]}) %><br/><br>
+	<%= f.radio_button :event_type, "3"%>&nbsp;<%= f.label(:type_3, t(:project))%>&nbsp;<%= select_tag :project_id, options_for_select(@projects.collect{|obj| [obj.name,obj.id]}) %><br/><br>
+	<%= f.radio_button :event_type, "4"%>&nbsp;<%= f.label(:type_4, t(:company))%>&nbsp;<%= select_tag :company_id, options_for_select(@companies.collect{|obj| [obj.name,obj.id]}) %><br/><br>
+    <%= f.label t(:start_at) %>
     <%= f.datetime_select :start_at, :order=>[:day,:month,:year] %>
-    <br/>
-    <%= f.label :content %>
-    <%= f.text_field h(:content) %>
+    <br/><br>
+    <%= f.label t(:content) %><br><br>
+    <%= f.text_area h(:content), :size=>60, :rows=>4 %>
 
   <%= f.hidden_field :user_id %>
   <%= f.hidden_field :written_by %>&nbsp;
@@ -18,4 +18,4 @@ type <%= event.type%>
 	
   </p>
 <% end %>
-
+<br><br>
