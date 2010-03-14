@@ -8,8 +8,8 @@
   </tr>
 <% for message in @messages_list do%>
   <tr>
-    <td width="25">    <a href="#"  title="Marcar com lida" onClick="remove_message(<%=message.id%>);"><%= image_tag "ok.png", :border=>0 %></a>  </td>
-    <td width="300"><%= message.content %> </td>
+    <td width="25">    <a href="#"  title="Clique para marcar como lido" onClick="remove_message(<%=message.id%>);"><%= image_tag "ok.png", :border=>0 %></a>  </td>
+    <td width="300"><span class"hyphenate" lang="pt"><%= message.content %> </span></td>
     <td width="100"><%= message.written_by.name %></td>
     <td width="70"><%= message.created_at.strftime("%d/%m  %H:%M") %></td>
   </tr>

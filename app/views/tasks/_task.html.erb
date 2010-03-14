@@ -9,31 +9,31 @@
 
     <div style="display: none;"id="toggle_appear_<%= task.id.to_s %>" style="background:#d3d3d3;">
     
-        <table style="background-color:#d3d3d3"width="80" border="0" cellspacing="0" cellpadding="0" class="transparent">
+        <table style="background-color:#d3d3d3" width="190" border="0" cellspacing="0" cellpadding="0" class="transparent">
                                       <tr>
-<td height= "20" align="botton" ><p class="link"><a href="#" onClick="abre_form_recusa(<%=task.id%>);return false;" style="text-decoration:none" OnMouseOver="document.devolver.src='images/backwardh.png'" OnMouseOut="document.devolver.src='images/backward.png'">
+<td height= "20" align="center" ><p class="link"><a href="#" onClick="abre_form_recusa(<%=task.id%>);return false;" style="text-decoration:none" OnMouseOver="document.devolver.src='images/backwardh.png'" OnMouseOut="document.devolver.src='images/backward.png'">
         <Img Src="images/backward.png" Name="devolver" Width="18" Height="10" Border=""><span>Não aceitar a  tarefa</span></a></p></td>
          
     
         <% if task.paused_esperando_aprovacao %>
 <% #TODO o aue fazer se ele continua a task antes de aprovar ou não a pause ? %>
-           <td height= "20" align="botton" align="botton"><a href="#"><img src="/images/play.png" border=0 /></td>
+           <td height= "20" align="center" align="botton"><a href="#"><img src="/images/play.png" border=0 /></td>
         <% end %>
 
         <% if task.paused  %>
            <% rota = "/tasks/reiniciar_a_task?task_id=" + task.id.to_s  %>
-<td height= "20" align="botton"><p class="link"> <a href=<%=rota%> style="text-decoration:none" OnMouseOver="document.play.src='images/playh.png'" OnMouseOut="document.play.src='images/pause.png'"><Img Src="images/pause.png" Name="play" Width="18" Height="10"Border=""><span>Reiniciar</span></a></p></td>
+<td height= "20" align="center"><p class="link"> <a href=<%=rota%> style="text-decoration:none" OnMouseOver="document.play.src='images/playh.png'" OnMouseOut="document.play.src='images/pause.png'"><Img Src="images/pause.png" Name="play" Width="18" Height="10"Border=""><span>Reiniciar</span></a></p></td>
         <% end %>
 
         <% if task.sem_pause || task.pause_nao_aceita %>
-<td height= "20" align="botton"><p class="link"> <a href="#" onClick="abre_form_pause(<%=task.id%>);return false;"  style="text-decoration:none" OnMouseOver="document.pause.src='images/pauseh.png'" OnMouseOut="document.pause.src='images/play.png'"><Img Src="images/play.png" Name="pause" Width="18" Height="10"Border=""><span>Pausar</span></a></p></td>
+<td height= "20" align="center"><p class="link"> <a href="#" onClick="abre_form_pause(<%=task.id%>);return false;"  style="text-decoration:none" OnMouseOver="document.pause.src='images/pauseh.png'" OnMouseOut="document.pause.src='images/play.png'"><Img Src="images/play.png" Name="pause" Width="18" Height="10"Border=""><span>Pausar</span></a></p></td>
         <% end %>
 
-<td height= "20" align="botton" ><p class="link"><a Href="#" style="text-decoration:none"
+<td height= "20" align="center" ><p class="link"><a Href="#" style="text-decoration:none"
 OnMouseOver="document.foward.src='images/fowardh.png'" OnMouseOut="document.foward.src='images/foward.png'"><img src="images/foward.png" Name="foward" Width="18" Height="10"Border=""><span>Reencaminhar</span></a></p></td>
 
     
-<td height= "20" align="botton"><p class="link"> <a href="#" onClick="abre_form_end(<%=task.id%>);return false;" style="text-decoration:none" OnMouseOver="document.stop.src='images/stoph.png'" OnMouseOut="document.stop.src='images/stop.png'"><Img Src="images/stop.png" Name="stop" Width="18" Height="10"Border=""><span>Finalizar</span></a></p></td>
+<td height= "20" align="center"><p class="link"> <a href="#" onClick="abre_form_end(<%=task.id%>);return false;" style="text-decoration:none" OnMouseOver="document.stop.src='images/stoph.png'" OnMouseOut="document.stop.src='images/stop.png'"><Img Src="images/stop.png" Name="stop" Width="18" Height="10"Border=""><span>Finalizar</span></a></p></td>
 
 
       

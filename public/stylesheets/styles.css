@@ -53,6 +53,7 @@ p.link a:hover {color:#fff;}
 body {
     background-color: #5F5F5F;
     background-image: url(../images/back.gif);
+	padding: 20px;
 }
 .texto {
     font-family: "Trebuchet MS";
@@ -74,7 +75,6 @@ body {
 }
 
 #banner {
-    background: #000000 url("../images/logo.jpg") no-repeat left top;
     font-family: "Trebuchet MS", Verdana, Times, serif;
     font-size: 8pt;
     background-color: #ffffff;
@@ -83,8 +83,7 @@ body {
 }
 
 #container {
-    margin: 20px auto;
-    width: 990px;
+    width: 1200px;
     min-height: 500px;
     _height: 500px;
     padding: 10px;
@@ -114,7 +113,6 @@ body {
     
 }
 #logo {
-    background: #000000 url("../images/logo.jpg") no-repeat left top;
     font-family: "Trebuchet MS", Verdana, Times, serif;
     font-size: 8pt;
     background-color: #ffffff;
@@ -228,6 +226,7 @@ body {
     padding: 12px 12px;
     line-height: 14pt;
     vertical-align:top;
+	
 }
 
 #rightsidebartext ul {
@@ -361,7 +360,7 @@ main {
 
 #Recados { 
     float: left;
-    width: 495px;
+    width: 630px;
     
 }
 
@@ -371,7 +370,7 @@ main {
     font-size: 10pt;
     color: #4E4E4E;
     text-align: left;
-    width: 515px;
+    position: relative;
     padding: 12px 12px;
     text-align: justify;
     line-height: 12pt;
@@ -408,7 +407,6 @@ main {
     font-family: "Trebuchet MS", Verdana, Times, serif;
     font-size: 8pt;
     width: 50%;
-    background-color: #e5ecf7;
     float: left;
 	margin-left:25%;
 	margin-right:25%;
@@ -457,14 +455,20 @@ main {
     float: right;
     width: 224px;
     font-family: "Trebuchet MS", Verdana, Times, serif;
-    font-size: 8pt;
-    color: #ad1c21;
+    font-size: 10pt;
+    color: #000;
     border-top: solid #fff 1px;
     border-bottom: solid #fff 1px;
+    text-decoration: none;
 }
 
-.user a:hover {
-    color: #66584B;
+#user a{
+	    color: #000;
+	    text-decoration: none;
+	}
+
+#user a:hover {
+    color: #ad1c21;
     text-decoration: underline;
 }
 
@@ -555,7 +559,6 @@ main {
     float:left;
 }
 #banner {
-    background: #000000 url("../images/logo.jpg") no-repeat left top;
     font-family: "Trebuchet MS", "Microsoft Sans Serif", Times, serif;
     position: relative;
     float: left;
@@ -689,12 +692,14 @@ h3 {
 
 .user_name {
     font-family: "Trebuchet MS", Verdana, Times, serif;
-    font-size: 8pt;
+    font-size: 9pt;
+    font-weight: bold;
     color: #ad1c21;
     padding-top: 2px;
     padding-left: 12px;
     padding-bottom: 4px;
     line-height: 14pt;
+	text-shadow: 1px 1px 1px #999;
 }
 
 #name_usuario_sai_daqui {
@@ -709,7 +714,8 @@ h3 {
 
 .task{
 	font-family: "Trebuchet MS", Verdana, Times, serif;
-    font-size: 8pt;
+    font-size: 9pt;
+    font-weight: bold;
     color: black;
     padding-top: 5px; 
     padding-left: 18px;
@@ -718,6 +724,7 @@ h3 {
     line-height: 10pt;
     border-bottom: 1px solid #999;
     text-decoration:none;
+	text-shadow: 1px 1px 1px #999;
 }
 .task a {
     text-decoration: none;
@@ -726,7 +733,7 @@ h3 {
 
 #task {
     font-family: "Trebuchet MS", Verdana, Times, serif;
-    font-size: 8pt;
+    font-size: 9pt;
     color: black;
     padding-top: 5px; 
     padding-left: 18px;
@@ -735,6 +742,7 @@ h3 {
     line-height: 10pt;
     border-bottom: 1px solid #999;
     text-decoration:none;
+	text-shadow: 1px 1px 1px #999;
 }
 #task a {
     text-decoration: none;
@@ -748,17 +756,23 @@ h3 {
 
 #black_comment{
         color: black;
+		font-size: 8pt;
+		font-weight: normal;
         padding-left: 13px;
         padding-right: 2px;
         padding-top: 5px;
         font-style: italic;
+		text-shadow: 0px 0px 0px #999;
 }
 #comment_azul{
-        color: #5a78a5;
+        color: #104E8B;
+		font-size: 8pt;
+		font-weight: normal;
         padding-left: 13px;
         padding-top: 5px;
         padding-right: 2px;
         font-style: italic;
+		text-shadow: 0px 0px 0px #999;
 }
 
 #not_selected_users, #selected_users{
@@ -789,17 +803,5 @@ h3 {
 	width:10px;
 	float: red;
 }
-
-.container2 {background: transparent; width:1010px; margin:auto;}  
-.container2 .b1, .container2 .b2, .container2 .b3, .container2 .b4, .container2 .b1b, .container2 .b2b, .container2 .b3b, .container2 .b4b {display:block; overflow:hidden; font-size:1px;}  
-.container2 .b1, .container2 .b2, .container2 .b3, .container2 .b1b, .container2 .b2b, .container2 .b3b {height:1px;}  
-.container2 .b2, .container2 .b3, .container2 .b4 {background:#fff; border-left:0px solid #fff; border-right:1px solid #fff;}  
-.container2 .b1 {margin:0 5px; background:#fff;}  
-.container2 .b2 {margin:0 3px; border-width:0 2px;}  
-.container2 .b3 {margin:0 2px;}  
-.container2 .b4 {height:2px; margin:0 1px;}  
-.container2 .conteudo {padding:0px 10px 0px 10px;display:block; background:#fff; border-left:0px solid #fff; border-right:1px solid #fff;}  
-.container2 .conteudo H1{color: #352F2F;width: 91px;left: 10px;top: 15px;}
-.container2 .conteudo H2{ color: #352F2F; font-size: 13px; }
 
 

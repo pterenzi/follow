@@ -1,4 +1,4 @@
-table { border-collapse: collapse; 
+table { border-collapse: collapse;
 	border: 1px solid #839E99; 
     background: #f1f8ee; 
      }
@@ -7,6 +7,7 @@ caption { font-size: 1.0em;
 	text-align: left; 
 	padding: 1em 4px; }
 td, th { padding: 3px 3px .75em 3px; 
+	font-family: "Trebuchet MS", Verdana, Times, serif;
 	line-height: 1.0em; }
 th { background: #5A78A5; 
 	color: #fff; 

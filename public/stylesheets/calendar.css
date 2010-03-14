@@ -2,26 +2,41 @@
 	font-size: 14px;
 }
 #calendar{
-  font-family: verdana, arial, helvetica, sans-serif;
-  font-size:   10px;
+  font-family: "Trebuchet MS", Verdana, Times, serif;
+  font-size:   11px;
   line-height: 11px;
-  color: #455A79;
+  color: #000;
+  border-bottom:1px;
+  border-right:1px;
 }
 #mytable {
-	width: 500px;
 	padding: 0em;
 	margin: 1em;
     border-top:  1px solid #ccc;
 	border-left:  1px solid #ccc;
+    border-right: 1px solid #ccc;
+	position: center;
 }
 
 #mytable  td {
-  padding: 0em;
+  padding: 5px;
+  color:#B03060;
+  text-align: left;
   border-right: 1px #ccc solid; 
   border-bottom: 1px #ccc solid;
-  width:65px;
-  height:65px;
+  width:89px;
+  height:70px;
+
 }
+#mytable a {
+	  text-decoration: none;
+}
+
+#mytable a:hover {
+    color: #C9C9C9;
+    text-decoration: underline;
+}
+
 
 #mytable  tr {
  height: 20px; 
