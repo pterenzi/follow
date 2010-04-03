@@ -1,7 +1,8 @@
 <%= render :partial=>"layouts/moldura" %>
 <% content_for :main do %>
 <h1><%= t("user").capitalize %> </h1>
-<p>
+
+<form class="jqtransform"> <p>
   <b>Login:</b>
   <%=h @user.login %>
 </p>
@@ -45,6 +46,7 @@
 </p>
  
  <br/>
-<%= link_to t(:edit), edit_user_path(@user) %> | 
+<%= link_to t(:edit), edit_user_path(@user) %>
 <%= link_to t(:back), users_path %>
 <% end %>
+</form>

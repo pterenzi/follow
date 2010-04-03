@@ -8,6 +8,6 @@
   <p>
    <%= t(:comment).capitalize %>: <br/> <%= text_area_tag(:comment, '', :size=>"21x3") %>  
 <br/><br />
-   <%= submit_tag t(:aprouve) %> | <%= submit_tag t(:disaprouve), :name=>"reprovar" %>
+   <%= submit_tag t(:aprouve) %>  <%= submit_tag t(:disaprouve), :name=>"reprovar" %>
   </p>
 <% end %>

@@ -1,7 +1,7 @@
 <%= render :partial=>"layouts/moldura" %>
 <% content_for :main do %>
 <h1><%= t(:new) +  " " + t(:project) %></h1>
-
+<form class="jqtransform">
 <% form_for(@project) do |f| %>
   <%= f.error_messages %>
 
@@ -19,5 +19,6 @@
   </p>
 <% end %>
 <br/>
-<%= link_to t(:back), projects_path %>
+ <%= link_to t(:back), projects_path %> 
 <% end  %>
+</form>

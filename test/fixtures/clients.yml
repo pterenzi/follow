@@ -6,11 +6,11 @@ ford:
   start_at: 2009-10-23
   active: true
   valid_until: 2009-11-09
-  users_license: 5
+  users_license: 10
 
 two:
   name: MyString
   start_at: 2009-10-23
   active: false
   valid_until: 2009-10-23
-  users_license: 1
+  users_license: 10

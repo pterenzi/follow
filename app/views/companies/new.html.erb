@@ -1,7 +1,7 @@
 <%= render :partial=>"layouts/moldura" %>
 <% content_for :main do %>
 <h1><%= t(:new) + t(:company) %></h1>
-client_id<%= current_user.client_id %>
+<form class="jqtransform">
 <% form_for(@company) do |f| %>
   <%= f.error_messages %>
 
@@ -14,11 +14,13 @@ client_id<%= current_user.client_id %>
     <%= f.check_box :active %>
     <%= f.label t(:active) %><br />
   </p>
-  <br/>
+  <br/><br/>
   <p>
-    <%= f.submit t(:create) %>
+    <%= f.submit t(:create) %> 
+
   </p>
 <% end %>
 <br/>
-<%= link_to t(:back), companies_path %>
+ <%= link_to t(:back), companies_path %> 
 <% end%>
+</form>

@@ -2,6 +2,8 @@
 <% content_for :main do %>
 <h2><%= t(:edit).capitalize + " "  +t(:user) %></h2>
  <br/>
+
+<form class="jqtransform"> 
 <% form_for(@user) do |f| %>
   <%= f.error_messages %>
   <%= f.label :login %><br />
@@ -16,11 +18,11 @@
 <br/>
 
   <% if current_user.role.level==0%>
-    <%= f.label t(:role) %><br/>
+    <%= f.label t(:role) %><br/><br/>
     <%= f.select :role_id, @roles %><br/>
     <br/>
   <% end %>
-<%= f.label t(:company) %><br/>
+<%= f.label t(:company) %><br/><br/>
 <%= f.select :company_id, @companies %>
 <br/>
 <br/>
@@ -32,6 +34,7 @@
 <% end %>
  
 <br />
-<%= link_to t(:back), users_path %> |
+<%= link_to t(:back), users_path %>
 <%= link_to t(:change_password) , change_password_user_path(@user) %>
 <% end %>
+</form>

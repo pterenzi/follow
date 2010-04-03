@@ -1,6 +1,7 @@
 <%= render :partial=>"layouts/moldura" %>
 <% content_for :main do %>
 <h1><%= t(:editing).capitalize + t(:category) %></h1>
+<form class="jqtransform"> 
 <% form_for @category do |f| %>
 
 <%= error_messages_for :categories %>
@@ -12,3 +13,4 @@
 <br/>
 <%= link_to t(:back), categories_path %>
 <% end %>
+</form>

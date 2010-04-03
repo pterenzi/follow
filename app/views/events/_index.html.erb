@@ -1,10 +1,10 @@
 <div id="month_calendar">
 	<table class = "transparent" size="30px" border="0" width="700px"><tr><td align="right" width="40%">
-<%= link_to_remote "<", :url=>{:controller=>"events", :action=>"display_calendar", :date=>@date_calendar-1.month} %>
+<%= f.submit "<", :url=>{:controller=>"events", :action=>"display_calendar", :date=>@date_calendar-1.month} %>
 </td>
 <td  align="center" width="20%"><%= I18n.t('date.month_names')[@date_calendar.month] %> / <%= @date_calendar.year %> </td>
 <td align="left" width="40%">
-<%= link_to_remote ">", :url=>{:controller=>"events", :action=>"display_calendar", :date=>@date_calendar+1.month} %>
+<%= f.submit ">", :url=>{:controller=>"events", :action=>"display_calendar", :date=>@date_calendar+1.month} %>
 </td>
 </tr>
 </table>
@@ -35,9 +35,9 @@
       <% color = "#ffffff"%>
     <% end %>
 	<td width="120" bgcolor = <%=color%> valign="top" >
-    <%= link_to_remote date.day.to_s,:url=>new_event_path(:date=>date), :method=>:get %> <br/>
+    <%= f.submit date.day.to_s,:url=>new_event_path(:date=>date), :method=>:get %> <br/>
     <% for event in events %>
-      <span class="hyphenate" lang="pt"> • <%= link_to_remote "#{event.content}", :url=>edit_event_path(event), :method=>:get %></span><br/><br>
+      <span class="hyphenate" lang="pt"> • <%= f.submit "#{event.content}", :url=>edit_event_path(event), :method=>:get %></span><br/><br>
     <% end %> 
     </td>
    <% date += 1.day %>

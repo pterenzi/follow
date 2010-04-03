@@ -27,10 +27,13 @@ list-style-type: circle;
 }
 
 }
-input { 
-font: 10px "Trebuchet MS";
-color:#000000;
-}
+/*input {
+	border-color: black;
+	border-style: solid;
+	border-width: thin;
+	padding: 3px;
+}*/
+
 
 p.link a:hover {color:#fff;}
   p.link a:link span{display: none;}
@@ -419,6 +422,7 @@ main {
     height: 50px;
     background-color: #455A79;
     float: left;
+
     
 }
 #footer_text {
@@ -428,6 +432,7 @@ main {
     margin-top: 15px;
     color: #000000;
     line-height: 12pt;
+	text-shadow: 1px 1px 1px #999;
 }
 
 #footer_text a {
@@ -714,15 +719,15 @@ h3 {
 
 .task{
 	font-family: "Trebuchet MS", Verdana, Times, serif;
-    font-size: 9pt;
-    font-weight: bold;
+    font-size: 8pt;
+    font-weight: normal;
     color: black;
     padding-top: 5px; 
     padding-left: 18px;
     padding-bottom: 10px;
     padding-right: 8px;
     line-height: 10pt;
-    border-bottom: 1px solid #999;
+    border-top: 1px solid #999;
     text-decoration:none;
 	text-shadow: 1px 1px 1px #999;
 }
@@ -733,14 +738,14 @@ h3 {
 
 #task {
     font-family: "Trebuchet MS", Verdana, Times, serif;
-    font-size: 9pt;
+    font-size: 8pt;
     color: black;
     padding-top: 5px; 
     padding-left: 18px;
     padding-bottom: 10px;
     padding-right: 8px;
     line-height: 10pt;
-    border-bottom: 1px solid #999;
+    border-top: 1px solid #999;
     text-decoration:none;
 	text-shadow: 1px 1px 1px #999;
 }

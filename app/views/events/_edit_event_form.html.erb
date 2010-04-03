@@ -1,7 +1,9 @@
  <% form_for(@event) do |f| %>
   <%= f.error_messages %>
+
 <span class="user_name">Evento</span><br><br> 
-  <p>
+
+<form class="jqtransform">  <p>
 	<%= f.radio_button :event_type, "1"%>&nbsp;<%= f.label(:type_1, t(:personal))%><br/><br>
 	<%= f.radio_button :event_type, "2"%>&nbsp;<%= f.label(:type_2, t(:user_group))%>&nbsp;<%= select_tag :user_group_id, options_for_select(@user_groups.collect{|obj| [obj.name,obj.id]}) %><br/><br>
 	<%= f.radio_button :event_type, "3"%>&nbsp;<%= f.label(:type_3, t(:project))%>&nbsp;<%= select_tag :project_id, options_for_select(@projects.collect{|obj| [obj.name,obj.id]}) %><br/><br>
@@ -18,4 +20,5 @@
 	
   </p>
 <% end %>
+</form>
 <br><br>

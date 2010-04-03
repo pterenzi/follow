@@ -1,7 +1,7 @@
 <%= render :partial=>"layouts/moldura" %>
 <% content_for :main do %>
 <h1><%= t(:editing).capitalize +  t(:user_group) %></h1>
-
+<form class="jqtransform"> 
 <% form_for(@user_group) do |f| %>
   <%= f.error_messages %>
 
@@ -17,6 +17,7 @@
   </p>
 <% end %>
 <br/>
-<%= link_to t(:show), @user_group %> |
+<%= link_to t(:show), @user_group %>
 <%= link_to t(:back), user_groups_path %>
 <% end %>
+</form>

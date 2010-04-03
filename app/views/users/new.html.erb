@@ -1,7 +1,7 @@
 <%= render :partial=>"layouts/moldura" %>
 <% content_for :main do%>
 <h1><%= t(:add_user) %></h1>
- 
+<form class="jqtransform">  
 <% form_for(@user) do |f| %>
   <%= f.error_messages %>
   <%= f.label :login %><br />
@@ -20,10 +20,10 @@
   <%= f.text_field h(:email) %><br />
 
   <br />
-    <%= f.label t(:category) %><br/>
+    <%= f.label t(:category) %><br/><br/><br/>
     <%= f.select :category_id, @categories %><br/>
     <br/>
-<%= f.label t(:company) %><br/>
+<%= f.label t(:company) %><br/><br/>
 <%= f.select :company_id, @companies %>
 <br/><br/>
 <%= f.radio_button :preferred_language, "pt-BR" %>
@@ -37,3 +37,4 @@
 <br />
 <%= link_to t(:back), :back%> 
 <% end %>
+</form>
