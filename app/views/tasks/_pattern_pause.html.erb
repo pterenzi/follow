@@ -1,6 +1,6 @@
 <H3><% form_tag :action=>"pauser_pattern",  :html=>{:name => "pauser"}  do %>
 
-	<%= submit_tag t(:pause_all), :name=>"pauser_todas"%>
+	<%= submit_tag t(:pause_all), :name=>"pausar_todas", :class =>"awesome small red button"%>
 	<%= select :pattern_pause, :pattern_pause_id, @pauses_pattern %>
 
 <% end %></H3>

@@ -1,10 +1,10 @@
 <%= render :partial=>"layouts/moldura" %>
 <% content_for :main do %>
 <h2><%= t(:new) + t(:message) %></h2>
+<form class="jqtransform"> 
 <% form_for @message do |f| %>
   <%= f.error_messages %>
-<fieldset>
-	<legend><%= t(:user_filter) %></legend>
+
 <table class="transparent" >
 	<tr>
 		<td width="130px"><%=t(:company)%></td>
@@ -17,19 +17,22 @@
 		<td><%= select_tag  :user_group_id, options_for_select(@user_groups),:onChange=>"populate_user_select('user_id');" %> </td>
 	</tr>
 </table>
-</fieldset>
+
 <br/>
 	<%=t(:user) %><br />  
 	<%= select_tag :user_id,options_for_select(@users) , :multiple=>true %>      
   <p><br/>
-    <%= f.label t(:message) %><br />
-    <%= f.text_field h(:content), :size=>90 %>
+    <%= f.label t(:message) %><br /><br/>
+<%= f.text_area h(:content), :cols=>60, :rows=>10 %>    
+
   </p>
+</form>
   <br/>
   <p>
-<button>    <%= f.submit t(:create) %></button>
+	<%= link_to t(:back), tasks_path, :class => "awesome large blue button" %>
+    <%= f.submit t(:create), :class => "awesome large blue button" %>
   </p>
 <% end %>
 <br/>
-<button><%= link_to t(:back), tasks_path %></button>
+
 <% end %>

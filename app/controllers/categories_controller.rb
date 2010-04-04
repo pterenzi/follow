@@ -41,7 +41,7 @@ class CategoriesController < ApplicationController
      @category = Category.new(params[:category])
      respond_to do |format|
        if @category.save
-         flash[:notice] = 'A categories foi cadastrada com sucesso!'
+         flash[:notice] = 'A categoria foi cadastrada com sucesso!'
          format.html { redirect_to(@category) }
          format.xml  { render :xml => @category, :status => :created, :location => @categories }
        else
@@ -56,7 +56,7 @@ class CategoriesController < ApplicationController
          @category = Category.find(params[:id])
          respond_to do |format|
             if @category.update_attributes(params[:category])
-               flash[:notice] = 'A categories foi alterada com sucesso!'
+               flash[:notice] = 'A categoria foi alterada com sucesso!'
                format.html { redirect_to(@category) }
                format.xml  { head :ok }
             else
@@ -71,7 +71,7 @@ class CategoriesController < ApplicationController
          @categories = Category.find(params[:id])
          name = @categories.name
          if @categories.destroy
-            flash[:notice] = 'O categories ' + name + ' foi excluido com sucesso!'
+            flash[:notice] = 'A categoria ' + name + ' foi excluido com sucesso!'
          end
 
          respond_to do |format|

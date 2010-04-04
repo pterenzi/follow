@@ -4,7 +4,7 @@
 <br/>
 
 <%= error_messages_for :task %>
-
+<form class="jqtransform"> 
 <% form_for(@task) do |f| %>
 
 <p>
@@ -24,30 +24,35 @@
 </p>
 <div id="user_select"  >
 <p>
-  <b><%=t(:user) %></b><br />   
+  <b><%=t(:user) %></b><br />   <br/>
   
-  <%= f.select :user_id, @users,{:prompt=>"Selecione um colaborador",:options=>{:id=>"task_user_id"}} %>      
+  <%= f.select :user_id, @users,{:prompt=>"Selecione um colaborador",:options=>{:id=>"task_user_id"}} %>    <br/> <br/> 
 </p>
 
   <p>
   	<b><%= t(:start_at) %></b><br/>
-    <%= f.datetime_select :start_at,  :order=>[:day,:month,:year] %>
-  </p>
+    <%= datepicker_tag :start_at,  :order=>[:day,:month,:year], :size => 10 %>
+  </p><br/><br/>
   <p>
-    <b><%= t(:description) %></b><br/>
+    <b><%= t(:description) %></b><br/><br/>
     <%= f.text_area :description, :cols=>60, :rows=>10 %>
   </p>
   <p>
-    <b><%= t(:estimated_time)%></b><br />   
+    <b><%= t(:estimated_time)%></b><br />   <br/>
        
-    <%= f.text_field h(:estimated_time) , :size=>4 %> <%= t(:hours) %>     
+    <%= f.text_field h(:estimated_time) , :size=>4 %>        <%= t(:hours) %>     
   </p>
-  <br/>
+
+ <br/><br/><br/>
+
   <p>
-    <%= f.submit t(:save) %>
+
   </p>
 </div>
+</form> 
+<%= link_to t(:back), tasks_path, :class => "awesome large blue button"%>
+<%= f.submit t(:save), :class => 'awesome large blue button'%>
 <% end %>
 <br/>
-<%= link_to t(:back), tasks_path %>
+
 <% end %>

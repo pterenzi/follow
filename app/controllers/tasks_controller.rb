@@ -143,7 +143,7 @@ class TasksController < ApplicationController
       if @pause.save & @task.save & @comment.save
         redirect_to tasks_path
       else
-        flash[:notice] = "Houve um erro ao gravar a pausa desta task. Se o erro persistir, contate o suporte."
+        flash[:notice] = "Houve um erro ao gravar a pausa desta tarefa. Se o erro persistir, contate o suporte."
         redirect_to tasks_path
       end
     end
@@ -193,7 +193,7 @@ class TasksController < ApplicationController
     if @pause.save
       redirect_to tasks_path
     else
-      flash[:notice] = "Houve um erro ao reiniciar esta task"
+      flash[:notice] = "Houve um erro ao reiniciar esta tarefa"
       redirect_to tasks_path
     end
   end
@@ -252,7 +252,7 @@ class TasksController < ApplicationController
     if @task.save
       redirect_to :back
     else
-      flash[:notice] = "Houve um erro ao encerrar esta task"
+      flash[:notice] = "Houve um erro ao encerrar esta tarefa"
       redirect_to :back
     end
   end
@@ -264,7 +264,7 @@ class TasksController < ApplicationController
     if @task.save  
       redirect_to :back  
     else
-      flash[:notice] = "Houve um erro na avaliação desta task. SE o erro presistir, contate o suporte."
+      flash[:notice] = "Houve um erro na avaliação desta tarefa. Se o erro presistir, contate o suporte."
       redirect_to :back
     end
   end
@@ -282,7 +282,7 @@ class TasksController < ApplicationController
       if task.save & evaluation.save
         redirect_to tasks_path
       else
-        flash[:notice] = "Houve um erro na recusa desta task."
+        flash[:notice] = "Houve um erro na recusa desta tarefa."
         redirect_to tasks_path
       end
     end
@@ -301,7 +301,7 @@ class TasksController < ApplicationController
     if @task.save
       redirect_to tasks_path
     else
-      flash[:notice] = "Houve um erro ao reencaminhar esta task."
+      flash[:notice] = "Houve um erro ao reencaminhar esta tarefa."
       redirect_to tasks_path
     end
   end

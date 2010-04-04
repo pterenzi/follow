@@ -12,14 +12,17 @@
   <br/>
   <p>
     <%= f.check_box :active %> &nbsp; <%= f.label :active %>
-  </p><br />
+  </p>
+</form><br />
   <p>
-     <%= f.submit t(:update) %> 
+	 <%= link_to t(:back), companies_path, :class => "awesome large blue button" %> 
+	 <%= link_to t(:show), @company, :class => "awesome large blue button"%>
+     <%= f.submit t(:update), :class => "awesome large blue button" %> 
+
   </p>
 <% end %>
 <br/>
- <%= link_to t(:show), @company %> 
- <%= link_to t(:back), companies_path %> 
+
+
 
 <% end %>
-</form>

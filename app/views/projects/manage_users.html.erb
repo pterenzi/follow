@@ -3,6 +3,7 @@
 <% #TODO fazer o jquery com on opme %>
 <h1>Projeto : <%= @project.name  %></h1>
 <p/><br/>
+<form class="jqtransform">
  Selecionados <br/>
 <div id="group">
 	<span id="selected_users"></span>
@@ -24,8 +25,8 @@
       </span>
     <% end %>
 </div>
+</form>
 
-
-<%= link_to t(:back), project_path(@project) %>
+<%= link_to t(:back), project_path(@project), :class=> 'awesome large blue button' %>
 
 <% end %>

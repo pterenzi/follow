@@ -21,13 +21,16 @@
     <%= f.label :active %>
   </p>
   <br/><br/><br/>
+</form>
   <p>
-    <%=f.submit t(:update) %>
+	<%= link_to t(:back), projects_path , :class=> 'awesome large blue button'%>
+	<%= link_to t(:show), @project , :class=> 'awesome large blue button' %> 
+    <%=f.submit t(:update), :class=> 'awesome large blue button' %>
   </p>
 <% end %>
 <br/>
 
-<%= link_to t(:show), @project %> <%= link_to t(:back), projects_path %>
 
-</form>
+
+
 <% end %>

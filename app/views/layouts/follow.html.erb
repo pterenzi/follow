@@ -8,7 +8,7 @@
   <title>Follow - Sistema de acompanhamento e avaliação de  tarefas</title>
   <!-- This must be first -->
   <%= javascript_include_tag 'jquery-1.3.2.min.js' %>
-  <%= javascript_include_tag 'jquery-ui-1.7.1.custom.min.js'%>
+  <%= javascript_include_tag 'jquery-ui-1.7.2.custom.min.js'%>
   <%= javascript_include_tag 'jquery.min.js' %>
   <%= javascript_include_tag 'jquery-ui.min.js'%>
   <%= javascript_include_tag 'hyphenator.js' %> 
@@ -19,17 +19,35 @@
   <%= javascript_include_tag 'pulse.jquery.js' %>
   <%= javascript_include_tag 'calendar.js' %>
   <%= javascript_include_tag 'jquery.corner.js' %>
-  <%= javascript_include_tag 'jquery.styledButton.js' %>
+  <%= javascript_include_tag 'jquery.ui.datepicker-pt-BR' %>
+  <%= javascript_include_tag 'timepicker' %>
   <%= javascript_include_tag 'jquery.jqtransform.js' %>
   <%= stylesheet_link_tag 'table_css_styles/sea_glass'%>
-  <%= stylesheet_link_tag 'jquery-ui-1.7.1.custom'%>
+  <%= stylesheet_link_tag 'jquery-ui-1.7.2.custom'%>
+  <%= stylesheet_link_tag 'ui.datepicker'%>
   <%= stylesheet_link_tag 'calendar'%>
   <%= stylesheet_link_tag 'styles', 'menu'%>
-  <%= stylesheet_link_tag 'styledButton'%>
   <%= stylesheet_link_tag 'jquery-ui'%>
   <%= stylesheet_link_tag 'jqtransform'%>
+  <%= stylesheet_link_tag 'ui.base'%>
+  <%= stylesheet_link_tag 'awesome-buttons'%>
 
 <script type="text/javascript">
+
+function awesome_button(o) {
+  o.value = awesome_buttons[awesome_buttons_index][0]
+  o.className = awesome_buttons[awesome_buttons_index][1]
+  awesome_buttons_index++
+  if (awesome_buttons_index == awesome_buttons.length) awesome_buttons_index = 0
+  return false
+}
+function awesome_link(o) {
+  o.innerHTML = awesome_buttons[awesome_links_index][0]
+  o.className = awesome_links[awesome_links_index][1]
+  awesome_links_index++
+  if (awesome_links_index == awesome_links.length) awesome_links_index = 0
+  return false
+}
 
 $(function() {
     //find all form with class jqtransform and apply the plugin

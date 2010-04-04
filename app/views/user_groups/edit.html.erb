@@ -13,11 +13,14 @@
     <%= f.check_box :active %>&nbsp;<%= f.label t(:active) %><br/>
   </p><br/>
   <p>
-    <%= f.submit t(:update) %>
+</form>
+<%= link_to t(:back), user_groups_path, :class => "awesome large blue button"%>
+<%= link_to t(:show), @user_group, :class => "awesome large blue button" %>
+    <%= f.submit t(:update), :class => "awesome large blue button" %>
   </p>
 <% end %>
 <br/>
-<%= link_to t(:show), @user_group %>
-<%= link_to t(:back), user_groups_path %>
+
+
+
 <% end %>
-</form>

@@ -1,6 +1,7 @@
 <%= render :partial=>"layouts/moldura" %>
 <% content_for :main do %>
 <h2><%= t(:searching) + " " + t(:messages)%></h2><br/>
+<form class="jqtransform"> 
 <% form_tag search_messages_path() do  %>
 <table class="transparent">
   <tr><td align="right"><%= t(:content) %> :</td>
@@ -40,3 +41,4 @@
 </table>
 </p>
 <% end %>
+</form>

@@ -5,13 +5,13 @@
   <p>
     <br/>
 
-    <%= text_area_tag 'description', '' ,:size=>"22x3" %>
-
+    <%= text_area_tag 'description', '' ,:cols=>23, :rows=>3 %>
   </p>
   <p>
     <br/>
 
 
-<%= submit_tag t(:send_comment)%>
+<%= submit_tag t(:send_comment),:class => "awesome small blue button"%>
   </p>
 <% end %>
+

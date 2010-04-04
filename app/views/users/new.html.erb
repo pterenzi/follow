@@ -20,21 +20,24 @@
   <%= f.text_field h(:email) %><br />
 
   <br />
-    <%= f.label t(:category) %><br/><br/><br/>
-    <%= f.select :category_id, @categories %><br/>
+    <%= f.label t(:role) %><br/><br/><br/>
+    <%= f.select :role_id, @categories %><br/>
     <br/>
 <%= f.label t(:company) %><br/><br/>
 <%= f.select :company_id, @companies %>
 <br/><br/>
+<%= f.label t(:preferred_language) %><br/><br/>
 <%= f.radio_button :preferred_language, "pt-BR" %>
-<%= f.label("preferred_language_pt-BR" , :portugues) %>&nbsp;&nbsp;
+<%= f.label("preferred_language_pt-BR" , t(:portugues)) %>&nbsp;&nbsp;
 <%= f.radio_button :preferred_language, "en" %>
-<%= f.label("preferred_language_en" , :english) %>
+<%= f.label("preferred_language_en" , t(:english)) %>
+</form>
 <br/><br/>
-  <%= f.submit t(:create) %>
+<%= link_to t(:back), :back, :class => "awesome large blue button"%>
+  <%= f.submit t(:create), :class => "awesome large blue button"%>
 <% end %>
  
-<br />
-<%= link_to t(:back), :back%> 
+
+
+
 <% end %>
-</form>
