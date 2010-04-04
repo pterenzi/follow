@@ -1,8 +1,8 @@
 <% form_for(@event) do |f| %>
 <%= f.error_messages %>
-<form class="jqtransform"> 
 <p>
 <table>
+	<form class="jqtransform"> 
 	<tr>
 		<td><%= f.radio_button :event_type, "1"%>&nbsp;<%= f.label(:type_1, t(:personal))%></td>
 		<td>&nbsp;</td>
@@ -40,10 +40,10 @@
 		<td><%= f.submit t(:create) -%></td>
 		<td><%= button_to t(:cancel), :onclick=>"hide_event_form();" %></td>
 	</tr>
+</form>
 </table>
 
   <%= f.hidden_field :user_id %>
   <%= f.hidden_field :written_by %>
 &nbsp;&nbsp;  
 <% end %>
-</form>

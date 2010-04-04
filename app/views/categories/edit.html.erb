@@ -7,7 +7,7 @@
 <%= error_messages_for :categories %>
 <%= f.label t(:name) %>
 <%= f.text_field h(:name) %>
-</form>
+
 <br/><br/><br/>
 <%= link_to t(:back), categories_path, :class => "awesome large blue button" %>
 <%= f.submit t(:update), :class => "awesome large blue button"%>
@@ -15,3 +15,4 @@
 <br/>
 
 <% end %>
+</form>
