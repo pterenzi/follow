@@ -55,7 +55,7 @@ class TasksController < ApplicationController
     @task.requestor_id = current_user.id
     @task.project_id = params[:project_id] unless params[:project_id].blank?
     @task.user_alert = true
-    
+    debugger
     respond_to do |format|
       if @task.save
         if !@task.user_id.nil?

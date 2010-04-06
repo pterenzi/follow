@@ -13,8 +13,8 @@ validates_length_of  :estimated_time, :maximum=>4, :message=>"não pode exeder o
 validates_numericality_of  :estimated_time, :message=>"deve ser numérico!"
 
 named_scope :from_client, lambda {| client_id| {:conditions=>["client_id=?", client_id]}}
-named_scope :abertas, :conditions=>["start_at <= ? and end_at IS NULL",(Time.now+1.minute).strftime("%Y-%m-%d %H:%M") ], 
-                :include=>[:project]
+named_scope :abertas, :conditions=>["start_at <= ? and end_at IS NULL",(Time.now+1.minute).strftime("%Y-%m-%d %H:%M") ]#, 
+               # :include=>[:project]
 named_scope :for_user, lambda{ |user_id| {:conditions=>["user_id = '?' ",user_id]}}
 named_scope :de_mim_para_mim, lambda{ |id| {:conditions=>["tasks.user_id = tasks.requestor_id and tasks.requestor_id = ?", id]} }    
 named_scope :encerradas, :conditions=>["NOT end_at ISNULL"]
