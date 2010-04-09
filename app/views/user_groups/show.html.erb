@@ -1,7 +1,7 @@
 <%= render :partial=>"layouts/moldura" %>
 <% content_for :main do %>
 
-<form class="jqtransform"> <p>
+ <p>
   <h1>Grupo de trabalho:</h1>
  <h2> <%=h @user_group.name %></h2>
 </p>
@@ -10,8 +10,7 @@
   <b>Active:</b>
   <%=h @user_group.active %>
 </p>
-<%= link_to t(:back), user_groups_path , :class => "awesome large blue button"%>
-<%= link_to t(:edit), edit_user_group_path(@user_group), :class => "awesome large blue button" %>
-<%= link_to t(:manage_users), manage_users_user_groups_path(:id=>@user_group.id) , :class => "awesome large blue button"%>
+<%= link_to t(:back), user_groups_path , :class => "awesome small blue button"%>
+<%= link_to t(:edit), edit_user_group_path(@user_group), :class => "awesome small blue button" %>
+<%= link_to t(:manage_users), manage_users_user_groups_path(:id=>@user_group.id) , :class => "awesome small blue button"%>
 <% end %>
-</form>

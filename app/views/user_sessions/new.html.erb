@@ -6,7 +6,7 @@
     <div  style="width: 300px; border: 2px; ">
 	     <fieldset>
         <legend>Log In</legend>
-        <% form_for @user_session, :url=>user_sessions_path  do |f|%>
+        <% form_for @user_session, :url=>user_sessions_path, :html=>{:class=>"jNice"}  do |f|%>
  <%= f.error_messages %>
            <%= f.label :login %><br />
           <%= f.text_field h(:login) %><br />

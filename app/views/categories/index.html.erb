@@ -1,25 +1,28 @@
 <%= render :partial=>"layouts/moldura" %>
 <% content_for :main do%>
 <h1><%=  t(:categories) %></h1>
-<form class="jqtransform"> 
-<%  @export = false  %>
-<table class="tableNegocios">
-	<tr>
-	  <th><%= t(:name)%></th>
-	  <th>&nbsp;</th>
-	  <th>&nbsp;</th>
-	  <th>&nbsp;</th>
-	</tr>
-  <tbody>
-  <%=  render(:partial => "category", :collection => @categories)  %>
-  </tbody>
-</table>
-<br/>
-<br/>
-<br/>
-<p>
-<%= link_to t(:new_category), new_category_path, :class => "awesome large blue button"%>
-</p><br/>
+ 
+<table width="520">
+  <tr>
+    <th><%= t(:name) %></th>
+    <th><%= t(:active) %></th>
+    <th>&nbsp;</th>
+    <th>&nbsp;</th>
+    <th>&nbsp;</th>
+  </tr>
 
+<% for category in @categories %>
+  <tr>
+    <td><%=h category.name %></td>
+    <td><%=h category.active %></td>
+    <td width="20"><%= link_to image_tag("info.png", :size=>"16x16", :border=>0), category %></td>
+    <td width="20"><%= link_to image_tag("edit.png", :size=>"16x16", :border=>0), edit_category_path(category) %></td>
+    <td width="20"><%= link_to image_tag("trash.png",:size=>"16x16", :border=>0), category, :confirm => t('Are you sure?'), :method => :delete %></td>
+  </tr>
 <% end %>
-</form>
+</table>
+
+<br />
+
+ <%= link_to t(:new) + t(:category), new_category_path, :class => "awesome small blue button" %> 
+<% end %>

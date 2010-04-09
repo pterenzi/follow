@@ -3,5 +3,5 @@
   <td width="120px"><%=h category.name %></td>
      <td><%= link_to t(:show), category %></td>
      <td><%= link_to t(:edit), edit_category_path(category) %></td>
-     <td><%= link_to t(:destroy), category, :confirm => 'Deseja realmente excluir o categories ' + category.name + '?', :method => :delete %></td>
+     <td><%= link_to t(:destroy), category, :confirm => 'Deseja realmente excluir a categoria ' + category.name + '?', :method => :delete %></td>
 </tr>

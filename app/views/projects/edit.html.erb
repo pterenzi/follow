@@ -6,26 +6,26 @@
 <% end %>
 <% content_for :main do %>
 <h1><%= t(:editing).capitalize + " " + t(:project) %></h1>
-<form class="jqtransform">
 
-<% form_for(@project) do |f| :class %>
+
+<% form_for @project, :html=>{:class=>"jNice"}  do |f| :class %>
   <%= f.error_messages %>
 
   <p>
     <%= f.label t(:name) %><br />
     <%= f.text_field h(:name) %>
   </p>
-  <br/>
+  <br/><br/>
   <p>
     <%= f.check_box :active %>
-    <%= f.label :active %>
+    <%= f.label t(:active) %>
   </p>
   <br/><br/><br/>
 
   <p>
-	<%= link_to t(:back), projects_path , :class=> 'awesome large blue button'%>
-	<%= link_to t(:show), @project , :class=> 'awesome large blue button' %> 
-    <%=f.submit t(:update), :class=> 'awesome large blue button' %>
+	<%= link_to t(:back), projects_path , :class=> 'awesome small blue button'%>
+	<%= link_to t(:show), @project , :class=> 'awesome small blue button' %> 
+    <%=f.submit t(:update), :class=> 'awesome small blue button' %>
 
   </p>
 <% end %>
@@ -35,4 +35,3 @@
 
 
 <% end %>
-</form>

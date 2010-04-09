@@ -3,7 +3,7 @@
 <h1><%= t(:new_task)%></h1>
 <br/>
 
-<% form_for(@task) do |f| %>
+<% form_for @task do |f| %>
 <%= error_messages_for :task %>
 
 <p>
@@ -50,8 +50,8 @@
   </p>
 </div>
 
-<%= link_to t(:back), tasks_path, :class => "awesome large blue button"%>
-<%= f.submit t(:save), :class => 'awesome large blue button'%>
+<%= link_to t(:back), tasks_path, :class => "awesome small blue button"%>
+<%= f.submit t(:save), :class => 'awesome small blue button'%>
 <% end %>
 <br/>
 

@@ -21,14 +21,14 @@
   <%= javascript_include_tag 'jquery.corner.js' %>
   <%= javascript_include_tag 'jquery.ui.datepicker-pt-BR' %>
   <%= javascript_include_tag 'timepicker' %>
-  <%= javascript_include_tag 'jquery.jqtransform.js' %>
+  <%= javascript_include_tag 'jquery.jNice.js' %>
   <%= stylesheet_link_tag 'table_css_styles/sea_glass'%>
   <%= stylesheet_link_tag 'jquery-ui-1.7.2.custom'%>
   <%= stylesheet_link_tag 'ui.datepicker'%>
   <%= stylesheet_link_tag 'calendar'%>
   <%= stylesheet_link_tag 'styles', 'menu'%>
   <%= stylesheet_link_tag 'jquery-ui'%>
-  <%= stylesheet_link_tag 'jqtransform'%>
+  <%= stylesheet_link_tag 'jNice'%>
   <%= stylesheet_link_tag 'awesome-buttons'%>
 
 <script type="text/javascript">
@@ -48,16 +48,14 @@ function awesome_link(o) {
   return false
 }
 
-$(function() {
-    //find all form with class jqtransform and apply the plugin
-    $("form.jqtransform").jqTransform();
-});
 
 
 Hyphenator.run();
+
 $('#container').corner("20");
 $('#leftsidebar').corner("20");
 $('#rightsidebar').corner("20");
+
 
 
 

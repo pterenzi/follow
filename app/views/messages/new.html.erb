@@ -1,7 +1,7 @@
 <%= render :partial=>"layouts/moldura" %>
 <% content_for :main do %>
 <h2><%= t(:new) + t(:message) %></h2>
-<form class="jqtransform"> 
+ 
 <% form_for @message do |f| %>
   <%= f.error_messages %>
 
@@ -29,11 +29,11 @@
 
   <br/>
   <p>
-	<%= link_to t(:back), tasks_path, :class => "awesome large blue button" %>
-    <%= f.submit t(:create), :class => "awesome large blue button" %>
+	<%= link_to t(:back), tasks_path, :class => "awesome small blue button" %>
+    <%= f.submit t(:create), :class => "awesome small blue button" %>
   </p>
 <% end %>
 <br/>
 
 <% end %>
-</form>
+

@@ -485,12 +485,11 @@ main {
     background-color: #455A79;
 }
 
-.depot-form label {
-    width: 10em;
-    float: left;
-    text-align: right;
-    margin-right: 0.5em;
-    display: block;
+.jNice label {
+
+    text-align: left;
+	color: #607B8B;
+	text-shadow: 1px 1px 1px #999;
 }
 
 .depot-form .submit {

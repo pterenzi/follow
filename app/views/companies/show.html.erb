@@ -2,7 +2,7 @@
 <% content_for :main do %><p>
   <b><%= t(:name) %>:</b>
   <%=h @company.name %>
-<form class="jqtransform">
+
 </p>
 
 <p>
@@ -18,8 +18,7 @@
 </div>
 
 <br/>
- <%= link_to t(:back), companies_path, :class => "awesome large blue button" %>  
- <%= link_to t(:edit), edit_company_path(@company), :class => "awesome large blue button" %> 
+ <%= link_to t(:back), companies_path, :class => "awesome small blue button" %>  
+ <%= link_to t(:edit), edit_company_path(@company), :class => "awesome small blue button" %> 
 
 <% end %>
-</form>

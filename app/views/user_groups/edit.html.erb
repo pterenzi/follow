@@ -1,22 +1,22 @@
 <%= render :partial=>"layouts/moldura" %>
 <% content_for :main do %>
 <h1><%= t(:editing).capitalize +  t(:user_group) %></h1>
-<form class="jqtransform"> 
-<% form_for(@user_group) do |f| %>
+ 
+<% form_for @user_group, :html=>{:class=>"jNice"} do |f| %>
   <%= f.error_messages %>
 
   <p>
     <%= f.label t(:name) %><br />
     <%= f.text_field h(:name) %>
-  </p><br/>
+  </p><br/><br>
   <p>
     <%= f.check_box :active %>&nbsp;<%= f.label t(:active) %><br/>
-  </p><br/>
+  </p><br/><br>
   <p>
 
-<%= link_to t(:back), user_groups_path, :class => "awesome large blue button"%>
-<%= link_to t(:show), @user_group, :class => "awesome large blue button" %>
-    <%= f.submit t(:update), :class => "awesome large blue button" %>
+<%= link_to t(:back), user_groups_path, :class => "awesome small blue button"%>
+<%= link_to t(:show), @user_group, :class => "awesome small blue button" %>
+    <%= f.submit t(:update), :class => "awesome small blue button" %>
   </p>
 <% end %>
 <br/>
@@ -24,4 +24,3 @@
 
 
 <% end %>
-</form>

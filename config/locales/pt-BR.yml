@@ -144,11 +144,11 @@ pt-BR:
             even: "deve ser par"
 
 
-      active: "ativo"
+      active: "Ativo"
       all: "todos"
       aprouve: "aprovar"
       at: "postado em"
-      Are_you_sure: "Tem certeza"
+      Are_you_sure?: "Tem certeza?"
       available_licenses: "licenças disponíveis"
       back: "◀ Voltar"
       calendar: "Agenda"

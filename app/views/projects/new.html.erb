@@ -1,15 +1,15 @@
 <%= render :partial=>"layouts/moldura" %>
 <% content_for :main do %>
 <h1><%= t(:new) +  " " + t(:project) %></h1>
-<form class="jqtransform">
-<% form_for(@project) do |f| %>
+
+<% form_for @project, :html=>{:class=>"jNice"} do |f| %>
   <%= f.error_messages %>
 
   <p>
     <%= f.label t(:name) %><br />
     <%= f.text_field h(:name) %>
   </p>
-  <br/>
+  <br/><br/>
   <p>
     <%= f.check_box :active %>&nbsp;
     <%= f.label t(:active) %>
@@ -18,12 +18,11 @@
 
 	<br/>
 	<br/>
-	 <%= link_to t(:back), projects_path, :class => 'awesome large blue button' %> 
-    <%= f.submit t(:save), :class => 'awesome large blue button'%>
+	 <%= link_to t(:back), projects_path, :class => 'awesome small blue button' %> 
+    <%= f.submit t(:save), :class => 'awesome small blue button'%>
 
   </p>
 <% end %>
 <br/>
 
 <% end  %>
-</form>

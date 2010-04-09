@@ -24,6 +24,6 @@
 <% end %>
 </table>
 <br/>
-<%= link_to t(:add_user), new_user_path(), :class => 'awesome large blue button' unless @client.license_full %> 
+<%= link_to t(:add_user), new_user_path(), :class => 'awesome small blue button' unless @client.license_full %> 
 ( <%= @client.available_license %> <%= t(:available_licenses)%> )
 <% end %>

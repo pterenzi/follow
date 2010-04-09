@@ -1,19 +1,18 @@
 <%= render :partial=>"layouts/moldura" %>
 <% content_for :main do %>
 <h1><%= t(:new) + t(:category) %></h1>
-<form class="jqtransform"> 
-<% form_for @category do |f| %>
+ 
+<% form_for @category, :html=>{:class=>"jNice"} do |f| %>
 
 <%= f.error_messages %>
-<%= f.label t(:name) %>
+<%= f.label t(:name) %><br>
 <%=  f.text_field h(:name) %>
 
 
 <br/><br/><br/><br/><br/>
-<%= link_to t(:back), categories_path, :class => "awesome large blue button" %>
-<%= f.submit t(:create), :class => "awesome large blue button"%>
+<%= link_to t(:back), categories_path, :class => "awesome small blue button" %>
+<%= f.submit t(:create), :class => "awesome small blue button"%>
 <% end %>
 <br/>
 
 <% end %>
-</form>

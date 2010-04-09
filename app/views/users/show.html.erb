@@ -2,7 +2,7 @@
 <% content_for :main do %>
 <h1><%= t("user").capitalize %> </h1>
 
-<form class="jqtransform"> <p>
+ <p>
   <b>Login:</b>
   <%=h @user.login %>
 </p>
@@ -47,8 +47,8 @@
  
  <br/>
 
-<%= link_to t(:back), :back, :class => "awesome large blue button"%>
- <%= link_to t(:edit), edit_user_path(@user), :class => 'awesome large blue button' %>
+<%= link_to t(:back), :back, :class => "awesome small blue button"%>
+ <%= link_to t(:edit), edit_user_path(@user), :class => 'awesome small blue button' %>
 
 <% end %>
-</form>
+

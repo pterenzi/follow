@@ -1,7 +1,7 @@
 <%= render :partial=>"layouts/moldura" %>
 <% content_for :main do %>
 <h1><%= t(:user_groups) %></h1>
-<form class="jqtransform"> 
+ 
 <table width="520">
   <tr>
     <th><%= t(:name) %></th>
@@ -24,7 +24,6 @@
 
 <br />
 
-<%= link_to t(:new_user_group), new_user_group_path, :class => 'awesome large blue button' %>
+<%= link_to t(:new_user_group), new_user_group_path, :class => 'awesome small blue button' %>
 
 <% end %>
-</form>
