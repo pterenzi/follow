@@ -1,6 +1,6 @@
 <% form_tag( :action=>:encerrar_task, :controller=>'tasks') do  %>
  <%= hidden_field_tag :id, task.id %>
-  <h2> Tem certeza que deseja encerrar esta task ? </h2>
+Tem certeza que deseja encerrar esta tarefa ?
   <p>
    Comentário :<br/>
     <%= text_area_tag 'comment_end', '' ,:size=>"22x3" %>

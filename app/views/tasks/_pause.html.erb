@@ -1,15 +1,13 @@
-<% form_tag( :action=>:create_pauser, :controller=>'tasks') do %>
+<% form_tag(:html=>{:class=>"jNice"}, :action=>:create_pauser, :controller=>'tasks') do %>
 
  <%= hidden_field_tag :task_id, task.id %>
-  <table class="transparent">
-	<tr>
-		<td valign="top"><%= t(:justification) %>:&nbsp; </td>
-		<td><%= text_area_tag(:justification, '', :size=>"21x2") %></td>
-    </tr>
-    <tr>
-	  <td>&nbsp;</td>
-	  <td><br/><%= submit_tag t(:pause) %></td>
-    </tr>
-  </table>
+
+	
+<%= t(:justification) %>:&nbsp; 		<%= text_area_tag(:justification, '', :size=>"21x2") %>
+    
+    
+	 
+	  <br/><%= submit_tag t(:pause), :class => 'awesome small blue button'  %>
+    
+  
 <% end %>
-</for>

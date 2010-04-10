@@ -9,13 +9,13 @@ $(document).ready(function(){
 
 
 function abre_form_pause(id){
-    $('#form_pause_'+id).dialog({ title: 'Pause' });
+    $('#form_pause_'+id).dialog({ title: 'Pausar tarefa' });
     $('#form_pause_'+id).dialog('open');
     $('#form_pause_'+id).dialog();
 };
 
 function abre_form_approve_disapprove_pause(id){
-    $('#form_aprovar_pause_'+id).dialog({ title: 'Aprovar / Reprovar Pause' });
+    $('#form_aprovar_pause_'+id).dialog({ title: 'Aprovar / Reprovar Pausa' });
     $('#form_aprovar_pause_'+id).dialog('open');
     $('#form_aprovar_pause_'+id).dialog();
 }
@@ -31,7 +31,7 @@ function toggle(task_id,muda_alerta,origem){
 };
 
 function abre_form_end(id){
-    $('#abre_end_'+id).dialog({ title: 'Término' });
+    $('#abre_end_'+id).dialog({ title: 'Encerrar tarefa' });
     $('#abre_end_'+id).dialog('open');
     $('#abre_end_'+id).dialog();
 }
@@ -43,13 +43,13 @@ function abre_form_evaluation(id){
 }
 
 function abre_form_recusa(id){
-    $('#form_recusa_'+id).dialog({ title: 'Recusar' });
+    $('#form_recusa_'+id).dialog({ title: 'Recusar tarefa' });
     $('#form_recusa_'+id).dialog('open');
     $('#form_recusa_'+id).dialog();
 }
 
 function abre_alerta_recusado(id){
-    $('#form_task_refused_'+id).dialog({ title: 'Task refused' });
+    $('#form_task_refused_'+id).dialog({ title: 'Tarefa recusada' });
     $('#form_task_refused_'+id).dialog('open');
     $('#form_task_refused_'+id).dialog();
 }
@@ -150,7 +150,7 @@ function populate_user_select(element){
 }
 
 function open_info_task(task_id){
-   $('#info_task_'+task_id).dialog({ title: 'Task details' });
+   $('#info_task_'+task_id).dialog({ title: 'Detalhes da tarefa' });
    $('#info_task_'+task_id).dialog('open');
    $('#info_task_'+task_id).dialog();
 }

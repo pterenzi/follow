@@ -29,6 +29,7 @@ th + td { padding-left: .5em; }
 	background: white;
 	border: none;
 	line-height: 1.0em;
+	font-size:12px;
 }
 
 .transparent th{
