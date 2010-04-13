@@ -17,7 +17,7 @@ def self.recent_messages(current_user)
   messages = Message.all(:order=>"created_at desc", :conditions=>["user_id=? and readed IS NULL", current_user], :limit=>10)
   result = Array.new
   for message in messages
-    if message.created_at > Time.now - 1.minute
+    if message.created_at > Time.now.utc - 1.minute
       result << message
       puts message.content
     end

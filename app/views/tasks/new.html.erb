@@ -2,7 +2,7 @@
 <% content_for :main do%>
 <h1><%= t(:new_task)%></h1>
 <br/>
-
+<%= Time.now.utc %>
 <% form_for @task do |f| %>
 <%= error_messages_for :task %>
 

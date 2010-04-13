@@ -309,7 +309,7 @@ class TasksController < ApplicationController
   def verify_new_tasks
     @recent_task = Task.recent_task(current_user.id)
     if !@recent_task.nil?
-      if @recent_task.start_at.strftime("%Y-%m-%d %H:%M") <= (Time.now - 3.minutes).strftime("%Y-%m-%d %H:%M")
+      if @recent_task.start_at.strftime("%Y-%m-%d %H:%M") <= (Time.now.utc - 3.minutes).strftime("%Y-%m-%d %H:%M")
         @recent_task = nil
       end
     end

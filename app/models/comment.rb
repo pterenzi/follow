@@ -9,7 +9,7 @@ class Comment < ActiveRecord::Base
     recent_comments = Comment.all(:order=>"created_at Desc", 
               :conditions=>["user_id <> ?  and created_at >=? ",
                     current_user, 
-                    (Time.now - 1.minutes).strftime("%Y-%m-%d %H:%M")])
+                    (Time.now.utc - 1.minutes).strftime("%Y-%m-%d %H:%M")])
     tasks_comments = Array.new
     for comment in recent_comments
       if (comment.task.user== current_user) or (comment.task.requestor == current_user )
