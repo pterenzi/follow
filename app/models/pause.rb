@@ -12,7 +12,7 @@ class Pause < ActiveRecord::Base
     
     
   def tempo_de_solicitacao
-    minutos = ((Time.now - created_at) / 60 ).to_i
+    minutos = ((Time.current - created_at) / 60 ).to_i
     horas = nil
     if minutos > 60
       horas = minutos / 60

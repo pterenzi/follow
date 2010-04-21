@@ -3,15 +3,15 @@
     <span id="blink_<%=task.id.to_s %>" >
       <span id="link_toggle_<%=task.id.to_s %>">
         <a href="#" onClick=toggle(<%= task.id %>,<%= task.user_alert.nil? ? false : task.user_alert %>,'usuario') >
-	  </span>
-	  <span class"hyphenate text" lang="pt"><%= task.description %></span></a>
+    </span>
+    <span class"hyphenate text" lang="pt"><%= task.description %></span></a>
     </span>
 
     <div style="display: none;"id="toggle_appear_<%= task.id.to_s %>" style="background:#d3d3d3;">
-    
-        <table style="background-color:#d3d3d3" width="190" border="0" cellspacing="0" cellpadding="0" class="transparent">
-                                      <tr>
-<td height= "20" align="center" ><p class="link"><a href="#" onClick="abre_form_recusa(<%=task.id%>);return false;" style="text-decoration:none" OnMouseOver="document.devolver.src='images/backwardh.png'" OnMouseOut="document.devolver.src='images/backward.png'">
+      <table style="background-color:#d3d3d3" width="190" border="1" cellspacing="0" cellpadding="0" class="transparent">
+        <tr>
+          
+           <td height= "20" align="center" ><p class="link"><a href="#" onClick="abre_form_recusa(<%=task.id%>);return false;" style="text-decoration:none" OnMouseOver="document.devolver.src='images/backwardh.png'" OnMouseOut="document.devolver.src='images/backward.png'">
         <Img Src="images/backward.png" Name="devolver" Width="18" Height="10" Border=""><span>Não aceitar a  tarefa</span></a></p></td>
          
     
@@ -34,9 +34,6 @@ OnMouseOver="document.foward.src='images/fowardh.png'" OnMouseOut="document.fowa
 
     
 <td height= "20" align="center"><p class="link"> <a href="#" onClick="abre_form_end(<%=task.id%>);return false;" style="text-decoration:none" OnMouseOver="document.stop.src='images/stoph.png'" OnMouseOut="document.stop.src='images/stop.png'"><Img Src="images/stop.png" Name="stop" Width="18" Height="10"Border=""><span>Finalizar</span></a></p></td>
-
-
-      
          </tr>
    </table>
 

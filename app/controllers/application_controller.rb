@@ -110,7 +110,6 @@ class ApplicationController < ActionController::Base
     @my_requests = @my_requests + @tasks_encerradas_sem_evaluation
   #  debugger
     @tasks_without_user = Task.solicitadas_por(current_user.id).sem_user
-    puts @tasks_without_user
     @to_do_list = Task.abertas.de_mim_para_mim(current_user.id)    
     @messages_list = Message.not_readed(current_user).order_by_created_at
     @events = Event.find(:all, :conditions=>["user_id=?",current_user.id])

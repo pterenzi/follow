@@ -13,8 +13,7 @@ validates_presence_of :estimated_time, :message=>"não pode ficar em branco!"
 validates_numericality_of  :estimated_time, :message=>"deve ser numérico!"
 
 named_scope :from_client, lambda {| client_id| {:conditions=>["client_id=?", client_id]}}
-named_scope :abertas, :conditions=>["start_at <= ? and end_at IS NULL",(Time.now.utc+1.minute).strftime("%Y-%m-%d %H:%M") ]#, 
-               # :include=>[:project]
+named_scope :abertas, :conditions=>["start_at <= ? and end_at IS NULL",(Time.current+1.minute) ]
 named_scope :for_user, lambda{ |user_id| {:conditions=>["user_id = '?' ",user_id]}}
 named_scope :de_mim_para_mim, lambda{ |id| {:conditions=>["tasks.user_id = tasks.requestor_id and tasks.requestor_id = ?", id]} }    
 named_scope :encerradas, :conditions=>["NOT end_at ISNULL"]
@@ -42,7 +41,7 @@ end
 def tempo_decorrido
   return 1
   evaluation = Evaluation.last(:conditions=>["user_id=? and task_id=?", id, user_id])
-  return (((Time.now - evaluation.created_at) / 1.hour).round).to_s + " hora(s). "
+  return (((Time.current - evaluation.created_at) / 1.hour).round).to_s + " hora(s). "
 end
 
 def sem_usuario
@@ -147,7 +146,7 @@ def self.encerradas_sem_evaluation(requestor_id)
 end
 
 def self.recent_task(current_user)
-  Task.first(:order=>"start_at desc", :conditions=>["start_at < ?  and user_id=? ", Time.now.utc.strftime("%Y-%m-%d %H:%M") ,current_user])
+  Task.first(:order=>"start_at desc", :conditions=>["start_at < ?  and user_id=? ", Time.current ,current_user])
 end
 
   def grade
@@ -192,7 +191,7 @@ end
       end
     end
     if end_at.nil?
-      total = Time.now - start_at - total_pause
+      total = Time.current - start_at - total_pause
     else
       total = end_at - start_at - total_pause.minutes
     end

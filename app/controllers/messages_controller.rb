@@ -105,7 +105,7 @@ class MessagesController < ApplicationController
    
      def mark_as_readed
         @message = Message.find(params[:id])
-        @message.readed = Time.now
+        @message.readed = Time.current
         if @message.save
           #TODO o que fazer quando houver um erro
         end

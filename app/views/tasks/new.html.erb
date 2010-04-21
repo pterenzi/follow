@@ -2,7 +2,7 @@
 <% content_for :main do%>
 <h1><%= t(:new_task)%></h1>
 <br/>
-<%= Time.now.utc %>
+<%= Time.current %>
 <% form_for @task do |f| %>
 <%= error_messages_for :task %>
 
@@ -30,8 +30,9 @@
 
   <p>
     <b><%= t(:start_at) %></b><br/>
-<!--    <%= datepicker_tag :start_at,  :order=>[:day,:month,:year], :size => 10 %> -->
-    <%= f.datetime_select :start_at,  :order=>[:day,:month,:year] %>
+
+<!--    <%= f.datetime_select :start_at,  :order=>[:day,:month,:year] %> -->
+    <%= f.text_field :start_at, :class => 'datetime' %>
   </p><br/><br/>
   <p>
     <b><%= t(:description) %></b><br/><br/>

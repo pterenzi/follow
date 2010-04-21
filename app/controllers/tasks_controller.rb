@@ -29,11 +29,11 @@ class TasksController < ApplicationController
 
   # GET /tasks/new GET /tasks/new.xml
   def new
-    @task = Task.new
-    @task.start_at = Time.now
-    @companies = Company.by_name.from_client(current_user.client_id).collect{|obj| [obj.name,obj.id]}.insert(0,"")
-    @projects = Project.by_name.from_client(current_user.client_id).collect{|obj| [obj.name,obj.id]}.insert(0,"")
-    @user_groups = UserGroup.by_name.from_client(current_user.client_id).collect{|obj| [obj.name,obj.id]}.insert(0,"")
+    @task          = Task.new
+    @task.start_at = Time.current.strftime("%d-%m-%Y : %H:%M")  #.strftime("%m/%d/%Y %H:%M")
+    @companies     = Company.by_name.from_client(current_user.client_id).collect{|obj| [obj.name,obj.id]}.insert(0,"")
+    @projects      = Project.by_name.from_client(current_user.client_id).collect{|obj| [obj.name,obj.id]}.insert(0,"")
+    @user_groups   = UserGroup.by_name.from_client(current_user.client_id).collect{|obj| [obj.name,obj.id]}.insert(0,"")
 
     respond_to do |format|
       format.html # new.html.erb
@@ -52,6 +52,7 @@ class TasksController < ApplicationController
   # POST /tasks POST /tasks.xml
   def create
     @task = Task.new(params[:task])
+    debugger
     @task.requestor_id = current_user.id
     @task.project_id = params[:project_id] unless params[:project_id].blank?
     @task.user_alert = true
@@ -131,7 +132,7 @@ class TasksController < ApplicationController
     @pause = Pause.new
     @pause.task_id = params[:task_id]
     @pause.justification = params[:justification]
-    @pause.date = Time.now
+    @pause.date = Time.current
     @pause.pattern=false
     @task = @pause.task
     @task.requestor_alert = true
@@ -188,7 +189,7 @@ class TasksController < ApplicationController
   
   def reiniciar_a_task
     @pause = Pause.from_task(params[:task_id])
-    @pause.restart = Time.now
+    @pause.restart = Time.current
     @pause.accepted = true
     if @pause.save
       redirect_to tasks_path
@@ -215,7 +216,7 @@ class TasksController < ApplicationController
       pause = Pause.find(:all, :conditions=>["pattern_pause_id not null and task_id=?",task.id]).last
       #debugger
       if !pause.nil? && (!pause.pattern_pause_id.nil? & pause.restart.nil?)
-        pause.restart = Time.now
+        pause.restart = Time.current
         pause.save
       end
     end
@@ -226,7 +227,7 @@ class TasksController < ApplicationController
     #debugger
     pause = Pause.new
     pause.task_id = task_id
-    pause.date = Time.now
+    pause.date = Time.current
     pause.pattern_pause_id = pattern_pause_id
     pause.save
     #TODO fazer tratamento de erro
@@ -246,7 +247,7 @@ class TasksController < ApplicationController
   
   def encerrar_task
     @task = Task.find(params[:id])
-    @task.end_at = Time.now
+    @task.end_at = Time.current
     @task.comment_end_user = params[:comment_end]
     @task.requestor_alert = true
     if @task.save
@@ -308,13 +309,15 @@ class TasksController < ApplicationController
 
   def verify_new_tasks
     @recent_task = Task.recent_task(current_user.id)
-    if !@recent_task.nil?
-      if @recent_task.start_at.strftime("%Y-%m-%d %H:%M") <= (Time.now.utc - 3.minutes).strftime("%Y-%m-%d %H:%M")
+    debugger
+    if @recent_task.present?
+      if @recent_task.start_at <= (Time.current - 3.minutes)
         @recent_task = nil
       end
     end
     @tasks_comments = Comment.recent_comments(current_user)
     @recent_messages = Message.recent_messages(current_user)
+    #TODO transformar em chamada ajax para atualizar a view
   end
   
   def search

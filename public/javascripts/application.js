@@ -1,10 +1,17 @@
 // Place your application-specific JavaScript functions and classes here
 // This file is automatically included by javascript_include_tag :defaults
 
-$.ui.dialog.defaults.bgiframe = true;
+//$.ui.dialog.defaults.bgiframe = true;
 
 $(document).ready(function(){
-   $("#datepicker").datepicker();
+  // $("#datepicker").datepicker();
+   $(".datetime").datepicker({
+     duration: '',
+     showTime: true,
+     constrainInput: false,
+     time24h: true,
+     stepMinutes: 5  
+    });
  });
 
 
@@ -96,20 +103,20 @@ function remove_message(id){
 }
 
 function filter_user(user_group_id){
-	$("#not_selected_users").html("");
-	  $.getJSON("/user_groups/retrieve_users",{'company_id': $("#company_id").val(),
-	'project_id': $("#project_id").val(),'user_group_id': user_group_id },
-	       function(data){
-		    list = ""
-			for (var i = 0; i < data.length; i++){
+  $("#not_selected_users").html("");
+    $.getJSON("/user_groups/retrieve_users",{'company_id': $("#company_id").val(),
+  'project_id': $("#project_id").val(),'user_group_id': user_group_id },
+         function(data){
+        list = ""
+      for (var i = 0; i < data.length; i++){
               list = list + "<a href='#' onClick='include_user(" + user_group_id + "," + 
   data[i][0] + "," + data[i][1] + ",'user_groups')>"+ data[i][0]+ "</a><br/>"
             }
           $("#not_selected_users").html(list);
-		});
+    });
 }
 function project_selected(){
-	$("#task_user_id").hide();
+  $("#task_user_id").hide();
     $.getJSON("/users/retrieve_users",{'company_id': $("#company_id").val(),
 'project_id': $("#project_id").val(),'user_group_id': $("#user_group_id").val() },
        function(data){
@@ -120,17 +127,17 @@ function project_selected(){
               $("#task_user_id").append(new Option(data[i][0],data[i][1]));
             }
             if (data.length>0) {
-			  $("#task_user_id").show();
+        $("#task_user_id").show();
             }else{
-			  $("#task_user_id").hide();
+        $("#task_user_id").hide();
             }
        }
     );
 }
 
 function populate_user_select(element){
-//	alert(element);
-	$("#"+element).hide();
+//  alert(element);
+  $("#"+element).hide();
     $.getJSON("/users/retrieve_users",{'company_id': $("#company_id").val(),
 'project_id': $("#project_id").val(),'user_group_id': $("#user_group_id").val() },
        function(data){
@@ -141,9 +148,9 @@ function populate_user_select(element){
               $("#"+element).append(new Option(data[i][0],data[i][1]));
             }
             if (data.length>0) {
-			  $("#"+element).show();
+        $("#"+element).show();
             }else{
-			  $("#"+element).hide();
+        $("#"+element).hide();
             }
        }
     );
