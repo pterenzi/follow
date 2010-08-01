@@ -8,7 +8,6 @@ class CategoriesController < ApplicationController
 
    # GET /categories GET /categories.xml
    def index
-     debugger
       @categories = Category.from_client(current_user.client_id)
       respond_to do |format|
          format.html # index.html.erb

@@ -31,7 +31,7 @@ named_scope :sem_evaluation  , lambda {|task_id, user_id| {
             :conditions=>["evaluations.task_id=? and evaluations.user_id=? and grade ISNULL",task_id, user_id]}}
 named_scope :sem_recusa, :conditions=>["refused='f'"]
 named_scope :sem_user, :conditions=>["user_id is null"]
-named_scope :with_user_defined, :conditions=>["user_id NOT NULL"]
+named_scope :with_user_defined, :conditions=>["user_id IS NOT NULL"]
 
 def usuario_que_criou(user_id)
   user = User.find(user_id)
@@ -87,6 +87,7 @@ def pause_nao_aceita
 end
 
 def paused_esperando_aprovacao
+  return false
   pause = Pause.find(:all, :conditions=>["pattern_pause_id IS NULL and task_id=?",id]).last
   if pause.nil?
     return false
@@ -125,7 +126,7 @@ def self.tem_task_com_pattern_pause(tasks)
 end
 
 def justification_recusa
-  evaluation = Evaluation.last( :conditions=>["refused='t' and task_id=? and user_id=?", id, user_id])
+  evaluation = Evaluation.last( :conditions=>["refused=? and task_id=? and user_id=?", true, id, user_id])
   if evaluation.nil? 
     return ""
   else

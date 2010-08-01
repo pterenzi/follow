@@ -8,7 +8,7 @@ class Pause < ActiveRecord::Base
   named_scope :from_an_user_in_a_task, lambda{ |task_id,user_id| {
       :conditions=>["task_id=? and user_id = ?", task_id, user_id]} } 
 
-  named_scope :accepted , lambda{|client_id| {:conditions=>["accepted='t' and client_id=?", client_id]}}
+  named_scope :accepted , lambda{|client_id| {:conditions=>["accepted= ?  and client_id=?", true, client_id]}}
     
     
   def tempo_de_solicitacao

@@ -27,7 +27,6 @@ class ApplicationController < ActionController::Base
     
     def default_url_options(options={})
       logger.debug "default_url_options is passed options: #{options.inspect}\n"
-#debugger
       if session[:client_id]
         
         { :locale => I18n.locale, :client=>@client.name }
@@ -106,9 +105,8 @@ class ApplicationController < ActionController::Base
     #Com named_scope
     @projects = Project.by_name.from_client(current_user.client_id).collect{|obj| [obj.description,obj.id]}
     @my_tasks = Task.para_mim(current_user.id).abertas.por_requestor.sem_recusa.ordenados
-    @my_requests = Task.abertas.solicitadas_por(current_user.id).with_user_defined.not_mines(current_user)
+    @my_requests = Task.abertas.solicitadas_por(current_user.id).with_user_defined.not_mines(current_user.id)
     @my_requests = @my_requests + @tasks_encerradas_sem_evaluation
-  #  debugger
     @tasks_without_user = Task.solicitadas_por(current_user.id).sem_user
     @to_do_list = Task.abertas.de_mim_para_mim(current_user.id)    
     @messages_list = Message.not_readed(current_user).order_by_created_at
@@ -117,7 +115,6 @@ class ApplicationController < ActionController::Base
     @event = Event.new
     @evaluation = Evaluation.new
     @client = current_user.client
-     #TODO testar <> 't' em outros bancos. No Sqlite funciona somente desta maneira
    end
    
 end

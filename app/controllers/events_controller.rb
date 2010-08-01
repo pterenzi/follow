@@ -5,7 +5,6 @@ class EventsController < ApplicationController
   # GET /events
   # GET /events.xml
   def index
-    debugger
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @events }
@@ -149,7 +148,6 @@ class EventsController < ApplicationController
   end
   
   def search
-    debugger
     if params[:content]
       sql="user_id = #{current_user.id} and content like '%" + params[:content] + "%'"
       @event_list = Event.all(:conditions=>sql, :order=>"start_at DESC")

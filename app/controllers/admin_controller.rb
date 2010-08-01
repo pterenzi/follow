@@ -5,7 +5,6 @@ class AdminController < ApplicationController
   end
   
   def validate_super_user
-    debugger
     if params[:login]=="admin" and params[:password]=="1423"
       session[:super_user] = params[:login]
       redirect_to clients_path 

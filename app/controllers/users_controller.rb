@@ -12,11 +12,11 @@ class UsersController < ApplicationController
   
   def new
     if @client.available_license < 1
-      redirect_to users_path
-    end
-    if current_user.role.level>0
-      redirect_to users_path
-    end
+          redirect_to users_path
+        end
+        if current_user.role.level>0
+          redirect_to users_path
+        end
     @user = User.new
     @categories = Category.all(:order=>"name").collect{|obj| [obj.name,obj.id]}
     @companies = Company.all(:order=>:name).collect{|obj| [obj.name,obj.id]}
@@ -50,7 +50,6 @@ class UsersController < ApplicationController
   
   def update
     @user = User.find(params[:id])
-    debugger
     if params[:password_confirmation].blank?
       params[:passowrd_confirmation] = params[:password]
     end

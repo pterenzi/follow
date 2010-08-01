@@ -1,253 +1,273 @@
 pt-BR:
+  date:
+    formats:
+      default: '%d/%m/%Y'
+      short: '%e %b'
+      long: '%B %e, %Y'
+      only_day: '%e'
+      dot_date: '%d.%m.%y %H:%M'
+      dot_only_date: '%d.%m.%y'
+      dot_only_hour: '%H:%M'
 
-   
-      # formatos de data e hora
-      date:
-        formats:
-          default: "%d/%m/%Y"
-          short: "%d de %B"
-          long: "%d de %B de %Y"
+    day_names: [Domingo, Segunda-feira, Terça-feira, Quarta-feira, Quinta-feira, Sexta-feira, Sábado]
+    abbr_day_names: [Dom, Seg, Ter, Qua, Qui, Sex, Sáb]
+    month_names: [~, Janeiro, Fevereiro, Março, Abril, Maio, Junho, Julho, Agosto, Setembro, Outubro, Novembro, Dezembro]
+    abbr_month_names: [~, Jan, Fev, Mar, Abr, Mai, Jun, Jul, Aug, Set, Out, Nov, Dez]
+    order: [ :year, :month, :day ]
 
-        day_names: [Domingo, Segunda, Terça, Quarta, Quinta, Sexta, Sábado]
-        abbr_day_names: [Dom, Seg, Ter, Qua, Qui, Sex, Sáb]
-        month_names: [~, Janeiro, Fevereiro, Março, Abril, Maio, Junho, Julho, Agosto, Setembro, Outubro, Novembro, Dezembro]
-        abbr_month_names: [~, Jan, Fev, Mar, Abr, Mai, Jun, Jul, Ago, Set, Out, Nov, Dez]
-        order: [ :day, :month, :year ]
+  time:
+    formats:
+      default: '%d/%m/%Y %H:%M'
+      default_with_seconds: '%d/%m/%Y %H:%M:%S'
+      time: '%H:%M'
+      short: '%d/%b, %H:%M'
+      long: '%d de %B de %Y, %H:%M'
+      full: '%d de %B de %Y'
+      only_second: '%S'
+      short_date:  '%d/%m/%Y'
+      dot_date:  '%d.%m.%y %H:%M'
+      dot_only_date: '%d.%m.%y'
+      dot_only_hour: '%H:%M'
+      rfc2822: "%a, %d %b %Y %H:%M:%S %z"
+      abril_mobile: "%a, %d %b %Y %H:%M:%S -0000"
 
-      time:
-        formats:
-          default: "%A, %d de %B de %Y, %H:%M hs"
-          short: "%d/%m, %H:%M hs"
-          long: "%A, %d de %B de %Y, %H:%M hs"
-        am: ''
-        pm: ''
-
-      # date helper distanci em palavras
       datetime:
-        distance_in_words:
-          half_a_minute: 'meio minuto'
-          less_than_x_seconds:
-            one: 'menos de 1 segundo'
-            other: 'menos de {{count}} segundos'
+        formats:
+          default: '%d/%m/%YT%H:%M:%S%Z'
 
-          x_seconds:
-            one: '1 segundo'
-            other: '{{count}} segundos'
+    am: ''
+    pm: ''
 
-          less_than_x_minutes:
-            one: 'menos de um minuto'
-            other: 'menos de {{count}} minutos'
+  datetime:
+    distance_in_words:
+      half_a_minute: 'meio minuto'
+      less_than_x_seconds:
+        zero: 'menos de 1 segundo'
+        one: '1 segundo'
+        other: '{{count}} segundos'
+      x_seconds:
+        one: '1 segundo'
+        other: '{{count}} segundos'
+      less_than_x_minutes:
+        zero: 'menos de 1 minuto'
+        one: '1 minuto'
+        other: '{{count}} minutos'
+      x_minutes:
+        one: '1 minuto'
+        other: '{{count}} minutos'
+      about_x_hours:
+        one: 'aproximadamente 1 hora'
+        other: '{{count}} horas'
+      x_days:
+        one: '1 dia'
+        other: '{{count}} dias'
+      about_x_months:
+        one: 'about 1 mês'
+        other: '{{count}} meses'
+      x_months:
+        one: '1 mês'
+        other: '{{count}} meses'
+      about_x_years:
+        one: 'aproximadamente 1 year'
+        other: '{{count}} years'
+      over_x_years:
+        one: 'mais de 1 ano'
+        other: '{{count}} anos'
 
-          x_minutes:
-            one: '1 minuto'
-            other: '{{count}} minutos'
+  number:
+    format:
+      precision: 3
+      separator: ','
+      delimiter: '.'
+    currency:
+      format:
+        unit: 'R$'
+        precision: 2
+        format: '%u %n'
+    human:
+      storage_units:
+        format: '%n %u'
+        units:
+          byte:
+            one: "Byte"
+            other: "Bytes"
+          kb: "KB"
+          mb: "MB"
+          gb: "GB"
+          tb: "TB"
+   
 
-          about_x_hours:
-            one: 'aproximadamente 1 hora'
-            other: 'aproximadamente {{count}} horas'
+# Used in array.to_sentence.
+  support:
+    array:
+      words_connector: ", "
+      two_words_connector: " e "
+      last_word_connector: " e "
 
-          x_days:
-            one: '1 dia'
-            other: '{{count}} dias'
+  # Active Record
+  activerecord:
+    errors:
+      template:
+        header:
+          one: "Não foi possível gravar {{model}}: 1 erro"
+          other: "Não foi possível gravar {{model}}: {{count}} erros."
+        body: "Por favor, verifique o(s) seguinte(s) campo(s):"
+      messages:
+        inclusion: "não está incluído na lista"
+        exclusion: "não está disponível"
+        invalid: "não é válido"
+        confirmation: "não está de acordo com a confirmação"
+        accepted: "deve ser aceito"
+        empty: "não pode ficar vazio"
+        blank: "não pode ficar em branco"
+        too_long: "é muito longo (máximo: {{count}} caracteres)"
+        too_short: "é muito curto (mínimo: {{count}} caracteres)"
+        wrong_length: "não possui o tamanho esperado ({{count}} caracteres)"
+        taken: "já está em uso"
+        not_a_number: "não é um número"
+        greater_than: "deve ser maior do que {{count}}"
+        greater_than_or_equal_to: "deve ser maior ou igual a {{count}}"
+        equal_to: "deve ser igual a {{count}}"
+        less_than: "deve ser menor do que {{count}}"
+        less_than_or_equal_to: "deve ser menor ou igual a {{count}}"
+        odd: "deve ser ímpar"
+        even: "deve ser par"
 
-          about_x_months:
-            one: 'aproximadamente 1 mês'
-            other: 'aproximadamente {{count}} meses'
-
-          x_months:
-            one: '1 mês'
-            other: '{{count}} meses'
-
-          about_x_years:
-            one: 'aproximadamente 1 ano'
-            other: 'aproximadamente {{count}} anos'
-
-          over_x_years:
-            one: 'mais de 1 ano'
-            other: 'mais de {{count}} anos'
-        prompts:
-          year:   "Ano"
-          month:  "Mês"
-          day:    "Dia"
-          hour:   "Hora"
-          minute: "Minuto"
-          second: "Segundos"
-
-      # numeros
-      number:
-        format:
-          precision: 3
-          separator: ','
-          delimiter: '.'
-        currency:
-          format:
-            unit: 'R$'
-            precision: 2
-            format: '%u %n'
-            separator: ','
-            delimiter: '.'
-        percentage:
-          format:
-            delimiter: '.'
-        precision:
-          format:
-            delimiter: '.'
-        human:
-          format:
-            precision: 1
-            delimiter: '.'
-          storage_units:
-            format: "%n %u"
-            units:
-              byte:
-                one: "Byte"
-                other: "Bytes"
-              kb: "KB"
-              mb: "MB"
-              gb: "GB"
-              tb: "TB"
-
-    # Used in array.to_sentence.
-      support:
-        array:
-          words_connector: ", "
-          two_words_connector: " e "
-          last_word_connector: " e "
-
-      # Active Record
-      activerecord:
-        errors:
-          template:
-            header:
-              one: "Não foi possível gravar {{model}}: 1 erro"
-              other: "Não foi possível gravar {{model}}: {{count}} erros."
-            body: "Por favor, verifique o(s) seguinte(s) campo(s):"
-          messages:
-            inclusion: "não está incluído na lista"
-            exclusion: "não está disponível"
-            invalid: "não é válido"
-            confirmation: "não está de acordo com a confirmação"
-            accepted: "deve ser aceito"
-            empty: "não pode ficar vazio"
-            blank: "não pode ficar em branco"
-            too_long: "é muito longo (máximo: {{count}} caracteres)"
-            too_short: "é muito curto (mínimo: {{count}} caracteres)"
-            wrong_length: "não possui o tamanho esperado ({{count}} caracteres)"
-            taken: "já está em uso"
-            not_a_number: "não é um número"
-            greater_than: "deve ser maior do que {{count}}"
-            greater_than_or_equal_to: "deve ser maior ou igual a {{count}}"
-            equal_to: "deve ser igual a {{count}}"
-            less_than: "deve ser menor do que {{count}}"
-            less_than_or_equal_to: "deve ser menor ou igual a {{count}}"
-            odd: "deve ser ímpar"
-            even: "deve ser par"
+  resource_successfully_created: '{{resource}} criado(a) com sucesso.'
+  resource_successfully_updated: '{{resource}} atualizado(a) com sucesso.'
+  resource_successfully_destroyed: '{{resource}} removido(a) com sucesso.'
+  resources_successfully_updated: '{{resources}} atualizados(as) com sucesso.'
+  resources_successfully_created: '{{resources}} criados(as) com sucesso.'
+  resources_successfully_destroyed: '{{resources}} removidos(as) com sucesso.'
+  cannot_delete_resource: '{{resource}} não pode ser removido(a), possivelmente devido a existência de registros correlacionados em outro cadastro, os quais impedem a realização desta operação.'
+  cannot_inactivate_resource: '{{resource}} não pode ser inativado(a), devido à violação de regras de negócios que impedem a realização desta operação'
+  cannot_activate_resource: '{{resource}} não pode ser ativado(a), devido à violação de regras de negócios que impedem a realização desta operação'
+  not_available_resource: '{{resource}} não disponível.'
+  listing: '{{resources}}'
+  searching: 'Filtro de {{resources}}'
+  creating: 'Novo(a) {{resource}}'
+  editing: 'Edição de {{resource}}'
+  showing: 'Detalhes de {{resource}}'
+  edit_tab: Edição
+  destroy_all_selected: Remover selecionados
+  view_all_tab: Ver todos
+  new_tab: Novo
+  show_tab: Detalhes
+  edit_text: Editar
+  destroy_text: Remover
+  save: Salvar
+  cancel: Cancelar
+  back: Voltar
+  profile: Perfil
+  settings: Configurações
+  logout: Sair
+  suggest: Sugerir
 
 
-      active: "Ativo"
-      all: "todos"
-      aprouve: "aprovar"
-      at: "postado em"
-      Are_you_sure?: "Tem certeza?"
-      available_licenses: "licenças disponíveis"
-      back: "◀ Voltar"
-      calendar: "Agenda"
-      cancel: "Cancelar"
-      categories: "Categorias"
-      category: "Categoria"
-      change_password: "Mudar senha"
-      click_user_name: "Clique no usuário para incluí-lo no "
-      comment: "comentário"
-      companies: "Empresas"
-      company: "Empresa"
-      content: "Evento"
-      create: "Salvar ✓"
-      description: "Descrição"
-      destroy: "excluir"
-      details: "detalhes"
-      disaprouve: "não aprovar"
-      edit: "Editar"
-      editing: "editar "
-      employee: "Usuários"
-      end_at: "Término em"
-      english: "Inglês"
-      estimated_time: "Tempo estimado"
-      evaluation: "Avaliação"
-      event: "agenda"
-      event_date: "Data do evento"
-      event_content: "conteúdo do evento"
-      type_event: "Evento"
-      for_me: "para mim"
-      grade: "nota"
-      hours: "horas"
-      instructions_to_remove: "*Clique no nome do usuário para retirá-lo da lista"
-      justification: "Justificativa"
-      listing: "Cadastro de "
-      login: "Usuário"
-      logout: "Sair"
-      manage_users: "Gerenciar grupo"
-      message: "Recado"
-      message_created: "Recado cadastrado com sucesso!"
-      messages: "Recados"
-      months: "meses"
-      my_data: "Meus dados"
-      my_solicitations: "Minhas solicitações para:"
-      my_tasks: "Minhas tarefas de:"
-      name: "Nome"
-      new: "Adicionar "
-      new_user: "Novo usuário"
-      add_user: "Adicionar usuário"
-      new_category: "Adicionar categoria"
-      new_task: "Adicionar Tarefa"
-      new_project: "Adicionar Projeto"
-      new_message: "Adicionar Mensagem"
-      new_user_group: "Adicionar Grupo de Trabalho"
-      no_events: "Nenhum evento encontrado"
-      no_solicitations: "Não há nenhuma solicitação sua pendente no momento."
-      no_task: "Não há nenhuma tarefa direcionada para você no momento "
-      no_users_associated: "Não há nenhum usuário associado"
-      not_selected: "Não selecionados"
-      password: "senha"
-      password_confirmation: "confirmação da senha"
-      pause: "pausar"
-      pause_all: "pausar todas"
-      pause_request: "Solicitação de pausa"
-      personal: "Pessoal"
-      preferred_language: "Idioma padrão"
-      portugues: "Português"
-      project: "Projeto"
-      projects: "Projetos"
-      readed: "lido em"
-      repeat_all : "repetir por"
-      reports: "Relatórios"
-      requested_by: "requisitado por"
-      requestor: "requerente"
-      requested_by_me: "Requisitadas por mim"
-      pause_this_task: "Pausar esta tarefa"
-      role: "Nível"
-      save: "Salvar ✓"
-      search: "Pesquisar"
-      searching: "Pesquisar"
-      searching_tasks: "Pesquisar tarefas"
-      selected: "Selecionados"
-      send_comment: "Enviar comentário"
-      sent_by: "de"
-      show: "Detalhes"
-      solicitated_for: "solicitado para"
-      start_at: "Início em"
-      tables: "Cadastro"
-      task_created: 'A tarefa foi cadastrada com sucesso!'
-      task: "Tarefa"
-      tasks: "tarefas"
-      Tasks: "Tarefas"
-      Task_detail: "Detalhes da tarefa"
-      task_refused: "recusou a tarefa "
-      true: "sim"
-      the_date: "data"
-      update: "Alterar ✓"
-      user: "Usuário"
-      user_filter:  "Pesquisa usuário"
-      users: "Usuários"
-      users_associated: "Usuários associados."
-      user_group: "Grupo de trabalho"
-      user_groups: "Grupos de trabalho"
+  active: "Ativo"
+  all: "todos"
+  aprouve: "aprovar"
+  at: "postado em"
+  Are_you_sure?: "Tem certeza?"
+  available_licenses: "licenças disponíveis"
+  back: "◀ Voltar"
+  calendar: "Agenda"
+  cancel: "Cancelar"
+  categories: "Categorias"
+  category: "Categoria"
+  change_password: "Mudar senha"
+  click_user_name: "Clique no usuário para incluí-lo no "
+  comment: "comentário"
+  companies: "Empresas"
+  company: "Empresa"
+  content: "Evento"
+  create: "Salvar ✓"
+  description: "Descrição"
+  destroy: "excluir"
+  details: "detalhes"
+  disaprouve: "não aprovar"
+  edit: "Editar"
+  editing: "editar "
+  employee: "Usuários"
+  end_at: "Término em"
+  english: "Inglês"
+  estimated_time: "Tempo estimado"
+  evaluation: "Avaliação"
+  event: "agenda"
+  event_date: "Data do evento"
+  event_content: "conteúdo do evento"
+  type_event: "Evento"
+  for_me: "para mim"
+  grade: "nota"
+  hours: "horas"
+  instructions_to_remove: "*Clique no nome do usuário para retirá-lo da lista"
+  justification: "Justificativa"
+  listing: "Cadastro de "
+  login: "Usuário"
+  logout: "Sair"
+  manage_users: "Gerenciar grupo"
+  message: "Recado"
+  message_created: "Recado cadastrado com sucesso!"
+  messages: "Recados"
+  months: "meses"
+  my_data: "Meus dados"
+  my_solicitations: "Minhas solicitações para:"
+  my_tasks: "Minhas tarefas de:"
+  name: "Nome"
+  new: "Adicionar "
+  new_user: "Novo usuário"
+  add_user: "Adicionar usuário"
+  new_category: "Adicionar categoria"
+  new_task: "Adicionar Tarefa"
+  new_project: "Adicionar Projeto"
+  new_message: "Adicionar Mensagem"
+  new_user_group: "Adicionar Grupo de Trabalho"
+  no_events: "Nenhum evento encontrado"
+  no_solicitations: "Não há nenhuma solicitação sua pendente no momento."
+  no_task: "Não há nenhuma tarefa direcionada para você no momento "
+  no_users_associated: "Não há nenhum usuário associado"
+  not_selected: "Não selecionados"
+  password: "senha"
+  password_confirmation: "confirmação da senha"
+  pause: "pausar"
+  pause_all: "pausar todas"
+  pause_request: "Solicitação de pausa"
+  personal: "Pessoal"
+  preferred_language: "Idioma padrão"
+  portugues: "Português"
+  project: "Projeto"
+  projects: "Projetos"
+  readed: "lido em"
+  repeat_all : "repetir por"
+  reports: "Relatórios"
+  requested_by: "requisitado por"
+  requestor: "requerente"
+  requested_by_me: "Requisitadas por mim"
+  pause_this_task: "Pausar esta tarefa"
+  role: "Nível"
+  save: "Salvar ✓"
+  search: "Pesquisar"
+  searching: "Pesquisar"
+  searching_tasks: "Pesquisar tarefas"
+  selected: "Selecionados"
+  send_comment: "Enviar comentário"
+  sent_by: "de"
+  show: "Detalhes"
+  solicitated_for: "solicitado para"
+  start_at: "Início em"
+  tables: "Cadastro"
+  task_created: 'A tarefa foi cadastrada com sucesso!'
+  task: "Tarefa"
+  tasks: "tarefas"
+  Tasks: "Tarefas"
+  Task_detail: "Detalhes da tarefa"
+  task_refused: "recusou a tarefa "
+  true: "sim"
+  the_date: "data"
+  update: "Alterar ✓"
+  user: "Usuário"
+  user_filter:  "Pesquisa usuário"
+  users: "Usuários"
+  users_associated: "Usuários associados."
+  user_group: "Grupo de trabalho"
+  user_groups: "Grupos de trabalho"

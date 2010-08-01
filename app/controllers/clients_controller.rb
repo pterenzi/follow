@@ -47,7 +47,6 @@ class ClientsController < ApplicationController
   # POST /clients.xml
   def create
     @client = Client.new(params[:client])
-    debugger
     @company = Company.create(:name=>params[:client][:name])
     @client.companies << @company
 #    @client.company << @company #TODO 1) salvar companya e depois associar a client
@@ -111,18 +110,16 @@ class ClientsController < ApplicationController
    
     @user = User.new(params[:user])
     @user.role_id = 1
-    debugger
     if @user.save
      flash[:notice] = "Usuário criado !"
      redirect_to clients_path
     else
-      debugger
       @client = Client.find(params[:user][:client_id])
       render :action => :new_user
     end
   end
   
   def select_client
-    @clients = Client.all(:order=>:name, :conditions=>["active = 't'"])
+    @clients = Client.all(:order=>:name, :conditions=>["active = ?", true])
   end
 end

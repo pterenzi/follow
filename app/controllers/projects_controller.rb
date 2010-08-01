@@ -10,7 +10,6 @@ class ProjectsController < ApplicationController
   # GET /projects.xml
   def index
     @projects = Project.from_client(current_user.client_id)
-
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @projects }
@@ -101,7 +100,6 @@ def insert_user
   @project = Project.find(params[:id])
   @user = User.find(params[:user_id])
   @project.users << @user
-  debugger
   if @project.save
   #TODO tratar excessão, levando-se em conta que é uma rotina ajax
   render :json => "true"

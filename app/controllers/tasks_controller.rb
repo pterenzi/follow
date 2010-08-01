@@ -8,7 +8,6 @@ class TasksController < ApplicationController
 
   # GET /tasks GET /tasks.xml
   def index
-    debugger
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @tasks }
@@ -52,11 +51,9 @@ class TasksController < ApplicationController
   # POST /tasks POST /tasks.xml
   def create
     @task = Task.new(params[:task])
-    debugger
     @task.requestor_id = current_user.id
     @task.project_id = params[:project_id] unless params[:project_id].blank?
     @task.user_alert = true
-    debugger
     respond_to do |format|
       if @task.save
         if !@task.user_id.nil?
@@ -201,7 +198,6 @@ class TasksController < ApplicationController
   
   
   def pauser_pattern
-    #debugger
     pattern_pause_id = params[:pattern_pause][:pattern_pause_id]
     for task in @my_tasks
       create_pattern_pause(task.id,pattern_pause_id)
@@ -211,10 +207,8 @@ class TasksController < ApplicationController
   
   def reiniciar_pattern_pause
     for task in @my_tasks
-      #debugger
       puts "task : " + task.id.to_s
       pause = Pause.find(:all, :conditions=>["pattern_pause_id not null and task_id=?",task.id]).last
-      #debugger
       if !pause.nil? && (!pause.pattern_pause_id.nil? & pause.restart.nil?)
         pause.restart = Time.current
         pause.save
@@ -224,7 +218,6 @@ class TasksController < ApplicationController
   end
   
   def create_pattern_pause(task_id, pattern_pause_id)
-    #debugger
     pause = Pause.new
     pause.task_id = task_id
     pause.date = Time.current
@@ -309,7 +302,6 @@ class TasksController < ApplicationController
 
   def verify_new_tasks
     @recent_task = Task.recent_task(current_user.id)
-    debugger
     if @recent_task.present?
       if @recent_task.start_at <= (Time.current - 3.minutes)
         @recent_task = nil
@@ -321,7 +313,6 @@ class TasksController < ApplicationController
   end
   
   def search
-    debugger
     params[:user]="user" unless !params[:user].nil?
     @date = Date.today
     sql = " 1=1"

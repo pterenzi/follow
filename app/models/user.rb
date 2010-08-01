@@ -16,7 +16,7 @@ class User < ActiveRecord::Base
   has_many :events
   has_and_belongs_to_many :user_groups
   
-  validates_presence_of :company
+  validates_presence_of :company, :role
   
   named_scope :by_name , :order=>:name
   named_scope :from_client, lambda{|client_id|  {:conditions=>["client_id = ?", client_id]}}

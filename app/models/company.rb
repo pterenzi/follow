@@ -4,7 +4,7 @@ class Company < ActiveRecord::Base
   belongs_to :client
   validates_presence_of :name
   
-  named_scope :active, :conditions=>["active='t'"]
+  named_scope :active, :conditions=>["active=?", true]
   named_scope :by_name, :order=>:name
   named_scope :from_client, lambda{ |client_id| {:conditions=>["client_id=?",client_id]}}
 end

@@ -14,7 +14,6 @@ class UserSessionsController < ApplicationController
      def create
        @user_session = UserSession.new(params[:user_session])
        if @user_session.save
-         #debugger
          #if current_user
            user = User.find_by_login(@user_session.login)
            I18n.locale = user.preferred_language
