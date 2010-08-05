@@ -126,16 +126,17 @@ class TasksController < ApplicationController
   end
   
   def create_pauser
-    @pause = Pause.new
-    @pause.task_id = params[:task_id]
+    @pause               = Pause.new
+    @pause.task_id       = params[:task_id]
     @pause.justification = params[:justification]
-    @pause.date = Time.current
-    @pause.pattern=false
+    @pause.date          = Time.current
+    @pause.pattern       = false
+    @pause.accepted      = true  #TODO Não passando pela aprovação
     @task = @pause.task
     @task.requestor_alert = true
-    @comment = Comment.new
-    @comment.user_id = current_user.id
-    @comment.task_id = @task.id
+    @comment             = Comment.new
+    @comment.user_id     = current_user.id
+    @comment.task_id     = @task.id
     @comment.description = @pause.justification
     Task.transaction do
       if @pause.save & @task.save & @comment.save
