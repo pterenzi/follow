@@ -156,14 +156,14 @@ ActiveRecord::Schema.define(:version => 20091027142913) do
     t.integer  "user_id"
     t.integer  "requestor_id"
     t.string   "description"
-    t.integer  "estimated_time",                           :null => false
-    t.boolean  "user_alert",            :default => false
-    t.boolean  "requestor_alert",       :default => false
+    t.integer  "estimated_time",        :limit => 4,                    :null => false
+    t.boolean  "user_alert",                         :default => false
+    t.boolean  "requestor_alert",                    :default => false
     t.datetime "end_at"
     t.string   "comment_end_user"
     t.string   "comment_end_requestor"
-    t.boolean  "refused",               :default => false
-    t.boolean  "has_comment",           :default => false
+    t.boolean  "refused",                            :default => false
+    t.boolean  "has_comment",                        :default => false
     t.integer  "client_id"
     t.datetime "created_at"
     t.datetime "updated_at"
