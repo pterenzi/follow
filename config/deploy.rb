@@ -7,7 +7,7 @@ set :user , "wayofthe"
 
 # The domain name of the server to deploy to, this can be your domain or the domain of the server.
 
-set :server_name , "68.233.11.17"
+set :server_name , "68.233.9.46"
 
 
 # Your svn / git login name
