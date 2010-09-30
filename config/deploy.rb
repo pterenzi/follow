@@ -52,6 +52,8 @@ set :use_sudo, false
 
 set :group_writable, false
 
+set :keep_releases, 3
+
 default_run_options[:pty] = true 
 
 
@@ -69,6 +71,7 @@ role :db,  server_name, :primary => true
 task :after_update_code, :roles => [:web, :db, :app] do
 
   # run "chown anadata.anadata #{release_path} -R"
+  run "cp /home/wayofthe/follow/database.yml #{release_path}/config/"
   run "chmod 755 #{release_path}/public"
 
 end
