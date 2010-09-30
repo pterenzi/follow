@@ -1,1 +1,6 @@
 senha do banco : pterenzi
+
+
+acesso aos fontes: /home/wayofthe/follow
+
+spc -e 

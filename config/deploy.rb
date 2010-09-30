@@ -2,8 +2,8 @@
 
 # Your cPanel/SSH login name
 
-set :user , "root"
-# set :user, "anadatac"
+set :user , "wayofthe"
+# set :password, "anadatac"
 
 
 # The domain name of the server to deploy to, this can be your domain or the domain of the server.
@@ -47,7 +47,7 @@ set :repository, "git://github.com/pterenzi/follow.git"
 
 ###### There is no need to edit anything below this line ######
 
-set :deploy_to, "/home/anadata/domains/follow.anadata.com.br/follow"
+set :deploy_to, "/home/wayofthe/follow"
 
 set :use_sudo, false
 
@@ -69,7 +69,7 @@ role :db,  server_name, :primary => true
 
 task :after_update_code, :roles => [:web, :db, :app] do
 
-  run "chown anadata.anadata #{release_path} -R"
+  # run "chown anadata.anadata #{release_path} -R"
   run "chmod 755 #{release_path}/public"
 
 end
