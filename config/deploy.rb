@@ -3,7 +3,6 @@
 # Your cPanel/SSH login name
 
 set :user , "wayofthe"
-# set :password, "anadatac"
 
 
 # The domain name of the server to deploy to, this can be your domain or the domain of the server.
@@ -13,9 +12,9 @@ set :server_name , "68.233.11.17"
 
 # Your svn / git login name
 
-set :scm_username , "marcioa1"
+# set :scm_username , "marcioa1"
 
-set :scm_password, Proc.new { CLI.password_prompt "GIT Password: "}
+# set :scm_password, Proc.new { CLI.password_prompt "GIT Password: "}
 
 
 
