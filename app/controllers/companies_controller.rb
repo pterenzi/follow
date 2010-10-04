@@ -45,7 +45,7 @@ class CompaniesController < ApplicationController
   # POST /companies
   # POST /companies.xml
   def create
-    @company = Company.new(params[:company])
+    @company           = Company.new(params[:company])
     @company.client_id = current_user.client_id
     respond_to do |format|
       if @company.save

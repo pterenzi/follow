@@ -29,7 +29,7 @@ class TasksController < ApplicationController
   # GET /tasks/new GET /tasks/new.xml
   def new
     @task          = Task.new
-    @task.start_at = Time.current.strftime("%d-%m-%Y : %H:%M")  #.strftime("%m/%d/%Y %H:%M")
+    @task.start_at = Time.current #.strftime("%d-%m-%Y : %H:%M")  #.strftime("%m/%d/%Y %H:%M")
     @companies     = Company.by_name.from_client(current_user.client_id).collect{|obj| [obj.name,obj.id]}.insert(0,"")
     @projects      = Project.by_name.from_client(current_user.client_id).collect{|obj| [obj.name,obj.id]}.insert(0,"")
     @user_groups   = UserGroup.by_name.from_client(current_user.client_id).collect{|obj| [obj.name,obj.id]}.insert(0,"")
@@ -52,10 +52,12 @@ class TasksController < ApplicationController
   def create
     @task = Task.new(params[:task])
     @task.requestor_id = current_user.id
-    @task.project_id = params[:project_id] unless params[:project_id].blank?
-    @task.user_alert = true
+    @task.client_id    = current_user.client_id
+    @task.project_id   = params[:project_id] unless params[:project_id].blank?
+    @task.user_alert   = true
     respond_to do |format|
       if @task.save
+        #TODO Colocar isto numa callback
         if !@task.user_id.nil?
           Evaluation.create(:task_id=>@task.id, :user_id=>@task.user_id)
         end

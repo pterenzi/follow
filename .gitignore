@@ -5,3 +5,5 @@ config/database.yml
 nbproject/*
 db/follow_development
 db/follow_test
+db/follow_production
+doc/detalhes.txt

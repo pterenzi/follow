@@ -1,4 +1,4 @@
- <%=t(:user) %>: <span class="user_name"> <%= current_user.name %> (  <%= current_user.role.name %> )<br/></span>
+ <%=t(:user) %>: <span class="user_name"> <%= current_user.name %> (  <%= current_user.role.name %> )<br/><%= current_user.client.name %></span>
 
  <%= link_to t(:my_data), edit_user_path(current_user) %> |
  <%= link_to t(:logout), logout_path %>

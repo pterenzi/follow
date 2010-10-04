@@ -13,7 +13,7 @@ validates_presence_of :estimated_time, :message=>"não pode ficar em branco!"
 validates_numericality_of  :estimated_time, :message=>"deve ser numérico!"
 
 named_scope :from_client, lambda {| client_id| {:conditions=>["client_id=?", client_id]}}
-named_scope :abertas, :conditions=>["start_at <= ? and end_at IS NULL",(Time.current+1.minute) ]
+named_scope :abertas, lambda{ {:conditions=>["start_at <= ? and end_at IS NULL",(Time.current+1.minute) ] }}
 named_scope :for_user, lambda{ |user_id| {:conditions=>["user_id = '?' ",user_id]}}
 named_scope :de_mim_para_mim, lambda{ |id| {:conditions=>["tasks.user_id = tasks.requestor_id and tasks.requestor_id = ?", id]} }    
 named_scope :encerradas, :conditions=>["NOT end_at ISNULL"]

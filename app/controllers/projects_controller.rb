@@ -46,7 +46,7 @@ class ProjectsController < ApplicationController
   # POST /projects
   # POST /projects.xml
   def create
-    @project = Project.new(params[:project])
+    @project           = Project.new(params[:project])
     @project.client_id = current_user.client_id
     respond_to do |format|
       if @project.save
