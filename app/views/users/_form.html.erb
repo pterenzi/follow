@@ -6,11 +6,6 @@
 <%= form.label :name %><br />
 <%= form.text_field h(:name) %><br />
 <br />
-<% if @user.category.name=="admin"%>
-  <%= form.label :Category%><br/>
-  <%= form.select :category_id, @categories %><br/>
-  <br/>
-<% end %>
 <%= form.label :Company%><br/>
 <%= form.select :company_id, @companies %>
 <br/>

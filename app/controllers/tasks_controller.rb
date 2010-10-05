@@ -57,10 +57,6 @@ class TasksController < ApplicationController
     @task.user_alert   = true
     respond_to do |format|
       if @task.save
-        #TODO Colocar isto numa callback
-        if !@task.user_id.nil?
-          Evaluation.create(:task_id=>@task.id, :user_id=>@task.user_id)
-        end
         flash[:notice] = t(:task_created)
         format.html { redirect_to(tasks_path) }
         format.xml  { render :xml => @task, :status => :created, :location => @task }

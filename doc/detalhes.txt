@@ -4,3 +4,14 @@ senha do banco : pterenzi
 acesso aos fontes: /home/wayofthe/follow
 
 spc -e 
+
+
+ssh wayofthe@68.233.9.46
+
+68.233.9.46
+
+scp wayofthe@68.233.9.46:/home/wayofthe/follow/current/log/production.log log
+
+scp wayofthe@68.233.9.46:/home/wayofthe/follow/current/db/follow_production db/follow_development
+
+scp db/follow_development wayofthe@68.233.9.46:/home/wayofthe/follow/current/db/follow_production
