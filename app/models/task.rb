@@ -35,7 +35,16 @@ named_scope :with_user_defined, :conditions=>["user_id IS NOT NULL"]
 
 after_create :create_evaluation
 
-def create_evalutaion
+attr_accessor :start_at_br
+
+def start_at_br
+  self.start_at.strftime("%d/%m/%Y  %H:%M")
+end
+def start_at_br=(value)
+    self.start_at = value.to_date if Date.valid?(value)
+end
+
+def create_evaluation
   if !self.user_id.nil?
     Evaluation.create(:task_id=>self.id, :user_id=>self.user_id)
   end
@@ -43,7 +52,7 @@ end
 
 
 def usuario_que_criou(user_id)
-  user              = User.find(user_id)
+  user    = User.find(user_id)
   user_id == requestor_id
 end
 

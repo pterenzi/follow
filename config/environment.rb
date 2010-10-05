@@ -45,7 +45,7 @@ Rails::Initializer.run do |config|
   # Run "rake -D time" for a list of tasks for finding time zone names. Comment line to use default local time.
   config.time_zone = "Brasilia"
   config.gem "authlogic" 
-  
+  config.gem "brazilian-rails"  
  # config.gem "thoughtbot-factory_girl",
 #               :lib    => "factory_girl",
 #               :source => "http://gems.github.com"
