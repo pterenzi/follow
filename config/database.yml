@@ -1,0 +1,18 @@
+development:
+  adapter: sqlite3
+  database: db/follow_development
+  encoding: utf8
+  pool: 5
+  timeout: 5000
+production:
+  adapter: sqlite3
+  database: db/follow_production
+  encoding: utf8
+  pool: 5
+  timeout: 5000
+  
+old_production:
+  adapter: mysql
+  database: wayofthe_follow
+  user: wayofthe_marcioa  
+  password: q9a8z7x6s5
