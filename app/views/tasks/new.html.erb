@@ -2,11 +2,12 @@
 <% content_for :main do%>
 <h1><%= t(:new_task)%></h1>
 <br/>
-<%= Time.current %>
 <% form_for @task do |f| %>
 <%= error_messages_for :task %>
 
-<p>
+<div id="user_filter">
+  <fieldset>
+    <legend>pesquisa paciente </legend>
   <table class="transparent">
     <tr>
       <td width="130px"><%=t(:company)%></td>
@@ -19,11 +20,11 @@
       <td><%= select_tag  :user_group_id, options_for_select(@user_groups),:onChange=>"project_selected('message_user_id');" %> </td>
     </tr>
   </table>
-       
-</p>
+  </fieldset>
+</div>
 <div id="user_select"  >
 <p>
-  <b><%=t(:user) %></b><br />   <br/>
+  <b><%=t(:user) %></b> <a href="#" onclick="$('#user_filter').show();">filtro</a><br />   <br/>
   
   <%= f.select :user_id, @users,{:prompt=>"Selecione um colaborador",:options=>{:id=>"task_user_id"}} %>    <br/> <br/> 
 </p>

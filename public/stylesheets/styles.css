@@ -377,6 +377,8 @@ main {
     padding: 12px 12px;
     text-align: justify;
     line-height: 12pt;
+/*    background-color: yellow;*/
+    width: 700px;
 }
 
 #content h2 { 
@@ -602,7 +604,7 @@ main {
     background: white;
     margin-left: 200px;
     
-    width: 800px;
+    width: 760px;
 }
 
 #foto {
@@ -806,4 +808,10 @@ h3 {
 	background-color: green;
 	width:10px;
 	float: red;
+}
+
+#user_filter{
+  display: none;
+  float: right; 
+  margin-top: -1.5em;
 }
